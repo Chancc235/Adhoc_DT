@@ -1,0 +1,306 @@
+[INFO 06:22:34] pymarl Running command 'my_main'
+[INFO 06:22:34] pymarl Started run with ID "4"
+[DEBUG 06:22:34] pymarl Starting Heartbeat
+[DEBUG 06:22:34] my_main Started
+[INFO 06:22:34] my_main Experiment Parameters:
+[INFO 06:22:34] my_main 
+
+{   'agent': 'rnn',
+    'alg2agent': {   'controllable': [   0,
+                                         1,
+                                         2,
+                                         3],
+                     'teammate': [   0,
+                                     1]},
+    'batch_size': 32,
+    'batch_size_run': 32,
+    'buffer_cpu_only': True,
+    'buffer_size': 1024,
+    'checkpoint_path': '',
+    'critic_lr': 0.0005,
+    'cur_episodes': 32,
+    'env': 'stag_hunt',
+    'env_args': {   'agent_move_block': [   0,
+                                            1,
+                                            2],
+                    'agent_obs': [   2,
+                                     2],
+                    'capture_action': False,
+                    'capture_action_conditions': [   2,
+                                                     1],
+                    'capture_conditions': [   0,
+                                              1],
+                    'capture_freezes': False,
+                    'capture_terminal': False,
+                    'directed_cone_narrow': True,
+                    'directed_exta_actions': True,
+                    'directed_observations': False,
+                    'episode_limit': 200,
+                    'intersection_global_view': False,
+                    'intersection_unknown': False,
+                    'is_print': False,
+                    'miscapture_punishment': 0,
+                    'mountain_agent_row': -1,
+                    'mountain_slope': 0.0,
+                    'mountain_spawn': False,
+                    'n_agents': 4,
+                    'n_hare': 0,
+                    'n_stags': 8,
+                    'need_render': False,
+                    'observe_ids': False,
+                    'observe_one_hot': False,
+                    'observe_state': False,
+                    'observe_walls': False,
+                    'p_hare_rest': 0.0,
+                    'p_stags_rest': 0.0,
+                    'prevent_cannibalism': True,
+                    'print_caught_prey': False,
+                    'print_frozen_agents': False,
+                    'random_ghosts': False,
+                    'random_ghosts_indicator': False,
+                    'random_ghosts_mul': -1,
+                    'random_ghosts_prob': 0.5,
+                    'remove_frozen': True,
+                    'reward_collision': 0,
+                    'reward_hare': 1,
+                    'reward_stag': 10,
+                    'reward_time': 0,
+                    'state_as_graph': False,
+                    'toroidal': False,
+                    'world_shape': [   10,
+                                       10]},
+    'episodes_per_teammate': 64,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'exp_name': 'stage2_collector',
+    'explore_alg': 'vdn',
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'ind': 'collector',
+    'inner_loop_episodes': 128,
+    'label': 'default_label',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'local_saves_path': 'saves',
+    'log_interval': 100,
+    'lr': 0.0005,
+    'mac': 'basic',
+    'meta_update_times': 8,
+    'n_sub_modules': 4,
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimize_meta': True,
+    'points_per_teammate': 64,
+    'pop': 'collector',
+    'population_alg': 'qmix',
+    'population_directories': 'models/',
+    'population_size': 3,
+    'repeat_id': 1,
+    'rnn_hidden_dim': 64,
+    'runner': 'meta',
+    'runner_log_interval': 10000,
+    'save_BR': True,
+    'save_BR_episodes': 1024,
+    'save_model': False,
+    'save_model_interval': 2000000,
+    'save_population': False,
+    'save_population_episodes': 2048,
+    'save_replay': False,
+    'seed': 709950246,
+    't_max': 10240,
+    'teammate_alg': 'vdn',
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'test_percent': 0.2,
+    'train_test_split': False,
+    'use_cuda': True,
+    'use_history': True,
+    'use_tensorboard': True,
+    'z_dim': 8}
+
+[INFO 06:22:34] my_main ================ MetaEpoch: 0 ================
+[INFO 06:22:34] my_main Time passed: 0 seconds
+[INFO 06:22:34] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 06:22:34] my_main Chosen Teammate: 0  2
+[INFO 06:22:34] root Runing batch
+[INFO 06:22:41] root Get batch
+[INFO 06:22:41] root episode 0 Inserted
+[INFO 06:22:41] my_main ================ MetaEpoch: 32 ================
+[INFO 06:22:41] my_main Time passed: 6 seconds
+[INFO 06:22:41] my_main Status: [70.625, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 06:22:41] my_main Chosen Teammate: 1  0
+[INFO 06:22:41] root Runing batch
+[INFO 06:22:46] root Get batch
+[INFO 06:22:46] root episode 32 Inserted
+[INFO 06:22:46] my_main ================ MetaEpoch: 64 ================
+[INFO 06:22:46] my_main Time passed: 11 seconds
+[INFO 06:22:46] my_main Status: [70.625, 75.9375, 0, 0, 0, 0, 0, 0, 0]
+[INFO 06:22:46] my_main Chosen Teammate: 2  1
+[INFO 06:22:46] root Runing batch
+[INFO 06:22:53] root Get batch
+[INFO 06:22:53] root episode 64 Inserted
+[INFO 06:22:53] my_main ================ MetaEpoch: 96 ================
+[INFO 06:22:53] my_main Time passed: 19 seconds
+[INFO 06:22:53] my_main Status: [70.625, 75.9375, 26.5625, 0, 0, 0, 0, 0, 0]
+[INFO 06:22:53] my_main Chosen Teammate: 3  1
+[INFO 06:22:53] root Runing batch
+[INFO 06:23:01] root Get batch
+[INFO 06:23:01] root episode 96 Inserted
+[INFO 06:23:01] my_main ================ MetaEpoch: 128 ================
+[INFO 06:23:01] my_main Time passed: 26 seconds
+[INFO 06:23:01] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 0, 0, 0, 0, 0]
+[INFO 06:23:01] my_main Chosen Teammate: 4  0
+[INFO 06:23:01] root Runing batch
+[INFO 06:23:09] root Get batch
+[INFO 06:23:09] root episode 128 Inserted
+[INFO 06:23:09] my_main ================ MetaEpoch: 160 ================
+[INFO 06:23:09] my_main Time passed: 35 seconds
+[INFO 06:23:09] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 32.5, 0, 0, 0, 0]
+[INFO 06:23:09] my_main Chosen Teammate: 5  1
+[INFO 06:23:09] root Runing batch
+[INFO 06:23:18] root Get batch
+[INFO 06:23:18] root episode 160 Inserted
+[INFO 06:23:18] my_main ================ MetaEpoch: 192 ================
+[INFO 06:23:18] my_main Time passed: 44 seconds
+[INFO 06:23:18] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 32.5, 3.125, 0, 0, 0]
+[INFO 06:23:18] my_main Chosen Teammate: 6  0
+[INFO 06:23:18] root Runing batch
+[INFO 06:23:24] root Get batch
+[INFO 06:23:24] root episode 192 Inserted
+[INFO 06:23:24] my_main ================ MetaEpoch: 224 ================
+[INFO 06:23:24] my_main Time passed: 50 seconds
+[INFO 06:23:24] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 32.5, 3.125, 52.5, 0, 0]
+[INFO 06:23:24] my_main Chosen Teammate: 7  2
+[INFO 06:23:24] root Runing batch
+[INFO 06:23:30] root Get batch
+[INFO 06:23:30] root episode 224 Inserted
+[INFO 06:23:30] my_main ================ MetaEpoch: 256 ================
+[INFO 06:23:30] my_main Time passed: 56 seconds
+[INFO 06:23:30] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 32.5, 3.125, 52.5, 50.0, 0]
+[INFO 06:23:30] my_main Chosen Teammate: 8  2
+[INFO 06:23:30] root Runing batch
+[INFO 06:23:37] root Get batch
+[INFO 06:23:37] root episode 256 Inserted
+[INFO 06:23:37] my_main ================ MetaEpoch: 288 ================
+[INFO 06:23:37] my_main Time passed: 1 minutes, 2 seconds
+[INFO 06:23:37] my_main Status: [70.625, 75.9375, 26.5625, 51.25, 32.5, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:23:37] my_main Chosen Teammate: 0  2
+[INFO 06:23:37] root Runing batch
+[INFO 06:23:42] root Get batch
+[INFO 06:23:42] root episode 288 Inserted
+[INFO 06:23:42] my_main ================ MetaEpoch: 320 ================
+[INFO 06:23:42] my_main Time passed: 1 minutes, 8 seconds
+[INFO 06:23:42] my_main Status: [71.5625, 75.9375, 26.5625, 51.25, 32.5, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:23:42] my_main Chosen Teammate: 1  0
+[INFO 06:23:42] root Runing batch
+[INFO 06:23:47] root Get batch
+[INFO 06:23:47] root episode 320 Inserted
+[INFO 06:23:47] my_main ================ MetaEpoch: 352 ================
+[INFO 06:23:47] my_main Time passed: 1 minutes, 12 seconds
+[INFO 06:23:47] my_main Status: [71.5625, 75.0, 26.5625, 51.25, 32.5, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:23:47] my_main Chosen Teammate: 2  1
+[INFO 06:23:47] root Runing batch
+[INFO 06:23:53] root Get batch
+[INFO 06:23:53] root episode 352 Inserted
+[INFO 06:23:53] my_main ================ MetaEpoch: 384 ================
+[INFO 06:23:53] my_main Time passed: 1 minutes, 19 seconds
+[INFO 06:23:53] my_main Status: [71.5625, 75.0, 27.1875, 51.25, 32.5, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:23:53] my_main Chosen Teammate: 3  1
+[INFO 06:23:53] root Runing batch
+[INFO 06:24:00] root Get batch
+[INFO 06:24:00] root episode 384 Inserted
+[INFO 06:24:00] my_main ================ MetaEpoch: 416 ================
+[INFO 06:24:00] my_main Time passed: 1 minutes, 26 seconds
+[INFO 06:24:00] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 32.5, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:24:00] my_main Chosen Teammate: 4  0
+[INFO 06:24:00] root Runing batch
+[INFO 06:24:08] root Get batch
+[INFO 06:24:08] root episode 416 Inserted
+[INFO 06:24:08] my_main ================ MetaEpoch: 448 ================
+[INFO 06:24:08] my_main Time passed: 1 minutes, 33 seconds
+[INFO 06:24:08] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 30.625, 3.125, 52.5, 50.0, 53.75]
+[INFO 06:24:08] my_main Chosen Teammate: 5  1
+[INFO 06:24:08] root Runing batch
+[INFO 06:24:16] root Get batch
+[INFO 06:24:16] root episode 448 Inserted
+[INFO 06:24:16] my_main ================ MetaEpoch: 480 ================
+[INFO 06:24:16] my_main Time passed: 1 minutes, 42 seconds
+[INFO 06:24:16] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 30.625, 2.5, 52.5, 50.0, 53.75]
+[INFO 06:24:16] my_main Chosen Teammate: 6  0
+[INFO 06:24:16] root Runing batch
+[INFO 06:24:23] root Get batch
+[INFO 06:24:23] root episode 480 Inserted
+[INFO 06:24:23] my_main ================ MetaEpoch: 512 ================
+[INFO 06:24:23] my_main Time passed: 1 minutes, 48 seconds
+[INFO 06:24:23] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 30.625, 2.5, 58.4375, 50.0, 53.75]
+[INFO 06:24:23] my_main Chosen Teammate: 7  2
+[INFO 06:24:23] root Runing batch
+[INFO 06:24:29] root Get batch
+[INFO 06:24:29] root episode 512 Inserted
+[INFO 06:24:29] my_main ================ MetaEpoch: 544 ================
+[INFO 06:24:29] my_main Time passed: 1 minutes, 54 seconds
+[INFO 06:24:29] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 30.625, 2.5, 58.4375, 51.25, 53.75]
+[INFO 06:24:29] my_main Chosen Teammate: 8  2
+[INFO 06:24:29] root Runing batch
+[INFO 06:24:36] root Get batch
+[INFO 06:24:36] root episode 544 Inserted
+[INFO 06:24:36] my_main ================ MetaEpoch: 576 ================
+[INFO 06:24:36] my_main Time passed: 2 minutes, 1 seconds
+[INFO 06:24:36] my_main Status: [71.5625, 75.0, 27.1875, 55.625, 30.625, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:24:36] my_main Chosen Teammate: 0  2
+[INFO 06:24:36] root Runing batch
+[INFO 06:24:41] root Get batch
+[INFO 06:24:41] root episode 576 Inserted
+[INFO 06:24:41] my_main ================ MetaEpoch: 608 ================
+[INFO 06:24:41] my_main Time passed: 2 minutes, 7 seconds
+[INFO 06:24:41] my_main Status: [72.1875, 75.0, 27.1875, 55.625, 30.625, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:24:41] my_main Chosen Teammate: 1  0
+[INFO 06:24:41] root Runing batch
+[INFO 06:24:47] root Get batch
+[INFO 06:24:47] root episode 608 Inserted
+[INFO 06:24:47] my_main ================ MetaEpoch: 640 ================
+[INFO 06:24:47] my_main Time passed: 2 minutes, 12 seconds
+[INFO 06:24:47] my_main Status: [72.1875, 75.0, 27.1875, 55.625, 30.625, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:24:47] my_main Chosen Teammate: 2  1
+[INFO 06:24:47] root Runing batch
+[INFO 06:24:54] root Get batch
+[INFO 06:24:54] root episode 640 Inserted
+[INFO 06:24:54] my_main ================ MetaEpoch: 672 ================
+[INFO 06:24:54] my_main Time passed: 2 minutes, 19 seconds
+[INFO 06:24:54] my_main Status: [72.1875, 75.0, 27.5, 55.625, 30.625, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:24:54] my_main Chosen Teammate: 3  1
+[INFO 06:24:54] root Runing batch
+[INFO 06:25:01] root Get batch
+[INFO 06:25:01] root episode 672 Inserted
+[INFO 06:25:01] my_main ================ MetaEpoch: 704 ================
+[INFO 06:25:01] my_main Time passed: 2 minutes, 26 seconds
+[INFO 06:25:01] my_main Status: [72.1875, 75.0, 27.5, 52.8125, 30.625, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:25:01] my_main Chosen Teammate: 4  0
+[INFO 06:25:01] root Runing batch
+[INFO 06:25:18] root Get batch
+[INFO 06:25:18] root episode 704 Inserted
+[INFO 06:25:18] my_main ================ MetaEpoch: 736 ================
+[INFO 06:25:18] my_main Time passed: 2 minutes, 44 seconds
+[INFO 06:25:18] my_main Status: [72.1875, 75.0, 27.5, 52.8125, 30.0, 2.5, 58.4375, 51.25, 48.125]
+[INFO 06:25:18] my_main Chosen Teammate: 5  1
+[INFO 06:25:18] root Runing batch
+[INFO 06:25:33] root Get batch
+[INFO 06:25:33] root episode 736 Inserted
+[INFO 06:25:33] my_main ================ MetaEpoch: 768 ================
+[INFO 06:25:33] my_main Time passed: 2 minutes, 58 seconds
+[INFO 06:25:33] my_main Status: [72.1875, 75.0, 27.5, 52.8125, 30.0, 2.1875, 58.4375, 51.25, 48.125]
+[INFO 06:25:33] my_main Chosen Teammate: 6  0
+[INFO 06:25:33] root Runing batch
+[INFO 06:25:40] root Get batch
+[INFO 06:25:40] root episode 768 Inserted
+[INFO 06:25:40] my_main ================ MetaEpoch: 800 ================
+[INFO 06:25:40] my_main Time passed: 3 minutes, 6 seconds
+[INFO 06:25:40] my_main Status: [72.1875, 75.0, 27.5, 52.8125, 30.0, 2.1875, 59.6875, 51.25, 48.125]
+[INFO 06:25:40] my_main Chosen Teammate: 7  2
+[INFO 06:25:40] root Runing batch

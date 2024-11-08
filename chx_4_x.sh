@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=1 nohup python src/meta_main.py --config=stage1_overcooked > output3.log 2>&1 &

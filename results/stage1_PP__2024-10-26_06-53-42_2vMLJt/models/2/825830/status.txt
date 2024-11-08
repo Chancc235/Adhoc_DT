@@ -1,0 +1,10 @@
+test_return_mean : 36.875
+test_return_std : 5.829611908180509
+test_episode_limit_mean : 0.25
+test_ep_length_mean : 136.09375
+test_episode_completion_mean : 0.008361514114037794
+return_mean : 27.265625
+return_std : 16.6637163729876
+episode_limit_mean : 0.46875
+ep_length_mean : 162.0546875
+episode_completion_mean : 0.00570233252827455

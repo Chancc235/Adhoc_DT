@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "src/meta_main.py", line 20, in <module>
+    from meta.population import REGISTRY as pop_REGISTRY
+  File "/home/cike/code/src/meta/population/__init__.py", line 5, in <module>
+    from .test_population import TestPopulation
+ModuleNotFoundError: No module named 'meta.population.test_population'

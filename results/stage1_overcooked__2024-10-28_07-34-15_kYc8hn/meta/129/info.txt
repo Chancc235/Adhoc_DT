@@ -1,0 +1,3 @@
+individiaul_timesteps: 6604800 6604800 6604800 6604800 
+meta_loss : -0.10260282084345818
+test_return_mean : 153.921875

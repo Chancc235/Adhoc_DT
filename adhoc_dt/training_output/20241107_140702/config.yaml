@@ -1,0 +1,6 @@
+alpha: 0.1
+beta: 0.1
+clip_value: 1.0
+lr: 0.001
+num_epochs: 50
+save_interval: 5

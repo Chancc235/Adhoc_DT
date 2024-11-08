@@ -1,0 +1,22 @@
+env: stag_hunt
+type: PP4a
+
+lr: 0.001
+alpha: 0.1
+beta: 0.1
+clip_value: 1.0
+num_epochs: 50
+save_interval: 5
+num_agents: 4
+
+# train_model function
+num_epochs: 50
+save_interval: 10
+model_save_path: models
+test_interval: 10
+
+# network
+state_dim: 75
+embed_dim: 32
+TeammateEncoder_num_heads: 4
+goal_dim: 75
