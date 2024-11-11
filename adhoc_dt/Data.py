@@ -1,10 +1,10 @@
 import torch
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 
 class CustomDataset(Dataset):
     def __init__(self, episodes_data):
-
-        self.episodes_data = episodes_data["states"]
+        
+        self.episodes_data = episodes_data
     
     def __len__(self):
         # 返回数据集的样本数量

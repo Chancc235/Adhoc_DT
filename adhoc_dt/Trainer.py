@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 
 class Trainer:
-    def __init__(self, teammateencoder, adhocagentEncoder, returnnet, goaldecoder, lr=1e-3, alpha=0.1, beta=0.1, clip_value=1.0):
+    def __init__(self, teammateencoder, adhocencoder, returnnet, goaldecoder, lr=1e-3, alpha=0.1, beta=0.1, gama=0.1,clip_value=1.0):
         # 初始化各网络
         self.teammateencoder = teammateencoder
         self.adhocencoder = adhocencoder
@@ -24,61 +24,62 @@ class Trainer:
         # 设置损失权重
         self.alpha = alpha  # KL损失权重
         self.beta = beta    # r的MSE损失权重
+        self.gama = gama
         self.clip_value = clip_value  # 梯度裁剪的最大范数
 
 
     def kl_divergence(p, q):
         return F.kl_div(p.log(), q, reduction='batchmean')
 
-    def future_loss(g_theta, p_theta, beta, z, tau, s_t):
-        # 第一个 KL 项：D_KL(g_theta(z | τ) || N(0, I))
-        # 假设 g_theta 是一个神经网络或函数，输出为 z 的均值和方差
-        mu, log_var = g_theta(z, tau)
-        std = torch.exp(0.5 * log_var)
-        q_z = torch.distributions.Normal(mu, std)
-        p_z = torch.distributions.Normal(torch.zeros_like(mu), torch.ones_like(std))  # N(0, I)
+    def MIE_loss(self, teammateencoder, adhocencoder, beta, gama, s, o):
+        # 第一个 KL 项：D_KL(t(z | s) || N(0, I))
+        mu1, log_var1 = teammateencoder(s)
+        std1 = torch.exp(0.5 * log_var1)
+        q_z1 = torch.distributions.Normal(mu1, std1)
+        p_z1 = torch.distributions.Normal(torch.zeros_like(mu1), torch.ones_like(std1))  # N(0, I)
 
-        kl_term1 = torch.distributions.kl_divergence(q_z, p_z).mean()
+        kl_term1 = torch.distributions.kl_divergence(q_z1, p_z1).mean()
 
-        # 第二个 KL 项：D_KL(g_theta(z | τ) || p_theta(z | s_t))，但不计算 g_theta 的梯度
+        # 第二个 KL 项：D_KL(t(z | s) || ad(h | o))，但不计算 t 的梯度
         with torch.no_grad():
-            mu_no_grad, log_var_no_grad = g_theta(z, tau)
+            mu_no_grad, log_var_no_grad = teammateencoder(s)
         std_no_grad = torch.exp(0.5 * log_var_no_grad)
         q_z_no_grad = torch.distributions.Normal(mu_no_grad, std_no_grad)
 
-        mu_st, log_var_st = p_theta(z, s_t)
-        std_st = torch.exp(0.5 * log_var_st)
-        p_z_st = torch.distributions.Normal(mu_st, std_st)
-
-        kl_term2 = torch.distributions.kl_divergence(q_z_no_grad, p_z_st).mean()
+        mu2, log_var2 = adhocencoder(o)
+        std2 = torch.exp(0.5 * log_var2)
+        p_z2 = torch.distributions.Normal(mu2, std2)
+        
+        kl_term2 = torch.distributions.kl_divergence(q_z_no_grad, p_z2).mean()
 
         # 计算最终损失
-        loss = beta * kl_term1 + kl_term2
-        return loss
+        loss = beta * kl_term1 + gama * kl_term2
+        return loss, q_z_no_grad
+    
 
     def compute_loss(self, s, o, r_true, g_true):
-        # 前向传递
-        z = self.teammateencoder(s)
-        h = self.adhocencoder(o)
-        
         # 计算各损失
-        kl_loss = F.kl_div(F.log_softmax(z, dim=-1), F.softmax(h, dim=-1), reduction='batchmean')
+        mie_loss, q_z = self.MIE_loss(self.teammateencoder, self.adhocencoder, self.beta, self.gama, s, o)
+        z = q_z.sample()
         r_pred = self.returnnet(z)
+        r_true = r_true.unsqueeze(1)
+
         mse_loss_r = F.mse_loss(r_pred, r_true)
         g_pred = self.goaldecoder(z, r_pred)
-        bce_loss_g = nn.BCELoss(g_pred, g_true)
+        bce_loss_func = nn.BCELoss(reduction='mean')
 
-        
+        bce_loss_g = bce_loss_func(g_pred, g_true)
+
         # 总损失，加权组合
-        total_loss = self.alpha * kl_loss + self.beta * mse_loss_r + bce_loss_g
-        return total_loss, kl_loss, mse_loss_r, bce_loss_g
+        total_loss = mie_loss + self.alpha * mse_loss_r + 0.1 * bce_loss_g
+        return total_loss, mie_loss, mse_loss_r, bce_loss_g
     
     def train_step(self, s, o, r_true, g_true):
         # 清除梯度
         self.optimizer.zero_grad()
 
         # 计算损失
-        total_loss, kl_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
+        total_loss, mie_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
         
         # 反向传播
         total_loss.backward()
@@ -97,45 +98,64 @@ class Trainer:
         
         return {
             "total_loss": total_loss.item(),
-            "kl_loss": kl_loss.item(),
+            "mie_loss": mie_loss.item(),
             "mse_loss_r": mse_loss_r.item(),
             "mse_loss_g": mse_loss_g.item()
         }
-    
+
+    def eval_step(self, s, o, r_true, g_true):
+        # 计算损失
+        total_loss, mie_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
+
+        # 直接返回损失项，无需反向传播和优化
+        return {
+            "total_loss": total_loss.item(),
+            "mie_loss": mie_loss.item(),
+            "mse_loss_r": mse_loss_r.item(),
+            "mse_loss_g": mse_loss_g.item()
+        }
+
     def evaluate(self, val_loader, device):
         # 切换到评估模式
-        self.teamworkencoder.eval()
+        self.teammateencoder.eval()
         self.adhocencoder.eval()
         self.returnnet.eval()
         self.goaldecoder.eval()
         
         total_loss = 0.0
-        kl_loss = 0.0
+        mie_loss = 0.0
         mse_loss_r = 0.0
         mse_loss_g = 0.0
         num_batches = len(val_loader)
-
         with torch.no_grad():
-            for s, o, r_true, g_true in val_loader:
-                s, o, r_true, g_true = s.to(device), o.to(device), r_true.to(device), g_true.to(device)
+            for batch_idx, episodes_data in enumerate(val_loader):
+
+                states = episodes_data["state"]
+                obs = episodes_data["obs"]
+                reward = episodes_data["reward"]
+                goal = episodes_data["next_state"]
                 
-                # 计算损失
-                loss, kl, mse_r, mse_g = self.compute_loss(s, o, r_true, g_true)
-                
-                total_loss += loss.item()
-                kl_loss += kl.item()
-                mse_loss_r += mse_r.item()
-                mse_loss_g += mse_g.item()
+                for ts in range(states.size(1)):
+                    s = states[:, ts, :, :].permute(1, 0, 2).to(device)   # shape [batch, num, dim]
+                    o = obs[:, ts, :].to(device)   # shape [batch, dim]
+                    r_true = reward[:, ts].to(device)   # shape [batch, 1]
+                    g_true = goal[:, ts, :, :].permute(1, 0, 2).to(device)  # shape [batch, num, dim]
+                    
+                    loss_dict = self.eval_step(s, o, r_true, g_true)
+                    total_loss += loss_dict["total_loss"]
+                    mie_loss += loss_dict["mie_loss"]
+                    mse_loss_r += loss_dict["mse_loss_r"]
+                    mse_loss_g += loss_dict["mse_loss_g"]
         
         # 计算验证集上的平均损失
         avg_total_loss = total_loss / num_batches
-        avg_kl_loss = kl_loss / num_batches
+        avg_mie_loss = mie_loss / num_batches
         avg_mse_loss_r = mse_loss_r / num_batches
         avg_mse_loss_g = mse_loss_g / num_batches
         
         return {
-            "avg_total_loss": avg_total_loss,
-            "avg_kl_loss": avg_kl_loss,
-            "avg_mse_loss_r": avg_mse_loss_r,
-            "avg_mse_loss_g": avg_mse_loss_g
+            "total_loss": avg_total_loss,
+            "mie_loss": avg_mie_loss,
+            "mse_loss_r": avg_mse_loss_r,
+            "mse_loss_g": avg_mse_loss_g
         }

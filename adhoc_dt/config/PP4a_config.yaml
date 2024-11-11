@@ -1,11 +1,13 @@
 env: stag_hunt
 type: PP4a
 
-lr: 0.001
-alpha: 0.1
-beta: 0.1
+batch_size: 8192
+lr: 0.01
+alpha: 10
+beta: 100
+gama: 100
 clip_value: 1.0
-num_epochs: 50
+num_epochs: 5000
 save_interval: 5
 num_agents: 4
 
@@ -20,3 +22,6 @@ state_dim: 75
 embed_dim: 32
 TeammateEncoder_num_heads: 4
 goal_dim: 75
+
+train_data_path: data/PP4a_episodes_datas.pt
+# train_data_path: data/PP4a_test.pt

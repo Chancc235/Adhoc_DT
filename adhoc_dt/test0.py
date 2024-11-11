@@ -15,8 +15,8 @@ batch_size = 1
 # 队友编码器
 encoder = TeammateEncoder(state_dim, embed_dim, num_heads)
 states = torch.randn(num_agents, batch_size, state_dim)  # (num_agents, batch_size, state_dim)
-
-encoded_output = encoder(states)  # (batch_size, embed_dim)
+print(states.shape)
+encoded_output, _ = encoder(states)  # (batch_size, embed_dim)
 print(encoded_output.shape)  # 输出应该是 (batch_size, embed_dim)
 print(encoded_output)
 
@@ -26,7 +26,7 @@ encoder2 = AdhocAgentEncoder(state_dim, embed_dim)
 state = torch.randn(batch_size, state_dim)  # (batch_size, state_dim)
 
 encoder2.eval()
-encoded_output2 = encoder2(state)  # (batch_size, embed_dim)
+encoded_output2, _ = encoder2(state)  # (batch_size, embed_dim)
 print(encoded_output2.shape)  # 输出应该是 (batch_size, embed_dim)
 print(encoded_output2)
 
@@ -39,7 +39,7 @@ print(returns.shape)
 print(returns)
 
 # 目标解码器
-goal_decoder = GoalDecoder(embed_dim, 1, 512, state_dim)
+goal_decoder = GoalDecoder(embed_dim, 1, 512, state_dim, 4)
 goal_decoder.eval()
 goal = goal_decoder(encoded_output, returns)
 goal = (goal > 0.5).float()

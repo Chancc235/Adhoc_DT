@@ -13,7 +13,7 @@ class TeammateEncoder(nn.Module):
         super(TeammateEncoder, self).__init__()
         self.embedding = nn.Linear(state_dim, embed_dim)
         self.self_attention = nn.MultiheadAttention(embed_dim, num_heads)
-        self.output_layer = nn.Linear(embed_dim, embed_dim)  # 全连接层
+        self.output_layer = nn.Linear(embed_dim, embed_dim * 2)  # 全连接层
         self.pooling = nn.AdaptiveAvgPool1d(1)  # 平均池化
 
     def forward(self, states):
@@ -32,6 +32,11 @@ class TeammateEncoder(nn.Module):
         pooled_output = self.pooling(attn_output).squeeze(-1)  # (batch_size, embed_dim)
         
         # output
-        output = self.output_layer(pooled_output)  # (batch_size, embed_dim)
+        output = self.output_layer(pooled_output)  # (batch_size, embed_dim * 2)
         
-        return output
+        # 分割输出，得到均值和对数方差
+        mean = output[:, :output.size(1) // 2]  # 取前一半作为均值
+        log_var = output[:, output.size(1) // 2:]  # 取后一半作为对数方差
+ 
+        return mean, log_var
+

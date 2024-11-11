@@ -17,7 +17,7 @@ class AdhocAgentEncoder(nn.Module):
         self.fc2 = nn.Linear(hidden_dim1, hidden_dim2)
         self.bn2 = nn.BatchNorm1d(hidden_dim2)
         
-        self.fc3 = nn.Linear(hidden_dim2, embed_dim)
+        self.fc3 = nn.Linear(hidden_dim2, embed_dim * 2)
         #self.bn3 = nn.BatchNorm1d(embed_dim)
         
         # 激活函数
@@ -34,6 +34,10 @@ class AdhocAgentEncoder(nn.Module):
         x = self.bn2(x)
         x = self.activation(x)
         
-        x = self.fc3(x)            # (batch_size, embed_dim)
-        
-        return x  # 输出 shape: (batch_size, embed_dim)
+        x = self.fc3(x)            # (batch_size, embed_dim * 2)
+                
+        # 分割输出，得到均值和对数方差
+        mean = x[:, :x.size(1) // 2]  # 取前一半作为均值
+        log_var = x[:, x.size(1) // 2:]  # 取后一半作为对数方差
+ 
+        return mean, log_var
