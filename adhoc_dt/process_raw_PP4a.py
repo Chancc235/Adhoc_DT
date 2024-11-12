@@ -55,10 +55,11 @@ for i in range(num_episodes):
         episode_data = {
             'state': state[i, :max_steps, ...],            # 当前状态，固定长度为 max_steps
             'obs': state[i, :max_steps, agent_idx, ...],  # adhoc agent状态，固定长度为 max_steps
-            'action': actions[i, :max_steps, ...],       # 动作，固定长度为 max_steps
+            'action': actions[i, :max_steps, agent_idx,...],       # 动作，固定长度为 max_steps
             'reward': reward[i, :max_steps],             # 奖励，固定长度为 max_steps
             'next_state': state[i, 1:max_steps, ...].clone(),  # 下一个状态，最后时间步设为全零
-            'done': terminated[i, :max_steps]            # 结束标志，固定长度为 max_steps
+            'done': terminated[i, :max_steps],            # 结束标志，固定长度为 max_steps
+            'teammate_action': actions[i, :max_steps, [j for j in range(actions.shape[2]) if j != agent_idx], ...]
         }
 
         # 将 next_state 的最后一个时间步设置为全零

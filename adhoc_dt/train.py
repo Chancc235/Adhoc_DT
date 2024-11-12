@@ -3,60 +3,83 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from tqdm import tqdm
-from utils import load_config, create_save_directory, setup_logger, save_config
+from utils import load_config, create_save_directory, setup_logger, save_config, get_batch
 import os
+import random
 
 from Networks.ReturnNet import ReturnNet
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.GoalDecoder import GoalDecoder
+from Networks.dt_models.decision_transformer import DecisionTransformer
 
 from Data import CustomDataset
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
-from Trainer import Trainer
+from Trainer import SequenceTrainer, BaseTrainer, GoalTrainer
 import time
 
+def test(train_loader, device, num_epochs, batch_size):
+    for epoch in range(num_epochs):
+        with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}") as pbar:
+            for batch_idx, episodes_data in enumerate(pbar):
+                # for DT
+                o, a, g, d, timesteps, mask = get_batch(episodes_data, device, batch_size=episodes_data["state"].size(0), max_ep_len=episodes_data["state"].size(1), max_len=30)
+                print(o.shape)
+                print(a.shape)
+                print(g.shape)
+                print(d.shape)
+                print(timesteps.shape)
+                print(mask.shape)
+
 # 定义训练函数
-def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, model_save_path="models"):
+def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, model_save_path="models"):
     start_time = time.time()
     for epoch in range(num_epochs):
         epoch_loss = 0.0
         with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}") as pbar:
             for batch_idx, episodes_data in enumerate(pbar):
+            
+                # for DT
+                o, a, g, d, timesteps, mask = get_batch(episodes_data, device, batch_size=episodes_data["state"].size(0), max_ep_len=episodes_data["state"].size(1), max_len=K)
+                # trainer_dt.train_step(o, a, g, d, timesteps, mask)
+                a_onehot = F.one_hot(a.to(torch.int64), num_classes=act_dim)
+                ac_pred = trainer_dt.model.get_action(o, a_onehot, g, timesteps)
+                ac_pred = torch.argmax(ac_pred)
+                print(ac_pred.shape)
+                print(ac_pred)
+                trainer_dt.train_iteration(num_steps=10, iter_num=batch_idx)
+                # 随机选择一个时间步
+                rand_t = random.randint(0, episodes_data["state"].size(1) - K - 1)
+                for ts in range(rand_t, rand_t + K):
+                    # 提取所有批次样本的该时间步的数据
+                    states = episodes_data["state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
+                    obs = episodes_data["obs"][:, ts, :].to(device)          # shape [batch, dim]
+                    reward = episodes_data["reward"][:, ts].to(device)       # shape [batch, 1]
+                    goal = episodes_data["next_state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
 
-                states = episodes_data["state"]
-                obs = episodes_data["obs"]
-                reward = episodes_data["reward"]
-                goal = episodes_data["next_state"]
-                
-                for ts in range(states.size(1)):
-                    s = states[:, ts, :, :].permute(1, 0, 2).to(device)   # shape [batch, num, dim]
-                    o = obs[:, ts, :].to(device)   # shape [batch, dim]
-                    r_true = reward[:, ts].to(device)   # shape [batch, 1]
-                    g_true = goal[:, ts, :, :].permute(1, 0, 2).to(device)  # shape [batch, num, dim]
-                    
-                    loss_dict = trainer.train_step(s, o, r_true, g_true)
+                    # 执行训练步骤并计算损失
+                    loss_dict = trainer_goal.train_step(states, obs, reward, goal)
                     epoch_loss += loss_dict["total_loss"]
 
-                # 更新进度条和打印每个batch的损失
-                pbar.set_postfix({
-                    "Total Loss": f"{loss_dict['total_loss']:.4f}",
-                    "MIE Loss": f"{loss_dict['mie_loss']:.4f}",
-                    "MSE Loss R": f"{loss_dict['mse_loss_r']:.4f}",
-                    "MSE Loss G": f"{loss_dict['mse_loss_g']:.4f}"
-                })
-                
-                # 日志记录
-                if batch_idx % 10 == 0:
-                    logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}], "
-                                f"Total Loss: {loss_dict['total_loss']:.4f}, MIE Loss: {loss_dict['mie_loss']:.4f}, "
-                                f"MSE Loss R: {loss_dict['mse_loss_r']:.4f}, MSE Loss G: {loss_dict['mse_loss_g']:.4f}")
-        
+                    # 更新进度条和打印每个batch的损失
+                    pbar.set_postfix({
+                        "Total Loss": f"{loss_dict['total_loss']:.4f}",
+                        "MIE Loss": f"{loss_dict['mie_loss']:.4f}",
+                        "MSE Loss R": f"{loss_dict['mse_loss_r']:.4f}",
+                        "MSE Loss G": f"{loss_dict['mse_loss_g']:.4f}"
+                    })
+
+                    # 日志记录
+                    if batch_idx % 10 == 0:
+                        logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}], "
+                                    f"Total Loss: {loss_dict['total_loss']:.4f}, MIE Loss: {loss_dict['mie_loss']:.4f}, "
+                                    f"MSE Loss R: {loss_dict['mse_loss_r']:.4f}, MSE Loss G: {loss_dict['mse_loss_g']:.4f}")
+            
         # 每个epoch结束后记录平均损失
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Total Loss: {epoch_loss / len(train_loader):.4f}")
         
-        val_loss_dict = trainer.evaluate(val_loader, device)
+        val_loss_dict = trainer_goal.evaluate(val_loader, device)
 
         logger.info(f"Epoch [{epoch+1}/{num_epochs}], Validation Loss: {val_loss_dict['total_loss']:.4f}")
         
@@ -79,12 +102,12 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
             torch.save({
                 'epoch': epoch + 1,
                 'model_state_dict': {
-                    'teamworkencoder': trainer.teammateencoder.state_dict(),
-                    'adhocencoder': trainer.adhocencoder.state_dict(),
-                    'returnnet': trainer.returnnet.state_dict(),
-                    'goaldecoder': trainer.goaldecoder.state_dict(),
+                    'teamworkencoder': trainer_goal.teammateencoder.state_dict(),
+                    'adhocencoder': trainer_goal.adhocencoder.state_dict(),
+                    'returnnet': trainer_goal.returnnet.state_dict(),
+                    'goaldecoder': trainer_goal.goaldecoder.state_dict(),
                 },
-                'optimizer_state_dict': trainer.optimizer.state_dict(),
+                'optimizer_state_dict': trainer_goal.optimizer.state_dict(),
                 'loss': epoch_loss / len(train_loader)
             }, save_path)
             logger.info(f"Model checkpoint saved at {save_path}")
@@ -95,6 +118,7 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
     print(f"Training completed in {int(total_hours)}h {int(total_minutes)}m")
 
 if __name__ == "__main__":
+
     env = "PP4a"
     config = load_config(f"./config/{env}_config.yaml")
     save_dir = create_save_directory()
@@ -102,17 +126,52 @@ if __name__ == "__main__":
     logger = setup_logger(save_dir)
     
     # 训练设备
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+    #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     # 移动模型到设备
     teammateencoder = TeammateEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"], num_heads=config["TeammateEncoder_num_heads"]).to(device)
     adhocagentEncoder = AdhocAgentEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"]).to(device)
     returnnet = ReturnNet(input_dim=config["embed_dim"]).to(device)
     goaldecoder = GoalDecoder(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=128, output_dim=config["goal_dim"], num=config["num_agents"]).to(device)
+    dt = DecisionTransformer(
+            state_dim=config["state_dim"],
+            num_agents=config["num_agents"],
+            act_dim=config["act_dim"],
+            max_length=config["K"],
+            max_ep_len=config["max_ep_len"],
+            hidden_size=config['dt_embed_dim'],
+            n_layer=config['n_layer'],
+            n_head=config['n_head'],
+            n_inner=4*config['dt_embed_dim'],
+            activation_function=config['dt_activation_function'],
+            n_positions=1024,
+            resid_pdrop=config['dt_dropout'],
+            attn_pdrop=config['dt_dropout'],
+        ).to(device)
 
+    # DT 的 trainer准备
+    warmup_steps = config['warmup_steps']
+    optimizer = torch.optim.AdamW(
+        dt.parameters(),
+        lr=config['dt_lr'],
+        weight_decay=config['dt_weight_decay']
+    )
+    scheduler = torch.optim.lr_scheduler.LambdaLR(
+        optimizer,
+        lambda steps: min((steps+1)/warmup_steps, 1)
+    )
 
     # 初始化 Trainer
-    trainer = Trainer(teammateencoder, adhocagentEncoder, returnnet, goaldecoder, lr=config["lr"], alpha=config["alpha"], beta=config["beta"], gama=config["gama"], clip_value=config["clip_value"])
+    trainer_dt = SequenceTrainer(
+        model=dt,
+        optimizer=optimizer,
+        batch_size=config["batch_size"],
+        get_batch=get_batch,
+        scheduler=scheduler,
+        loss_fn=lambda s_hat, a_hat, r_hat, s, a, r: torch.mean((a_hat - a)**2),
+        eval_fns=None,
+    )
+    trainer_goal = GoalTrainer(teammateencoder, adhocagentEncoder, returnnet, goaldecoder, lr=config["lr"], alpha=config["alpha"], beta=config["beta"], gama=config["gama"], clip_value=config["clip_value"])
     config["device"] = device
     # 保存配置到输出文件夹
     save_config(config, save_dir)
@@ -138,5 +197,6 @@ if __name__ == "__main__":
     val_loader = DataLoader(val_dataset, batch_size=config["batch_size"], shuffle=False, num_workers=4)
     logger.info("Training Started.")
     # 开始训练
-    train_model(logger, trainer, train_loader, val_loader, num_epochs=config["num_epochs"], device=config["device"], test_interval=config["test_interval"],save_interval=config["save_interval"], save_dir=save_dir, model_save_path=config["model_save_path"])
+    train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs=config["num_epochs"], device=config["device"], test_interval=config["test_interval"],save_interval=config["save_interval"], save_dir=save_dir, K=config["K"], act_dim=config["act_dim"],model_save_path=config["model_save_path"])
+    # test(train_loader, device=config["device"], num_epochs=config["num_epochs"], batch_size=config["batch_size"])
     logger.info("Training completed.")
