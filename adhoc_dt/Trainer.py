@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
+import random
 
 class BaseTrainer:
 
@@ -73,19 +74,32 @@ class BaseTrainer:
         return loss.detach().cpu().item()
 
 class SequenceTrainer(BaseTrainer):
+    def train(self, episodes_data, train_steps, device, batch_size, max_ep_len, max_len):
+        self.model.train()
+        action_loss = 0.0
+        for _ in range(train_steps):
+            loss = self.train_step(episodes_data, device, batch_size, max_ep_len, max_len)
+            action_loss += loss
+            if self.scheduler is not None:
+                self.scheduler.step()
 
-    def train_step(self):
-        states, actions, rewards, dones, rtg, timesteps, attention_mask = self.get_batch(self.batch_size)
-        action_target = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        return action_loss / train_steps
 
+    def evaluate(self):
+        pass
+
+    def train_step(self, episodes_data, device, batch_size, max_ep_len, max_len):
+        
+        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, batch_size=batch_size, max_ep_len=max_ep_len, max_len=max_len)
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
         state_preds, action_preds, reward_preds = self.model.forward(
-            states, actions, rewards, rtg[:,:-1], timesteps, attention_mask=attention_mask,
+            states, actions, goal, timesteps, attention_mask=attention_mask,
         )
 
         act_dim = action_preds.shape[2]
         action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
         action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-
         loss = self.loss_fn(
             None, action_preds, None,
             None, action_target, None,
@@ -121,8 +135,8 @@ class GoalTrainer:
         )
         
         # 设置损失权重
-        self.alpha = alpha  # KL损失权重
-        self.beta = beta    # r的MSE损失权重
+        self.alpha = alpha  # r的MSE损失权重
+        self.beta = beta    
         self.gama = gama
         self.clip_value = clip_value  # 梯度裁剪的最大范数
 
@@ -171,8 +185,8 @@ class GoalTrainer:
         bce_loss_g = bce_loss_func(g_pred, g_true)
 
         # 总损失，加权组合
-        total_loss = mie_loss + self.alpha * mse_loss_r + 0.1 * bce_loss_g
-        return total_loss, mie_loss, mse_loss_r, bce_loss_g
+        total_loss = mie_loss + self.alpha * mse_loss_r +  bce_loss_g
+        return total_loss, mie_loss, self.alpha * mse_loss_r, bce_loss_g
     
     def train_step(self, s, o, r_true, g_true):
         # 清除梯度
@@ -203,6 +217,38 @@ class GoalTrainer:
             "mse_loss_g": mse_loss_g.item()
         }
 
+    def train(self, episodes_data, K, device):
+        # 切换到训练模式
+        self.teammateencoder.train()
+        self.adhocencoder.train()
+        self.returnnet.train()
+        self.goaldecoder.train()
+        # 随机选择一个时间步
+        rand_t = random.randint(0, episodes_data["state"].size(1) - K - 1)
+        total_goal_loss = 0.0
+        mie_loss = 0.0
+        mse_loss_r = 0.0
+        mse_loss_g = 0.0
+        for ts in range(rand_t, rand_t + K):
+            # 提取所有批次样本的该时间步的数据
+            states = episodes_data["state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
+            obs = episodes_data["obs"][:, ts, :].to(device)          # shape [batch, dim]
+            reward = episodes_data["reward"][:, ts].to(device)       # shape [batch, 1]
+            goal = episodes_data["next_state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
+
+            # 执行训练步骤并计算损失
+            loss_dict = self.train_step(states, obs, reward, goal)
+            total_goal_loss += loss_dict["total_loss"]
+            mie_loss += loss_dict["mie_loss"]
+            mse_loss_r += loss_dict["mse_loss_r"]
+            mse_loss_g += loss_dict["mse_loss_g"]
+        return {
+            "total_loss": total_goal_loss / K,
+            "mie_loss": mie_loss / K,
+            "mse_loss_r": mse_loss_r / K,
+            "mse_loss_g": mse_loss_g / K
+        }
+
     def eval_step(self, s, o, r_true, g_true):
         # 计算损失
         total_loss, mie_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
@@ -227,9 +273,10 @@ class GoalTrainer:
         mse_loss_r = 0.0
         mse_loss_g = 0.0
         num_batches = len(val_loader)
+        game_length = 1
         with torch.no_grad():
             for batch_idx, episodes_data in enumerate(val_loader):
-
+                game_length = episodes_data["state"].size(1)
                 states = episodes_data["state"]
                 obs = episodes_data["obs"]
                 reward = episodes_data["reward"]
@@ -248,10 +295,10 @@ class GoalTrainer:
                     mse_loss_g += loss_dict["mse_loss_g"]
         
         # 计算验证集上的平均损失
-        avg_total_loss = total_loss / num_batches
-        avg_mie_loss = mie_loss / num_batches
-        avg_mse_loss_r = mse_loss_r / num_batches
-        avg_mse_loss_g = mse_loss_g / num_batches
+        avg_total_loss = total_loss / game_length
+        avg_mie_loss = mie_loss / game_length
+        avg_mse_loss_r = mse_loss_r / game_length
+        avg_mse_loss_g = mse_loss_g / game_length
         
         return {
             "total_loss": avg_total_loss,

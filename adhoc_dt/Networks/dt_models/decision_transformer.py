@@ -48,8 +48,14 @@ class DecisionTransformer(TrajectoryModel):
 
         # note: we don't predict states or returns for the paper
         self.predict_state = torch.nn.Linear(hidden_size, self.state_dim)
+        """
         self.predict_action = nn.Sequential(
             *([nn.Linear(hidden_size, self.act_dim)] + ([nn.Tanh()] if action_tanh else []))
+        )
+        """
+        self.predict_action = nn.Sequential(
+            nn.Linear(hidden_size, self.act_dim),
+            nn.Softmax(dim=-1)  # 离散动作，确保输出为概率分布
         )
         self.predict_goal = torch.nn.Linear(hidden_size, self.state_dim * num_agents)
 
@@ -63,6 +69,7 @@ class DecisionTransformer(TrajectoryModel):
 
         # embed each modality with a different head
         state_embeddings = self.embed_state(states)
+        actions = actions.to(torch.float32)
         action_embeddings = self.embed_action(actions)
         goal = goal.view(goal.shape[0], goal.shape[1], goal.shape[2] * goal.shape[3])
         goal_embeddings = self.embed_goal(goal)
@@ -70,6 +77,7 @@ class DecisionTransformer(TrajectoryModel):
 
         # time embeddings are treated similar to positional embeddings
         state_embeddings = state_embeddings + time_embeddings
+        action_embeddings = action_embeddings.view(time_embeddings.shape[0], time_embeddings.shape[1], time_embeddings.shape[2])
         action_embeddings = action_embeddings + time_embeddings
         goal_embeddings = goal_embeddings + time_embeddings
 

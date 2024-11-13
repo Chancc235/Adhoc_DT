@@ -30,6 +30,6 @@ class GoalDecoder(nn.Module):
         x = x.view(-1, self.num, 75)
         x = x.permute(1, 0, 2)  # (num_agents, batch_size, state_dim)
 
-        x = (x > 0.5).float()
+        # x = (x > 0.5).float()
         
         return x
