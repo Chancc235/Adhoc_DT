@@ -1,11 +1,11 @@
 K: 30
 TeammateEncoder_num_heads: 4
 act_dim: 5
-alpha: 0.5
-batch_size: 512
+alpha: 0.05
+batch_size: 4096
 beta: 100
 clip_value: 1.0
-device: cpu
+device: cuda
 dt_activation_function: relu
 dt_dropout: 0.1
 dt_embed_dim: 128
@@ -22,8 +22,8 @@ model_save_path: models
 n_head: 1
 n_layer: 3
 num_agents: 4
-num_epochs: 5000
-save_dir: training_output/20241113_140309
+num_epochs: 500
+save_dir: training_output/20241115_072336
 save_interval: 10
 state_dim: 75
 test_interval: 10

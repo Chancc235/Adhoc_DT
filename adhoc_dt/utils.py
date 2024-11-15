@@ -89,7 +89,7 @@ def load_data(data_path, num_agents = 4):
     return states, next_states, obs, actions, rewards
 
 # dt获取batch
-def get_batch(episode_data, device="cuda", batch_size=256, max_ep_len=201, max_len=30):
+def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=30):
     obs = episode_data["obs"]
     actions = episode_data["action"]
     rewards = episode_data["reward"]
@@ -99,7 +99,7 @@ def get_batch(episode_data, device="cuda", batch_size=256, max_ep_len=201, max_l
     state_dim = obs.shape[-1]
     act_dim = 1
     goal_dim = goals[0, 0, ...].shape
-
+    batch_size = len(obs)
     s, a, g, d, timesteps, mask = [], [], [], [], [], []
     for i in range(batch_size):
         # 随机选择一个时间步

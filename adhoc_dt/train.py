@@ -2,22 +2,24 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
+from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-from utils import load_config, create_save_directory, setup_logger, save_config, get_batch
+
 import os
 import random
+import csv
+import time
 
+from utils import load_config, create_save_directory, setup_logger, save_config, get_batch
 from Networks.ReturnNet import ReturnNet
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.GoalDecoder import GoalDecoder
 from Networks.dt_models.decision_transformer import DecisionTransformer
-
 from Data import CustomDataset
-from torch.utils.data import DataLoader
-from sklearn.model_selection import train_test_split
 from Trainer import SequenceTrainer, BaseTrainer, GoalTrainer
-import time
+
 
 def test(train_loader, device, num_epochs, batch_size):
     for epoch in range(num_epochs):
@@ -50,7 +52,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                 print(ac_pred.shape)
                 print(ac_pred)
                 """
-                loss_dt = trainer_dt.train(episodes_data, train_steps=dt_train_steps, device=device, batch_size=episodes_data["state"].size(0), max_ep_len=episodes_data["state"].size(1), max_len=K)
+                loss_dt = trainer_dt.train(episodes_data, train_steps=dt_train_steps, device=device, max_ep_len=episodes_data["state"].size(1), max_len=K)
                 loss_goal_dict = trainer_goal.train(episodes_data, K, device)
                 
                 epoch_goal_loss += loss_goal_dict['total_loss']
@@ -73,13 +75,25 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
             
         # 每个epoch结束后记录平均损失
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Goal Loss: {epoch_goal_loss / len(train_loader) :.4f}")
+        logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Action Loss: {epoch_action_loss / len(train_loader) :.4f}")
         logger.info("===================================================================================")
-        goal_val_loss_dict = trainer_goal.evaluate(val_loader, device)
-        logger.info(f"Epoch [{epoch+1}/{num_epochs}], Goal Validation Loss: {goal_val_loss_dict['total_loss'] / len(val_loader):.4f} \n "
+        
+        # 每个epoch结束后进行验证
+        dt_val_loss = trainer_dt.evaluate(val_loader, device=device, max_ep_len=next(iter(val_loader))["state"].size(1), max_len=K)
+        goal_val_loss_dict = trainer_goal.evaluate(val_loader, device=device)
+        logger.info(f"Epoch [{epoch+1}/{num_epochs}]\n"
+        f"Action Validation Loss: {dt_val_loss / len(val_loader):.4f} \n "
+        f"Goal Validation Loss: {goal_val_loss_dict['total_loss'] / len(val_loader):.4f} \n "
         f"MIE Validation Loss: {goal_val_loss_dict['mie_loss'] / len(val_loader):.4f} \n "
         f"MSE R Validation Loss: {goal_val_loss_dict['mse_loss_r'] / len(val_loader):.4f} \n "
         f"MSE G Validation Loss: {goal_val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
         logger.info("===================================================================================")
+
+        # 将验证损失写入 CSV 文件
+        val_csv_file_path = os.path.join(save_dir, 'val_loss.csv')
+        with open(val_csv_file_path, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([epoch + 1, dt_val_loss, goal_val_loss_dict['total_loss']])
 
         # 计算训练时间
         end_time = time.time()
@@ -106,7 +120,8 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                     'goaldecoder': trainer_goal.goaldecoder.state_dict(),
                 },
                 'optimizer_state_dict': trainer_goal.optimizer.state_dict(),
-                'loss': epoch_loss / len(train_loader)
+                'action_loss': epoch_action_loss / len(train_loader),
+                'goal_loss': epoch_goal_loss / len(train_loader),
             }, save_path)
             logger.info(f"Model checkpoint saved at {save_path}")
     end_time = time.time()
