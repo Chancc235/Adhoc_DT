@@ -74,23 +74,62 @@ class BaseTrainer:
         return loss.detach().cpu().item()
 
 class SequenceTrainer(BaseTrainer):
-    def train(self, episodes_data, train_steps, device, batch_size, max_ep_len, max_len):
+    def train(self, episodes_data, train_steps, device, max_ep_len, max_len):
         self.model.train()
         action_loss = 0.0
-        for _ in range(train_steps):
-            loss = self.train_step(episodes_data, device, batch_size, max_ep_len, max_len)
-            action_loss += loss
-            if self.scheduler is not None:
-                self.scheduler.step()
+        loss = self.train_step(episodes_data, device, max_ep_len, max_len)
+        action_loss += loss
+        if self.scheduler is not None:
+            self.scheduler.step()
 
         return action_loss / train_steps
 
-    def evaluate(self):
-        pass
+    def evaluate(self, val_loader, device, max_ep_len, max_len):
+        self.model.eval()
+        action_loss = 0.0
+        for batch_idx, episodes_data in enumerate(val_loader):
+            states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+            actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+            action_target = torch.clone(actions)
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
 
-    def train_step(self, episodes_data, device, batch_size, max_ep_len, max_len):
+            act_dim = action_preds.shape[2]
+            action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            
+            loss = self.eval_step(episodes_data, device, max_ep_len, max_len)
+            action_loss += loss
+
+
+        return action_loss
+
+    def eval_step(self, episodes_data, device, max_ep_len, max_len):
         
-        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, batch_size=batch_size, max_ep_len=max_ep_len, max_len=max_len)
+        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        # 使用 no_grad() 禁用梯度计算
+        with torch.no_grad():
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        return loss.detach().cpu().item() / max_len
+
+
+    def train_step(self, episodes_data, device, max_ep_len, max_len):
+        
+        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
         actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
         action_target = torch.clone(actions)
         state_preds, action_preds, reward_preds = self.model.forward(
@@ -113,7 +152,7 @@ class SequenceTrainer(BaseTrainer):
         with torch.no_grad():
             self.diagnostics['training/action_error'] = torch.mean((action_preds-action_target)**2).detach().cpu().item()
 
-        return loss.detach().cpu().item()
+        return loss.detach().cpu().item() / max_len
 
 
 
@@ -251,7 +290,9 @@ class GoalTrainer:
 
     def eval_step(self, s, o, r_true, g_true):
         # 计算损失
-        total_loss, mie_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
+        # 使用 no_grad() 禁用梯度计算
+        with torch.no_grad():
+            total_loss, mie_loss, mse_loss_r, mse_loss_g = self.compute_loss(s, o, r_true, g_true)
 
         # 直接返回损失项，无需反向传播和优化
         return {

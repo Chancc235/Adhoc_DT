@@ -1,21 +1,20 @@
 env: stag_hunt
 type: PP4a
 
-device: cpu
-batch_size: 512
-lr: 0.01
-alpha: 0.5   # 预测r的MSE的权重
+device: cuda
+batch_size: 4096
+lr: 0.05
+alpha: 0.05   # 预测r的MSE的权重
 beta: 100   # MIE第一项的权重
 gama: 100   # MIE第二项的权重
-clip_value: 1.0
-save_interval: 5
+clip_value: 2.5
 num_agents: 4
 
 # train_model function
-num_epochs: 5000
+num_epochs: 500
 save_interval: 10
 model_save_path: models
-test_interval: 10
+test_interval: 1
 
 # network
 state_dim: 75
