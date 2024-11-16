@@ -13,6 +13,9 @@ class GoalDecoder(nn.Module):
         # 激活函数
         self.activation = nn.LeakyReLU(0.01)
         self.out_activation = nn.Sigmoid()
+        self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.bn2 = nn.BatchNorm1d(hidden_dim // 2)
+
 
     def forward(self, vector_input, scalar_input):
         
@@ -21,10 +24,12 @@ class GoalDecoder(nn.Module):
         
         x = self.fc1(x)
         x = self.activation(x)
-        
+        x = self.bn1(x)
+
         x = self.fc2(x)
         x = self.activation(x)
-        
+        x = self.bn2(x)
+
         x = self.fc3(x)
         x = self.out_activation(x)
         x = x.view(-1, self.num, 75)
