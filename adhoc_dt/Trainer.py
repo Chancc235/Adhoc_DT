@@ -123,7 +123,7 @@ class SequenceTrainer(BaseTrainer):
             None, action_target, None,
         )
 
-        return loss.detach().cpu().item() / max_ep_len
+        return loss.detach().cpu().item() / max_len
 
 
     def train_step(self, episodes_data, device, max_ep_len, max_len):

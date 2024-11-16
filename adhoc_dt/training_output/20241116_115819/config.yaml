@@ -23,7 +23,7 @@ n_head: 1
 n_layer: 3
 num_agents: 4
 num_epochs: 500
-save_dir: training_output/20241116_113759
+save_dir: training_output/20241116_115819
 save_interval: 10
 state_dim: 75
 test_interval: 10
