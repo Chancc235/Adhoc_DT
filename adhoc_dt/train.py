@@ -11,7 +11,7 @@ import random
 import csv
 import time
 
-from utils import load_config, create_save_directory, setup_logger, save_config, get_batch
+from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch
 from Networks.ReturnNet import ReturnNet
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
@@ -19,7 +19,8 @@ from Networks.GoalDecoder import GoalDecoder
 from Networks.dt_models.decision_transformer import DecisionTransformer
 from Data import CustomDataset
 from Trainer import SequenceTrainer, BaseTrainer, GoalTrainer
-
+from TestGame import Test
+from Agent.Adhoc_DT import Adhoc_DT
 
 def test(train_loader, device, num_epochs, batch_size):
     for epoch in range(num_epochs):
@@ -37,6 +38,9 @@ def test(train_loader, device, num_epochs, batch_size):
 # 定义训练函数
 def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, dt_train_steps, model_save_path="models"):
     start_time = time.time()
+    # 测试类
+    test = Test("PP4a")
+
     for epoch in range(num_epochs):
         epoch_goal_loss = 0.0
         epoch_action_loss = 0.0
@@ -63,7 +67,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                     "Goal Loss": f"{loss_goal_dict['total_loss']:.4f}",
                     "MIE Loss": f"{loss_goal_dict['mie_loss']:.4f}",
                     "MSE Loss R": f"{loss_goal_dict['mse_loss_r']:.4f}",
-                    "MSE Loss G": f"{loss_goal_dict['mse_loss_g']:.4f}"
+                    "BCE Loss G": f"{loss_goal_dict['mse_loss_g']:.4f}"
                 })
 
                 # 日志记录
@@ -71,7 +75,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                     logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}]\n "
                                 f"Dt Loss: {loss_dt:.4f}\n "
                                 f"Goal Loss: {loss_goal_dict['total_loss']:.4f}, MIE Loss: {loss_goal_dict['mie_loss']:.4f}\n "
-                                f"MSE Loss R: {loss_goal_dict['mse_loss_r']:.4f}, MSE Loss G: {loss_goal_dict['mse_loss_g']:.4f}")
+                                f"MSE Loss R: {loss_goal_dict['mse_loss_r']:.4f}, BCE Loss G: {loss_goal_dict['mse_loss_g']:.4f}")
             
         # 每个epoch结束后记录平均损失
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Goal Loss: {epoch_goal_loss / len(train_loader) :.4f}")
@@ -86,7 +90,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
         f"Goal Validation Loss: {goal_val_loss_dict['total_loss'] / len(val_loader):.4f} \n "
         f"MIE Validation Loss: {goal_val_loss_dict['mie_loss'] / len(val_loader):.4f} \n "
         f"MSE R Validation Loss: {goal_val_loss_dict['mse_loss_r'] / len(val_loader):.4f} \n "
-        f"MSE G Validation Loss: {goal_val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
+        f"BCE G Validation Loss: {goal_val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
         logger.info("===================================================================================")
 
         # 将验证损失写入 CSV 文件
@@ -104,7 +108,19 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
 
         # 每隔指定的间隔进行测试
         if (epoch + 1) % test_interval == 0:
-            pass
+            agent = Adhoc_DT(
+                dt_model=trainer_dt.model, 
+                state_encoder=trainer_goal.adhocencoder, 
+                return_net=trainer_goal.returnnet, 
+                goal_decoder=trainer_goal.goaldecoder
+            )
+            returns = test.test_game(10, agent, K)
+            logger.info(f"{epoch + 1} Test Returns: {returns}")
+            returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
+            with open(returns_csv_file_path, mode='a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([epoch + 1, returns])
+
         # 每隔指定的间隔保存模型
         if (epoch + 1) % save_interval == 0:
             dir_path = os.path.join(save_dir, model_save_path)

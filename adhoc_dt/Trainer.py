@@ -82,7 +82,7 @@ class SequenceTrainer(BaseTrainer):
         if self.scheduler is not None:
             self.scheduler.step()
 
-        return action_loss / train_steps
+        return action_loss
 
     def evaluate(self, val_loader, device, max_ep_len, max_len):
         self.model.eval()
@@ -101,7 +101,6 @@ class SequenceTrainer(BaseTrainer):
             
             loss = self.eval_step(episodes_data, device, max_ep_len, max_len)
             action_loss += loss
-
 
         return action_loss
 
@@ -124,7 +123,7 @@ class SequenceTrainer(BaseTrainer):
             None, action_target, None,
         )
 
-        return loss.detach().cpu().item() / max_len
+        return loss.detach().cpu().item() / max_ep_len
 
 
     def train_step(self, episodes_data, device, max_ep_len, max_len):
@@ -173,6 +172,8 @@ class GoalTrainer:
             lr=lr
         )
         
+
+        
         # 设置损失权重
         self.alpha = alpha  # r的MSE损失权重
         self.beta = beta    
@@ -187,7 +188,8 @@ class GoalTrainer:
         # 第一个 KL 项：D_KL(t(z | s) || N(0, I))
 
         mu1, log_var1 = teammateencoder(s)
-        std1 = torch.exp(0.5 * log_var1)
+        log_var1 = torch.clamp(log_var1, min=-10, max=10)
+        std1 = torch.exp(0.5 * log_var1) + 1e-6
 
         q_z1 = torch.distributions.Normal(mu1, std1)
         p_z1 = torch.distributions.Normal(torch.zeros_like(mu1), torch.ones_like(std1))  # N(0, I)
@@ -201,7 +203,8 @@ class GoalTrainer:
         q_z_no_grad = torch.distributions.Normal(mu_no_grad, std_no_grad)
 
         mu2, log_var2 = adhocencoder(o)
-        std2 = torch.exp(0.5 * log_var2)
+        log_var2 = torch.clamp(log_var2, min=-10, max=10)
+        std2 = torch.exp(0.5 * log_var2) + 1e-6
         p_z2 = torch.distributions.Normal(mu2, std2)
         kl_term2 = torch.distributions.kl_divergence(q_z_no_grad, p_z2).mean()
 
@@ -219,6 +222,7 @@ class GoalTrainer:
 
         mse_loss_r = F.mse_loss(r_pred, r_true)
         g_pred = self.goaldecoder(z, r_pred)
+        
         bce_loss_func = nn.BCELoss(reduction='mean')
 
         bce_loss_g = bce_loss_func(g_pred, g_true)
