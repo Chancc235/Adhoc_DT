@@ -94,7 +94,7 @@ class Test:
         self.new_batch = partial(EpisodeBatch, self.buffer.scheme, groups, 1, game_args['episode_limit'] + 1,
                                     preprocess=preprocess, device=args.device)
     
-    def test_game(self, test_episodes, agent, K):
+    def test_game(self, test_episodes, agent, K=20):
         # 加载模型
         self.init_game_setting()
 
@@ -159,6 +159,7 @@ class Test:
                 
                 # adhoc agent选择动作
                 action_ad, S = agent.take_action(o_list, a_list, g_list, t_list, env.n_actions)
+                # action_ad= agent.take_action()
                 # action_ad = np.random.randint(0, env.n_actions, size=(1,))
                 # 拼接
                 actions[teammate_idx] = action_ad[0]

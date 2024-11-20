@@ -132,3 +132,14 @@ def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=30):
     mask = torch.from_numpy(np.concatenate(mask, axis=0)).to(device=device)
 
     return s, a, g, d, timesteps, mask
+
+def preprocess_data(data):
+    print(len(data))
+    i = 0
+    for item in data:
+        print(i)
+        i += 1
+        rewards = item["reward"]
+        reward_to_go = torch.tensor([sum(rewards[i:]).item() for i in range(len(rewards))])
+        item["rtg"] = reward_to_go
+    return data

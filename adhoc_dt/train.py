@@ -11,7 +11,7 @@ import random
 import csv
 import time
 
-from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch
+from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch, preprocess_data
 from Networks.ReturnNet import ReturnNet
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
@@ -93,11 +93,11 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
         f"BCE G Validation Loss: {goal_val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
         logger.info("===================================================================================")
 
-        # 将验证损失写入 CSV 文件
+        # 将损失写入 CSV 文件
         val_csv_file_path = os.path.join(save_dir, 'val_loss.csv')
         with open(val_csv_file_path, mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([epoch + 1, dt_val_loss, goal_val_loss_dict['total_loss']])
+            writer.writerow([epoch + 1, dt_val_loss, goal_val_loss_dict['total_loss'] / len(val_loader), epoch_action_loss / len(train_loader), epoch_goal_loss / len(train_loader), ])
 
         # 计算训练时间
         end_time = time.time()
@@ -120,6 +120,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
             with open(returns_csv_file_path, mode='a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([epoch + 1, returns])
+        
 
         # 每隔指定的间隔保存模型
         if (epoch + 1) % save_interval == 0:
@@ -162,21 +163,21 @@ if __name__ == "__main__":
     teammateencoder = TeammateEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"], num_heads=config["TeammateEncoder_num_heads"]).to(device)
     adhocagentEncoder = AdhocAgentEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"]).to(device)
     returnnet = ReturnNet(input_dim=config["embed_dim"]).to(device)
-    goaldecoder = GoalDecoder(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=128, output_dim=config["goal_dim"], num=config["num_agents"]).to(device)
+    goaldecoder = GoalDecoder(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=256, output_dim=config["goal_dim"], num=config["num_agents"]).to(device)
     dt = DecisionTransformer(
-            state_dim=config["state_dim"],
-            num_agents=config["num_agents"],
-            act_dim=config["act_dim"],
-            max_length=config["K"],
-            max_ep_len=config["max_ep_len"],
-            hidden_size=config['dt_embed_dim'],
-            n_layer=config['n_layer'],
-            n_head=config['n_head'],
-            n_inner=4*config['dt_embed_dim'],
-            activation_function=config['dt_activation_function'],
-            n_positions=1024,
-            resid_pdrop=config['dt_dropout'],
-            attn_pdrop=config['dt_dropout'],
+        state_dim=config["state_dim"],
+        num_agents=config["num_agents"],
+        act_dim=config["act_dim"],
+        max_length=config["K"],
+        max_ep_len=config["max_ep_len"],
+        hidden_size=config['dt_embed_dim'],
+        n_layer=config['n_layer'],
+        n_head=config['n_head'],
+        n_inner=4*config['dt_embed_dim'],
+        activation_function=config['dt_activation_function'],
+        n_positions=1024,
+        resid_pdrop=config['dt_dropout'],
+        attn_pdrop=config['dt_dropout'],
         ).to(device)
 
     # DT 的 trainer准备
@@ -201,11 +202,27 @@ if __name__ == "__main__":
         loss_fn=lambda s_hat, a_hat, r_hat, s, a, r: -torch.sum(a * torch.log(a_hat + 1e-9)) / a.size(0),
         eval_fns=None,
     )
+
+    goal_optimizer = optim.AdamW(
+        list(teammateencoder.parameters()) + 
+        list(adhocagentEncoder.parameters()) + 
+        list(returnnet.parameters()) + 
+        list(goaldecoder.parameters()), 
+        lr=config["lr"],
+        weight_decay=config["weight_decay"],
+    )
+            
+    goal_scheduler = torch.optim.lr_scheduler.LambdaLR(
+        goal_optimizer,
+        lambda steps: min((steps+1)/warmup_steps, 1)
+    )
+
     trainer_goal = GoalTrainer(
         teammateencoder, 
         adhocagentEncoder, 
         returnnet, goaldecoder, 
-        lr=config["lr"], 
+        optimizer=goal_optimizer,
+        scheduler=goal_scheduler,
         alpha=config["alpha"], 
         beta=config["beta"], 
         gama=config["gama"], 
