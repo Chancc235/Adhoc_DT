@@ -9,7 +9,7 @@ class AdhocAgentEncoder(nn.Module):
     输出：
         全局编码，形状为 (batch_size, embed_dim)
     """
-    def __init__(self, state_dim, embed_dim, hidden_dim1=256, hidden_dim2=128):
+    def __init__(self, state_dim, embed_dim, hidden_dim1=512, hidden_dim2=256):
         super(AdhocAgentEncoder, self).__init__()
         self.fc1 = nn.Linear(state_dim, hidden_dim1)
         self.bn1 = nn.BatchNorm1d(hidden_dim1)

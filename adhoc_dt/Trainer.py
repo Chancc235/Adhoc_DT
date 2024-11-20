@@ -156,24 +156,14 @@ class SequenceTrainer(BaseTrainer):
 
 
 class GoalTrainer:
-    def __init__(self, teammateencoder, adhocencoder, returnnet, goaldecoder, lr=1e-3, alpha=0.1, beta=0.1, gama=0.1,clip_value=1.0):
+    def __init__(self, teammateencoder, adhocencoder, returnnet, goaldecoder, optimizer, scheduler, alpha=0.1, beta=0.1, gama=0.1,clip_value=1.0):
         # 初始化各网络
         self.teammateencoder = teammateencoder
         self.adhocencoder = adhocencoder
         self.returnnet = returnnet
         self.goaldecoder = goaldecoder
-
-        # 单一优化器，联合优化所有模块
-        self.optimizer = optim.Adam(
-            list(self.teammateencoder.parameters()) + 
-            list(self.adhocencoder.parameters()) + 
-            list(self.returnnet.parameters()) + 
-            list(self.goaldecoder.parameters()), 
-            lr=lr
-        )
-        
-
-        
+        self.optimizer = optimizer
+        self.scheduler = scheduler
         # 设置损失权重
         self.alpha = alpha  # r的MSE损失权重
         self.beta = beta    
@@ -276,15 +266,17 @@ class GoalTrainer:
             # 提取所有批次样本的该时间步的数据
             states = episodes_data["state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
             obs = episodes_data["obs"][:, ts, :].to(device)          # shape [batch, dim]
-            reward = episodes_data["reward"][:, ts].to(device)       # shape [batch, 1]
+            rtg = episodes_data["rtg"][:, ts].to(device)       # shape [batch, 1]
             goal = episodes_data["next_state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
 
             # 执行训练步骤并计算损失
-            loss_dict = self.train_step(states, obs, reward, goal)
+            loss_dict = self.train_step(states, obs, rtg, goal)
             total_goal_loss += loss_dict["total_loss"]
             mie_loss += loss_dict["mie_loss"]
             mse_loss_r += loss_dict["mse_loss_r"]
             mse_loss_g += loss_dict["mse_loss_g"]
+        if self.scheduler is not None:
+            self.scheduler.step()
         return {
             "total_loss": total_goal_loss / K,
             "mie_loss": mie_loss / K,
@@ -324,13 +316,13 @@ class GoalTrainer:
                 game_length = episodes_data["state"].size(1)
                 states = episodes_data["state"]
                 obs = episodes_data["obs"]
-                reward = episodes_data["reward"]
+                rtg = episodes_data["rtg"]
                 goal = episodes_data["next_state"]
                 
                 for ts in range(states.size(1)):
                     s = states[:, ts, :, :].permute(1, 0, 2).to(device)   # shape [batch, num, dim]
                     o = obs[:, ts, :].to(device)   # shape [batch, dim]
-                    r_true = reward[:, ts].to(device)   # shape [batch, 1]
+                    r_true = rtg[:, ts].to(device)   # shape [batch, 1]
                     g_true = goal[:, ts, :, :].permute(1, 0, 2).to(device)  # shape [batch, num, dim]
                     
                     loss_dict = self.eval_step(s, o, r_true, g_true)
