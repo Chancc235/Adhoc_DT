@@ -74,61 +74,19 @@ class BaseTrainer:
         return loss.detach().cpu().item()
 
 class SequenceTrainer(BaseTrainer):
-    def train(self, episodes_data, train_steps, device, max_ep_len, max_len):
+    def train(self, episodes_data, train_steps, device, max_ep_len, max_len, goal_steps):
         self.model.train()
         action_loss = 0.0
-        loss = self.train_step(episodes_data, device, max_ep_len, max_len)
+        loss = self.train_step(episodes_data, device, max_ep_len, max_len, goal_steps)
         action_loss += loss
         if self.scheduler is not None:
             self.scheduler.step()
 
         return action_loss
 
-    def evaluate(self, val_loader, device, max_ep_len, max_len):
-        self.model.eval()
-        action_loss = 0.0
-        for batch_idx, episodes_data in enumerate(val_loader):
-            states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
-            actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
-            action_target = torch.clone(actions)
-            state_preds, action_preds, reward_preds = self.model.forward(
-                states, actions, goal, timesteps, attention_mask=attention_mask,
-            )
-
-            act_dim = action_preds.shape[2]
-            action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-            action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-            
-            loss = self.eval_step(episodes_data, device, max_ep_len, max_len)
-            action_loss += loss
-
-        return action_loss
-
-    def eval_step(self, episodes_data, device, max_ep_len, max_len):
+    def train_step(self, episodes_data, device, max_ep_len, max_len, goal_steps):
         
-        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
-        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
-        action_target = torch.clone(actions)
-        # 使用 no_grad() 禁用梯度计算
-        with torch.no_grad():
-            state_preds, action_preds, reward_preds = self.model.forward(
-                states, actions, goal, timesteps, attention_mask=attention_mask,
-            )
-
-        act_dim = action_preds.shape[2]
-        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-        loss = self.loss_fn(
-            None, action_preds, None,
-            None, action_target, None,
-        )
-
-        return loss.detach().cpu().item() / max_len
-
-
-    def train_step(self, episodes_data, device, max_ep_len, max_len):
-        
-        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len, goal_steps=goal_steps)
         actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
         action_target = torch.clone(actions)
         state_preds, action_preds, reward_preds = self.model.forward(
@@ -152,6 +110,51 @@ class SequenceTrainer(BaseTrainer):
             self.diagnostics['training/action_error'] = torch.mean((action_preds-action_target)**2).detach().cpu().item()
 
         return loss.detach().cpu().item() / max_len
+
+    def evaluate(self, val_loader, device, max_ep_len, max_len, goal_steps):
+        self.model.eval()
+        action_loss = 0.0
+        for batch_idx, episodes_data in enumerate(val_loader):
+            """
+            states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len, goal_steps=goal_steps)
+            actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+            action_target = torch.clone(actions)
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
+
+            act_dim = action_preds.shape[2]
+            action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            """
+            loss = self.eval_step(episodes_data, device, max_ep_len, max_len, goal_steps)
+            action_loss += loss
+
+        return action_loss
+
+    def eval_step(self, episodes_data, device, max_ep_len, max_len, goal_steps):
+        
+        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len, goal_steps=goal_steps)
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        # 使用 no_grad() 禁用梯度计算
+        with torch.no_grad():
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        return loss.detach().cpu().item() / max_len
+
+
+
 
 
 
@@ -250,14 +253,14 @@ class GoalTrainer:
             "mse_loss_g": mse_loss_g.item()
         }
 
-    def train(self, episodes_data, K, device):
+    def train(self, episodes_data, K, device, goal_steps):
         # 切换到训练模式
         self.teammateencoder.train()
         self.adhocencoder.train()
         self.returnnet.train()
         self.goaldecoder.train()
         # 随机选择一个时间步
-        rand_t = random.randint(0, episodes_data["state"].size(1) - K - 1)
+        rand_t = random.randint(0, episodes_data["state"].size(1) - K - 1 - goal_steps +1)
         total_goal_loss = 0.0
         mie_loss = 0.0
         mse_loss_r = 0.0
@@ -267,7 +270,7 @@ class GoalTrainer:
             states = episodes_data["state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
             obs = episodes_data["obs"][:, ts, :].to(device)          # shape [batch, dim]
             rtg = episodes_data["rtg"][:, ts].to(device)       # shape [batch, 1]
-            goal = episodes_data["next_state"][:, ts, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
+            goal = episodes_data["next_state"][:, ts + goal_steps - 1, :, :].to(device).permute(1, 0, 2)  # shape [batch, num, dim]
 
             # 执行训练步骤并计算损失
             loss_dict = self.train_step(states, obs, rtg, goal)
@@ -298,7 +301,7 @@ class GoalTrainer:
             "mse_loss_g": mse_loss_g.item()
         }
 
-    def evaluate(self, val_loader, device):
+    def evaluate(self, val_loader, device, goal_steps):
         # 切换到评估模式
         self.teammateencoder.eval()
         self.adhocencoder.eval()
@@ -319,11 +322,11 @@ class GoalTrainer:
                 rtg = episodes_data["rtg"]
                 goal = episodes_data["next_state"]
                 
-                for ts in range(states.size(1)):
+                for ts in range(states.size(1) - goal_steps + 1):
                     s = states[:, ts, :, :].permute(1, 0, 2).to(device)   # shape [batch, num, dim]
                     o = obs[:, ts, :].to(device)   # shape [batch, dim]
                     r_true = rtg[:, ts].to(device)   # shape [batch, 1]
-                    g_true = goal[:, ts, :, :].permute(1, 0, 2).to(device)  # shape [batch, num, dim]
+                    g_true = goal[:, ts + goal_steps - 1, :, :].permute(1, 0, 2).to(device)  # shape [batch, num, dim]
                     
                     loss_dict = self.eval_step(s, o, r_true, g_true)
                     total_loss += loss_dict["total_loss"]
@@ -332,10 +335,10 @@ class GoalTrainer:
                     mse_loss_g += loss_dict["mse_loss_g"]
         
         # 计算验证集上的平均损失
-        avg_total_loss = total_loss / game_length
-        avg_mie_loss = mie_loss / game_length
-        avg_mse_loss_r = mse_loss_r / game_length
-        avg_mse_loss_g = mse_loss_g / game_length
+        avg_total_loss = total_loss / (game_length - goal_steps + 1)
+        avg_mie_loss = mie_loss / (game_length - goal_steps + 1)
+        avg_mse_loss_r = mse_loss_r / (game_length - goal_steps + 1)
+        avg_mse_loss_g = mse_loss_g / (game_length - goal_steps + 1)
         
         return {
             "total_loss": avg_total_loss,
@@ -343,3 +346,91 @@ class GoalTrainer:
             "mse_loss_r": avg_mse_loss_r,
             "mse_loss_g": avg_mse_loss_g
         }
+
+
+
+class DtTrainer(BaseTrainer):
+    def train(self, episodes_data, device, max_ep_len, max_len):
+        self.model.train()
+        action_loss = 0.0
+        loss = self.train_step(episodes_data, device, max_ep_len, max_len)
+        action_loss += loss
+        if self.scheduler is not None:
+            self.scheduler.step()
+
+        return action_loss
+
+    def train_step(self, episodes_data, device, max_ep_len, max_len):
+        
+        states, actions, rtg, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        state_preds, action_preds, rtg_preds = self.model.forward(
+            states, actions, rtg, timesteps, attention_mask=attention_mask,
+        )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), .25)
+        self.optimizer.step()
+
+        with torch.no_grad():
+            self.diagnostics['training/action_error'] = torch.mean((action_preds-action_target)**2).detach().cpu().item()
+
+        return loss.detach().cpu().item() / max_len
+
+    def evaluate(self, val_loader, device, max_ep_len, max_len):
+        self.model.eval()
+        action_loss = 0.0
+        for batch_idx, episodes_data in enumerate(val_loader):
+            """
+            states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len, goal_steps=goal_steps)
+            actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+            action_target = torch.clone(actions)
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
+
+            act_dim = action_preds.shape[2]
+            action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            """
+            loss = self.eval_step(episodes_data, device, max_ep_len, max_len)
+            action_loss += loss
+
+        return action_loss
+
+    def eval_step(self, episodes_data, device, max_ep_len, max_len):
+        
+        states, actions, rtg, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        # 使用 no_grad() 禁用梯度计算
+        with torch.no_grad():
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, rtg, timesteps, attention_mask=attention_mask,
+            )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        return loss.detach().cpu().item() / max_len
+
+
+
+
+
+

@@ -36,7 +36,7 @@ def test(train_loader, device, num_epochs, batch_size):
                 print(mask.shape)
 
 # 定义训练函数
-def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, dt_train_steps, model_save_path="models"):
+def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, dt_train_steps, goal_steps, model_save_path="models"):
     start_time = time.time()
     # 测试类
     test = Test("PP4a")
@@ -56,8 +56,8 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                 print(ac_pred.shape)
                 print(ac_pred)
                 """
-                loss_dt = trainer_dt.train(episodes_data, train_steps=dt_train_steps, device=device, max_ep_len=episodes_data["state"].size(1), max_len=K)
-                loss_goal_dict = trainer_goal.train(episodes_data, K, device)
+                loss_dt = trainer_dt.train(episodes_data, train_steps=dt_train_steps, device=device, max_ep_len=episodes_data["state"].size(1), max_len=K, goal_steps=goal_steps)
+                loss_goal_dict = trainer_goal.train(episodes_data, K, device, goal_steps)
                 
                 epoch_goal_loss += loss_goal_dict['total_loss']
                 epoch_action_loss += loss_dt
@@ -83,8 +83,8 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
         logger.info("===================================================================================")
         
         # 每个epoch结束后进行验证
-        dt_val_loss = trainer_dt.evaluate(val_loader, device=device, max_ep_len=next(iter(val_loader))["state"].size(1), max_len=K)
-        goal_val_loss_dict = trainer_goal.evaluate(val_loader, device=device)
+        dt_val_loss = trainer_dt.evaluate(val_loader, device=device, max_ep_len=next(iter(val_loader))["state"].size(1), max_len=K, goal_steps=goal_steps)
+        goal_val_loss_dict = trainer_goal.evaluate(val_loader, device=device, goal_steps=goal_steps)
         logger.info(f"Epoch [{epoch+1}/{num_epochs}]\n"
         f"Action Validation Loss: {dt_val_loss / len(val_loader):.4f} \n "
         f"Goal Validation Loss: {goal_val_loss_dict['total_loss'] / len(val_loader):.4f} \n "
@@ -97,7 +97,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
         val_csv_file_path = os.path.join(save_dir, 'val_loss.csv')
         with open(val_csv_file_path, mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([epoch + 1, dt_val_loss, goal_val_loss_dict['total_loss'] / len(val_loader), epoch_action_loss / len(train_loader), epoch_goal_loss / len(train_loader), ])
+            writer.writerow([epoch + 1, dt_val_loss / len(val_loader), goal_val_loss_dict['total_loss'] / len(val_loader), epoch_action_loss / len(train_loader), epoch_goal_loss / len(train_loader), ])
 
         # 计算训练时间
         end_time = time.time()
@@ -107,23 +107,23 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
         logger.info(f"Completed in {int(hours)}h {int(minutes)}m")
 
         # 每隔指定的间隔进行测试
-        if (epoch + 1) % test_interval == 0:
+        if (epoch + 1) % test_interval == 0 or epoch + 1 == 1:
             agent = Adhoc_DT(
                 dt_model=trainer_dt.model, 
                 state_encoder=trainer_goal.adhocencoder, 
                 return_net=trainer_goal.returnnet, 
                 goal_decoder=trainer_goal.goaldecoder
             )
-            returns = test.test_game(10, agent, K)
+            returns, low, high = test.test_game(50, agent, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([epoch + 1, returns])
+                writer.writerow([epoch + 1, returns, low, high])
         
 
         # 每隔指定的间隔保存模型
-        if (epoch + 1) % save_interval == 0:
+        if (epoch + 1) % save_interval == 0 or epoch + 1 == 1:
             dir_path = os.path.join(save_dir, model_save_path)
             if not os.path.exists(dir_path):
                 os.makedirs(dir_path)
@@ -262,6 +262,7 @@ if __name__ == "__main__":
                  K=config["K"], 
                  act_dim=config["act_dim"], 
                  dt_train_steps=config["dt_train_steps"], 
+                 goal_steps=config["goal_steps"],
                  model_save_path=config["model_save_path"])
                  
     # test(train_loader, device=config["device"], num_epochs=config["num_epochs"], batch_size=config["batch_size"])

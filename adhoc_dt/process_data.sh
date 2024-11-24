@@ -1,1 +1,1 @@
-nohup python episodes_to_transition.py  > output.log 2>&1 &
+nohup python reduce_data.py  > output.log 2>&1 &
