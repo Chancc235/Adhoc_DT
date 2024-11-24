@@ -89,11 +89,11 @@ def load_data(data_path, num_agents = 4):
     return states, next_states, obs, actions, rewards
 
 # dt获取batch
-def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=30):
+def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=20, goal_steps=1):
     obs = episode_data["obs"]
     actions = episode_data["action"]
     rewards = episode_data["reward"]
-    goals = episode_data["state"]
+    goals = episode_data["next_state"]
     dones = episode_data["done"]
 
     state_dim = obs.shape[-1]
@@ -103,11 +103,11 @@ def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=30):
     s, a, g, d, timesteps, mask = [], [], [], [], [], []
     for i in range(batch_size):
         # 随机选择一个时间步
-        si = random.randint(0, obs.size(1) - 1)
+        si = random.randint(0, obs.size(1) - 1 - goal_steps + 1 - max_len)
         # get sequences from dataset
         s.append(obs[i, si:si + max_len].reshape(1, -1, state_dim))
         a.append(actions[i, si:si + max_len].reshape(1, -1, act_dim))
-        g.append(goals[i, si:si + max_len, ...].reshape(1, -1, goal_dim[0], goal_dim[1]))
+        g.append(goals[i, si + goal_steps - 1:si + goal_steps - 1 + max_len, ...].reshape(1, -1, goal_dim[0], goal_dim[1]))
         d.append(dones[i, si:si + max_len].reshape(1, -1))
         timesteps.append(np.arange(si, si + s[-1].shape[1]).reshape(1, -1))
         timesteps[-1][timesteps[-1] >= max_ep_len] = max_ep_len-1  # padding cutoff
@@ -132,6 +132,51 @@ def get_batch(episode_data, device="cuda", max_ep_len=201, max_len=30):
     mask = torch.from_numpy(np.concatenate(mask, axis=0)).to(device=device)
 
     return s, a, g, d, timesteps, mask
+
+
+# 为纯dt获取数据
+def get_batch_dt(episode_data, device="cuda", max_ep_len=201, max_len=20, goal_steps=1):
+    obs = episode_data["obs"]
+    actions = episode_data["action"]
+    rewards = episode_data["reward"]
+    R = episode_data["rtg"]
+    dones = episode_data["done"]
+
+    state_dim = obs.shape[-1]
+    act_dim = 1
+    batch_size = len(obs)
+    s, a, r, rtg, d, timesteps, mask = [], [], [], [], [], [], []
+    for i in range(batch_size):
+        # 随机选择一个时间步
+        si = random.randint(0, obs.size(1) - 1)
+        # get sequences from dataset
+        s.append(obs[i, si:si + max_len].reshape(1, -1, state_dim))
+        a.append(actions[i, si:si + max_len].reshape(1, -1, act_dim))
+        rtg.append(R[i, si:si + max_len, ...].reshape(1, -1, 1))
+        d.append(dones[i, si:si + max_len].reshape(1, -1))
+        timesteps.append(np.arange(si, si + s[-1].shape[1]).reshape(1, -1))
+        timesteps[-1][timesteps[-1] >= max_ep_len] = max_ep_len-1  # padding cutoff
+
+        # padding and state
+        tlen = s[-1].shape[1]
+        s[-1] = np.concatenate([np.zeros((1, max_len - tlen, state_dim)), s[-1]], axis=1)
+        # s[-1] = (s[-1] - state_mean) / state_std
+        a[-1] = np.concatenate([np.ones((1, max_len - tlen, act_dim)) * 0, a[-1]], axis=1)
+        rtg[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), rtg[-1]], axis=1)
+        d[-1] = np.concatenate([np.ones((1, max_len - tlen)) * 2, d[-1]], axis=1)
+
+        timesteps[-1] = np.concatenate([np.zeros((1, max_len - tlen)), timesteps[-1]], axis=1)
+        mask.append(np.concatenate([np.zeros((1, max_len - tlen)), np.ones((1, tlen))], axis=1))
+
+    s = torch.from_numpy(np.concatenate(s, axis=0)).to(dtype=torch.float32, device=device)
+    a = torch.from_numpy(np.concatenate(a, axis=0)).to(dtype=torch.float32, device=device)
+    rtg = torch.from_numpy(np.concatenate(rtg, axis=0)).to(dtype=torch.float32, device=device)
+    d = torch.from_numpy(np.concatenate(d, axis=0)).to(dtype=torch.long, device=device)
+
+    timesteps = torch.from_numpy(np.concatenate(timesteps, axis=0)).to(dtype=torch.long, device=device)
+    mask = torch.from_numpy(np.concatenate(mask, axis=0)).to(device=device)
+
+    return s, a, rtg, d, timesteps, mask
 
 def preprocess_data(data):
     print(len(data))

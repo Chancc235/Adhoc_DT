@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=3 nohup python train_dt.py > output3.log 2>&1 &

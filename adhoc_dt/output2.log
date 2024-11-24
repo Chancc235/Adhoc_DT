@@ -2,1261 +2,5 @@
   warnings.warn(colorize("%s: %s" % ("WARN", msg % args), "yellow"))
 /home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/transformers/configuration_utils.py:337: UserWarning: Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 Transformers. Using `model.gradient_checkpointing_enable()` instead, or if you are using the `Trainer` API, pass `gradient_checkpointing=True` in your `TrainingArguments`.
   "Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 "
-2024-11-20 13:49:06,671 - INFO - Starting.
-2024-11-20 13:49:06,671 - INFO - Loading Data.
-2024-11-20 13:49:18,484 - INFO - Data loaded in 0.0 hours 0.0 minutes.
-2024-11-20 13:49:18,495 - INFO - Training Started.
-/home/cike/marl_collector/adhoc_dt/envs/overcooked/overcooked_ai
-/home/cike/marl_collector/src/envs/overcooked/overcooked_ai
-pygame 2.6.1 (SDL 2.28.4, Python 3.7.12)
-Hello from the pygame community. https://www.pygame.org/contribute.html
-Epoch 1/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 1/500:   0%|          | 0/4 [00:06<?, ?it/s, Dt Loss=0.0855, Goal Loss=65.3385, MIE Loss=64.4625, MSE Loss R=0.1431, BCE Loss G=0.7329]2024-11-20 13:49:25,415 - INFO - Epoch [1/500], Batch [0/4]
- Dt Loss: 0.0855
- Goal Loss: 65.3385, MIE Loss: 64.4625
- MSE Loss R: 0.1431, BCE Loss G: 0.7329
-Epoch 1/500:  25%|██▌       | 1/4 [00:06<00:20,  6.92s/it, Dt Loss=0.0855, Goal Loss=65.3385, MIE Loss=64.4625, MSE Loss R=0.1431, BCE Loss G=0.7329]Epoch 1/500:  25%|██▌       | 1/4 [00:09<00:20,  6.92s/it, Dt Loss=0.0856, Goal Loss=63.3663, MIE Loss=62.6089, MSE Loss R=0.0248, BCE Loss G=0.7326]Epoch 1/500:  50%|█████     | 2/4 [00:09<00:08,  4.47s/it, Dt Loss=0.0856, Goal Loss=63.3663, MIE Loss=62.6089, MSE Loss R=0.0248, BCE Loss G=0.7326]Epoch 1/500:  50%|█████     | 2/4 [00:11<00:08,  4.47s/it, Dt Loss=0.0853, Goal Loss=60.2213, MIE Loss=59.4844, MSE Loss R=0.0049, BCE Loss G=0.7320]Epoch 1/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.35s/it, Dt Loss=0.0853, Goal Loss=60.2213, MIE Loss=59.4844, MSE Loss R=0.0049, BCE Loss G=0.7320]Epoch 1/500:  75%|███████▌  | 3/4 [00:13<00:03,  3.35s/it, Dt Loss=0.0855, Goal Loss=55.8683, MIE Loss=55.1301, MSE Loss R=0.0067, BCE Loss G=0.7314]Epoch 1/500: 100%|██████████| 4/4 [00:13<00:00,  2.60s/it, Dt Loss=0.0855, Goal Loss=55.8683, MIE Loss=55.1301, MSE Loss R=0.0067, BCE Loss G=0.7314]Epoch 1/500: 100%|██████████| 4/4 [00:13<00:00,  3.36s/it, Dt Loss=0.0855, Goal Loss=55.8683, MIE Loss=55.1301, MSE Loss R=0.0067, BCE Loss G=0.7314]
-2024-11-20 13:49:31,919 - INFO - Epoch [1/500] completed. Average Goal Loss: 61.1986
-2024-11-20 13:49:31,919 - INFO - Epoch [1/500] completed. Average Action Loss: 0.0855
-2024-11-20 13:49:31,920 - INFO - ===================================================================================
-2024-11-20 13:49:46,444 - INFO - Epoch [1/500]
-Action Validation Loss: 0.0851 
- Goal Validation Loss: 55.4451 
- MIE Validation Loss: 54.6384 
- MSE R Validation Loss: 0.0761 
- BCE G Validation Loss: 0.7305
-2024-11-20 13:49:46,445 - INFO - ===================================================================================
-2024-11-20 13:49:46,445 - INFO - Completed in 0h 0m
-Epoch 2/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 2/500:   0%|          | 0/4 [00:09<?, ?it/s, Dt Loss=0.0853, Goal Loss=53.0196, MIE Loss=52.1268, MSE Loss R=0.1617, BCE Loss G=0.7310]2024-11-20 13:49:55,771 - INFO - Epoch [2/500], Batch [0/4]
- Dt Loss: 0.0853
- Goal Loss: 53.0196, MIE Loss: 52.1268
- MSE Loss R: 0.1617, BCE Loss G: 0.7310
-Epoch 2/500:  25%|██▌       | 1/4 [00:09<00:27,  9.33s/it, Dt Loss=0.0853, Goal Loss=53.0196, MIE Loss=52.1268, MSE Loss R=0.1617, BCE Loss G=0.7310]Epoch 2/500:  25%|██▌       | 1/4 [00:11<00:27,  9.33s/it, Dt Loss=0.0850, Goal Loss=47.5481, MIE Loss=46.6781, MSE Loss R=0.1399, BCE Loss G=0.7301]Epoch 2/500:  50%|█████     | 2/4 [00:11<00:10,  5.23s/it, Dt Loss=0.0850, Goal Loss=47.5481, MIE Loss=46.6781, MSE Loss R=0.1399, BCE Loss G=0.7301]Epoch 2/500:  50%|█████     | 2/4 [00:13<00:10,  5.23s/it, Dt Loss=0.0849, Goal Loss=41.3916, MIE Loss=40.5846, MSE Loss R=0.0780, BCE Loss G=0.7289]Epoch 2/500:  75%|███████▌  | 3/4 [00:13<00:03,  3.71s/it, Dt Loss=0.0849, Goal Loss=41.3916, MIE Loss=40.5846, MSE Loss R=0.0780, BCE Loss G=0.7289]Epoch 2/500:  75%|███████▌  | 3/4 [00:15<00:03,  3.71s/it, Dt Loss=0.0848, Goal Loss=36.0580, MIE Loss=35.3299, MSE Loss R=0.0008, BCE Loss G=0.7272]Epoch 2/500: 100%|██████████| 4/4 [00:15<00:00,  2.82s/it, Dt Loss=0.0848, Goal Loss=36.0580, MIE Loss=35.3299, MSE Loss R=0.0008, BCE Loss G=0.7272]Epoch 2/500: 100%|██████████| 4/4 [00:15<00:00,  3.87s/it, Dt Loss=0.0848, Goal Loss=36.0580, MIE Loss=35.3299, MSE Loss R=0.0008, BCE Loss G=0.7272]
-2024-11-20 13:50:01,934 - INFO - Epoch [2/500] completed. Average Goal Loss: 44.5043
-2024-11-20 13:50:01,935 - INFO - Epoch [2/500] completed. Average Action Loss: 0.0850
-2024-11-20 13:50:01,935 - INFO - ===================================================================================
-2024-11-20 13:50:17,545 - INFO - Epoch [2/500]
-Action Validation Loss: 0.0842 
- Goal Validation Loss: 34.1544 
- MIE Validation Loss: 33.3539 
- MSE R Validation Loss: 0.0744 
- BCE G Validation Loss: 0.7261
-2024-11-20 13:50:17,545 - INFO - ===================================================================================
-2024-11-20 13:50:17,545 - INFO - Completed in 0h 0m
-Epoch 3/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 3/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0844, Goal Loss=32.6731, MIE Loss=31.6789, MSE Loss R=0.2679, BCE Loss G=0.7263]2024-11-20 13:50:23,032 - INFO - Epoch [3/500], Batch [0/4]
- Dt Loss: 0.0844
- Goal Loss: 32.6731, MIE Loss: 31.6789
- MSE Loss R: 0.2679, BCE Loss G: 0.7263
-Epoch 3/500:  25%|██▌       | 1/4 [00:05<00:16,  5.49s/it, Dt Loss=0.0844, Goal Loss=32.6731, MIE Loss=31.6789, MSE Loss R=0.2679, BCE Loss G=0.7263]Epoch 3/500:  25%|██▌       | 1/4 [00:07<00:16,  5.49s/it, Dt Loss=0.0842, Goal Loss=25.1228, MIE Loss=24.3854, MSE Loss R=0.0133, BCE Loss G=0.7241]Epoch 3/500:  50%|█████     | 2/4 [00:07<00:06,  3.40s/it, Dt Loss=0.0842, Goal Loss=25.1228, MIE Loss=24.3854, MSE Loss R=0.0133, BCE Loss G=0.7241]Epoch 3/500:  50%|█████     | 2/4 [00:09<00:06,  3.40s/it, Dt Loss=0.0839, Goal Loss=19.8478, MIE Loss=19.1177, MSE Loss R=0.0081, BCE Loss G=0.7220]Epoch 3/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.77s/it, Dt Loss=0.0839, Goal Loss=19.8478, MIE Loss=19.1177, MSE Loss R=0.0081, BCE Loss G=0.7220]Epoch 3/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.77s/it, Dt Loss=0.0837, Goal Loss=15.4863, MIE Loss=14.7449, MSE Loss R=0.0215, BCE Loss G=0.7199]Epoch 3/500: 100%|██████████| 4/4 [00:11<00:00,  2.31s/it, Dt Loss=0.0837, Goal Loss=15.4863, MIE Loss=14.7449, MSE Loss R=0.0215, BCE Loss G=0.7199]Epoch 3/500: 100%|██████████| 4/4 [00:11<00:00,  2.86s/it, Dt Loss=0.0837, Goal Loss=15.4863, MIE Loss=14.7449, MSE Loss R=0.0215, BCE Loss G=0.7199]
-2024-11-20 13:50:28,986 - INFO - Epoch [3/500] completed. Average Goal Loss: 23.2825
-2024-11-20 13:50:28,986 - INFO - Epoch [3/500] completed. Average Action Loss: 0.0841
-2024-11-20 13:50:28,987 - INFO - ===================================================================================
-2024-11-20 13:50:44,705 - INFO - Epoch [3/500]
-Action Validation Loss: 0.0828 
- Goal Validation Loss: 14.5185 
- MIE Validation Loss: 13.7270 
- MSE R Validation Loss: 0.0730 
- BCE G Validation Loss: 0.7185
-2024-11-20 13:50:44,705 - INFO - ===================================================================================
-2024-11-20 13:50:44,705 - INFO - Completed in 0h 1m
-Epoch 4/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 4/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0835, Goal Loss=11.6869, MIE Loss=10.9691, MSE Loss R=0.0011, BCE Loss G=0.7167]2024-11-20 13:50:50,437 - INFO - Epoch [4/500], Batch [0/4]
- Dt Loss: 0.0835
- Goal Loss: 11.6869, MIE Loss: 10.9691
- MSE Loss R: 0.0011, BCE Loss G: 0.7167
-Epoch 4/500:  25%|██▌       | 1/4 [00:05<00:17,  5.73s/it, Dt Loss=0.0835, Goal Loss=11.6869, MIE Loss=10.9691, MSE Loss R=0.0011, BCE Loss G=0.7167]Epoch 4/500:  25%|██▌       | 1/4 [00:07<00:17,  5.73s/it, Dt Loss=0.0833, Goal Loss=9.6727, MIE Loss=8.9215, MSE Loss R=0.0366, BCE Loss G=0.7146]  Epoch 4/500:  50%|█████     | 2/4 [00:07<00:06,  3.48s/it, Dt Loss=0.0833, Goal Loss=9.6727, MIE Loss=8.9215, MSE Loss R=0.0366, BCE Loss G=0.7146]Epoch 4/500:  50%|█████     | 2/4 [00:09<00:06,  3.48s/it, Dt Loss=0.0827, Goal Loss=6.6558, MIE Loss=5.9416, MSE Loss R=0.0036, BCE Loss G=0.7106]Epoch 4/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.80s/it, Dt Loss=0.0827, Goal Loss=6.6558, MIE Loss=5.9416, MSE Loss R=0.0036, BCE Loss G=0.7106]Epoch 4/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.80s/it, Dt Loss=0.0826, Goal Loss=4.8533, MIE Loss=4.1407, MSE Loss R=0.0055, BCE Loss G=0.7071]Epoch 4/500: 100%|██████████| 4/4 [00:11<00:00,  2.31s/it, Dt Loss=0.0826, Goal Loss=4.8533, MIE Loss=4.1407, MSE Loss R=0.0055, BCE Loss G=0.7071]Epoch 4/500: 100%|██████████| 4/4 [00:11<00:00,  2.89s/it, Dt Loss=0.0826, Goal Loss=4.8533, MIE Loss=4.1407, MSE Loss R=0.0055, BCE Loss G=0.7071]
-2024-11-20 13:50:56,286 - INFO - Epoch [4/500] completed. Average Goal Loss: 8.2172
-2024-11-20 13:50:56,286 - INFO - Epoch [4/500] completed. Average Action Loss: 0.0830
-2024-11-20 13:50:56,286 - INFO - ===================================================================================
-2024-11-20 13:51:10,938 - INFO - Epoch [4/500]
-Action Validation Loss: 0.0816 
- Goal Validation Loss: 5.0659 
- MIE Validation Loss: 4.2874 
- MSE R Validation Loss: 0.0718 
- BCE G Validation Loss: 0.7066
-2024-11-20 13:51:10,939 - INFO - ===================================================================================
-2024-11-20 13:51:10,939 - INFO - Completed in 0h 1m
-Epoch 5/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 5/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0824, Goal Loss=3.4202, MIE Loss=2.7162, MSE Loss R=0.0012, BCE Loss G=0.7028]2024-11-20 13:51:16,597 - INFO - Epoch [5/500], Batch [0/4]
- Dt Loss: 0.0824
- Goal Loss: 3.4202, MIE Loss: 2.7162
- MSE Loss R: 0.0012, BCE Loss G: 0.7028
-Epoch 5/500:  25%|██▌       | 1/4 [00:05<00:16,  5.66s/it, Dt Loss=0.0824, Goal Loss=3.4202, MIE Loss=2.7162, MSE Loss R=0.0012, BCE Loss G=0.7028]Epoch 5/500:  25%|██▌       | 1/4 [00:07<00:16,  5.66s/it, Dt Loss=0.0821, Goal Loss=3.7442, MIE Loss=2.9852, MSE Loss R=0.0599, BCE Loss G=0.6990]Epoch 5/500:  50%|█████     | 2/4 [00:07<00:06,  3.50s/it, Dt Loss=0.0821, Goal Loss=3.7442, MIE Loss=2.9852, MSE Loss R=0.0599, BCE Loss G=0.6990]Epoch 5/500:  50%|█████     | 2/4 [00:09<00:06,  3.50s/it, Dt Loss=0.0815, Goal Loss=2.4174, MIE Loss=1.6953, MSE Loss R=0.0287, BCE Loss G=0.6935]Epoch 5/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0815, Goal Loss=2.4174, MIE Loss=1.6953, MSE Loss R=0.0287, BCE Loss G=0.6935]Epoch 5/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0815, Goal Loss=1.8103, MIE Loss=1.1007, MSE Loss R=0.0225, BCE Loss G=0.6870]Epoch 5/500: 100%|██████████| 4/4 [00:11<00:00,  2.26s/it, Dt Loss=0.0815, Goal Loss=1.8103, MIE Loss=1.1007, MSE Loss R=0.0225, BCE Loss G=0.6870]Epoch 5/500: 100%|██████████| 4/4 [00:11<00:00,  2.86s/it, Dt Loss=0.0815, Goal Loss=1.8103, MIE Loss=1.1007, MSE Loss R=0.0225, BCE Loss G=0.6870]
-2024-11-20 13:51:22,387 - INFO - Epoch [5/500] completed. Average Goal Loss: 2.8480
-2024-11-20 13:51:22,388 - INFO - Epoch [5/500] completed. Average Action Loss: 0.0819
-2024-11-20 13:51:22,388 - INFO - ===================================================================================
-2024-11-20 13:51:37,137 - INFO - Epoch [5/500]
-Action Validation Loss: 0.0802 
- Goal Validation Loss: 1.7723 
- MIE Validation Loss: 1.0199 
- MSE R Validation Loss: 0.0681 
- BCE G Validation Loss: 0.6843
-2024-11-20 13:51:37,138 - INFO - ===================================================================================
-2024-11-20 13:51:37,138 - INFO - Completed in 0h 2m
-Epoch 6/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 6/500:   0%|          | 0/4 [00:07<?, ?it/s, Dt Loss=0.0812, Goal Loss=2.8241, MIE Loss=1.8956, MSE Loss R=0.2470, BCE Loss G=0.6815]2024-11-20 13:51:44,186 - INFO - Epoch [6/500], Batch [0/4]
- Dt Loss: 0.0812
- Goal Loss: 2.8241, MIE Loss: 1.8956
- MSE Loss R: 0.2470, BCE Loss G: 0.6815
-Epoch 6/500:  25%|██▌       | 1/4 [00:07<00:21,  7.05s/it, Dt Loss=0.0812, Goal Loss=2.8241, MIE Loss=1.8956, MSE Loss R=0.2470, BCE Loss G=0.6815]Epoch 6/500:  25%|██▌       | 1/4 [00:09<00:21,  7.05s/it, Dt Loss=0.0811, Goal Loss=1.6084, MIE Loss=0.8637, MSE Loss R=0.0691, BCE Loss G=0.6756]Epoch 6/500:  50%|█████     | 2/4 [00:09<00:08,  4.10s/it, Dt Loss=0.0811, Goal Loss=1.6084, MIE Loss=0.8637, MSE Loss R=0.0691, BCE Loss G=0.6756]Epoch 6/500:  50%|█████     | 2/4 [00:11<00:08,  4.10s/it, Dt Loss=0.0807, Goal Loss=2.0511, MIE Loss=1.1164, MSE Loss R=0.2653, BCE Loss G=0.6695]Epoch 6/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.13s/it, Dt Loss=0.0807, Goal Loss=2.0511, MIE Loss=1.1164, MSE Loss R=0.2653, BCE Loss G=0.6695]Epoch 6/500:  75%|███████▌  | 3/4 [00:12<00:03,  3.13s/it, Dt Loss=0.0799, Goal Loss=1.0887, MIE Loss=0.4154, MSE Loss R=0.0116, BCE Loss G=0.6618]Epoch 6/500: 100%|██████████| 4/4 [00:12<00:00,  2.51s/it, Dt Loss=0.0799, Goal Loss=1.0887, MIE Loss=0.4154, MSE Loss R=0.0116, BCE Loss G=0.6618]Epoch 6/500: 100%|██████████| 4/4 [00:13<00:00,  3.25s/it, Dt Loss=0.0799, Goal Loss=1.0887, MIE Loss=0.4154, MSE Loss R=0.0116, BCE Loss G=0.6618]
-2024-11-20 13:51:50,143 - INFO - Epoch [6/500] completed. Average Goal Loss: 1.8931
-2024-11-20 13:51:50,143 - INFO - Epoch [6/500] completed. Average Action Loss: 0.0807
-2024-11-20 13:51:50,144 - INFO - ===================================================================================
-2024-11-20 13:52:05,469 - INFO - Epoch [6/500]
-Action Validation Loss: 0.0790 
- Goal Validation Loss: 1.1192 
- MIE Validation Loss: 0.3984 
- MSE R Validation Loss: 0.0623 
- BCE G Validation Loss: 0.6585
-2024-11-20 13:52:05,469 - INFO - ===================================================================================
-2024-11-20 13:52:05,470 - INFO - Completed in 0h 2m
-Epoch 7/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 7/500:   0%|          | 0/4 [00:07<?, ?it/s, Dt Loss=0.0800, Goal Loss=1.2686, MIE Loss=0.5227, MSE Loss R=0.0915, BCE Loss G=0.6544]2024-11-20 13:52:12,497 - INFO - Epoch [7/500], Batch [0/4]
- Dt Loss: 0.0800
- Goal Loss: 1.2686, MIE Loss: 0.5227
- MSE Loss R: 0.0915, BCE Loss G: 0.6544
-Epoch 7/500:  25%|██▌       | 1/4 [00:07<00:21,  7.03s/it, Dt Loss=0.0800, Goal Loss=1.2686, MIE Loss=0.5227, MSE Loss R=0.0915, BCE Loss G=0.6544]Epoch 7/500:  25%|██▌       | 1/4 [00:08<00:21,  7.03s/it, Dt Loss=0.0797, Goal Loss=0.9326, MIE Loss=0.2823, MSE Loss R=0.0049, BCE Loss G=0.6455]Epoch 7/500:  50%|█████     | 2/4 [00:08<00:08,  4.01s/it, Dt Loss=0.0797, Goal Loss=0.9326, MIE Loss=0.2823, MSE Loss R=0.0049, BCE Loss G=0.6455]Epoch 7/500:  50%|█████     | 2/4 [00:10<00:08,  4.01s/it, Dt Loss=0.0791, Goal Loss=0.8503, MIE Loss=0.2109, MSE Loss R=0.0031, BCE Loss G=0.6364]Epoch 7/500:  75%|███████▌  | 3/4 [00:10<00:03,  3.05s/it, Dt Loss=0.0791, Goal Loss=0.8503, MIE Loss=0.2109, MSE Loss R=0.0031, BCE Loss G=0.6364]Epoch 7/500:  75%|███████▌  | 3/4 [00:12<00:03,  3.05s/it, Dt Loss=0.0789, Goal Loss=0.9661, MIE Loss=0.3136, MSE Loss R=0.0250, BCE Loss G=0.6276]Epoch 7/500: 100%|██████████| 4/4 [00:12<00:00,  2.48s/it, Dt Loss=0.0789, Goal Loss=0.9661, MIE Loss=0.3136, MSE Loss R=0.0250, BCE Loss G=0.6276]Epoch 7/500: 100%|██████████| 4/4 [00:12<00:00,  3.20s/it, Dt Loss=0.0789, Goal Loss=0.9661, MIE Loss=0.3136, MSE Loss R=0.0250, BCE Loss G=0.6276]
-2024-11-20 13:52:18,282 - INFO - Epoch [7/500] completed. Average Goal Loss: 1.0044
-2024-11-20 13:52:18,282 - INFO - Epoch [7/500] completed. Average Action Loss: 0.0794
-2024-11-20 13:52:18,283 - INFO - ===================================================================================
-2024-11-20 13:52:33,933 - INFO - Epoch [7/500]
-Action Validation Loss: 0.0776 
- Goal Validation Loss: 0.9412 
- MIE Validation Loss: 0.2571 
- MSE R Validation Loss: 0.0612 
- BCE G Validation Loss: 0.6229
-2024-11-20 13:52:33,934 - INFO - ===================================================================================
-2024-11-20 13:52:33,934 - INFO - Completed in 0h 3m
-Epoch 8/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 8/500:   0%|          | 0/4 [00:06<?, ?it/s, Dt Loss=0.0784, Goal Loss=0.8098, MIE Loss=0.1882, MSE Loss R=0.0044, BCE Loss G=0.6171]2024-11-20 13:52:40,741 - INFO - Epoch [8/500], Batch [0/4]
- Dt Loss: 0.0784
- Goal Loss: 0.8098, MIE Loss: 0.1882
- MSE Loss R: 0.0044, BCE Loss G: 0.6171
-Epoch 8/500:  25%|██▌       | 1/4 [00:06<00:20,  6.81s/it, Dt Loss=0.0784, Goal Loss=0.8098, MIE Loss=0.1882, MSE Loss R=0.0044, BCE Loss G=0.6171]Epoch 8/500:  25%|██▌       | 1/4 [00:08<00:20,  6.81s/it, Dt Loss=0.0780, Goal Loss=0.8239, MIE Loss=0.2035, MSE Loss R=0.0136, BCE Loss G=0.6068]Epoch 8/500:  50%|█████     | 2/4 [00:08<00:07,  3.93s/it, Dt Loss=0.0780, Goal Loss=0.8239, MIE Loss=0.2035, MSE Loss R=0.0136, BCE Loss G=0.6068]Epoch 8/500:  50%|█████     | 2/4 [00:11<00:07,  3.93s/it, Dt Loss=0.0776, Goal Loss=0.7539, MIE Loss=0.1511, MSE Loss R=0.0073, BCE Loss G=0.5954]Epoch 8/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.18s/it, Dt Loss=0.0776, Goal Loss=0.7539, MIE Loss=0.1511, MSE Loss R=0.0073, BCE Loss G=0.5954]Epoch 8/500:  75%|███████▌  | 3/4 [00:12<00:03,  3.18s/it, Dt Loss=0.0772, Goal Loss=0.7261, MIE Loss=0.1355, MSE Loss R=0.0071, BCE Loss G=0.5835]Epoch 8/500: 100%|██████████| 4/4 [00:12<00:00,  2.52s/it, Dt Loss=0.0772, Goal Loss=0.7261, MIE Loss=0.1355, MSE Loss R=0.0071, BCE Loss G=0.5835]Epoch 8/500: 100%|██████████| 4/4 [00:12<00:00,  3.24s/it, Dt Loss=0.0772, Goal Loss=0.7261, MIE Loss=0.1355, MSE Loss R=0.0071, BCE Loss G=0.5835]
-2024-11-20 13:52:46,913 - INFO - Epoch [8/500] completed. Average Goal Loss: 0.7784
-2024-11-20 13:52:46,913 - INFO - Epoch [8/500] completed. Average Action Loss: 0.0778
-2024-11-20 13:52:46,913 - INFO - ===================================================================================
-2024-11-20 13:53:01,244 - INFO - Epoch [8/500]
-Action Validation Loss: 0.0756 
- Goal Validation Loss: 0.7943 
- MIE Validation Loss: 0.1558 
- MSE R Validation Loss: 0.0607 
- BCE G Validation Loss: 0.5779
-2024-11-20 13:53:01,244 - INFO - ===================================================================================
-2024-11-20 13:53:01,245 - INFO - Completed in 0h 3m
-Epoch 9/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 9/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0768, Goal Loss=0.7612, MIE Loss=0.1720, MSE Loss R=0.0177, BCE Loss G=0.5715]2024-11-20 13:53:06,737 - INFO - Epoch [9/500], Batch [0/4]
- Dt Loss: 0.0768
- Goal Loss: 0.7612, MIE Loss: 0.1720
- MSE Loss R: 0.0177, BCE Loss G: 0.5715
-Epoch 9/500:  25%|██▌       | 1/4 [00:05<00:16,  5.49s/it, Dt Loss=0.0768, Goal Loss=0.7612, MIE Loss=0.1720, MSE Loss R=0.0177, BCE Loss G=0.5715]Epoch 9/500:  25%|██▌       | 1/4 [00:07<00:16,  5.49s/it, Dt Loss=0.0765, Goal Loss=0.6831, MIE Loss=0.1185, MSE Loss R=0.0064, BCE Loss G=0.5582]Epoch 9/500:  50%|█████     | 2/4 [00:07<00:06,  3.48s/it, Dt Loss=0.0765, Goal Loss=0.6831, MIE Loss=0.1185, MSE Loss R=0.0064, BCE Loss G=0.5582]Epoch 9/500:  50%|█████     | 2/4 [00:09<00:06,  3.48s/it, Dt Loss=0.0760, Goal Loss=0.7410, MIE Loss=0.1719, MSE Loss R=0.0237, BCE Loss G=0.5454]Epoch 9/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0760, Goal Loss=0.7410, MIE Loss=0.1719, MSE Loss R=0.0237, BCE Loss G=0.5454]Epoch 9/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0752, Goal Loss=1.1122, MIE Loss=0.3632, MSE Loss R=0.2145, BCE Loss G=0.5346]Epoch 9/500: 100%|██████████| 4/4 [00:11<00:00,  2.28s/it, Dt Loss=0.0752, Goal Loss=1.1122, MIE Loss=0.3632, MSE Loss R=0.2145, BCE Loss G=0.5346]Epoch 9/500: 100%|██████████| 4/4 [00:11<00:00,  2.87s/it, Dt Loss=0.0752, Goal Loss=1.1122, MIE Loss=0.3632, MSE Loss R=0.2145, BCE Loss G=0.5346]
-2024-11-20 13:53:12,734 - INFO - Epoch [9/500] completed. Average Goal Loss: 0.8244
-2024-11-20 13:53:12,735 - INFO - Epoch [9/500] completed. Average Action Loss: 0.0761
-2024-11-20 13:53:12,735 - INFO - ===================================================================================
-2024-11-20 13:53:27,110 - INFO - Epoch [9/500]
-Action Validation Loss: 0.0737 
- Goal Validation Loss: 0.8131 
- MIE Validation Loss: 0.2301 
- MSE R Validation Loss: 0.0581 
- BCE G Validation Loss: 0.5248
-2024-11-20 13:53:27,110 - INFO - ===================================================================================
-2024-11-20 13:53:27,110 - INFO - Completed in 0h 4m
-Epoch 10/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 10/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0747, Goal Loss=0.6402, MIE Loss=0.1197, MSE Loss R=0.0042, BCE Loss G=0.5163]2024-11-20 13:53:32,543 - INFO - Epoch [10/500], Batch [0/4]
- Dt Loss: 0.0747
- Goal Loss: 0.6402, MIE Loss: 0.1197
- MSE Loss R: 0.0042, BCE Loss G: 0.5163
-Epoch 10/500:  25%|██▌       | 1/4 [00:05<00:16,  5.43s/it, Dt Loss=0.0747, Goal Loss=0.6402, MIE Loss=0.1197, MSE Loss R=0.0042, BCE Loss G=0.5163]Epoch 10/500:  25%|██▌       | 1/4 [00:07<00:16,  5.43s/it, Dt Loss=0.0740, Goal Loss=0.5920, MIE Loss=0.0858, MSE Loss R=0.0045, BCE Loss G=0.5017]Epoch 10/500:  50%|█████     | 2/4 [00:07<00:06,  3.39s/it, Dt Loss=0.0740, Goal Loss=0.5920, MIE Loss=0.0858, MSE Loss R=0.0045, BCE Loss G=0.5017]Epoch 10/500:  50%|█████     | 2/4 [00:09<00:06,  3.39s/it, Dt Loss=0.0730, Goal Loss=0.5593, MIE Loss=0.0691, MSE Loss R=0.0040, BCE Loss G=0.4862]Epoch 10/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.74s/it, Dt Loss=0.0730, Goal Loss=0.5593, MIE Loss=0.0691, MSE Loss R=0.0040, BCE Loss G=0.4862]Epoch 10/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.74s/it, Dt Loss=0.0719, Goal Loss=0.7665, MIE Loss=0.2056, MSE Loss R=0.0864, BCE Loss G=0.4745]Epoch 10/500: 100%|██████████| 4/4 [00:10<00:00,  2.24s/it, Dt Loss=0.0719, Goal Loss=0.7665, MIE Loss=0.2056, MSE Loss R=0.0864, BCE Loss G=0.4745]Epoch 10/500: 100%|██████████| 4/4 [00:11<00:00,  2.79s/it, Dt Loss=0.0719, Goal Loss=0.7665, MIE Loss=0.2056, MSE Loss R=0.0864, BCE Loss G=0.4745]
-2024-11-20 13:53:38,288 - INFO - Epoch [10/500] completed. Average Goal Loss: 0.6395
-2024-11-20 13:53:38,289 - INFO - Epoch [10/500] completed. Average Action Loss: 0.0734
-2024-11-20 13:53:38,289 - INFO - ===================================================================================
-2024-11-20 13:53:52,456 - INFO - Epoch [10/500]
-Action Validation Loss: 0.0700 
- Goal Validation Loss: 0.6595 
- MIE Validation Loss: 0.1373 
- MSE R Validation Loss: 0.0571 
- BCE G Validation Loss: 0.4651
-2024-11-20 13:53:52,456 - INFO - ===================================================================================
-2024-11-20 13:53:52,456 - INFO - Completed in 0h 4m
-Epoch 11/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 11/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0711, Goal Loss=0.6496, MIE Loss=0.1387, MSE Loss R=0.0528, BCE Loss G=0.4582]2024-11-20 13:53:57,959 - INFO - Epoch [11/500], Batch [0/4]
- Dt Loss: 0.0711
- Goal Loss: 0.6496, MIE Loss: 0.1387
- MSE Loss R: 0.0528, BCE Loss G: 0.4582
-Epoch 11/500:  25%|██▌       | 1/4 [00:05<00:16,  5.50s/it, Dt Loss=0.0711, Goal Loss=0.6496, MIE Loss=0.1387, MSE Loss R=0.0528, BCE Loss G=0.4582]Epoch 11/500:  25%|██▌       | 1/4 [00:07<00:16,  5.50s/it, Dt Loss=0.0701, Goal Loss=0.5183, MIE Loss=0.0734, MSE Loss R=0.0051, BCE Loss G=0.4398]Epoch 11/500:  50%|█████     | 2/4 [00:07<00:06,  3.49s/it, Dt Loss=0.0701, Goal Loss=0.5183, MIE Loss=0.0734, MSE Loss R=0.0051, BCE Loss G=0.4398]Epoch 11/500:  50%|█████     | 2/4 [00:09<00:06,  3.49s/it, Dt Loss=0.0684, Goal Loss=0.5761, MIE Loss=0.1183, MSE Loss R=0.0314, BCE Loss G=0.4264]Epoch 11/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0684, Goal Loss=0.5761, MIE Loss=0.1183, MSE Loss R=0.0314, BCE Loss G=0.4264]Epoch 11/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0669, Goal Loss=0.5415, MIE Loss=0.0980, MSE Loss R=0.0327, BCE Loss G=0.4108]Epoch 11/500: 100%|██████████| 4/4 [00:11<00:00,  2.38s/it, Dt Loss=0.0669, Goal Loss=0.5415, MIE Loss=0.0980, MSE Loss R=0.0327, BCE Loss G=0.4108]Epoch 11/500: 100%|██████████| 4/4 [00:11<00:00,  2.92s/it, Dt Loss=0.0669, Goal Loss=0.5415, MIE Loss=0.0980, MSE Loss R=0.0327, BCE Loss G=0.4108]
-2024-11-20 13:54:04,123 - INFO - Epoch [11/500] completed. Average Goal Loss: 0.5714
-2024-11-20 13:54:04,123 - INFO - Epoch [11/500] completed. Average Action Loss: 0.0691
-2024-11-20 13:54:04,123 - INFO - ===================================================================================
-2024-11-20 13:54:19,557 - INFO - Epoch [11/500]
-Action Validation Loss: 0.0638 
- Goal Validation Loss: 0.5420 
- MIE Validation Loss: 0.0845 
- MSE R Validation Loss: 0.0546 
- BCE G Validation Loss: 0.4029
-2024-11-20 13:54:19,558 - INFO - ===================================================================================
-2024-11-20 13:54:19,559 - INFO - Completed in 0h 5m
-Epoch 12/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 12/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0650, Goal Loss=0.4756, MIE Loss=0.0686, MSE Loss R=0.0129, BCE Loss G=0.3941]2024-11-20 13:54:25,168 - INFO - Epoch [12/500], Batch [0/4]
- Dt Loss: 0.0650
- Goal Loss: 0.4756, MIE Loss: 0.0686
- MSE Loss R: 0.0129, BCE Loss G: 0.3941
-Epoch 12/500:  25%|██▌       | 1/4 [00:05<00:16,  5.61s/it, Dt Loss=0.0650, Goal Loss=0.4756, MIE Loss=0.0686, MSE Loss R=0.0129, BCE Loss G=0.3941]Epoch 12/500:  25%|██▌       | 1/4 [00:07<00:16,  5.61s/it, Dt Loss=0.0644, Goal Loss=0.4639, MIE Loss=0.0675, MSE Loss R=0.0177, BCE Loss G=0.3787]Epoch 12/500:  50%|█████     | 2/4 [00:07<00:06,  3.49s/it, Dt Loss=0.0644, Goal Loss=0.4639, MIE Loss=0.0675, MSE Loss R=0.0177, BCE Loss G=0.3787]Epoch 12/500:  50%|█████     | 2/4 [00:09<00:06,  3.49s/it, Dt Loss=0.0619, Goal Loss=0.4624, MIE Loss=0.0731, MSE Loss R=0.0251, BCE Loss G=0.3642]Epoch 12/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.80s/it, Dt Loss=0.0619, Goal Loss=0.4624, MIE Loss=0.0731, MSE Loss R=0.0251, BCE Loss G=0.3642]Epoch 12/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.80s/it, Dt Loss=0.0602, Goal Loss=0.5405, MIE Loss=0.1109, MSE Loss R=0.0775, BCE Loss G=0.3522]Epoch 12/500: 100%|██████████| 4/4 [00:11<00:00,  2.31s/it, Dt Loss=0.0602, Goal Loss=0.5405, MIE Loss=0.1109, MSE Loss R=0.0775, BCE Loss G=0.3522]Epoch 12/500: 100%|██████████| 4/4 [00:11<00:00,  2.88s/it, Dt Loss=0.0602, Goal Loss=0.5405, MIE Loss=0.1109, MSE Loss R=0.0775, BCE Loss G=0.3522]
-2024-11-20 13:54:31,096 - INFO - Epoch [12/500] completed. Average Goal Loss: 0.4856
-2024-11-20 13:54:31,096 - INFO - Epoch [12/500] completed. Average Action Loss: 0.0629
-2024-11-20 13:54:31,096 - INFO - ===================================================================================
-2024-11-20 13:54:46,984 - INFO - Epoch [12/500]
-Action Validation Loss: 0.0572 
- Goal Validation Loss: 0.4731 
- MIE Validation Loss: 0.0788 
- MSE R Validation Loss: 0.0521 
- BCE G Validation Loss: 0.3422
-2024-11-20 13:54:46,984 - INFO - ===================================================================================
-2024-11-20 13:54:46,985 - INFO - Completed in 0h 5m
-Epoch 13/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 13/500:   0%|          | 0/4 [00:07<?, ?it/s, Dt Loss=0.0584, Goal Loss=0.5696, MIE Loss=0.1161, MSE Loss R=0.1136, BCE Loss G=0.3399]2024-11-20 13:54:54,033 - INFO - Epoch [13/500], Batch [0/4]
- Dt Loss: 0.0584
- Goal Loss: 0.5696, MIE Loss: 0.1161
- MSE Loss R: 0.1136, BCE Loss G: 0.3399
-Epoch 13/500:  25%|██▌       | 1/4 [00:07<00:21,  7.05s/it, Dt Loss=0.0584, Goal Loss=0.5696, MIE Loss=0.1161, MSE Loss R=0.1136, BCE Loss G=0.3399]Epoch 13/500:  25%|██▌       | 1/4 [00:09<00:21,  7.05s/it, Dt Loss=0.0570, Goal Loss=0.3770, MIE Loss=0.0502, MSE Loss R=0.0083, BCE Loss G=0.3185]Epoch 13/500:  50%|█████     | 2/4 [00:09<00:08,  4.10s/it, Dt Loss=0.0570, Goal Loss=0.3770, MIE Loss=0.0502, MSE Loss R=0.0083, BCE Loss G=0.3185]Epoch 13/500:  50%|█████     | 2/4 [00:11<00:08,  4.10s/it, Dt Loss=0.0554, Goal Loss=0.3574, MIE Loss=0.0428, MSE Loss R=0.0090, BCE Loss G=0.3055]Epoch 13/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.17s/it, Dt Loss=0.0554, Goal Loss=0.3574, MIE Loss=0.0428, MSE Loss R=0.0090, BCE Loss G=0.3055]Epoch 13/500:  75%|███████▌  | 3/4 [00:12<00:03,  3.17s/it, Dt Loss=0.0536, Goal Loss=0.3402, MIE Loss=0.0387, MSE Loss R=0.0089, BCE Loss G=0.2925]Epoch 13/500: 100%|██████████| 4/4 [00:12<00:00,  2.58s/it, Dt Loss=0.0536, Goal Loss=0.3402, MIE Loss=0.0387, MSE Loss R=0.0089, BCE Loss G=0.2925]Epoch 13/500: 100%|██████████| 4/4 [00:13<00:00,  3.31s/it, Dt Loss=0.0536, Goal Loss=0.3402, MIE Loss=0.0387, MSE Loss R=0.0089, BCE Loss G=0.2925]
-2024-11-20 13:55:00,222 - INFO - Epoch [13/500] completed. Average Goal Loss: 0.4110
-2024-11-20 13:55:00,222 - INFO - Epoch [13/500] completed. Average Action Loss: 0.0561
-2024-11-20 13:55:00,222 - INFO - ===================================================================================
-2024-11-20 13:55:15,573 - INFO - Epoch [13/500]
-Action Validation Loss: 0.0529 
- Goal Validation Loss: 0.3801 
- MIE Validation Loss: 0.0414 
- MSE R Validation Loss: 0.0504 
- BCE G Validation Loss: 0.2882
-2024-11-20 13:55:15,573 - INFO - ===================================================================================
-2024-11-20 13:55:15,574 - INFO - Completed in 0h 5m
-Epoch 14/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 14/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0533, Goal Loss=0.4546, MIE Loss=0.0909, MSE Loss R=0.0766, BCE Loss G=0.2871]2024-11-20 13:55:21,197 - INFO - Epoch [14/500], Batch [0/4]
- Dt Loss: 0.0533
- Goal Loss: 0.4546, MIE Loss: 0.0909
- MSE Loss R: 0.0766, BCE Loss G: 0.2871
-Epoch 14/500:  25%|██▌       | 1/4 [00:05<00:16,  5.62s/it, Dt Loss=0.0533, Goal Loss=0.4546, MIE Loss=0.0909, MSE Loss R=0.0766, BCE Loss G=0.2871]Epoch 14/500:  25%|██▌       | 1/4 [00:07<00:16,  5.62s/it, Dt Loss=0.0530, Goal Loss=0.5945, MIE Loss=0.1158, MSE Loss R=0.1967, BCE Loss G=0.2821]Epoch 14/500:  50%|█████     | 2/4 [00:07<00:07,  3.56s/it, Dt Loss=0.0530, Goal Loss=0.5945, MIE Loss=0.1158, MSE Loss R=0.1967, BCE Loss G=0.2821]Epoch 14/500:  50%|█████     | 2/4 [00:09<00:07,  3.56s/it, Dt Loss=0.0521, Goal Loss=0.4140, MIE Loss=0.0714, MSE Loss R=0.0762, BCE Loss G=0.2663]Epoch 14/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.87s/it, Dt Loss=0.0521, Goal Loss=0.4140, MIE Loss=0.0714, MSE Loss R=0.0762, BCE Loss G=0.2663]Epoch 14/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.87s/it, Dt Loss=0.0508, Goal Loss=0.2986, MIE Loss=0.0381, MSE Loss R=0.0127, BCE Loss G=0.2478]Epoch 14/500: 100%|██████████| 4/4 [00:11<00:00,  2.37s/it, Dt Loss=0.0508, Goal Loss=0.2986, MIE Loss=0.0381, MSE Loss R=0.0127, BCE Loss G=0.2478]Epoch 14/500: 100%|██████████| 4/4 [00:11<00:00,  2.94s/it, Dt Loss=0.0508, Goal Loss=0.2986, MIE Loss=0.0381, MSE Loss R=0.0127, BCE Loss G=0.2478]
-2024-11-20 13:55:27,321 - INFO - Epoch [14/500] completed. Average Goal Loss: 0.4404
-2024-11-20 13:55:27,321 - INFO - Epoch [14/500] completed. Average Action Loss: 0.0523
-2024-11-20 13:55:27,321 - INFO - ===================================================================================
-2024-11-20 13:55:42,583 - INFO - Epoch [14/500]
-Action Validation Loss: 0.0503 
- Goal Validation Loss: 0.3309 
- MIE Validation Loss: 0.0367 
- MSE R Validation Loss: 0.0468 
- BCE G Validation Loss: 0.2474
-2024-11-20 13:55:42,584 - INFO - ===================================================================================
-2024-11-20 13:55:42,584 - INFO - Completed in 0h 6m
-Epoch 15/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 15/500:   0%|          | 0/4 [00:06<?, ?it/s, Dt Loss=0.0509, Goal Loss=0.3225, MIE Loss=0.0537, MSE Loss R=0.0252, BCE Loss G=0.2436]2024-11-20 13:55:48,669 - INFO - Epoch [15/500], Batch [0/4]
- Dt Loss: 0.0509
- Goal Loss: 0.3225, MIE Loss: 0.0537
- MSE Loss R: 0.0252, BCE Loss G: 0.2436
-Epoch 15/500:  25%|██▌       | 1/4 [00:06<00:18,  6.08s/it, Dt Loss=0.0509, Goal Loss=0.3225, MIE Loss=0.0537, MSE Loss R=0.0252, BCE Loss G=0.2436]Epoch 15/500:  25%|██▌       | 1/4 [00:08<00:18,  6.08s/it, Dt Loss=0.0502, Goal Loss=0.2724, MIE Loss=0.0301, MSE Loss R=0.0120, BCE Loss G=0.2303]Epoch 15/500:  50%|█████     | 2/4 [00:08<00:07,  3.70s/it, Dt Loss=0.0502, Goal Loss=0.2724, MIE Loss=0.0301, MSE Loss R=0.0120, BCE Loss G=0.2303]Epoch 15/500:  50%|█████     | 2/4 [00:10<00:07,  3.70s/it, Dt Loss=0.0496, Goal Loss=0.2859, MIE Loss=0.0425, MSE Loss R=0.0172, BCE Loss G=0.2261]Epoch 15/500:  75%|███████▌  | 3/4 [00:10<00:03,  3.07s/it, Dt Loss=0.0496, Goal Loss=0.2859, MIE Loss=0.0425, MSE Loss R=0.0172, BCE Loss G=0.2261]Epoch 15/500:  75%|███████▌  | 3/4 [00:12<00:03,  3.07s/it, Dt Loss=0.0493, Goal Loss=0.2523, MIE Loss=0.0265, MSE Loss R=0.0110, BCE Loss G=0.2149]Epoch 15/500: 100%|██████████| 4/4 [00:12<00:00,  2.48s/it, Dt Loss=0.0493, Goal Loss=0.2523, MIE Loss=0.0265, MSE Loss R=0.0110, BCE Loss G=0.2149]Epoch 15/500: 100%|██████████| 4/4 [00:12<00:00,  3.11s/it, Dt Loss=0.0493, Goal Loss=0.2523, MIE Loss=0.0265, MSE Loss R=0.0110, BCE Loss G=0.2149]
-2024-11-20 13:55:55,017 - INFO - Epoch [15/500] completed. Average Goal Loss: 0.2833
-2024-11-20 13:55:55,018 - INFO - Epoch [15/500] completed. Average Action Loss: 0.0500
-2024-11-20 13:55:55,018 - INFO - ===================================================================================
-2024-11-20 13:56:09,371 - INFO - Epoch [15/500]
-Action Validation Loss: 0.0471 
- Goal Validation Loss: 0.2895 
- MIE Validation Loss: 0.0274 
- MSE R Validation Loss: 0.0470 
- BCE G Validation Loss: 0.2151
-2024-11-20 13:56:09,372 - INFO - ===================================================================================
-2024-11-20 13:56:09,372 - INFO - Completed in 0h 6m
-Epoch 16/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 16/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0482, Goal Loss=0.2527, MIE Loss=0.0302, MSE Loss R=0.0124, BCE Loss G=0.2101]2024-11-20 13:56:14,955 - INFO - Epoch [16/500], Batch [0/4]
- Dt Loss: 0.0482
- Goal Loss: 0.2527, MIE Loss: 0.0302
- MSE Loss R: 0.0124, BCE Loss G: 0.2101
-Epoch 16/500:  25%|██▌       | 1/4 [00:05<00:16,  5.58s/it, Dt Loss=0.0482, Goal Loss=0.2527, MIE Loss=0.0302, MSE Loss R=0.0124, BCE Loss G=0.2101]Epoch 16/500:  25%|██▌       | 1/4 [00:07<00:16,  5.58s/it, Dt Loss=0.0475, Goal Loss=0.2432, MIE Loss=0.0272, MSE Loss R=0.0124, BCE Loss G=0.2036]Epoch 16/500:  50%|█████     | 2/4 [00:07<00:07,  3.51s/it, Dt Loss=0.0475, Goal Loss=0.2432, MIE Loss=0.0272, MSE Loss R=0.0124, BCE Loss G=0.2036]Epoch 16/500:  50%|█████     | 2/4 [00:09<00:07,  3.51s/it, Dt Loss=0.0475, Goal Loss=0.3575, MIE Loss=0.0615, MSE Loss R=0.0884, BCE Loss G=0.2076]Epoch 16/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.82s/it, Dt Loss=0.0475, Goal Loss=0.3575, MIE Loss=0.0615, MSE Loss R=0.0884, BCE Loss G=0.2076]Epoch 16/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.82s/it, Dt Loss=0.0475, Goal Loss=0.2264, MIE Loss=0.0245, MSE Loss R=0.0122, BCE Loss G=0.1897]Epoch 16/500: 100%|██████████| 4/4 [00:11<00:00,  2.39s/it, Dt Loss=0.0475, Goal Loss=0.2264, MIE Loss=0.0245, MSE Loss R=0.0122, BCE Loss G=0.1897]Epoch 16/500: 100%|██████████| 4/4 [00:11<00:00,  2.96s/it, Dt Loss=0.0475, Goal Loss=0.2264, MIE Loss=0.0245, MSE Loss R=0.0122, BCE Loss G=0.1897]
-2024-11-20 13:56:21,225 - INFO - Epoch [16/500] completed. Average Goal Loss: 0.2700
-2024-11-20 13:56:21,226 - INFO - Epoch [16/500] completed. Average Action Loss: 0.0477
-2024-11-20 13:56:21,226 - INFO - ===================================================================================
-2024-11-20 13:56:35,933 - INFO - Epoch [16/500]
-Action Validation Loss: 0.0452 
- Goal Validation Loss: 0.2624 
- MIE Validation Loss: 0.0246 
- MSE R Validation Loss: 0.0464 
- BCE G Validation Loss: 0.1915
-2024-11-20 13:56:35,934 - INFO - ===================================================================================
-2024-11-20 13:56:35,934 - INFO - Completed in 0h 7m
-Epoch 17/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 17/500:   0%|          | 0/4 [00:06<?, ?it/s, Dt Loss=0.0467, Goal Loss=0.2223, MIE Loss=0.0243, MSE Loss R=0.0116, BCE Loss G=0.1865]2024-11-20 13:56:41,937 - INFO - Epoch [17/500], Batch [0/4]
- Dt Loss: 0.0467
- Goal Loss: 0.2223, MIE Loss: 0.0243
- MSE Loss R: 0.0116, BCE Loss G: 0.1865
-Epoch 17/500:  25%|██▌       | 1/4 [00:06<00:18,  6.00s/it, Dt Loss=0.0467, Goal Loss=0.2223, MIE Loss=0.0243, MSE Loss R=0.0116, BCE Loss G=0.1865]Epoch 17/500:  25%|██▌       | 1/4 [00:07<00:18,  6.00s/it, Dt Loss=0.0462, Goal Loss=0.2122, MIE Loss=0.0202, MSE Loss R=0.0108, BCE Loss G=0.1812]Epoch 17/500:  50%|█████     | 2/4 [00:07<00:07,  3.64s/it, Dt Loss=0.0462, Goal Loss=0.2122, MIE Loss=0.0202, MSE Loss R=0.0108, BCE Loss G=0.1812]Epoch 17/500:  50%|█████     | 2/4 [00:10<00:07,  3.64s/it, Dt Loss=0.0455, Goal Loss=0.2047, MIE Loss=0.0179, MSE Loss R=0.0110, BCE Loss G=0.1758]Epoch 17/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.92s/it, Dt Loss=0.0455, Goal Loss=0.2047, MIE Loss=0.0179, MSE Loss R=0.0110, BCE Loss G=0.1758]Epoch 17/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.92s/it, Dt Loss=0.0450, Goal Loss=0.1980, MIE Loss=0.0164, MSE Loss R=0.0107, BCE Loss G=0.1708]Epoch 17/500: 100%|██████████| 4/4 [00:11<00:00,  2.34s/it, Dt Loss=0.0450, Goal Loss=0.1980, MIE Loss=0.0164, MSE Loss R=0.0107, BCE Loss G=0.1708]Epoch 17/500: 100%|██████████| 4/4 [00:11<00:00,  2.98s/it, Dt Loss=0.0450, Goal Loss=0.1980, MIE Loss=0.0164, MSE Loss R=0.0107, BCE Loss G=0.1708]
-2024-11-20 13:56:47,843 - INFO - Epoch [17/500] completed. Average Goal Loss: 0.2093
-2024-11-20 13:56:47,844 - INFO - Epoch [17/500] completed. Average Action Loss: 0.0458
-2024-11-20 13:56:47,844 - INFO - ===================================================================================
-2024-11-20 13:57:03,296 - INFO - Epoch [17/500]
-Action Validation Loss: 0.0435 
- Goal Validation Loss: 0.2390 
- MIE Validation Loss: 0.0186 
- MSE R Validation Loss: 0.0471 
- BCE G Validation Loss: 0.1733
-2024-11-20 13:57:03,296 - INFO - ===================================================================================
-2024-11-20 13:57:03,297 - INFO - Completed in 0h 7m
-Epoch 18/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 18/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0450, Goal Loss=0.3268, MIE Loss=0.0560, MSE Loss R=0.0893, BCE Loss G=0.1815]2024-11-20 13:57:09,053 - INFO - Epoch [18/500], Batch [0/4]
- Dt Loss: 0.0450
- Goal Loss: 0.3268, MIE Loss: 0.0560
- MSE Loss R: 0.0893, BCE Loss G: 0.1815
-Epoch 18/500:  25%|██▌       | 1/4 [00:05<00:17,  5.76s/it, Dt Loss=0.0450, Goal Loss=0.3268, MIE Loss=0.0560, MSE Loss R=0.0893, BCE Loss G=0.1815]Epoch 18/500:  25%|██▌       | 1/4 [00:07<00:17,  5.76s/it, Dt Loss=0.0445, Goal Loss=0.2287, MIE Loss=0.0318, MSE Loss R=0.0272, BCE Loss G=0.1698]Epoch 18/500:  50%|█████     | 2/4 [00:07<00:07,  3.61s/it, Dt Loss=0.0445, Goal Loss=0.2287, MIE Loss=0.0318, MSE Loss R=0.0272, BCE Loss G=0.1698]Epoch 18/500:  50%|█████     | 2/4 [00:10<00:07,  3.61s/it, Dt Loss=0.0437, Goal Loss=0.2386, MIE Loss=0.0322, MSE Loss R=0.0384, BCE Loss G=0.1681]Epoch 18/500:  75%|███████▌  | 3/4 [00:10<00:03,  3.04s/it, Dt Loss=0.0437, Goal Loss=0.2386, MIE Loss=0.0322, MSE Loss R=0.0384, BCE Loss G=0.1681]Epoch 18/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.04s/it, Dt Loss=0.0438, Goal Loss=0.1873, MIE Loss=0.0169, MSE Loss R=0.0122, BCE Loss G=0.1582]Epoch 18/500: 100%|██████████| 4/4 [00:11<00:00,  2.43s/it, Dt Loss=0.0438, Goal Loss=0.1873, MIE Loss=0.0169, MSE Loss R=0.0122, BCE Loss G=0.1582]Epoch 18/500: 100%|██████████| 4/4 [00:12<00:00,  3.02s/it, Dt Loss=0.0438, Goal Loss=0.1873, MIE Loss=0.0169, MSE Loss R=0.0122, BCE Loss G=0.1582]
-2024-11-20 13:57:15,386 - INFO - Epoch [18/500] completed. Average Goal Loss: 0.2454
-2024-11-20 13:57:15,387 - INFO - Epoch [18/500] completed. Average Action Loss: 0.0443
-2024-11-20 13:57:15,387 - INFO - ===================================================================================
-2024-11-20 13:57:29,952 - INFO - Epoch [18/500]
-Action Validation Loss: 0.0416 
- Goal Validation Loss: 0.2240 
- MIE Validation Loss: 0.0178 
- MSE R Validation Loss: 0.0456 
- BCE G Validation Loss: 0.1606
-2024-11-20 13:57:29,953 - INFO - ===================================================================================
-2024-11-20 13:57:29,953 - INFO - Completed in 0h 8m
-Epoch 19/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 19/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0441, Goal Loss=0.1841, MIE Loss=0.0164, MSE Loss R=0.0115, BCE Loss G=0.1561]2024-11-20 13:57:35,457 - INFO - Epoch [19/500], Batch [0/4]
- Dt Loss: 0.0441
- Goal Loss: 0.1841, MIE Loss: 0.0164
- MSE Loss R: 0.0115, BCE Loss G: 0.1561
-Epoch 19/500:  25%|██▌       | 1/4 [00:05<00:16,  5.50s/it, Dt Loss=0.0441, Goal Loss=0.1841, MIE Loss=0.0164, MSE Loss R=0.0115, BCE Loss G=0.1561]Epoch 19/500:  25%|██▌       | 1/4 [00:07<00:16,  5.50s/it, Dt Loss=0.0434, Goal Loss=0.2024, MIE Loss=0.0247, MSE Loss R=0.0206, BCE Loss G=0.1570]Epoch 19/500:  50%|█████     | 2/4 [00:07<00:06,  3.46s/it, Dt Loss=0.0434, Goal Loss=0.2024, MIE Loss=0.0247, MSE Loss R=0.0206, BCE Loss G=0.1570]Epoch 19/500:  50%|█████     | 2/4 [00:09<00:06,  3.46s/it, Dt Loss=0.0430, Goal Loss=0.1802, MIE Loss=0.0178, MSE Loss R=0.0154, BCE Loss G=0.1469]Epoch 19/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.79s/it, Dt Loss=0.0430, Goal Loss=0.1802, MIE Loss=0.0178, MSE Loss R=0.0154, BCE Loss G=0.1469]Epoch 19/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.79s/it, Dt Loss=0.0426, Goal Loss=0.1955, MIE Loss=0.0249, MSE Loss R=0.0189, BCE Loss G=0.1516]Epoch 19/500: 100%|██████████| 4/4 [00:11<00:00,  2.37s/it, Dt Loss=0.0426, Goal Loss=0.1955, MIE Loss=0.0249, MSE Loss R=0.0189, BCE Loss G=0.1516]Epoch 19/500: 100%|██████████| 4/4 [00:11<00:00,  2.90s/it, Dt Loss=0.0426, Goal Loss=0.1955, MIE Loss=0.0249, MSE Loss R=0.0189, BCE Loss G=0.1516]
-2024-11-20 13:57:41,567 - INFO - Epoch [19/500] completed. Average Goal Loss: 0.1905
-2024-11-20 13:57:41,567 - INFO - Epoch [19/500] completed. Average Action Loss: 0.0433
-2024-11-20 13:57:41,567 - INFO - ===================================================================================
-2024-11-20 13:57:56,186 - INFO - Epoch [19/500]
-Action Validation Loss: 0.0412 
- Goal Validation Loss: 0.2160 
- MIE Validation Loss: 0.0194 
- MSE R Validation Loss: 0.0459 
- BCE G Validation Loss: 0.1507
-2024-11-20 13:57:56,186 - INFO - ===================================================================================
-2024-11-20 13:57:56,187 - INFO - Completed in 0h 8m
-Epoch 20/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 20/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0424, Goal Loss=0.2075, MIE Loss=0.0257, MSE Loss R=0.0300, BCE Loss G=0.1517]2024-11-20 13:58:01,607 - INFO - Epoch [20/500], Batch [0/4]
- Dt Loss: 0.0424
- Goal Loss: 0.2075, MIE Loss: 0.0257
- MSE Loss R: 0.0300, BCE Loss G: 0.1517
-Epoch 20/500:  25%|██▌       | 1/4 [00:05<00:16,  5.42s/it, Dt Loss=0.0424, Goal Loss=0.2075, MIE Loss=0.0257, MSE Loss R=0.0300, BCE Loss G=0.1517]Epoch 20/500:  25%|██▌       | 1/4 [00:07<00:16,  5.42s/it, Dt Loss=0.0422, Goal Loss=0.2740, MIE Loss=0.0370, MSE Loss R=0.0785, BCE Loss G=0.1585]Epoch 20/500:  50%|█████     | 2/4 [00:07<00:07,  3.54s/it, Dt Loss=0.0422, Goal Loss=0.2740, MIE Loss=0.0370, MSE Loss R=0.0785, BCE Loss G=0.1585]Epoch 20/500:  50%|█████     | 2/4 [00:09<00:07,  3.54s/it, Dt Loss=0.0413, Goal Loss=0.1734, MIE Loss=0.0163, MSE Loss R=0.0136, BCE Loss G=0.1435]Epoch 20/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0413, Goal Loss=0.1734, MIE Loss=0.0163, MSE Loss R=0.0136, BCE Loss G=0.1435]Epoch 20/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0411, Goal Loss=0.1751, MIE Loss=0.0171, MSE Loss R=0.0149, BCE Loss G=0.1431]Epoch 20/500: 100%|██████████| 4/4 [00:11<00:00,  2.33s/it, Dt Loss=0.0411, Goal Loss=0.1751, MIE Loss=0.0171, MSE Loss R=0.0149, BCE Loss G=0.1431]Epoch 20/500: 100%|██████████| 4/4 [00:11<00:00,  2.89s/it, Dt Loss=0.0411, Goal Loss=0.1751, MIE Loss=0.0171, MSE Loss R=0.0149, BCE Loss G=0.1431]
-2024-11-20 13:58:07,760 - INFO - Epoch [20/500] completed. Average Goal Loss: 0.2075
-2024-11-20 13:58:07,760 - INFO - Epoch [20/500] completed. Average Action Loss: 0.0418
-2024-11-20 13:58:07,760 - INFO - ===================================================================================
-2024-11-20 13:58:22,364 - INFO - Epoch [20/500]
-Action Validation Loss: 0.0401 
- Goal Validation Loss: 0.2035 
- MIE Validation Loss: 0.0155 
- MSE R Validation Loss: 0.0448 
- BCE G Validation Loss: 0.1432
-2024-11-20 13:58:22,364 - INFO - ===================================================================================
-2024-11-20 13:58:22,365 - INFO - Completed in 0h 9m
-/home/cike/marl_collector/adhoc_dt/Agent/Adhoc_DT.py:23: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  t_list = [torch.tensor(t).to("cuda").clone().detach() for t in t_list]
-/home/cike/marl_collector/adhoc_dt/Agent/Adhoc_DT.py:22: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  g_list = [torch.tensor(g).to("cuda").clone().detach() for g in g_list]
-2024-11-20 13:59:01,987 - INFO - 20 Test Returns: 45.0
-2024-11-20 13:59:02,017 - INFO - Model checkpoint saved at training_output/20241120_134904/models/epoch_20.pth
-Epoch 21/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 21/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0414, Goal Loss=0.1632, MIE Loss=0.0127, MSE Loss R=0.0128, BCE Loss G=0.1377]2024-11-20 13:59:07,554 - INFO - Epoch [21/500], Batch [0/4]
- Dt Loss: 0.0414
- Goal Loss: 0.1632, MIE Loss: 0.0127
- MSE Loss R: 0.0128, BCE Loss G: 0.1377
-Epoch 21/500:  25%|██▌       | 1/4 [00:05<00:16,  5.54s/it, Dt Loss=0.0414, Goal Loss=0.1632, MIE Loss=0.0127, MSE Loss R=0.0128, BCE Loss G=0.1377]Epoch 21/500:  25%|██▌       | 1/4 [00:07<00:16,  5.54s/it, Dt Loss=0.0415, Goal Loss=0.4170, MIE Loss=0.0471, MSE Loss R=0.2077, BCE Loss G=0.1621]Epoch 21/500:  50%|█████     | 2/4 [00:07<00:06,  3.48s/it, Dt Loss=0.0415, Goal Loss=0.4170, MIE Loss=0.0471, MSE Loss R=0.2077, BCE Loss G=0.1621]Epoch 21/500:  50%|█████     | 2/4 [00:09<00:06,  3.48s/it, Dt Loss=0.0409, Goal Loss=0.1681, MIE Loss=0.0151, MSE Loss R=0.0215, BCE Loss G=0.1315]Epoch 21/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.84s/it, Dt Loss=0.0409, Goal Loss=0.1681, MIE Loss=0.0151, MSE Loss R=0.0215, BCE Loss G=0.1315]Epoch 21/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.84s/it, Dt Loss=0.0416, Goal Loss=0.3975, MIE Loss=0.0410, MSE Loss R=0.1968, BCE Loss G=0.1597]Epoch 21/500: 100%|██████████| 4/4 [00:11<00:00,  2.36s/it, Dt Loss=0.0416, Goal Loss=0.3975, MIE Loss=0.0410, MSE Loss R=0.1968, BCE Loss G=0.1597]Epoch 21/500: 100%|██████████| 4/4 [00:11<00:00,  2.93s/it, Dt Loss=0.0416, Goal Loss=0.3975, MIE Loss=0.0410, MSE Loss R=0.1968, BCE Loss G=0.1597]
-2024-11-20 13:59:13,741 - INFO - Epoch [21/500] completed. Average Goal Loss: 0.2864
-2024-11-20 13:59:13,741 - INFO - Epoch [21/500] completed. Average Action Loss: 0.0413
-2024-11-20 13:59:13,741 - INFO - ===================================================================================
-2024-11-20 13:59:29,894 - INFO - Epoch [21/500]
-Action Validation Loss: 0.0390 
- Goal Validation Loss: 0.2205 
- MIE Validation Loss: 0.0386 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1379
-2024-11-20 13:59:29,894 - INFO - ===================================================================================
-2024-11-20 13:59:29,895 - INFO - Completed in 0h 10m
-Epoch 22/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 22/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0407, Goal Loss=0.1616, MIE Loss=0.0129, MSE Loss R=0.0172, BCE Loss G=0.1315]2024-11-20 13:59:35,537 - INFO - Epoch [22/500], Batch [0/4]
- Dt Loss: 0.0407
- Goal Loss: 0.1616, MIE Loss: 0.0129
- MSE Loss R: 0.0172, BCE Loss G: 0.1315
-Epoch 22/500:  25%|██▌       | 1/4 [00:05<00:16,  5.64s/it, Dt Loss=0.0407, Goal Loss=0.1616, MIE Loss=0.0129, MSE Loss R=0.0172, BCE Loss G=0.1315]Epoch 22/500:  25%|██▌       | 1/4 [00:07<00:16,  5.64s/it, Dt Loss=0.0402, Goal Loss=0.1581, MIE Loss=0.0099, MSE Loss R=0.0172, BCE Loss G=0.1310]Epoch 22/500:  50%|█████     | 2/4 [00:07<00:06,  3.47s/it, Dt Loss=0.0402, Goal Loss=0.1581, MIE Loss=0.0099, MSE Loss R=0.0172, BCE Loss G=0.1310]Epoch 22/500:  50%|█████     | 2/4 [00:09<00:06,  3.47s/it, Dt Loss=0.0404, Goal Loss=0.1579, MIE Loss=0.0091, MSE Loss R=0.0226, BCE Loss G=0.1263]Epoch 22/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.80s/it, Dt Loss=0.0404, Goal Loss=0.1579, MIE Loss=0.0091, MSE Loss R=0.0226, BCE Loss G=0.1263]Epoch 22/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.80s/it, Dt Loss=0.0403, Goal Loss=0.1526, MIE Loss=0.0082, MSE Loss R=0.0192, BCE Loss G=0.1251]Epoch 22/500: 100%|██████████| 4/4 [00:11<00:00,  2.32s/it, Dt Loss=0.0403, Goal Loss=0.1526, MIE Loss=0.0082, MSE Loss R=0.0192, BCE Loss G=0.1251]Epoch 22/500: 100%|██████████| 4/4 [00:11<00:00,  2.91s/it, Dt Loss=0.0403, Goal Loss=0.1526, MIE Loss=0.0082, MSE Loss R=0.0192, BCE Loss G=0.1251]
-2024-11-20 13:59:41,546 - INFO - Epoch [22/500] completed. Average Goal Loss: 0.1575
-2024-11-20 13:59:41,547 - INFO - Epoch [22/500] completed. Average Action Loss: 0.0404
-2024-11-20 13:59:41,547 - INFO - ===================================================================================
-2024-11-20 13:59:57,467 - INFO - Epoch [22/500]
-Action Validation Loss: 0.0381 
- Goal Validation Loss: 0.1870 
- MIE Validation Loss: 0.0095 
- MSE R Validation Loss: 0.0444 
- BCE G Validation Loss: 0.1331
-2024-11-20 13:59:57,467 - INFO - ===================================================================================
-2024-11-20 13:59:57,468 - INFO - Completed in 0h 10m
-Epoch 23/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 23/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0400, Goal Loss=0.1595, MIE Loss=0.0156, MSE Loss R=0.0136, BCE Loss G=0.1303]2024-11-20 14:00:03,077 - INFO - Epoch [23/500], Batch [0/4]
- Dt Loss: 0.0400
- Goal Loss: 0.1595, MIE Loss: 0.0156
- MSE Loss R: 0.0136, BCE Loss G: 0.1303
-Epoch 23/500:  25%|██▌       | 1/4 [00:05<00:16,  5.61s/it, Dt Loss=0.0400, Goal Loss=0.1595, MIE Loss=0.0156, MSE Loss R=0.0136, BCE Loss G=0.1303]Epoch 23/500:  25%|██▌       | 1/4 [00:07<00:16,  5.61s/it, Dt Loss=0.0397, Goal Loss=0.1497, MIE Loss=0.0094, MSE Loss R=0.0138, BCE Loss G=0.1265]Epoch 23/500:  50%|█████     | 2/4 [00:07<00:06,  3.44s/it, Dt Loss=0.0397, Goal Loss=0.1497, MIE Loss=0.0094, MSE Loss R=0.0138, BCE Loss G=0.1265]Epoch 23/500:  50%|█████     | 2/4 [00:09<00:06,  3.44s/it, Dt Loss=0.0392, Goal Loss=0.1465, MIE Loss=0.0078, MSE Loss R=0.0145, BCE Loss G=0.1242]Epoch 23/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.79s/it, Dt Loss=0.0392, Goal Loss=0.1465, MIE Loss=0.0078, MSE Loss R=0.0145, BCE Loss G=0.1242]Epoch 23/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.79s/it, Dt Loss=0.0387, Goal Loss=0.1452, MIE Loss=0.0084, MSE Loss R=0.0187, BCE Loss G=0.1181]Epoch 23/500: 100%|██████████| 4/4 [00:11<00:00,  2.29s/it, Dt Loss=0.0387, Goal Loss=0.1452, MIE Loss=0.0084, MSE Loss R=0.0187, BCE Loss G=0.1181]Epoch 23/500: 100%|██████████| 4/4 [00:11<00:00,  2.87s/it, Dt Loss=0.0387, Goal Loss=0.1452, MIE Loss=0.0084, MSE Loss R=0.0187, BCE Loss G=0.1181]
-2024-11-20 14:00:08,958 - INFO - Epoch [23/500] completed. Average Goal Loss: 0.1502
-2024-11-20 14:00:08,958 - INFO - Epoch [23/500] completed. Average Action Loss: 0.0394
-2024-11-20 14:00:08,958 - INFO - ===================================================================================
-2024-11-20 14:00:24,897 - INFO - Epoch [23/500]
-Action Validation Loss: 0.0373 
- Goal Validation Loss: 0.1840 
- MIE Validation Loss: 0.0095 
- MSE R Validation Loss: 0.0450 
- BCE G Validation Loss: 0.1295
-2024-11-20 14:00:24,897 - INFO - ===================================================================================
-2024-11-20 14:00:24,898 - INFO - Completed in 0h 11m
-Epoch 24/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 24/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0394, Goal Loss=0.2142, MIE Loss=0.0250, MSE Loss R=0.0521, BCE Loss G=0.1370]2024-11-20 14:00:30,608 - INFO - Epoch [24/500], Batch [0/4]
- Dt Loss: 0.0394
- Goal Loss: 0.2142, MIE Loss: 0.0250
- MSE Loss R: 0.0521, BCE Loss G: 0.1370
-Epoch 24/500:  25%|██▌       | 1/4 [00:05<00:17,  5.71s/it, Dt Loss=0.0394, Goal Loss=0.2142, MIE Loss=0.0250, MSE Loss R=0.0521, BCE Loss G=0.1370]Epoch 24/500:  25%|██▌       | 1/4 [00:07<00:17,  5.71s/it, Dt Loss=0.0386, Goal Loss=0.1859, MIE Loss=0.0192, MSE Loss R=0.0339, BCE Loss G=0.1328]Epoch 24/500:  50%|█████     | 2/4 [00:07<00:07,  3.65s/it, Dt Loss=0.0386, Goal Loss=0.1859, MIE Loss=0.0192, MSE Loss R=0.0339, BCE Loss G=0.1328]Epoch 24/500:  50%|█████     | 2/4 [00:10<00:07,  3.65s/it, Dt Loss=0.0378, Goal Loss=0.3117, MIE Loss=0.0297, MSE Loss R=0.1318, BCE Loss G=0.1501]Epoch 24/500:  75%|███████▌  | 3/4 [00:10<00:03,  3.01s/it, Dt Loss=0.0378, Goal Loss=0.3117, MIE Loss=0.0297, MSE Loss R=0.1318, BCE Loss G=0.1501]Epoch 24/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.01s/it, Dt Loss=0.0381, Goal Loss=0.3488, MIE Loss=0.0281, MSE Loss R=0.1684, BCE Loss G=0.1522]Epoch 24/500: 100%|██████████| 4/4 [00:11<00:00,  2.41s/it, Dt Loss=0.0381, Goal Loss=0.3488, MIE Loss=0.0281, MSE Loss R=0.1684, BCE Loss G=0.1522]Epoch 24/500: 100%|██████████| 4/4 [00:12<00:00,  3.01s/it, Dt Loss=0.0381, Goal Loss=0.3488, MIE Loss=0.0281, MSE Loss R=0.1684, BCE Loss G=0.1522]
-2024-11-20 14:00:36,923 - INFO - Epoch [24/500] completed. Average Goal Loss: 0.2651
-2024-11-20 14:00:36,923 - INFO - Epoch [24/500] completed. Average Action Loss: 0.0384
-2024-11-20 14:00:36,923 - INFO - ===================================================================================
-2024-11-20 14:00:51,513 - INFO - Epoch [24/500]
-Action Validation Loss: 0.0361 
- Goal Validation Loss: 0.1992 
- MIE Validation Loss: 0.0281 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1272
-2024-11-20 14:00:51,514 - INFO - ===================================================================================
-2024-11-20 14:00:51,514 - INFO - Completed in 0h 11m
-Epoch 25/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 25/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0388, Goal Loss=0.1478, MIE Loss=0.0094, MSE Loss R=0.0173, BCE Loss G=0.1211]2024-11-20 14:00:56,719 - INFO - Epoch [25/500], Batch [0/4]
- Dt Loss: 0.0388
- Goal Loss: 0.1478, MIE Loss: 0.0094
- MSE Loss R: 0.0173, BCE Loss G: 0.1211
-Epoch 25/500:  25%|██▌       | 1/4 [00:05<00:15,  5.20s/it, Dt Loss=0.0388, Goal Loss=0.1478, MIE Loss=0.0094, MSE Loss R=0.0173, BCE Loss G=0.1211]Epoch 25/500:  25%|██▌       | 1/4 [00:07<00:15,  5.20s/it, Dt Loss=0.0371, Goal Loss=0.1492, MIE Loss=0.0077, MSE Loss R=0.0261, BCE Loss G=0.1155]Epoch 25/500:  50%|█████     | 2/4 [00:07<00:06,  3.27s/it, Dt Loss=0.0371, Goal Loss=0.1492, MIE Loss=0.0077, MSE Loss R=0.0261, BCE Loss G=0.1155]Epoch 25/500:  50%|█████     | 2/4 [00:09<00:06,  3.27s/it, Dt Loss=0.0381, Goal Loss=0.3260, MIE Loss=0.0272, MSE Loss R=0.1485, BCE Loss G=0.1503]Epoch 25/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.69s/it, Dt Loss=0.0381, Goal Loss=0.3260, MIE Loss=0.0272, MSE Loss R=0.1485, BCE Loss G=0.1503]Epoch 25/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.69s/it, Dt Loss=0.0369, Goal Loss=0.1467, MIE Loss=0.0089, MSE Loss R=0.0177, BCE Loss G=0.1200]Epoch 25/500: 100%|██████████| 4/4 [00:10<00:00,  2.22s/it, Dt Loss=0.0369, Goal Loss=0.1467, MIE Loss=0.0089, MSE Loss R=0.0177, BCE Loss G=0.1200]Epoch 25/500: 100%|██████████| 4/4 [00:11<00:00,  2.76s/it, Dt Loss=0.0369, Goal Loss=0.1467, MIE Loss=0.0089, MSE Loss R=0.0177, BCE Loss G=0.1200]
-2024-11-20 14:01:02,551 - INFO - Epoch [25/500] completed. Average Goal Loss: 0.1924
-2024-11-20 14:01:02,551 - INFO - Epoch [25/500] completed. Average Action Loss: 0.0377
-2024-11-20 14:01:02,551 - INFO - ===================================================================================
-2024-11-20 14:01:17,030 - INFO - Epoch [25/500]
-Action Validation Loss: 0.0354 
- Goal Validation Loss: 0.1778 
- MIE Validation Loss: 0.0090 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1250
-2024-11-20 14:01:17,030 - INFO - ===================================================================================
-2024-11-20 14:01:17,031 - INFO - Completed in 0h 11m
-Epoch 26/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 26/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0370, Goal Loss=0.2051, MIE Loss=0.0184, MSE Loss R=0.0514, BCE Loss G=0.1353]2024-11-20 14:01:22,867 - INFO - Epoch [26/500], Batch [0/4]
- Dt Loss: 0.0370
- Goal Loss: 0.2051, MIE Loss: 0.0184
- MSE Loss R: 0.0514, BCE Loss G: 0.1353
-Epoch 26/500:  25%|██▌       | 1/4 [00:05<00:17,  5.84s/it, Dt Loss=0.0370, Goal Loss=0.2051, MIE Loss=0.0184, MSE Loss R=0.0514, BCE Loss G=0.1353]Epoch 26/500:  25%|██▌       | 1/4 [00:07<00:17,  5.84s/it, Dt Loss=0.0366, Goal Loss=0.1476, MIE Loss=0.0074, MSE Loss R=0.0254, BCE Loss G=0.1148]Epoch 26/500:  50%|█████     | 2/4 [00:07<00:07,  3.52s/it, Dt Loss=0.0366, Goal Loss=0.1476, MIE Loss=0.0074, MSE Loss R=0.0254, BCE Loss G=0.1148]Epoch 26/500:  50%|█████     | 2/4 [00:09<00:07,  3.52s/it, Dt Loss=0.0369, Goal Loss=0.1437, MIE Loss=0.0061, MSE Loss R=0.0218, BCE Loss G=0.1158]Epoch 26/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.86s/it, Dt Loss=0.0369, Goal Loss=0.1437, MIE Loss=0.0061, MSE Loss R=0.0218, BCE Loss G=0.1158]Epoch 26/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.86s/it, Dt Loss=0.0362, Goal Loss=0.1668, MIE Loss=0.0142, MSE Loss R=0.0262, BCE Loss G=0.1263]Epoch 26/500: 100%|██████████| 4/4 [00:11<00:00,  2.33s/it, Dt Loss=0.0362, Goal Loss=0.1668, MIE Loss=0.0142, MSE Loss R=0.0262, BCE Loss G=0.1263]Epoch 26/500: 100%|██████████| 4/4 [00:11<00:00,  2.94s/it, Dt Loss=0.0362, Goal Loss=0.1668, MIE Loss=0.0142, MSE Loss R=0.0262, BCE Loss G=0.1263]
-2024-11-20 14:01:28,812 - INFO - Epoch [26/500] completed. Average Goal Loss: 0.1658
-2024-11-20 14:01:28,812 - INFO - Epoch [26/500] completed. Average Action Loss: 0.0367
-2024-11-20 14:01:28,812 - INFO - ===================================================================================
-2024-11-20 14:01:44,241 - INFO - Epoch [26/500]
-Action Validation Loss: 0.0342 
- Goal Validation Loss: 0.1777 
- MIE Validation Loss: 0.0108 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1230
-2024-11-20 14:01:44,241 - INFO - ===================================================================================
-2024-11-20 14:01:44,242 - INFO - Completed in 0h 12m
-Epoch 27/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 27/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0369, Goal Loss=0.1992, MIE Loss=0.0163, MSE Loss R=0.0494, BCE Loss G=0.1335]2024-11-20 14:01:49,764 - INFO - Epoch [27/500], Batch [0/4]
- Dt Loss: 0.0369
- Goal Loss: 0.1992, MIE Loss: 0.0163
- MSE Loss R: 0.0494, BCE Loss G: 0.1335
-Epoch 27/500:  25%|██▌       | 1/4 [00:05<00:16,  5.52s/it, Dt Loss=0.0369, Goal Loss=0.1992, MIE Loss=0.0163, MSE Loss R=0.0494, BCE Loss G=0.1335]Epoch 27/500:  25%|██▌       | 1/4 [00:07<00:16,  5.52s/it, Dt Loss=0.0358, Goal Loss=0.3078, MIE Loss=0.0213, MSE Loss R=0.1391, BCE Loss G=0.1474]Epoch 27/500:  50%|█████     | 2/4 [00:07<00:06,  3.37s/it, Dt Loss=0.0358, Goal Loss=0.3078, MIE Loss=0.0213, MSE Loss R=0.1391, BCE Loss G=0.1474]Epoch 27/500:  50%|█████     | 2/4 [00:09<00:06,  3.37s/it, Dt Loss=0.0370, Goal Loss=0.1434, MIE Loss=0.0069, MSE Loss R=0.0214, BCE Loss G=0.1152]Epoch 27/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.84s/it, Dt Loss=0.0370, Goal Loss=0.1434, MIE Loss=0.0069, MSE Loss R=0.0214, BCE Loss G=0.1152]Epoch 27/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.84s/it, Dt Loss=0.0369, Goal Loss=0.1440, MIE Loss=0.0055, MSE Loss R=0.0242, BCE Loss G=0.1143]Epoch 27/500: 100%|██████████| 4/4 [00:11<00:00,  2.34s/it, Dt Loss=0.0369, Goal Loss=0.1440, MIE Loss=0.0055, MSE Loss R=0.0242, BCE Loss G=0.1143]Epoch 27/500: 100%|██████████| 4/4 [00:11<00:00,  2.90s/it, Dt Loss=0.0369, Goal Loss=0.1440, MIE Loss=0.0055, MSE Loss R=0.0242, BCE Loss G=0.1143]
-2024-11-20 14:01:55,862 - INFO - Epoch [27/500] completed. Average Goal Loss: 0.1986
-2024-11-20 14:01:55,863 - INFO - Epoch [27/500] completed. Average Action Loss: 0.0366
-2024-11-20 14:01:55,863 - INFO - ===================================================================================
-2024-11-20 14:02:11,015 - INFO - Epoch [27/500]
-Action Validation Loss: 0.0337 
- Goal Validation Loss: 0.1714 
- MIE Validation Loss: 0.0059 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1216
-2024-11-20 14:02:11,016 - INFO - ===================================================================================
-2024-11-20 14:02:11,016 - INFO - Completed in 0h 12m
-Epoch 28/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 28/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0359, Goal Loss=0.1393, MIE Loss=0.0062, MSE Loss R=0.0179, BCE Loss G=0.1152]2024-11-20 14:02:16,489 - INFO - Epoch [28/500], Batch [0/4]
- Dt Loss: 0.0359
- Goal Loss: 0.1393, MIE Loss: 0.0062
- MSE Loss R: 0.0179, BCE Loss G: 0.1152
-Epoch 28/500:  25%|██▌       | 1/4 [00:05<00:16,  5.47s/it, Dt Loss=0.0359, Goal Loss=0.1393, MIE Loss=0.0062, MSE Loss R=0.0179, BCE Loss G=0.1152]Epoch 28/500:  25%|██▌       | 1/4 [00:07<00:16,  5.47s/it, Dt Loss=0.0360, Goal Loss=0.1496, MIE Loss=0.0106, MSE Loss R=0.0172, BCE Loss G=0.1217]Epoch 28/500:  50%|█████     | 2/4 [00:07<00:06,  3.37s/it, Dt Loss=0.0360, Goal Loss=0.1496, MIE Loss=0.0106, MSE Loss R=0.0172, BCE Loss G=0.1217]Epoch 28/500:  50%|█████     | 2/4 [00:09<00:06,  3.37s/it, Dt Loss=0.0358, Goal Loss=0.1380, MIE Loss=0.0054, MSE Loss R=0.0193, BCE Loss G=0.1134]Epoch 28/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.71s/it, Dt Loss=0.0358, Goal Loss=0.1380, MIE Loss=0.0054, MSE Loss R=0.0193, BCE Loss G=0.1134]Epoch 28/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.71s/it, Dt Loss=0.0358, Goal Loss=0.1363, MIE Loss=0.0047, MSE Loss R=0.0196, BCE Loss G=0.1121]Epoch 28/500: 100%|██████████| 4/4 [00:10<00:00,  2.22s/it, Dt Loss=0.0358, Goal Loss=0.1363, MIE Loss=0.0047, MSE Loss R=0.0196, BCE Loss G=0.1121]Epoch 28/500: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it, Dt Loss=0.0358, Goal Loss=0.1363, MIE Loss=0.0047, MSE Loss R=0.0196, BCE Loss G=0.1121]
-2024-11-20 14:02:22,224 - INFO - Epoch [28/500] completed. Average Goal Loss: 0.1408
-2024-11-20 14:02:22,224 - INFO - Epoch [28/500] completed. Average Action Loss: 0.0359
-2024-11-20 14:02:22,224 - INFO - ===================================================================================
-2024-11-20 14:02:36,384 - INFO - Epoch [28/500]
-Action Validation Loss: 0.0335 
- Goal Validation Loss: 0.1693 
- MIE Validation Loss: 0.0052 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1202
-2024-11-20 14:02:36,385 - INFO - ===================================================================================
-2024-11-20 14:02:36,385 - INFO - Completed in 0h 13m
-Epoch 29/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 29/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0356, Goal Loss=0.1381, MIE Loss=0.0050, MSE Loss R=0.0256, BCE Loss G=0.1075]2024-11-20 14:02:41,690 - INFO - Epoch [29/500], Batch [0/4]
- Dt Loss: 0.0356
- Goal Loss: 0.1381, MIE Loss: 0.0050
- MSE Loss R: 0.0256, BCE Loss G: 0.1075
-Epoch 29/500:  25%|██▌       | 1/4 [00:05<00:15,  5.30s/it, Dt Loss=0.0356, Goal Loss=0.1381, MIE Loss=0.0050, MSE Loss R=0.0256, BCE Loss G=0.1075]Epoch 29/500:  25%|██▌       | 1/4 [00:07<00:15,  5.30s/it, Dt Loss=0.0359, Goal Loss=0.1339, MIE Loss=0.0045, MSE Loss R=0.0186, BCE Loss G=0.1108]Epoch 29/500:  50%|█████     | 2/4 [00:07<00:06,  3.33s/it, Dt Loss=0.0359, Goal Loss=0.1339, MIE Loss=0.0045, MSE Loss R=0.0186, BCE Loss G=0.1108]Epoch 29/500:  50%|█████     | 2/4 [00:09<00:06,  3.33s/it, Dt Loss=0.0356, Goal Loss=0.3288, MIE Loss=0.0200, MSE Loss R=0.1607, BCE Loss G=0.1481]Epoch 29/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.69s/it, Dt Loss=0.0356, Goal Loss=0.3288, MIE Loss=0.0200, MSE Loss R=0.1607, BCE Loss G=0.1481]Epoch 29/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.69s/it, Dt Loss=0.0352, Goal Loss=0.1370, MIE Loss=0.0050, MSE Loss R=0.0230, BCE Loss G=0.1090]Epoch 29/500: 100%|██████████| 4/4 [00:10<00:00,  2.28s/it, Dt Loss=0.0352, Goal Loss=0.1370, MIE Loss=0.0050, MSE Loss R=0.0230, BCE Loss G=0.1090]Epoch 29/500: 100%|██████████| 4/4 [00:11<00:00,  2.84s/it, Dt Loss=0.0352, Goal Loss=0.1370, MIE Loss=0.0050, MSE Loss R=0.0230, BCE Loss G=0.1090]
-2024-11-20 14:02:47,749 - INFO - Epoch [29/500] completed. Average Goal Loss: 0.1844
-2024-11-20 14:02:47,750 - INFO - Epoch [29/500] completed. Average Action Loss: 0.0356
-2024-11-20 14:02:47,750 - INFO - ===================================================================================
-2024-11-20 14:03:02,406 - INFO - Epoch [29/500]
-Action Validation Loss: 0.0327 
- Goal Validation Loss: 0.1685 
- MIE Validation Loss: 0.0054 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1192
-2024-11-20 14:03:02,406 - INFO - ===================================================================================
-2024-11-20 14:03:02,407 - INFO - Completed in 0h 13m
-Epoch 30/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 30/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0351, Goal Loss=0.1384, MIE Loss=0.0084, MSE Loss R=0.0142, BCE Loss G=0.1158]2024-11-20 14:03:07,532 - INFO - Epoch [30/500], Batch [0/4]
- Dt Loss: 0.0351
- Goal Loss: 0.1384, MIE Loss: 0.0084
- MSE Loss R: 0.0142, BCE Loss G: 0.1158
-Epoch 30/500:  25%|██▌       | 1/4 [00:05<00:15,  5.13s/it, Dt Loss=0.0351, Goal Loss=0.1384, MIE Loss=0.0084, MSE Loss R=0.0142, BCE Loss G=0.1158]Epoch 30/500:  25%|██▌       | 1/4 [00:07<00:15,  5.13s/it, Dt Loss=0.0345, Goal Loss=0.1384, MIE Loss=0.0073, MSE Loss R=0.0153, BCE Loss G=0.1158]Epoch 30/500:  50%|█████     | 2/4 [00:07<00:06,  3.25s/it, Dt Loss=0.0345, Goal Loss=0.1384, MIE Loss=0.0073, MSE Loss R=0.0153, BCE Loss G=0.1158]Epoch 30/500:  50%|█████     | 2/4 [00:09<00:06,  3.25s/it, Dt Loss=0.0348, Goal Loss=0.1350, MIE Loss=0.0049, MSE Loss R=0.0243, BCE Loss G=0.1058]Epoch 30/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.67s/it, Dt Loss=0.0348, Goal Loss=0.1350, MIE Loss=0.0049, MSE Loss R=0.0243, BCE Loss G=0.1058]Epoch 30/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.67s/it, Dt Loss=0.0348, Goal Loss=0.1312, MIE Loss=0.0052, MSE Loss R=0.0147, BCE Loss G=0.1113]Epoch 30/500: 100%|██████████| 4/4 [00:10<00:00,  2.22s/it, Dt Loss=0.0348, Goal Loss=0.1312, MIE Loss=0.0052, MSE Loss R=0.0147, BCE Loss G=0.1113]Epoch 30/500: 100%|██████████| 4/4 [00:11<00:00,  2.78s/it, Dt Loss=0.0348, Goal Loss=0.1312, MIE Loss=0.0052, MSE Loss R=0.0147, BCE Loss G=0.1113]
-2024-11-20 14:03:13,517 - INFO - Epoch [30/500] completed. Average Goal Loss: 0.1358
-2024-11-20 14:03:13,517 - INFO - Epoch [30/500] completed. Average Action Loss: 0.0348
-2024-11-20 14:03:13,517 - INFO - ===================================================================================
-2024-11-20 14:03:28,117 - INFO - Epoch [30/500]
-Action Validation Loss: 0.0325 
- Goal Validation Loss: 0.1672 
- MIE Validation Loss: 0.0048 
- MSE R Validation Loss: 0.0442 
- BCE G Validation Loss: 0.1182
-2024-11-20 14:03:28,118 - INFO - ===================================================================================
-2024-11-20 14:03:28,118 - INFO - Completed in 0h 14m
-Epoch 31/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 31/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0352, Goal Loss=0.3424, MIE Loss=0.0178, MSE Loss R=0.1754, BCE Loss G=0.1492]2024-11-20 14:03:34,083 - INFO - Epoch [31/500], Batch [0/4]
- Dt Loss: 0.0352
- Goal Loss: 0.3424, MIE Loss: 0.0178
- MSE Loss R: 0.1754, BCE Loss G: 0.1492
-Epoch 31/500:  25%|██▌       | 1/4 [00:05<00:17,  5.96s/it, Dt Loss=0.0352, Goal Loss=0.3424, MIE Loss=0.0178, MSE Loss R=0.1754, BCE Loss G=0.1492]Epoch 31/500:  25%|██▌       | 1/4 [00:07<00:17,  5.96s/it, Dt Loss=0.0345, Goal Loss=0.1555, MIE Loss=0.0096, MSE Loss R=0.0251, BCE Loss G=0.1207]Epoch 31/500:  50%|█████     | 2/4 [00:07<00:07,  3.59s/it, Dt Loss=0.0345, Goal Loss=0.1555, MIE Loss=0.0096, MSE Loss R=0.0251, BCE Loss G=0.1207]Epoch 31/500:  50%|█████     | 2/4 [00:09<00:07,  3.59s/it, Dt Loss=0.0357, Goal Loss=0.1317, MIE Loss=0.0049, MSE Loss R=0.0158, BCE Loss G=0.1111]Epoch 31/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0357, Goal Loss=0.1317, MIE Loss=0.0049, MSE Loss R=0.0158, BCE Loss G=0.1111]Epoch 31/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0344, Goal Loss=0.1584, MIE Loss=0.0096, MSE Loss R=0.0267, BCE Loss G=0.1221]Epoch 31/500: 100%|██████████| 4/4 [00:11<00:00,  2.39s/it, Dt Loss=0.0344, Goal Loss=0.1584, MIE Loss=0.0096, MSE Loss R=0.0267, BCE Loss G=0.1221]Epoch 31/500: 100%|██████████| 4/4 [00:11<00:00,  2.99s/it, Dt Loss=0.0344, Goal Loss=0.1584, MIE Loss=0.0096, MSE Loss R=0.0267, BCE Loss G=0.1221]
-2024-11-20 14:03:40,083 - INFO - Epoch [31/500] completed. Average Goal Loss: 0.1970
-2024-11-20 14:03:40,083 - INFO - Epoch [31/500] completed. Average Action Loss: 0.0350
-2024-11-20 14:03:40,083 - INFO - ===================================================================================
-2024-11-20 14:03:55,039 - INFO - Epoch [31/500]
-Action Validation Loss: 0.0318 
- Goal Validation Loss: 0.1689 
- MIE Validation Loss: 0.0075 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1175
-2024-11-20 14:03:55,039 - INFO - ===================================================================================
-2024-11-20 14:03:55,040 - INFO - Completed in 0h 14m
-Epoch 32/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 32/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0339, Goal Loss=0.3454, MIE Loss=0.0157, MSE Loss R=0.1817, BCE Loss G=0.1479]2024-11-20 14:04:00,343 - INFO - Epoch [32/500], Batch [0/4]
- Dt Loss: 0.0339
- Goal Loss: 0.3454, MIE Loss: 0.0157
- MSE Loss R: 0.1817, BCE Loss G: 0.1479
-Epoch 32/500:  25%|██▌       | 1/4 [00:05<00:15,  5.30s/it, Dt Loss=0.0339, Goal Loss=0.3454, MIE Loss=0.0157, MSE Loss R=0.1817, BCE Loss G=0.1479]Epoch 32/500:  25%|██▌       | 1/4 [00:07<00:15,  5.30s/it, Dt Loss=0.0349, Goal Loss=0.1389, MIE Loss=0.0051, MSE Loss R=0.0298, BCE Loss G=0.1040]Epoch 32/500:  50%|█████     | 2/4 [00:07<00:06,  3.24s/it, Dt Loss=0.0349, Goal Loss=0.1389, MIE Loss=0.0051, MSE Loss R=0.0298, BCE Loss G=0.1040]Epoch 32/500:  50%|█████     | 2/4 [00:09<00:06,  3.24s/it, Dt Loss=0.0340, Goal Loss=0.1354, MIE Loss=0.0064, MSE Loss R=0.0154, BCE Loss G=0.1136]Epoch 32/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.66s/it, Dt Loss=0.0340, Goal Loss=0.1354, MIE Loss=0.0064, MSE Loss R=0.0154, BCE Loss G=0.1136]Epoch 32/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.66s/it, Dt Loss=0.0334, Goal Loss=0.1315, MIE Loss=0.0039, MSE Loss R=0.0182, BCE Loss G=0.1094]Epoch 32/500: 100%|██████████| 4/4 [00:10<00:00,  2.20s/it, Dt Loss=0.0334, Goal Loss=0.1315, MIE Loss=0.0039, MSE Loss R=0.0182, BCE Loss G=0.1094]Epoch 32/500: 100%|██████████| 4/4 [00:10<00:00,  2.75s/it, Dt Loss=0.0334, Goal Loss=0.1315, MIE Loss=0.0039, MSE Loss R=0.0182, BCE Loss G=0.1094]
-2024-11-20 14:04:06,029 - INFO - Epoch [32/500] completed. Average Goal Loss: 0.1878
-2024-11-20 14:04:06,029 - INFO - Epoch [32/500] completed. Average Action Loss: 0.0341
-2024-11-20 14:04:06,029 - INFO - ===================================================================================
-2024-11-20 14:04:20,113 - INFO - Epoch [32/500]
-Action Validation Loss: 0.0314 
- Goal Validation Loss: 0.1648 
- MIE Validation Loss: 0.0041 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1169
-2024-11-20 14:04:20,113 - INFO - ===================================================================================
-2024-11-20 14:04:20,114 - INFO - Completed in 0h 15m
-Epoch 33/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 33/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0334, Goal Loss=0.2173, MIE Loss=0.0123, MSE Loss R=0.0704, BCE Loss G=0.1346]2024-11-20 14:04:25,500 - INFO - Epoch [33/500], Batch [0/4]
- Dt Loss: 0.0334
- Goal Loss: 0.2173, MIE Loss: 0.0123
- MSE Loss R: 0.0704, BCE Loss G: 0.1346
-Epoch 33/500:  25%|██▌       | 1/4 [00:05<00:16,  5.39s/it, Dt Loss=0.0334, Goal Loss=0.2173, MIE Loss=0.0123, MSE Loss R=0.0704, BCE Loss G=0.1346]Epoch 33/500:  25%|██▌       | 1/4 [00:07<00:16,  5.39s/it, Dt Loss=0.0337, Goal Loss=0.1654, MIE Loss=0.0086, MSE Loss R=0.0337, BCE Loss G=0.1232]Epoch 33/500:  50%|█████     | 2/4 [00:07<00:06,  3.35s/it, Dt Loss=0.0337, Goal Loss=0.1654, MIE Loss=0.0086, MSE Loss R=0.0337, BCE Loss G=0.1232]Epoch 33/500:  50%|█████     | 2/4 [00:09<00:06,  3.35s/it, Dt Loss=0.0349, Goal Loss=0.1364, MIE Loss=0.0040, MSE Loss R=0.0267, BCE Loss G=0.1056]Epoch 33/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.70s/it, Dt Loss=0.0349, Goal Loss=0.1364, MIE Loss=0.0040, MSE Loss R=0.0267, BCE Loss G=0.1056]Epoch 33/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.70s/it, Dt Loss=0.0335, Goal Loss=0.1359, MIE Loss=0.0063, MSE Loss R=0.0154, BCE Loss G=0.1142]Epoch 33/500: 100%|██████████| 4/4 [00:10<00:00,  2.19s/it, Dt Loss=0.0335, Goal Loss=0.1359, MIE Loss=0.0063, MSE Loss R=0.0154, BCE Loss G=0.1142]Epoch 33/500: 100%|██████████| 4/4 [00:11<00:00,  2.76s/it, Dt Loss=0.0335, Goal Loss=0.1359, MIE Loss=0.0063, MSE Loss R=0.0154, BCE Loss G=0.1142]
-2024-11-20 14:04:31,171 - INFO - Epoch [33/500] completed. Average Goal Loss: 0.1638
-2024-11-20 14:04:31,172 - INFO - Epoch [33/500] completed. Average Action Loss: 0.0339
-2024-11-20 14:04:31,172 - INFO - ===================================================================================
-2024-11-20 14:04:45,760 - INFO - Epoch [33/500]
-Action Validation Loss: 0.0316 
- Goal Validation Loss: 0.1650 
- MIE Validation Loss: 0.0049 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1163
-2024-11-20 14:04:45,761 - INFO - ===================================================================================
-2024-11-20 14:04:45,761 - INFO - Completed in 0h 15m
-Epoch 34/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 34/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0334, Goal Loss=0.1346, MIE Loss=0.0040, MSE Loss R=0.0290, BCE Loss G=0.1016]2024-11-20 14:04:51,125 - INFO - Epoch [34/500], Batch [0/4]
- Dt Loss: 0.0334
- Goal Loss: 0.1346, MIE Loss: 0.0040
- MSE Loss R: 0.0290, BCE Loss G: 0.1016
-Epoch 34/500:  25%|██▌       | 1/4 [00:05<00:16,  5.36s/it, Dt Loss=0.0334, Goal Loss=0.1346, MIE Loss=0.0040, MSE Loss R=0.0290, BCE Loss G=0.1016]Epoch 34/500:  25%|██▌       | 1/4 [00:07<00:16,  5.36s/it, Dt Loss=0.0341, Goal Loss=0.1310, MIE Loss=0.0049, MSE Loss R=0.0149, BCE Loss G=0.1112]Epoch 34/500:  50%|█████     | 2/4 [00:07<00:06,  3.36s/it, Dt Loss=0.0341, Goal Loss=0.1310, MIE Loss=0.0049, MSE Loss R=0.0149, BCE Loss G=0.1112]Epoch 34/500:  50%|█████     | 2/4 [00:09<00:06,  3.36s/it, Dt Loss=0.0335, Goal Loss=0.1791, MIE Loss=0.0094, MSE Loss R=0.0435, BCE Loss G=0.1261]Epoch 34/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.67s/it, Dt Loss=0.0335, Goal Loss=0.1791, MIE Loss=0.0094, MSE Loss R=0.0435, BCE Loss G=0.1261]Epoch 34/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.67s/it, Dt Loss=0.0327, Goal Loss=0.1299, MIE Loss=0.0039, MSE Loss R=0.0159, BCE Loss G=0.1102]Epoch 34/500: 100%|██████████| 4/4 [00:10<00:00,  2.20s/it, Dt Loss=0.0327, Goal Loss=0.1299, MIE Loss=0.0039, MSE Loss R=0.0159, BCE Loss G=0.1102]Epoch 34/500: 100%|██████████| 4/4 [00:11<00:00,  2.77s/it, Dt Loss=0.0327, Goal Loss=0.1299, MIE Loss=0.0039, MSE Loss R=0.0159, BCE Loss G=0.1102]
-2024-11-20 14:04:56,834 - INFO - Epoch [34/500] completed. Average Goal Loss: 0.1436
-2024-11-20 14:04:56,834 - INFO - Epoch [34/500] completed. Average Action Loss: 0.0334
-2024-11-20 14:04:56,834 - INFO - ===================================================================================
-2024-11-20 14:05:11,354 - INFO - Epoch [34/500]
-Action Validation Loss: 0.0309 
- Goal Validation Loss: 0.1636 
- MIE Validation Loss: 0.0040 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1158
-2024-11-20 14:05:11,355 - INFO - ===================================================================================
-2024-11-20 14:05:11,355 - INFO - Completed in 0h 15m
-Epoch 35/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 35/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0334, Goal Loss=0.1642, MIE Loss=0.0076, MSE Loss R=0.0343, BCE Loss G=0.1224]2024-11-20 14:05:16,935 - INFO - Epoch [35/500], Batch [0/4]
- Dt Loss: 0.0334
- Goal Loss: 0.1642, MIE Loss: 0.0076
- MSE Loss R: 0.0343, BCE Loss G: 0.1224
-Epoch 35/500:  25%|██▌       | 1/4 [00:05<00:16,  5.58s/it, Dt Loss=0.0334, Goal Loss=0.1642, MIE Loss=0.0076, MSE Loss R=0.0343, BCE Loss G=0.1224]Epoch 35/500:  25%|██▌       | 1/4 [00:07<00:16,  5.58s/it, Dt Loss=0.0333, Goal Loss=0.1327, MIE Loss=0.0047, MSE Loss R=0.0150, BCE Loss G=0.1130]Epoch 35/500:  50%|█████     | 2/4 [00:07<00:06,  3.43s/it, Dt Loss=0.0333, Goal Loss=0.1327, MIE Loss=0.0047, MSE Loss R=0.0150, BCE Loss G=0.1130]Epoch 35/500:  50%|█████     | 2/4 [00:09<00:06,  3.43s/it, Dt Loss=0.0331, Goal Loss=0.1320, MIE Loss=0.0033, MSE Loss R=0.0235, BCE Loss G=0.1052]Epoch 35/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.76s/it, Dt Loss=0.0331, Goal Loss=0.1320, MIE Loss=0.0033, MSE Loss R=0.0235, BCE Loss G=0.1052]Epoch 35/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.76s/it, Dt Loss=0.0331, Goal Loss=0.1307, MIE Loss=0.0028, MSE Loss R=0.0230, BCE Loss G=0.1048]Epoch 35/500: 100%|██████████| 4/4 [00:11<00:00,  2.28s/it, Dt Loss=0.0331, Goal Loss=0.1307, MIE Loss=0.0028, MSE Loss R=0.0230, BCE Loss G=0.1048]Epoch 35/500: 100%|██████████| 4/4 [00:11<00:00,  2.85s/it, Dt Loss=0.0331, Goal Loss=0.1307, MIE Loss=0.0028, MSE Loss R=0.0230, BCE Loss G=0.1048]
-2024-11-20 14:05:22,749 - INFO - Epoch [35/500] completed. Average Goal Loss: 0.1399
-2024-11-20 14:05:22,750 - INFO - Epoch [35/500] completed. Average Action Loss: 0.0332
-2024-11-20 14:05:22,750 - INFO - ===================================================================================
-2024-11-20 14:05:37,660 - INFO - Epoch [35/500]
-Action Validation Loss: 0.0311 
- Goal Validation Loss: 0.1625 
- MIE Validation Loss: 0.0032 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1154
-2024-11-20 14:05:37,661 - INFO - ===================================================================================
-2024-11-20 14:05:37,661 - INFO - Completed in 0h 16m
-Epoch 36/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 36/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0328, Goal Loss=0.1964, MIE Loss=0.0097, MSE Loss R=0.0567, BCE Loss G=0.1299]2024-11-20 14:05:43,209 - INFO - Epoch [36/500], Batch [0/4]
- Dt Loss: 0.0328
- Goal Loss: 0.1964, MIE Loss: 0.0097
- MSE Loss R: 0.0567, BCE Loss G: 0.1299
-Epoch 36/500:  25%|██▌       | 1/4 [00:05<00:16,  5.55s/it, Dt Loss=0.0328, Goal Loss=0.1964, MIE Loss=0.0097, MSE Loss R=0.0567, BCE Loss G=0.1299]Epoch 36/500:  25%|██▌       | 1/4 [00:07<00:16,  5.55s/it, Dt Loss=0.0340, Goal Loss=0.3118, MIE Loss=0.0117, MSE Loss R=0.1536, BCE Loss G=0.1465]Epoch 36/500:  50%|█████     | 2/4 [00:07<00:06,  3.48s/it, Dt Loss=0.0340, Goal Loss=0.3118, MIE Loss=0.0117, MSE Loss R=0.1536, BCE Loss G=0.1465]Epoch 36/500:  50%|█████     | 2/4 [00:09<00:06,  3.48s/it, Dt Loss=0.0332, Goal Loss=0.1819, MIE Loss=0.0079, MSE Loss R=0.0466, BCE Loss G=0.1274]Epoch 36/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.73s/it, Dt Loss=0.0332, Goal Loss=0.1819, MIE Loss=0.0079, MSE Loss R=0.0466, BCE Loss G=0.1274]Epoch 36/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.73s/it, Dt Loss=0.0329, Goal Loss=0.2042, MIE Loss=0.0085, MSE Loss R=0.0639, BCE Loss G=0.1319]Epoch 36/500: 100%|██████████| 4/4 [00:10<00:00,  2.23s/it, Dt Loss=0.0329, Goal Loss=0.2042, MIE Loss=0.0085, MSE Loss R=0.0639, BCE Loss G=0.1319]Epoch 36/500: 100%|██████████| 4/4 [00:11<00:00,  2.82s/it, Dt Loss=0.0329, Goal Loss=0.2042, MIE Loss=0.0085, MSE Loss R=0.0639, BCE Loss G=0.1319]
-2024-11-20 14:05:48,940 - INFO - Epoch [36/500] completed. Average Goal Loss: 0.2236
-2024-11-20 14:05:48,940 - INFO - Epoch [36/500] completed. Average Action Loss: 0.0332
-2024-11-20 14:05:48,940 - INFO - ===================================================================================
-2024-11-20 14:06:04,294 - INFO - Epoch [36/500]
-Action Validation Loss: 0.0300 
- Goal Validation Loss: 0.1665 
- MIE Validation Loss: 0.0074 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1152
-2024-11-20 14:06:04,294 - INFO - ===================================================================================
-2024-11-20 14:06:04,295 - INFO - Completed in 0h 16m
-Epoch 37/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 37/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0332, Goal Loss=0.1391, MIE Loss=0.0034, MSE Loss R=0.0342, BCE Loss G=0.1016]2024-11-20 14:06:09,438 - INFO - Epoch [37/500], Batch [0/4]
- Dt Loss: 0.0332
- Goal Loss: 0.1391, MIE Loss: 0.0034
- MSE Loss R: 0.0342, BCE Loss G: 0.1016
-Epoch 37/500:  25%|██▌       | 1/4 [00:05<00:15,  5.14s/it, Dt Loss=0.0332, Goal Loss=0.1391, MIE Loss=0.0034, MSE Loss R=0.0342, BCE Loss G=0.1016]Epoch 37/500:  25%|██▌       | 1/4 [00:07<00:15,  5.14s/it, Dt Loss=0.0338, Goal Loss=0.1342, MIE Loss=0.0053, MSE Loss R=0.0159, BCE Loss G=0.1129]Epoch 37/500:  50%|█████     | 2/4 [00:07<00:06,  3.26s/it, Dt Loss=0.0338, Goal Loss=0.1342, MIE Loss=0.0053, MSE Loss R=0.0159, BCE Loss G=0.1129]Epoch 37/500:  50%|█████     | 2/4 [00:08<00:06,  3.26s/it, Dt Loss=0.0326, Goal Loss=0.1314, MIE Loss=0.0029, MSE Loss R=0.0224, BCE Loss G=0.1061]Epoch 37/500:  75%|███████▌  | 3/4 [00:08<00:02,  2.63s/it, Dt Loss=0.0326, Goal Loss=0.1314, MIE Loss=0.0029, MSE Loss R=0.0224, BCE Loss G=0.1061]Epoch 37/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.63s/it, Dt Loss=0.0326, Goal Loss=0.1334, MIE Loss=0.0027, MSE Loss R=0.0303, BCE Loss G=0.1005]Epoch 37/500: 100%|██████████| 4/4 [00:10<00:00,  2.19s/it, Dt Loss=0.0326, Goal Loss=0.1334, MIE Loss=0.0027, MSE Loss R=0.0303, BCE Loss G=0.1005]Epoch 37/500: 100%|██████████| 4/4 [00:10<00:00,  2.73s/it, Dt Loss=0.0326, Goal Loss=0.1334, MIE Loss=0.0027, MSE Loss R=0.0303, BCE Loss G=0.1005]
-2024-11-20 14:06:15,201 - INFO - Epoch [37/500] completed. Average Goal Loss: 0.1345
-2024-11-20 14:06:15,201 - INFO - Epoch [37/500] completed. Average Action Loss: 0.0331
-2024-11-20 14:06:15,201 - INFO - ===================================================================================
-2024-11-20 14:06:30,149 - INFO - Epoch [37/500]
-Action Validation Loss: 0.0308 
- Goal Validation Loss: 0.1614 
- MIE Validation Loss: 0.0029 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1147
-2024-11-20 14:06:30,149 - INFO - ===================================================================================
-2024-11-20 14:06:30,150 - INFO - Completed in 0h 17m
-Epoch 38/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 38/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0326, Goal Loss=0.1275, MIE Loss=0.0031, MSE Loss R=0.0176, BCE Loss G=0.1068]2024-11-20 14:06:35,291 - INFO - Epoch [38/500], Batch [0/4]
- Dt Loss: 0.0326
- Goal Loss: 0.1275, MIE Loss: 0.0031
- MSE Loss R: 0.0176, BCE Loss G: 0.1068
-Epoch 38/500:  25%|██▌       | 1/4 [00:05<00:15,  5.14s/it, Dt Loss=0.0326, Goal Loss=0.1275, MIE Loss=0.0031, MSE Loss R=0.0176, BCE Loss G=0.1068]Epoch 38/500:  25%|██▌       | 1/4 [00:07<00:15,  5.14s/it, Dt Loss=0.0323, Goal Loss=0.1264, MIE Loss=0.0027, MSE Loss R=0.0170, BCE Loss G=0.1067]Epoch 38/500:  50%|█████     | 2/4 [00:07<00:06,  3.28s/it, Dt Loss=0.0323, Goal Loss=0.1264, MIE Loss=0.0027, MSE Loss R=0.0170, BCE Loss G=0.1067]Epoch 38/500:  50%|█████     | 2/4 [00:09<00:06,  3.28s/it, Dt Loss=0.0330, Goal Loss=0.1328, MIE Loss=0.0045, MSE Loss R=0.0158, BCE Loss G=0.1126]Epoch 38/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.71s/it, Dt Loss=0.0330, Goal Loss=0.1328, MIE Loss=0.0045, MSE Loss R=0.0158, BCE Loss G=0.1126]Epoch 38/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.71s/it, Dt Loss=0.0324, Goal Loss=0.2021, MIE Loss=0.0080, MSE Loss R=0.0636, BCE Loss G=0.1305]Epoch 38/500: 100%|██████████| 4/4 [00:10<00:00,  2.26s/it, Dt Loss=0.0324, Goal Loss=0.2021, MIE Loss=0.0080, MSE Loss R=0.0636, BCE Loss G=0.1305]Epoch 38/500: 100%|██████████| 4/4 [00:11<00:00,  2.79s/it, Dt Loss=0.0324, Goal Loss=0.2021, MIE Loss=0.0080, MSE Loss R=0.0636, BCE Loss G=0.1305]
-2024-11-20 14:06:41,322 - INFO - Epoch [38/500] completed. Average Goal Loss: 0.1472
-2024-11-20 14:06:41,322 - INFO - Epoch [38/500] completed. Average Action Loss: 0.0326
-2024-11-20 14:06:41,322 - INFO - ===================================================================================
-2024-11-20 14:06:55,927 - INFO - Epoch [38/500]
-Action Validation Loss: 0.0303 
- Goal Validation Loss: 0.1645 
- MIE Validation Loss: 0.0063 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1144
-2024-11-20 14:06:55,928 - INFO - ===================================================================================
-2024-11-20 14:06:55,928 - INFO - Completed in 0h 17m
-Epoch 39/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 39/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0325, Goal Loss=0.1281, MIE Loss=0.0034, MSE Loss R=0.0154, BCE Loss G=0.1093]2024-11-20 14:07:01,258 - INFO - Epoch [39/500], Batch [0/4]
- Dt Loss: 0.0325
- Goal Loss: 0.1281, MIE Loss: 0.0034
- MSE Loss R: 0.0154, BCE Loss G: 0.1093
-Epoch 39/500:  25%|██▌       | 1/4 [00:05<00:15,  5.33s/it, Dt Loss=0.0325, Goal Loss=0.1281, MIE Loss=0.0034, MSE Loss R=0.0154, BCE Loss G=0.1093]Epoch 39/500:  25%|██▌       | 1/4 [00:07<00:15,  5.33s/it, Dt Loss=0.0330, Goal Loss=0.1294, MIE Loss=0.0026, MSE Loss R=0.0251, BCE Loss G=0.1018]Epoch 39/500:  50%|█████     | 2/4 [00:07<00:06,  3.34s/it, Dt Loss=0.0330, Goal Loss=0.1294, MIE Loss=0.0026, MSE Loss R=0.0251, BCE Loss G=0.1018]Epoch 39/500:  50%|█████     | 2/4 [00:09<00:06,  3.34s/it, Dt Loss=0.0322, Goal Loss=0.2893, MIE Loss=0.0101, MSE Loss R=0.1343, BCE Loss G=0.1450]Epoch 39/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.70s/it, Dt Loss=0.0322, Goal Loss=0.2893, MIE Loss=0.0101, MSE Loss R=0.1343, BCE Loss G=0.1450]Epoch 39/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.70s/it, Dt Loss=0.0319, Goal Loss=0.3303, MIE Loss=0.0094, MSE Loss R=0.1731, BCE Loss G=0.1477]Epoch 39/500: 100%|██████████| 4/4 [00:10<00:00,  2.22s/it, Dt Loss=0.0319, Goal Loss=0.3303, MIE Loss=0.0094, MSE Loss R=0.1731, BCE Loss G=0.1477]Epoch 39/500: 100%|██████████| 4/4 [00:11<00:00,  2.77s/it, Dt Loss=0.0319, Goal Loss=0.3303, MIE Loss=0.0094, MSE Loss R=0.1731, BCE Loss G=0.1477]
-2024-11-20 14:07:07,021 - INFO - Epoch [39/500] completed. Average Goal Loss: 0.2193
-2024-11-20 14:07:07,021 - INFO - Epoch [39/500] completed. Average Action Loss: 0.0324
-2024-11-20 14:07:07,022 - INFO - ===================================================================================
-2024-11-20 14:07:21,682 - INFO - Epoch [39/500]
-Action Validation Loss: 0.0295 
- Goal Validation Loss: 0.1680 
- MIE Validation Loss: 0.0099 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1142
-2024-11-20 14:07:21,683 - INFO - ===================================================================================
-2024-11-20 14:07:21,684 - INFO - Completed in 0h 18m
-Epoch 40/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 40/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0323, Goal Loss=0.1334, MIE Loss=0.0026, MSE Loss R=0.0265, BCE Loss G=0.1044]2024-11-20 14:07:26,968 - INFO - Epoch [40/500], Batch [0/4]
- Dt Loss: 0.0323
- Goal Loss: 0.1334, MIE Loss: 0.0026
- MSE Loss R: 0.0265, BCE Loss G: 0.1044
-Epoch 40/500:  25%|██▌       | 1/4 [00:05<00:15,  5.28s/it, Dt Loss=0.0323, Goal Loss=0.1334, MIE Loss=0.0026, MSE Loss R=0.0265, BCE Loss G=0.1044]Epoch 40/500:  25%|██▌       | 1/4 [00:07<00:15,  5.28s/it, Dt Loss=0.0321, Goal Loss=0.1341, MIE Loss=0.0021, MSE Loss R=0.0314, BCE Loss G=0.1006]Epoch 40/500:  50%|█████     | 2/4 [00:07<00:06,  3.50s/it, Dt Loss=0.0321, Goal Loss=0.1341, MIE Loss=0.0021, MSE Loss R=0.0314, BCE Loss G=0.1006]Epoch 40/500:  50%|█████     | 2/4 [00:09<00:06,  3.50s/it, Dt Loss=0.0321, Goal Loss=0.1312, MIE Loss=0.0018, MSE Loss R=0.0293, BCE Loss G=0.1001]Epoch 40/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0321, Goal Loss=0.1312, MIE Loss=0.0018, MSE Loss R=0.0293, BCE Loss G=0.1001]Epoch 40/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.81s/it, Dt Loss=0.0332, Goal Loss=0.1312, MIE Loss=0.0043, MSE Loss R=0.0152, BCE Loss G=0.1118]Epoch 40/500: 100%|██████████| 4/4 [00:10<00:00,  2.28s/it, Dt Loss=0.0332, Goal Loss=0.1312, MIE Loss=0.0043, MSE Loss R=0.0152, BCE Loss G=0.1118]Epoch 40/500: 100%|██████████| 4/4 [00:11<00:00,  2.84s/it, Dt Loss=0.0332, Goal Loss=0.1312, MIE Loss=0.0043, MSE Loss R=0.0152, BCE Loss G=0.1118]
-2024-11-20 14:07:33,036 - INFO - Epoch [40/500] completed. Average Goal Loss: 0.1325
-2024-11-20 14:07:33,037 - INFO - Epoch [40/500] completed. Average Action Loss: 0.0325
-2024-11-20 14:07:33,037 - INFO - ===================================================================================
-2024-11-20 14:07:47,485 - INFO - Epoch [40/500]
-Action Validation Loss: 0.0301 
- Goal Validation Loss: 0.1609 
- MIE Validation Loss: 0.0032 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1139
-2024-11-20 14:07:47,485 - INFO - ===================================================================================
-2024-11-20 14:07:47,486 - INFO - Completed in 0h 18m
-2024-11-20 14:08:25,421 - INFO - 40 Test Returns: 51.0
-2024-11-20 14:08:25,459 - INFO - Model checkpoint saved at training_output/20241120_134904/models/epoch_40.pth
-Epoch 41/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 41/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0324, Goal Loss=0.1326, MIE Loss=0.0039, MSE Loss R=0.0157, BCE Loss G=0.1130]2024-11-20 14:08:30,640 - INFO - Epoch [41/500], Batch [0/4]
- Dt Loss: 0.0324
- Goal Loss: 0.1326, MIE Loss: 0.0039
- MSE Loss R: 0.0157, BCE Loss G: 0.1130
-Epoch 41/500:  25%|██▌       | 1/4 [00:05<00:15,  5.18s/it, Dt Loss=0.0324, Goal Loss=0.1326, MIE Loss=0.0039, MSE Loss R=0.0157, BCE Loss G=0.1130]Epoch 41/500:  25%|██▌       | 1/4 [00:07<00:15,  5.18s/it, Dt Loss=0.0322, Goal Loss=0.1257, MIE Loss=0.0022, MSE Loss R=0.0195, BCE Loss G=0.1039]Epoch 41/500:  50%|█████     | 2/4 [00:07<00:06,  3.38s/it, Dt Loss=0.0322, Goal Loss=0.1257, MIE Loss=0.0022, MSE Loss R=0.0195, BCE Loss G=0.1039]Epoch 41/500:  50%|█████     | 2/4 [00:09<00:06,  3.38s/it, Dt Loss=0.0325, Goal Loss=0.3329, MIE Loss=0.0086, MSE Loss R=0.1767, BCE Loss G=0.1475]Epoch 41/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.72s/it, Dt Loss=0.0325, Goal Loss=0.3329, MIE Loss=0.0086, MSE Loss R=0.1767, BCE Loss G=0.1475]Epoch 41/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.72s/it, Dt Loss=0.0320, Goal Loss=0.1314, MIE Loss=0.0021, MSE Loss R=0.0274, BCE Loss G=0.1018]Epoch 41/500: 100%|██████████| 4/4 [00:10<00:00,  2.32s/it, Dt Loss=0.0320, Goal Loss=0.1314, MIE Loss=0.0021, MSE Loss R=0.0274, BCE Loss G=0.1018]Epoch 41/500: 100%|██████████| 4/4 [00:11<00:00,  2.83s/it, Dt Loss=0.0320, Goal Loss=0.1314, MIE Loss=0.0021, MSE Loss R=0.0274, BCE Loss G=0.1018]
-2024-11-20 14:08:36,794 - INFO - Epoch [41/500] completed. Average Goal Loss: 0.1806
-2024-11-20 14:08:36,795 - INFO - Epoch [41/500] completed. Average Action Loss: 0.0323
-2024-11-20 14:08:36,795 - INFO - ===================================================================================
-2024-11-20 14:08:50,894 - INFO - Epoch [41/500]
-Action Validation Loss: 0.0303 
- Goal Validation Loss: 0.1599 
- MIE Validation Loss: 0.0024 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1137
-2024-11-20 14:08:50,894 - INFO - ===================================================================================
-2024-11-20 14:08:50,894 - INFO - Completed in 0h 19m
-Epoch 42/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 42/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0317, Goal Loss=0.1275, MIE Loss=0.0020, MSE Loss R=0.0208, BCE Loss G=0.1046]2024-11-20 14:08:55,965 - INFO - Epoch [42/500], Batch [0/4]
- Dt Loss: 0.0317
- Goal Loss: 0.1275, MIE Loss: 0.0020
- MSE Loss R: 0.0208, BCE Loss G: 0.1046
-Epoch 42/500:  25%|██▌       | 1/4 [00:05<00:15,  5.07s/it, Dt Loss=0.0317, Goal Loss=0.1275, MIE Loss=0.0020, MSE Loss R=0.0208, BCE Loss G=0.1046]Epoch 42/500:  25%|██▌       | 1/4 [00:06<00:15,  5.07s/it, Dt Loss=0.0321, Goal Loss=0.1260, MIE Loss=0.0027, MSE Loss R=0.0149, BCE Loss G=0.1084]Epoch 42/500:  50%|█████     | 2/4 [00:06<00:06,  3.15s/it, Dt Loss=0.0321, Goal Loss=0.1260, MIE Loss=0.0027, MSE Loss R=0.0149, BCE Loss G=0.1084]Epoch 42/500:  50%|█████     | 2/4 [00:08<00:06,  3.15s/it, Dt Loss=0.0321, Goal Loss=0.1246, MIE Loss=0.0022, MSE Loss R=0.0156, BCE Loss G=0.1069]Epoch 42/500:  75%|███████▌  | 3/4 [00:08<00:02,  2.67s/it, Dt Loss=0.0321, Goal Loss=0.1246, MIE Loss=0.0022, MSE Loss R=0.0156, BCE Loss G=0.1069]Epoch 42/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.67s/it, Dt Loss=0.0320, Goal Loss=0.2456, MIE Loss=0.0075, MSE Loss R=0.0990, BCE Loss G=0.1391]Epoch 42/500: 100%|██████████| 4/4 [00:10<00:00,  2.21s/it, Dt Loss=0.0320, Goal Loss=0.2456, MIE Loss=0.0075, MSE Loss R=0.0990, BCE Loss G=0.1391]Epoch 42/500: 100%|██████████| 4/4 [00:10<00:00,  2.72s/it, Dt Loss=0.0320, Goal Loss=0.2456, MIE Loss=0.0075, MSE Loss R=0.0990, BCE Loss G=0.1391]
-2024-11-20 14:09:01,761 - INFO - Epoch [42/500] completed. Average Goal Loss: 0.1559
-2024-11-20 14:09:01,762 - INFO - Epoch [42/500] completed. Average Action Loss: 0.0320
-2024-11-20 14:09:01,762 - INFO - ===================================================================================
-2024-11-20 14:09:15,595 - INFO - Epoch [42/500]
-Action Validation Loss: 0.0297 
- Goal Validation Loss: 0.1637 
- MIE Validation Loss: 0.0064 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1135
-2024-11-20 14:09:15,596 - INFO - ===================================================================================
-2024-11-20 14:09:15,596 - INFO - Completed in 0h 19m
-Epoch 43/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 43/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0317, Goal Loss=0.1264, MIE Loss=0.0020, MSE Loss R=0.0206, BCE Loss G=0.1038]2024-11-20 14:09:20,778 - INFO - Epoch [43/500], Batch [0/4]
- Dt Loss: 0.0317
- Goal Loss: 0.1264, MIE Loss: 0.0020
- MSE Loss R: 0.0206, BCE Loss G: 0.1038
-Epoch 43/500:  25%|██▌       | 1/4 [00:05<00:15,  5.18s/it, Dt Loss=0.0317, Goal Loss=0.1264, MIE Loss=0.0020, MSE Loss R=0.0206, BCE Loss G=0.1038]Epoch 43/500:  25%|██▌       | 1/4 [00:07<00:15,  5.18s/it, Dt Loss=0.0312, Goal Loss=0.1952, MIE Loss=0.0058, MSE Loss R=0.0601, BCE Loss G=0.1293]Epoch 43/500:  50%|█████     | 2/4 [00:07<00:06,  3.37s/it, Dt Loss=0.0312, Goal Loss=0.1952, MIE Loss=0.0058, MSE Loss R=0.0601, BCE Loss G=0.1293]Epoch 43/500:  50%|█████     | 2/4 [00:09<00:06,  3.37s/it, Dt Loss=0.0315, Goal Loss=0.1292, MIE Loss=0.0032, MSE Loss R=0.0151, BCE Loss G=0.1108]Epoch 43/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.69s/it, Dt Loss=0.0315, Goal Loss=0.1292, MIE Loss=0.0032, MSE Loss R=0.0151, BCE Loss G=0.1108]Epoch 43/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.69s/it, Dt Loss=0.0306, Goal Loss=0.1735, MIE Loss=0.0051, MSE Loss R=0.0432, BCE Loss G=0.1252]Epoch 43/500: 100%|██████████| 4/4 [00:10<00:00,  2.21s/it, Dt Loss=0.0306, Goal Loss=0.1735, MIE Loss=0.0051, MSE Loss R=0.0432, BCE Loss G=0.1252]Epoch 43/500: 100%|██████████| 4/4 [00:11<00:00,  2.75s/it, Dt Loss=0.0306, Goal Loss=0.1735, MIE Loss=0.0051, MSE Loss R=0.0432, BCE Loss G=0.1252]
-2024-11-20 14:09:26,602 - INFO - Epoch [43/500] completed. Average Goal Loss: 0.1561
-2024-11-20 14:09:26,603 - INFO - Epoch [43/500] completed. Average Action Loss: 0.0313
-2024-11-20 14:09:26,603 - INFO - ===================================================================================
-2024-11-20 14:09:40,802 - INFO - Epoch [43/500]
-Action Validation Loss: 0.0290 
- Goal Validation Loss: 0.1613 
- MIE Validation Loss: 0.0041 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1133
-2024-11-20 14:09:40,803 - INFO - ===================================================================================
-2024-11-20 14:09:40,803 - INFO - Completed in 0h 20m
-Epoch 44/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 44/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0318, Goal Loss=0.1493, MIE Loss=0.0040, MSE Loss R=0.0269, BCE Loss G=0.1183]2024-11-20 14:09:45,961 - INFO - Epoch [44/500], Batch [0/4]
- Dt Loss: 0.0318
- Goal Loss: 0.1493, MIE Loss: 0.0040
- MSE Loss R: 0.0269, BCE Loss G: 0.1183
-Epoch 44/500:  25%|██▌       | 1/4 [00:05<00:15,  5.16s/it, Dt Loss=0.0318, Goal Loss=0.1493, MIE Loss=0.0040, MSE Loss R=0.0269, BCE Loss G=0.1183]Epoch 44/500:  25%|██▌       | 1/4 [00:07<00:15,  5.16s/it, Dt Loss=0.0313, Goal Loss=0.1308, MIE Loss=0.0020, MSE Loss R=0.0272, BCE Loss G=0.1016]Epoch 44/500:  50%|█████     | 2/4 [00:07<00:06,  3.25s/it, Dt Loss=0.0313, Goal Loss=0.1308, MIE Loss=0.0020, MSE Loss R=0.0272, BCE Loss G=0.1016]Epoch 44/500:  50%|█████     | 2/4 [00:08<00:06,  3.25s/it, Dt Loss=0.0316, Goal Loss=0.1455, MIE Loss=0.0038, MSE Loss R=0.0248, BCE Loss G=0.1170]Epoch 44/500:  75%|███████▌  | 3/4 [00:08<00:02,  2.63s/it, Dt Loss=0.0316, Goal Loss=0.1455, MIE Loss=0.0038, MSE Loss R=0.0248, BCE Loss G=0.1170]Epoch 44/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.63s/it, Dt Loss=0.0315, Goal Loss=0.3342, MIE Loss=0.0070, MSE Loss R=0.1814, BCE Loss G=0.1458]Epoch 44/500: 100%|██████████| 4/4 [00:10<00:00,  2.20s/it, Dt Loss=0.0315, Goal Loss=0.3342, MIE Loss=0.0070, MSE Loss R=0.1814, BCE Loss G=0.1458]Epoch 44/500: 100%|██████████| 4/4 [00:11<00:00,  2.75s/it, Dt Loss=0.0315, Goal Loss=0.3342, MIE Loss=0.0070, MSE Loss R=0.1814, BCE Loss G=0.1458]
-2024-11-20 14:09:51,813 - INFO - Epoch [44/500] completed. Average Goal Loss: 0.1900
-2024-11-20 14:09:51,813 - INFO - Epoch [44/500] completed. Average Action Loss: 0.0315
-2024-11-20 14:09:51,813 - INFO - ===================================================================================
-2024-11-20 14:10:06,139 - INFO - Epoch [44/500]
-Action Validation Loss: 0.0295 
- Goal Validation Loss: 0.1641 
- MIE Validation Loss: 0.0069 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1132
-2024-11-20 14:10:06,139 - INFO - ===================================================================================
-2024-11-20 14:10:06,140 - INFO - Completed in 0h 20m
-Epoch 45/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 45/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0309, Goal Loss=0.1329, MIE Loss=0.0019, MSE Loss R=0.0281, BCE Loss G=0.1029]2024-11-20 14:10:11,776 - INFO - Epoch [45/500], Batch [0/4]
- Dt Loss: 0.0309
- Goal Loss: 0.1329, MIE Loss: 0.0019
- MSE Loss R: 0.0281, BCE Loss G: 0.1029
-Epoch 45/500:  25%|██▌       | 1/4 [00:05<00:16,  5.64s/it, Dt Loss=0.0309, Goal Loss=0.1329, MIE Loss=0.0019, MSE Loss R=0.0281, BCE Loss G=0.1029]Epoch 45/500:  25%|██▌       | 1/4 [00:07<00:16,  5.64s/it, Dt Loss=0.0315, Goal Loss=0.1344, MIE Loss=0.0016, MSE Loss R=0.0337, BCE Loss G=0.0992]Epoch 45/500:  50%|█████     | 2/4 [00:07<00:07,  3.60s/it, Dt Loss=0.0315, Goal Loss=0.1344, MIE Loss=0.0016, MSE Loss R=0.0337, BCE Loss G=0.0992]Epoch 45/500:  50%|█████     | 2/4 [00:10<00:07,  3.60s/it, Dt Loss=0.0311, Goal Loss=0.1286, MIE Loss=0.0014, MSE Loss R=0.0257, BCE Loss G=0.1015]Epoch 45/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.98s/it, Dt Loss=0.0311, Goal Loss=0.1286, MIE Loss=0.0014, MSE Loss R=0.0257, BCE Loss G=0.1015]Epoch 45/500:  75%|███████▌  | 3/4 [00:12<00:02,  2.98s/it, Dt Loss=0.0311, Goal Loss=0.2840, MIE Loss=0.0065, MSE Loss R=0.1333, BCE Loss G=0.1442]Epoch 45/500: 100%|██████████| 4/4 [00:12<00:00,  2.60s/it, Dt Loss=0.0311, Goal Loss=0.2840, MIE Loss=0.0065, MSE Loss R=0.1333, BCE Loss G=0.1442]Epoch 45/500: 100%|██████████| 4/4 [00:12<00:00,  3.14s/it, Dt Loss=0.0311, Goal Loss=0.2840, MIE Loss=0.0065, MSE Loss R=0.1333, BCE Loss G=0.1442]
-2024-11-20 14:10:18,701 - INFO - Epoch [45/500] completed. Average Goal Loss: 0.1700
-2024-11-20 14:10:18,702 - INFO - Epoch [45/500] completed. Average Action Loss: 0.0312
-2024-11-20 14:10:18,702 - INFO - ===================================================================================
-2024-11-20 14:10:32,886 - INFO - Epoch [45/500]
-Action Validation Loss: 0.0285 
- Goal Validation Loss: 0.1624 
- MIE Validation Loss: 0.0055 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1130
-2024-11-20 14:10:32,887 - INFO - ===================================================================================
-2024-11-20 14:10:32,887 - INFO - Completed in 0h 21m
-Epoch 46/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 46/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0315, Goal Loss=0.2519, MIE Loss=0.0057, MSE Loss R=0.1065, BCE Loss G=0.1397]2024-11-20 14:10:38,262 - INFO - Epoch [46/500], Batch [0/4]
- Dt Loss: 0.0315
- Goal Loss: 0.2519, MIE Loss: 0.0057
- MSE Loss R: 0.1065, BCE Loss G: 0.1397
-Epoch 46/500:  25%|██▌       | 1/4 [00:05<00:16,  5.37s/it, Dt Loss=0.0315, Goal Loss=0.2519, MIE Loss=0.0057, MSE Loss R=0.1065, BCE Loss G=0.1397]Epoch 46/500:  25%|██▌       | 1/4 [00:07<00:16,  5.37s/it, Dt Loss=0.0309, Goal Loss=0.1474, MIE Loss=0.0036, MSE Loss R=0.0259, BCE Loss G=0.1179]Epoch 46/500:  50%|█████     | 2/4 [00:07<00:06,  3.33s/it, Dt Loss=0.0309, Goal Loss=0.1474, MIE Loss=0.0036, MSE Loss R=0.0259, BCE Loss G=0.1179]Epoch 46/500:  50%|█████     | 2/4 [00:09<00:06,  3.33s/it, Dt Loss=0.0313, Goal Loss=0.1294, MIE Loss=0.0025, MSE Loss R=0.0166, BCE Loss G=0.1103]Epoch 46/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.63s/it, Dt Loss=0.0313, Goal Loss=0.1294, MIE Loss=0.0025, MSE Loss R=0.0166, BCE Loss G=0.1103]Epoch 46/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.63s/it, Dt Loss=0.0312, Goal Loss=0.1336, MIE Loss=0.0015, MSE Loss R=0.0296, BCE Loss G=0.1025]Epoch 46/500: 100%|██████████| 4/4 [00:10<00:00,  2.15s/it, Dt Loss=0.0312, Goal Loss=0.1336, MIE Loss=0.0015, MSE Loss R=0.0296, BCE Loss G=0.1025]Epoch 46/500: 100%|██████████| 4/4 [00:10<00:00,  2.72s/it, Dt Loss=0.0312, Goal Loss=0.1336, MIE Loss=0.0015, MSE Loss R=0.0296, BCE Loss G=0.1025]
-2024-11-20 14:10:43,782 - INFO - Epoch [46/500] completed. Average Goal Loss: 0.1656
-2024-11-20 14:10:43,783 - INFO - Epoch [46/500] completed. Average Action Loss: 0.0312
-2024-11-20 14:10:43,783 - INFO - ===================================================================================
-2024-11-20 14:10:58,126 - INFO - Epoch [46/500]
-Action Validation Loss: 0.0286 
- Goal Validation Loss: 0.1586 
- MIE Validation Loss: 0.0016 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1129
-2024-11-20 14:10:58,126 - INFO - ===================================================================================
-2024-11-20 14:10:58,126 - INFO - Completed in 0h 21m
-Epoch 47/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 47/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0315, Goal Loss=0.1307, MIE Loss=0.0014, MSE Loss R=0.0253, BCE Loss G=0.1040]2024-11-20 14:11:03,573 - INFO - Epoch [47/500], Batch [0/4]
- Dt Loss: 0.0315
- Goal Loss: 0.1307, MIE Loss: 0.0014
- MSE Loss R: 0.0253, BCE Loss G: 0.1040
-Epoch 47/500:  25%|██▌       | 1/4 [00:05<00:16,  5.45s/it, Dt Loss=0.0315, Goal Loss=0.1307, MIE Loss=0.0014, MSE Loss R=0.0253, BCE Loss G=0.1040]Epoch 47/500:  25%|██▌       | 1/4 [00:07<00:16,  5.45s/it, Dt Loss=0.0307, Goal Loss=0.1266, MIE Loss=0.0016, MSE Loss R=0.0202, BCE Loss G=0.1049]Epoch 47/500:  50%|█████     | 2/4 [00:07<00:06,  3.38s/it, Dt Loss=0.0307, Goal Loss=0.1266, MIE Loss=0.0016, MSE Loss R=0.0202, BCE Loss G=0.1049]Epoch 47/500:  50%|█████     | 2/4 [00:09<00:06,  3.38s/it, Dt Loss=0.0311, Goal Loss=0.1261, MIE Loss=0.0014, MSE Loss R=0.0213, BCE Loss G=0.1034]Epoch 47/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.76s/it, Dt Loss=0.0311, Goal Loss=0.1261, MIE Loss=0.0014, MSE Loss R=0.0213, BCE Loss G=0.1034]Epoch 47/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.76s/it, Dt Loss=0.0312, Goal Loss=0.1272, MIE Loss=0.0024, MSE Loss R=0.0153, BCE Loss G=0.1095]Epoch 47/500: 100%|██████████| 4/4 [00:11<00:00,  2.37s/it, Dt Loss=0.0312, Goal Loss=0.1272, MIE Loss=0.0024, MSE Loss R=0.0153, BCE Loss G=0.1095]Epoch 47/500: 100%|██████████| 4/4 [00:11<00:00,  2.90s/it, Dt Loss=0.0312, Goal Loss=0.1272, MIE Loss=0.0024, MSE Loss R=0.0153, BCE Loss G=0.1095]
-2024-11-20 14:11:09,728 - INFO - Epoch [47/500] completed. Average Goal Loss: 0.1277
-2024-11-20 14:11:09,729 - INFO - Epoch [47/500] completed. Average Action Loss: 0.0311
-2024-11-20 14:11:09,729 - INFO - ===================================================================================
-2024-11-20 14:11:24,033 - INFO - Epoch [47/500]
-Action Validation Loss: 0.0291 
- Goal Validation Loss: 0.1585 
- MIE Validation Loss: 0.0020 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1127
-2024-11-20 14:11:24,033 - INFO - ===================================================================================
-2024-11-20 14:11:24,034 - INFO - Completed in 0h 22m
-Epoch 48/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 48/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0309, Goal Loss=0.1249, MIE Loss=0.0014, MSE Loss R=0.0190, BCE Loss G=0.1045]2024-11-20 14:11:29,495 - INFO - Epoch [48/500], Batch [0/4]
- Dt Loss: 0.0309
- Goal Loss: 0.1249, MIE Loss: 0.0014
- MSE Loss R: 0.0190, BCE Loss G: 0.1045
-Epoch 48/500:  25%|██▌       | 1/4 [00:05<00:16,  5.46s/it, Dt Loss=0.0309, Goal Loss=0.1249, MIE Loss=0.0014, MSE Loss R=0.0190, BCE Loss G=0.1045]Epoch 48/500:  25%|██▌       | 1/4 [00:07<00:16,  5.46s/it, Dt Loss=0.0317, Goal Loss=0.1278, MIE Loss=0.0023, MSE Loss R=0.0153, BCE Loss G=0.1102]Epoch 48/500:  50%|█████     | 2/4 [00:07<00:06,  3.32s/it, Dt Loss=0.0317, Goal Loss=0.1278, MIE Loss=0.0023, MSE Loss R=0.0153, BCE Loss G=0.1102]Epoch 48/500:  50%|█████     | 2/4 [00:09<00:06,  3.32s/it, Dt Loss=0.0309, Goal Loss=0.1246, MIE Loss=0.0013, MSE Loss R=0.0209, BCE Loss G=0.1024]Epoch 48/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.68s/it, Dt Loss=0.0309, Goal Loss=0.1246, MIE Loss=0.0013, MSE Loss R=0.0209, BCE Loss G=0.1024]Epoch 48/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.68s/it, Dt Loss=0.0313, Goal Loss=0.1254, MIE Loss=0.0013, MSE Loss R=0.0260, BCE Loss G=0.0981]Epoch 48/500: 100%|██████████| 4/4 [00:10<00:00,  2.20s/it, Dt Loss=0.0313, Goal Loss=0.1254, MIE Loss=0.0013, MSE Loss R=0.0260, BCE Loss G=0.0981]Epoch 48/500: 100%|██████████| 4/4 [00:11<00:00,  2.79s/it, Dt Loss=0.0313, Goal Loss=0.1254, MIE Loss=0.0013, MSE Loss R=0.0260, BCE Loss G=0.0981]
-2024-11-20 14:11:35,196 - INFO - Epoch [48/500] completed. Average Goal Loss: 0.1257
-2024-11-20 14:11:35,196 - INFO - Epoch [48/500] completed. Average Action Loss: 0.0312
-2024-11-20 14:11:35,196 - INFO - ===================================================================================
-2024-11-20 14:11:50,472 - INFO - Epoch [48/500]
-Action Validation Loss: 0.0283 
- Goal Validation Loss: 0.1580 
- MIE Validation Loss: 0.0014 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1126
-2024-11-20 14:11:50,473 - INFO - ===================================================================================
-2024-11-20 14:11:50,474 - INFO - Completed in 0h 22m
-Epoch 49/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 49/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0311, Goal Loss=0.1225, MIE Loss=0.0017, MSE Loss R=0.0146, BCE Loss G=0.1061]2024-11-20 14:11:55,878 - INFO - Epoch [49/500], Batch [0/4]
- Dt Loss: 0.0311
- Goal Loss: 0.1225, MIE Loss: 0.0017
- MSE Loss R: 0.0146, BCE Loss G: 0.1061
-Epoch 49/500:  25%|██▌       | 1/4 [00:05<00:16,  5.40s/it, Dt Loss=0.0311, Goal Loss=0.1225, MIE Loss=0.0017, MSE Loss R=0.0146, BCE Loss G=0.1061]Epoch 49/500:  25%|██▌       | 1/4 [00:07<00:16,  5.40s/it, Dt Loss=0.0312, Goal Loss=0.2196, MIE Loss=0.0052, MSE Loss R=0.0802, BCE Loss G=0.1342]Epoch 49/500:  50%|█████     | 2/4 [00:07<00:06,  3.36s/it, Dt Loss=0.0312, Goal Loss=0.2196, MIE Loss=0.0052, MSE Loss R=0.0802, BCE Loss G=0.1342]Epoch 49/500:  50%|█████     | 2/4 [00:09<00:06,  3.36s/it, Dt Loss=0.0306, Goal Loss=0.1258, MIE Loss=0.0014, MSE Loss R=0.0266, BCE Loss G=0.0978]Epoch 49/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.72s/it, Dt Loss=0.0306, Goal Loss=0.1258, MIE Loss=0.0014, MSE Loss R=0.0266, BCE Loss G=0.0978]Epoch 49/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.72s/it, Dt Loss=0.0309, Goal Loss=0.1219, MIE Loss=0.0013, MSE Loss R=0.0186, BCE Loss G=0.1019]Epoch 49/500: 100%|██████████| 4/4 [00:10<00:00,  2.23s/it, Dt Loss=0.0309, Goal Loss=0.1219, MIE Loss=0.0013, MSE Loss R=0.0186, BCE Loss G=0.1019]Epoch 49/500: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it, Dt Loss=0.0309, Goal Loss=0.1219, MIE Loss=0.0013, MSE Loss R=0.0186, BCE Loss G=0.1019]
-2024-11-20 14:12:01,663 - INFO - Epoch [49/500] completed. Average Goal Loss: 0.1474
-2024-11-20 14:12:01,664 - INFO - Epoch [49/500] completed. Average Action Loss: 0.0309
-2024-11-20 14:12:01,664 - INFO - ===================================================================================
-2024-11-20 14:12:17,004 - INFO - Epoch [49/500]
-Action Validation Loss: 0.0286 
- Goal Validation Loss: 0.1578 
- MIE Validation Loss: 0.0013 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1125
-2024-11-20 14:12:17,004 - INFO - ===================================================================================
-2024-11-20 14:12:17,005 - INFO - Completed in 0h 22m
-Epoch 50/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 50/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0314, Goal Loss=0.1211, MIE Loss=0.0014, MSE Loss R=0.0146, BCE Loss G=0.1051]2024-11-20 14:12:22,837 - INFO - Epoch [50/500], Batch [0/4]
- Dt Loss: 0.0314
- Goal Loss: 0.1211, MIE Loss: 0.0014
- MSE Loss R: 0.0146, BCE Loss G: 0.1051
-Epoch 50/500:  25%|██▌       | 1/4 [00:05<00:17,  5.83s/it, Dt Loss=0.0314, Goal Loss=0.1211, MIE Loss=0.0014, MSE Loss R=0.0146, BCE Loss G=0.1051]Epoch 50/500:  25%|██▌       | 1/4 [00:07<00:17,  5.83s/it, Dt Loss=0.0313, Goal Loss=0.1411, MIE Loss=0.0029, MSE Loss R=0.0233, BCE Loss G=0.1150]Epoch 50/500:  50%|█████     | 2/4 [00:07<00:07,  3.51s/it, Dt Loss=0.0313, Goal Loss=0.1411, MIE Loss=0.0029, MSE Loss R=0.0233, BCE Loss G=0.1150]Epoch 50/500:  50%|█████     | 2/4 [00:09<00:07,  3.51s/it, Dt Loss=0.0303, Goal Loss=0.1216, MIE Loss=0.0012, MSE Loss R=0.0206, BCE Loss G=0.0998]Epoch 50/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.78s/it, Dt Loss=0.0303, Goal Loss=0.1216, MIE Loss=0.0012, MSE Loss R=0.0206, BCE Loss G=0.0998]Epoch 50/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.78s/it, Dt Loss=0.0302, Goal Loss=0.1204, MIE Loss=0.0012, MSE Loss R=0.0158, BCE Loss G=0.1033]Epoch 50/500: 100%|██████████| 4/4 [00:11<00:00,  2.25s/it, Dt Loss=0.0302, Goal Loss=0.1204, MIE Loss=0.0012, MSE Loss R=0.0158, BCE Loss G=0.1033]Epoch 50/500: 100%|██████████| 4/4 [00:11<00:00,  2.87s/it, Dt Loss=0.0302, Goal Loss=0.1204, MIE Loss=0.0012, MSE Loss R=0.0158, BCE Loss G=0.1033]
-2024-11-20 14:12:28,467 - INFO - Epoch [50/500] completed. Average Goal Loss: 0.1260
-2024-11-20 14:12:28,467 - INFO - Epoch [50/500] completed. Average Action Loss: 0.0308
-2024-11-20 14:12:28,467 - INFO - ===================================================================================
-2024-11-20 14:12:43,745 - INFO - Epoch [50/500]
-Action Validation Loss: 0.0282 
- Goal Validation Loss: 0.1580 
- MIE Validation Loss: 0.0013 
- MSE R Validation Loss: 0.0443 
- BCE G Validation Loss: 0.1124
-2024-11-20 14:12:43,745 - INFO - ===================================================================================
-2024-11-20 14:12:43,746 - INFO - Completed in 0h 23m
-Epoch 51/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 51/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0300, Goal Loss=0.1956, MIE Loss=0.0040, MSE Loss R=0.0629, BCE Loss G=0.1287]2024-11-20 14:12:49,197 - INFO - Epoch [51/500], Batch [0/4]
- Dt Loss: 0.0300
- Goal Loss: 0.1956, MIE Loss: 0.0040
- MSE Loss R: 0.0629, BCE Loss G: 0.1287
-Epoch 51/500:  25%|██▌       | 1/4 [00:05<00:16,  5.45s/it, Dt Loss=0.0300, Goal Loss=0.1956, MIE Loss=0.0040, MSE Loss R=0.0629, BCE Loss G=0.1287]Epoch 51/500:  25%|██▌       | 1/4 [00:07<00:16,  5.45s/it, Dt Loss=0.0303, Goal Loss=0.1274, MIE Loss=0.0022, MSE Loss R=0.0153, BCE Loss G=0.1100]Epoch 51/500:  50%|█████     | 2/4 [00:07<00:06,  3.38s/it, Dt Loss=0.0303, Goal Loss=0.1274, MIE Loss=0.0022, MSE Loss R=0.0153, BCE Loss G=0.1100]Epoch 51/500:  50%|█████     | 2/4 [00:09<00:06,  3.38s/it, Dt Loss=0.0311, Goal Loss=0.1211, MIE Loss=0.0012, MSE Loss R=0.0180, BCE Loss G=0.1020]Epoch 51/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.68s/it, Dt Loss=0.0311, Goal Loss=0.1211, MIE Loss=0.0012, MSE Loss R=0.0180, BCE Loss G=0.1020]Epoch 51/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.68s/it, Dt Loss=0.0306, Goal Loss=0.1576, MIE Loss=0.0029, MSE Loss R=0.0357, BCE Loss G=0.1190]Epoch 51/500: 100%|██████████| 4/4 [00:10<00:00,  2.25s/it, Dt Loss=0.0306, Goal Loss=0.1576, MIE Loss=0.0029, MSE Loss R=0.0357, BCE Loss G=0.1190]Epoch 51/500: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it, Dt Loss=0.0306, Goal Loss=0.1576, MIE Loss=0.0029, MSE Loss R=0.0357, BCE Loss G=0.1190]
-2024-11-20 14:12:54,959 - INFO - Epoch [51/500] completed. Average Goal Loss: 0.1504
-2024-11-20 14:12:54,960 - INFO - Epoch [51/500] completed. Average Action Loss: 0.0305
-2024-11-20 14:12:54,960 - INFO - ===================================================================================
-2024-11-20 14:13:09,879 - INFO - Epoch [51/500]
-Action Validation Loss: 0.0284 
- Goal Validation Loss: 0.1587 
- MIE Validation Loss: 0.0023 
- MSE R Validation Loss: 0.0441 
- BCE G Validation Loss: 0.1123
-2024-11-20 14:13:09,880 - INFO - ===================================================================================
-2024-11-20 14:13:09,880 - INFO - Completed in 0h 23m
-Epoch 52/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 52/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0313, Goal Loss=0.1207, MIE Loss=0.0011, MSE Loss R=0.0186, BCE Loss G=0.1011]2024-11-20 14:13:15,382 - INFO - Epoch [52/500], Batch [0/4]
- Dt Loss: 0.0313
- Goal Loss: 0.1207, MIE Loss: 0.0011
- MSE Loss R: 0.0186, BCE Loss G: 0.1011
-Epoch 52/500:  25%|██▌       | 1/4 [00:05<00:16,  5.50s/it, Dt Loss=0.0313, Goal Loss=0.1207, MIE Loss=0.0011, MSE Loss R=0.0186, BCE Loss G=0.1011]Epoch 52/500:  25%|██▌       | 1/4 [00:07<00:16,  5.50s/it, Dt Loss=0.0308, Goal Loss=0.1203, MIE Loss=0.0011, MSE Loss R=0.0214, BCE Loss G=0.0978]Epoch 52/500:  50%|█████     | 2/4 [00:07<00:06,  3.35s/it, Dt Loss=0.0308, Goal Loss=0.1203, MIE Loss=0.0011, MSE Loss R=0.0214, BCE Loss G=0.0978]Epoch 52/500:  50%|█████     | 2/4 [00:09<00:06,  3.35s/it, Dt Loss=0.0304, Goal Loss=0.1186, MIE Loss=0.0011, MSE Loss R=0.0156, BCE Loss G=0.1018]Epoch 52/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.71s/it, Dt Loss=0.0304, Goal Loss=0.1186, MIE Loss=0.0011, MSE Loss R=0.0156, BCE Loss G=0.1018]Epoch 52/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.71s/it, Dt Loss=0.0306, Goal Loss=0.1177, MIE Loss=0.0009, MSE Loss R=0.0190, BCE Loss G=0.0977]Epoch 52/500: 100%|██████████| 4/4 [00:10<00:00,  2.24s/it, Dt Loss=0.0306, Goal Loss=0.1177, MIE Loss=0.0009, MSE Loss R=0.0190, BCE Loss G=0.0977]Epoch 52/500: 100%|██████████| 4/4 [00:11<00:00,  2.81s/it, Dt Loss=0.0306, Goal Loss=0.1177, MIE Loss=0.0009, MSE Loss R=0.0190, BCE Loss G=0.0977]
-2024-11-20 14:13:21,105 - INFO - Epoch [52/500] completed. Average Goal Loss: 0.1193
-2024-11-20 14:13:21,105 - INFO - Epoch [52/500] completed. Average Action Loss: 0.0308
-2024-11-20 14:13:21,105 - INFO - ===================================================================================
-2024-11-20 14:13:35,131 - INFO - Epoch [52/500]
-Action Validation Loss: 0.0284 
- Goal Validation Loss: 0.1582 
- MIE Validation Loss: 0.0011 
- MSE R Validation Loss: 0.0448 
- BCE G Validation Loss: 0.1123
-2024-11-20 14:13:35,131 - INFO - ===================================================================================
-2024-11-20 14:13:35,132 - INFO - Completed in 0h 24m
-Epoch 53/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 53/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0306, Goal Loss=0.1193, MIE Loss=0.0016, MSE Loss R=0.0126, BCE Loss G=0.1052]2024-11-20 14:13:40,528 - INFO - Epoch [53/500], Batch [0/4]
- Dt Loss: 0.0306
- Goal Loss: 0.1193, MIE Loss: 0.0016
- MSE Loss R: 0.0126, BCE Loss G: 0.1052
-Epoch 53/500:  25%|██▌       | 1/4 [00:05<00:16,  5.40s/it, Dt Loss=0.0306, Goal Loss=0.1193, MIE Loss=0.0016, MSE Loss R=0.0126, BCE Loss G=0.1052]Epoch 53/500:  25%|██▌       | 1/4 [00:07<00:16,  5.40s/it, Dt Loss=0.0309, Goal Loss=0.1198, MIE Loss=0.0013, MSE Loss R=0.0127, BCE Loss G=0.1059]Epoch 53/500:  50%|█████     | 2/4 [00:07<00:06,  3.46s/it, Dt Loss=0.0309, Goal Loss=0.1198, MIE Loss=0.0013, MSE Loss R=0.0127, BCE Loss G=0.1059]Epoch 53/500:  50%|█████     | 2/4 [00:09<00:06,  3.46s/it, Dt Loss=0.0305, Goal Loss=0.1164, MIE Loss=0.0009, MSE Loss R=0.0159, BCE Loss G=0.0996]Epoch 53/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.84s/it, Dt Loss=0.0305, Goal Loss=0.1164, MIE Loss=0.0009, MSE Loss R=0.0159, BCE Loss G=0.0996]Epoch 53/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.84s/it, Dt Loss=0.0307, Goal Loss=0.2901, MIE Loss=0.0046, MSE Loss R=0.1414, BCE Loss G=0.1440]Epoch 53/500: 100%|██████████| 4/4 [00:11<00:00,  2.33s/it, Dt Loss=0.0307, Goal Loss=0.2901, MIE Loss=0.0046, MSE Loss R=0.1414, BCE Loss G=0.1440]Epoch 53/500: 100%|██████████| 4/4 [00:11<00:00,  2.90s/it, Dt Loss=0.0307, Goal Loss=0.2901, MIE Loss=0.0046, MSE Loss R=0.1414, BCE Loss G=0.1440]
-2024-11-20 14:13:46,743 - INFO - Epoch [53/500] completed. Average Goal Loss: 0.1614
-2024-11-20 14:13:46,743 - INFO - Epoch [53/500] completed. Average Action Loss: 0.0307
-2024-11-20 14:13:46,743 - INFO - ===================================================================================
-2024-11-20 14:14:01,614 - INFO - Epoch [53/500]
-Action Validation Loss: 0.0284 
- Goal Validation Loss: 0.1609 
- MIE Validation Loss: 0.0038 
- MSE R Validation Loss: 0.0448 
- BCE G Validation Loss: 0.1122
-2024-11-20 14:14:01,614 - INFO - ===================================================================================
-2024-11-20 14:14:01,615 - INFO - Completed in 0h 24m
-Epoch 54/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 54/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0301, Goal Loss=0.1464, MIE Loss=0.0026, MSE Loss R=0.0277, BCE Loss G=0.1161]2024-11-20 14:14:07,074 - INFO - Epoch [54/500], Batch [0/4]
- Dt Loss: 0.0301
- Goal Loss: 0.1464, MIE Loss: 0.0026
- MSE Loss R: 0.0277, BCE Loss G: 0.1161
-Epoch 54/500:  25%|██▌       | 1/4 [00:05<00:16,  5.46s/it, Dt Loss=0.0301, Goal Loss=0.1464, MIE Loss=0.0026, MSE Loss R=0.0277, BCE Loss G=0.1161]Epoch 54/500:  25%|██▌       | 1/4 [00:07<00:16,  5.46s/it, Dt Loss=0.0300, Goal Loss=0.1181, MIE Loss=0.0010, MSE Loss R=0.0161, BCE Loss G=0.1009]Epoch 54/500:  50%|█████     | 2/4 [00:07<00:06,  3.31s/it, Dt Loss=0.0300, Goal Loss=0.1181, MIE Loss=0.0010, MSE Loss R=0.0161, BCE Loss G=0.1009]Epoch 54/500:  50%|█████     | 2/4 [00:09<00:06,  3.31s/it, Dt Loss=0.0305, Goal Loss=0.1174, MIE Loss=0.0010, MSE Loss R=0.0136, BCE Loss G=0.1028]Epoch 54/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.68s/it, Dt Loss=0.0305, Goal Loss=0.1174, MIE Loss=0.0010, MSE Loss R=0.0136, BCE Loss G=0.1028]Epoch 54/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.68s/it, Dt Loss=0.0296, Goal Loss=0.1512, MIE Loss=0.0025, MSE Loss R=0.0312, BCE Loss G=0.1175]Epoch 54/500: 100%|██████████| 4/4 [00:10<00:00,  2.18s/it, Dt Loss=0.0296, Goal Loss=0.1512, MIE Loss=0.0025, MSE Loss R=0.0312, BCE Loss G=0.1175]Epoch 54/500: 100%|██████████| 4/4 [00:11<00:00,  2.76s/it, Dt Loss=0.0296, Goal Loss=0.1512, MIE Loss=0.0025, MSE Loss R=0.0312, BCE Loss G=0.1175]
-2024-11-20 14:14:12,649 - INFO - Epoch [54/500] completed. Average Goal Loss: 0.1333
-2024-11-20 14:14:12,650 - INFO - Epoch [54/500] completed. Average Action Loss: 0.0300
-2024-11-20 14:14:12,650 - INFO - ===================================================================================
-2024-11-20 14:14:27,245 - INFO - Epoch [54/500]
-Action Validation Loss: 0.0272 
- Goal Validation Loss: 0.1587 
- MIE Validation Loss: 0.0019 
- MSE R Validation Loss: 0.0446 
- BCE G Validation Loss: 0.1121
-2024-11-20 14:14:27,245 - INFO - ===================================================================================
-2024-11-20 14:14:27,246 - INFO - Completed in 0h 25m
-Epoch 55/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 55/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0303, Goal Loss=0.1237, MIE Loss=0.0016, MSE Loss R=0.0140, BCE Loss G=0.1081]2024-11-20 14:14:32,812 - INFO - Epoch [55/500], Batch [0/4]
- Dt Loss: 0.0303
- Goal Loss: 0.1237, MIE Loss: 0.0016
- MSE Loss R: 0.0140, BCE Loss G: 0.1081
-Epoch 55/500:  25%|██▌       | 1/4 [00:05<00:16,  5.57s/it, Dt Loss=0.0303, Goal Loss=0.1237, MIE Loss=0.0016, MSE Loss R=0.0140, BCE Loss G=0.1081]Epoch 55/500:  25%|██▌       | 1/4 [00:07<00:16,  5.57s/it, Dt Loss=0.0302, Goal Loss=0.1176, MIE Loss=0.0009, MSE Loss R=0.0156, BCE Loss G=0.1011]Epoch 55/500:  50%|█████     | 2/4 [00:07<00:06,  3.38s/it, Dt Loss=0.0302, Goal Loss=0.1176, MIE Loss=0.0009, MSE Loss R=0.0156, BCE Loss G=0.1011]Epoch 55/500:  50%|█████     | 2/4 [00:09<00:06,  3.38s/it, Dt Loss=0.0300, Goal Loss=0.1159, MIE Loss=0.0008, MSE Loss R=0.0148, BCE Loss G=0.1003]Epoch 55/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.66s/it, Dt Loss=0.0300, Goal Loss=0.1159, MIE Loss=0.0008, MSE Loss R=0.0148, BCE Loss G=0.1003]Epoch 55/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.66s/it, Dt Loss=0.0306, Goal Loss=0.1160, MIE Loss=0.0008, MSE Loss R=0.0170, BCE Loss G=0.0982]Epoch 55/500: 100%|██████████| 4/4 [00:10<00:00,  2.17s/it, Dt Loss=0.0306, Goal Loss=0.1160, MIE Loss=0.0008, MSE Loss R=0.0170, BCE Loss G=0.0982]Epoch 55/500: 100%|██████████| 4/4 [00:11<00:00,  2.76s/it, Dt Loss=0.0306, Goal Loss=0.1160, MIE Loss=0.0008, MSE Loss R=0.0170, BCE Loss G=0.0982]
-2024-11-20 14:14:38,275 - INFO - Epoch [55/500] completed. Average Goal Loss: 0.1183
-2024-11-20 14:14:38,275 - INFO - Epoch [55/500] completed. Average Action Loss: 0.0303
-2024-11-20 14:14:38,276 - INFO - ===================================================================================
-2024-11-20 14:14:52,639 - INFO - Epoch [55/500]
-Action Validation Loss: 0.0283 
- Goal Validation Loss: 0.1583 
- MIE Validation Loss: 0.0010 
- MSE R Validation Loss: 0.0452 
- BCE G Validation Loss: 0.1122
-2024-11-20 14:14:52,639 - INFO - ===================================================================================
-2024-11-20 14:14:52,640 - INFO - Completed in 0h 25m
-Epoch 56/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 56/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0301, Goal Loss=0.1203, MIE Loss=0.0014, MSE Loss R=0.0124, BCE Loss G=0.1064]2024-11-20 14:14:57,987 - INFO - Epoch [56/500], Batch [0/4]
- Dt Loss: 0.0301
- Goal Loss: 0.1203, MIE Loss: 0.0014
- MSE Loss R: 0.0124, BCE Loss G: 0.1064
-Epoch 56/500:  25%|██▌       | 1/4 [00:05<00:16,  5.35s/it, Dt Loss=0.0301, Goal Loss=0.1203, MIE Loss=0.0014, MSE Loss R=0.0124, BCE Loss G=0.1064]Epoch 56/500:  25%|██▌       | 1/4 [00:07<00:16,  5.35s/it, Dt Loss=0.0301, Goal Loss=0.1558, MIE Loss=0.0023, MSE Loss R=0.0356, BCE Loss G=0.1179]Epoch 56/500:  50%|█████     | 2/4 [00:07<00:06,  3.35s/it, Dt Loss=0.0301, Goal Loss=0.1558, MIE Loss=0.0023, MSE Loss R=0.0356, BCE Loss G=0.1179]Epoch 56/500:  50%|█████     | 2/4 [00:09<00:06,  3.35s/it, Dt Loss=0.0297, Goal Loss=0.1157, MIE Loss=0.0009, MSE Loss R=0.0137, BCE Loss G=0.1012]Epoch 56/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.79s/it, Dt Loss=0.0297, Goal Loss=0.1157, MIE Loss=0.0009, MSE Loss R=0.0137, BCE Loss G=0.1012]Epoch 56/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.79s/it, Dt Loss=0.0302, Goal Loss=0.1179, MIE Loss=0.0011, MSE Loss R=0.0120, BCE Loss G=0.1048]Epoch 56/500: 100%|██████████| 4/4 [00:10<00:00,  2.25s/it, Dt Loss=0.0302, Goal Loss=0.1179, MIE Loss=0.0011, MSE Loss R=0.0120, BCE Loss G=0.1048]Epoch 56/500: 100%|██████████| 4/4 [00:11<00:00,  2.82s/it, Dt Loss=0.0302, Goal Loss=0.1179, MIE Loss=0.0011, MSE Loss R=0.0120, BCE Loss G=0.1048]
-2024-11-20 14:15:03,939 - INFO - Epoch [56/500] completed. Average Goal Loss: 0.1274
-2024-11-20 14:15:03,940 - INFO - Epoch [56/500] completed. Average Action Loss: 0.0300
-2024-11-20 14:15:03,940 - INFO - ===================================================================================
-2024-11-20 14:15:18,470 - INFO - Epoch [56/500]
-Action Validation Loss: 0.0279 
- Goal Validation Loss: 0.1585 
- MIE Validation Loss: 0.0011 
- MSE R Validation Loss: 0.0454 
- BCE G Validation Loss: 0.1121
-2024-11-20 14:15:18,471 - INFO - ===================================================================================
-2024-11-20 14:15:18,471 - INFO - Completed in 0h 25m
-Epoch 57/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 57/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0302, Goal Loss=0.1254, MIE Loss=0.0016, MSE Loss R=0.0146, BCE Loss G=0.1092]2024-11-20 14:15:23,947 - INFO - Epoch [57/500], Batch [0/4]
- Dt Loss: 0.0302
- Goal Loss: 0.1254, MIE Loss: 0.0016
- MSE Loss R: 0.0146, BCE Loss G: 0.1092
-Epoch 57/500:  25%|██▌       | 1/4 [00:05<00:16,  5.48s/it, Dt Loss=0.0302, Goal Loss=0.1254, MIE Loss=0.0016, MSE Loss R=0.0146, BCE Loss G=0.1092]Epoch 57/500:  25%|██▌       | 1/4 [00:07<00:16,  5.48s/it, Dt Loss=0.0298, Goal Loss=0.1198, MIE Loss=0.0011, MSE Loss R=0.0127, BCE Loss G=0.1060]Epoch 57/500:  50%|█████     | 2/4 [00:07<00:06,  3.32s/it, Dt Loss=0.0298, Goal Loss=0.1198, MIE Loss=0.0011, MSE Loss R=0.0127, BCE Loss G=0.1060]Epoch 57/500:  50%|█████     | 2/4 [00:09<00:06,  3.32s/it, Dt Loss=0.0293, Goal Loss=0.1476, MIE Loss=0.0020, MSE Loss R=0.0297, BCE Loss G=0.1160]Epoch 57/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.66s/it, Dt Loss=0.0293, Goal Loss=0.1476, MIE Loss=0.0020, MSE Loss R=0.0297, BCE Loss G=0.1160]Epoch 57/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.66s/it, Dt Loss=0.0291, Goal Loss=0.1158, MIE Loss=0.0010, MSE Loss R=0.0120, BCE Loss G=0.1028]Epoch 57/500: 100%|██████████| 4/4 [00:10<00:00,  2.23s/it, Dt Loss=0.0291, Goal Loss=0.1158, MIE Loss=0.0010, MSE Loss R=0.0120, BCE Loss G=0.1028]Epoch 57/500: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it, Dt Loss=0.0291, Goal Loss=0.1158, MIE Loss=0.0010, MSE Loss R=0.0120, BCE Loss G=0.1028]
-2024-11-20 14:15:29,656 - INFO - Epoch [57/500] completed. Average Goal Loss: 0.1271
-2024-11-20 14:15:29,656 - INFO - Epoch [57/500] completed. Average Action Loss: 0.0296
-2024-11-20 14:15:29,656 - INFO - ===================================================================================
-2024-11-20 14:15:43,995 - INFO - Epoch [57/500]
-Action Validation Loss: 0.0270 
- Goal Validation Loss: 0.1583 
- MIE Validation Loss: 0.0010 
- MSE R Validation Loss: 0.0453 
- BCE G Validation Loss: 0.1121
-2024-11-20 14:15:43,995 - INFO - ===================================================================================
-2024-11-20 14:15:43,996 - INFO - Completed in 0h 26m
-Epoch 58/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 58/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0290, Goal Loss=0.1419, MIE Loss=0.0018, MSE Loss R=0.0258, BCE Loss G=0.1143]2024-11-20 14:15:49,213 - INFO - Epoch [58/500], Batch [0/4]
- Dt Loss: 0.0290
- Goal Loss: 0.1419, MIE Loss: 0.0018
- MSE Loss R: 0.0258, BCE Loss G: 0.1143
-Epoch 58/500:  25%|██▌       | 1/4 [00:05<00:15,  5.22s/it, Dt Loss=0.0290, Goal Loss=0.1419, MIE Loss=0.0018, MSE Loss R=0.0258, BCE Loss G=0.1143]Epoch 58/500:  25%|██▌       | 1/4 [00:07<00:15,  5.22s/it, Dt Loss=0.0303, Goal Loss=0.1176, MIE Loss=0.0010, MSE Loss R=0.0123, BCE Loss G=0.1044]Epoch 58/500:  50%|█████     | 2/4 [00:07<00:06,  3.26s/it, Dt Loss=0.0303, Goal Loss=0.1176, MIE Loss=0.0010, MSE Loss R=0.0123, BCE Loss G=0.1044]Epoch 58/500:  50%|█████     | 2/4 [00:08<00:06,  3.26s/it, Dt Loss=0.0300, Goal Loss=0.1168, MIE Loss=0.0008, MSE Loss R=0.0119, BCE Loss G=0.1040]Epoch 58/500:  75%|███████▌  | 3/4 [00:08<00:02,  2.58s/it, Dt Loss=0.0300, Goal Loss=0.1168, MIE Loss=0.0008, MSE Loss R=0.0119, BCE Loss G=0.1040]Epoch 58/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.58s/it, Dt Loss=0.0300, Goal Loss=0.2061, MIE Loss=0.0033, MSE Loss R=0.0728, BCE Loss G=0.1301]Epoch 58/500: 100%|██████████| 4/4 [00:10<00:00,  2.10s/it, Dt Loss=0.0300, Goal Loss=0.2061, MIE Loss=0.0033, MSE Loss R=0.0728, BCE Loss G=0.1301]Epoch 58/500: 100%|██████████| 4/4 [00:10<00:00,  2.66s/it, Dt Loss=0.0300, Goal Loss=0.2061, MIE Loss=0.0033, MSE Loss R=0.0728, BCE Loss G=0.1301]
-2024-11-20 14:15:54,618 - INFO - Epoch [58/500] completed. Average Goal Loss: 0.1456
-2024-11-20 14:15:54,618 - INFO - Epoch [58/500] completed. Average Action Loss: 0.0298
-2024-11-20 14:15:54,618 - INFO - ===================================================================================
-2024-11-20 14:16:08,866 - INFO - Epoch [58/500]
-Action Validation Loss: 0.0279 
- Goal Validation Loss: 0.1594 
- MIE Validation Loss: 0.0024 
- MSE R Validation Loss: 0.0450 
- BCE G Validation Loss: 0.1120
-2024-11-20 14:16:08,867 - INFO - ===================================================================================
-2024-11-20 14:16:08,867 - INFO - Completed in 0h 26m
-Epoch 59/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 59/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0289, Goal Loss=0.1168, MIE Loss=0.0009, MSE Loss R=0.0170, BCE Loss G=0.0989]2024-11-20 14:16:14,672 - INFO - Epoch [59/500], Batch [0/4]
- Dt Loss: 0.0289
- Goal Loss: 0.1168, MIE Loss: 0.0009
- MSE Loss R: 0.0170, BCE Loss G: 0.0989
-Epoch 59/500:  25%|██▌       | 1/4 [00:05<00:17,  5.80s/it, Dt Loss=0.0289, Goal Loss=0.1168, MIE Loss=0.0009, MSE Loss R=0.0170, BCE Loss G=0.0989]Epoch 59/500:  25%|██▌       | 1/4 [00:08<00:17,  5.80s/it, Dt Loss=0.0297, Goal Loss=0.1979, MIE Loss=0.0028, MSE Loss R=0.0670, BCE Loss G=0.1281]Epoch 59/500:  50%|█████     | 2/4 [00:08<00:07,  3.70s/it, Dt Loss=0.0297, Goal Loss=0.1979, MIE Loss=0.0028, MSE Loss R=0.0670, BCE Loss G=0.1281]Epoch 59/500:  50%|█████     | 2/4 [00:10<00:07,  3.70s/it, Dt Loss=0.0294, Goal Loss=0.1166, MIE Loss=0.0008, MSE Loss R=0.0165, BCE Loss G=0.0993]Epoch 59/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.95s/it, Dt Loss=0.0294, Goal Loss=0.1166, MIE Loss=0.0008, MSE Loss R=0.0165, BCE Loss G=0.0993]Epoch 59/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.95s/it, Dt Loss=0.0288, Goal Loss=0.1174, MIE Loss=0.0007, MSE Loss R=0.0171, BCE Loss G=0.0997]Epoch 59/500: 100%|██████████| 4/4 [00:11<00:00,  2.38s/it, Dt Loss=0.0288, Goal Loss=0.1174, MIE Loss=0.0007, MSE Loss R=0.0171, BCE Loss G=0.0997]Epoch 59/500: 100%|██████████| 4/4 [00:11<00:00,  3.00s/it, Dt Loss=0.0288, Goal Loss=0.1174, MIE Loss=0.0007, MSE Loss R=0.0171, BCE Loss G=0.0997]
-2024-11-20 14:16:20,868 - INFO - Epoch [59/500] completed. Average Goal Loss: 0.1372
-2024-11-20 14:16:20,869 - INFO - Epoch [59/500] completed. Average Action Loss: 0.0292
-2024-11-20 14:16:20,869 - INFO - ===================================================================================
-2024-11-20 14:16:36,116 - INFO - Epoch [59/500]
-Action Validation Loss: 0.0271 
- Goal Validation Loss: 0.1577 
- MIE Validation Loss: 0.0008 
- MSE R Validation Loss: 0.0450 
- BCE G Validation Loss: 0.1118
-2024-11-20 14:16:36,116 - INFO - ===================================================================================
-2024-11-20 14:16:36,116 - INFO - Completed in 0h 27m
-Epoch 60/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 60/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0290, Goal Loss=0.2768, MIE Loss=0.0036, MSE Loss R=0.1310, BCE Loss G=0.1422]2024-11-20 14:16:41,680 - INFO - Epoch [60/500], Batch [0/4]
- Dt Loss: 0.0290
- Goal Loss: 0.2768, MIE Loss: 0.0036
- MSE Loss R: 0.1310, BCE Loss G: 0.1422
-Epoch 60/500:  25%|██▌       | 1/4 [00:05<00:16,  5.56s/it, Dt Loss=0.0290, Goal Loss=0.2768, MIE Loss=0.0036, MSE Loss R=0.1310, BCE Loss G=0.1422]Epoch 60/500:  25%|██▌       | 1/4 [00:07<00:16,  5.56s/it, Dt Loss=0.0293, Goal Loss=0.1177, MIE Loss=0.0008, MSE Loss R=0.0177, BCE Loss G=0.0992]Epoch 60/500:  50%|█████     | 2/4 [00:07<00:06,  3.47s/it, Dt Loss=0.0293, Goal Loss=0.1177, MIE Loss=0.0008, MSE Loss R=0.0177, BCE Loss G=0.0992]Epoch 60/500:  50%|█████     | 2/4 [00:09<00:06,  3.47s/it, Dt Loss=0.0299, Goal Loss=0.1169, MIE Loss=0.0008, MSE Loss R=0.0143, BCE Loss G=0.1018]Epoch 60/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.78s/it, Dt Loss=0.0299, Goal Loss=0.1169, MIE Loss=0.0008, MSE Loss R=0.0143, BCE Loss G=0.1018]Epoch 60/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.78s/it, Dt Loss=0.0288, Goal Loss=0.1491, MIE Loss=0.0018, MSE Loss R=0.0306, BCE Loss G=0.1167]Epoch 60/500: 100%|██████████| 4/4 [00:11<00:00,  2.31s/it, Dt Loss=0.0288, Goal Loss=0.1491, MIE Loss=0.0018, MSE Loss R=0.0306, BCE Loss G=0.1167]Epoch 60/500: 100%|██████████| 4/4 [00:11<00:00,  2.89s/it, Dt Loss=0.0288, Goal Loss=0.1491, MIE Loss=0.0018, MSE Loss R=0.0306, BCE Loss G=0.1167]
-2024-11-20 14:16:47,662 - INFO - Epoch [60/500] completed. Average Goal Loss: 0.1651
-2024-11-20 14:16:47,662 - INFO - Epoch [60/500] completed. Average Action Loss: 0.0293
-2024-11-20 14:16:47,663 - INFO - ===================================================================================
-2024-11-20 14:17:02,308 - INFO - Epoch [60/500]
-Action Validation Loss: 0.0274 
- Goal Validation Loss: 0.1579 
- MIE Validation Loss: 0.0014 
- MSE R Validation Loss: 0.0447 
- BCE G Validation Loss: 0.1117
-2024-11-20 14:17:02,309 - INFO - ===================================================================================
-2024-11-20 14:17:02,309 - INFO - Completed in 0h 27m
-2024-11-20 14:17:39,135 - INFO - 60 Test Returns: 52.0
-2024-11-20 14:17:39,164 - INFO - Model checkpoint saved at training_output/20241120_134904/models/epoch_60.pth
-Epoch 61/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 61/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0294, Goal Loss=0.1363, MIE Loss=0.0015, MSE Loss R=0.0221, BCE Loss G=0.1127]2024-11-20 14:17:44,541 - INFO - Epoch [61/500], Batch [0/4]
- Dt Loss: 0.0294
- Goal Loss: 0.1363, MIE Loss: 0.0015
- MSE Loss R: 0.0221, BCE Loss G: 0.1127
-Epoch 61/500:  25%|██▌       | 1/4 [00:05<00:16,  5.38s/it, Dt Loss=0.0294, Goal Loss=0.1363, MIE Loss=0.0015, MSE Loss R=0.0221, BCE Loss G=0.1127]Epoch 61/500:  25%|██▌       | 1/4 [00:07<00:16,  5.38s/it, Dt Loss=0.0288, Goal Loss=0.1182, MIE Loss=0.0008, MSE Loss R=0.0132, BCE Loss G=0.1041]Epoch 61/500:  50%|█████     | 2/4 [00:07<00:06,  3.31s/it, Dt Loss=0.0288, Goal Loss=0.1182, MIE Loss=0.0008, MSE Loss R=0.0132, BCE Loss G=0.1041]Epoch 61/500:  50%|█████     | 2/4 [00:09<00:06,  3.31s/it, Dt Loss=0.0298, Goal Loss=0.1174, MIE Loss=0.0007, MSE Loss R=0.0160, BCE Loss G=0.1007]Epoch 61/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.66s/it, Dt Loss=0.0298, Goal Loss=0.1174, MIE Loss=0.0007, MSE Loss R=0.0160, BCE Loss G=0.1007]Epoch 61/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.66s/it, Dt Loss=0.0294, Goal Loss=0.1188, MIE Loss=0.0009, MSE Loss R=0.0120, BCE Loss G=0.1058]Epoch 61/500: 100%|██████████| 4/4 [00:10<00:00,  2.19s/it, Dt Loss=0.0294, Goal Loss=0.1188, MIE Loss=0.0009, MSE Loss R=0.0120, BCE Loss G=0.1058]Epoch 61/500: 100%|██████████| 4/4 [00:10<00:00,  2.74s/it, Dt Loss=0.0294, Goal Loss=0.1188, MIE Loss=0.0009, MSE Loss R=0.0120, BCE Loss G=0.1058]
-2024-11-20 14:17:50,125 - INFO - Epoch [61/500] completed. Average Goal Loss: 0.1227
-2024-11-20 14:17:50,125 - INFO - Epoch [61/500] completed. Average Action Loss: 0.0293
-2024-11-20 14:17:50,125 - INFO - ===================================================================================
-2024-11-20 14:18:04,290 - INFO - Epoch [61/500]
-Action Validation Loss: 0.0266 
- Goal Validation Loss: 0.1575 
- MIE Validation Loss: 0.0009 
- MSE R Validation Loss: 0.0449 
- BCE G Validation Loss: 0.1117
-2024-11-20 14:18:04,291 - INFO - ===================================================================================
-2024-11-20 14:18:04,291 - INFO - Completed in 0h 28m
-Epoch 62/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 62/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0290, Goal Loss=0.1172, MIE Loss=0.0007, MSE Loss R=0.0126, BCE Loss G=0.1039]2024-11-20 14:18:09,483 - INFO - Epoch [62/500], Batch [0/4]
- Dt Loss: 0.0290
- Goal Loss: 0.1172, MIE Loss: 0.0007
- MSE Loss R: 0.0126, BCE Loss G: 0.1039
-Epoch 62/500:  25%|██▌       | 1/4 [00:05<00:15,  5.19s/it, Dt Loss=0.0290, Goal Loss=0.1172, MIE Loss=0.0007, MSE Loss R=0.0126, BCE Loss G=0.1039]Epoch 62/500:  25%|██▌       | 1/4 [00:07<00:15,  5.19s/it, Dt Loss=0.0303, Goal Loss=0.1154, MIE Loss=0.0007, MSE Loss R=0.0171, BCE Loss G=0.0976]Epoch 62/500:  50%|█████     | 2/4 [00:07<00:06,  3.31s/it, Dt Loss=0.0303, Goal Loss=0.1154, MIE Loss=0.0007, MSE Loss R=0.0171, BCE Loss G=0.0976]Epoch 62/500:  50%|█████     | 2/4 [00:08<00:06,  3.31s/it, Dt Loss=0.0293, Goal Loss=0.1144, MIE Loss=0.0006, MSE Loss R=0.0132, BCE Loss G=0.1006]Epoch 62/500:  75%|███████▌  | 3/4 [00:08<00:02,  2.62s/it, Dt Loss=0.0293, Goal Loss=0.1144, MIE Loss=0.0006, MSE Loss R=0.0132, BCE Loss G=0.1006]Epoch 62/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.62s/it, Dt Loss=0.0288, Goal Loss=0.3631, MIE Loss=0.0036, MSE Loss R=0.2089, BCE Loss G=0.1507]Epoch 62/500: 100%|██████████| 4/4 [00:10<00:00,  2.13s/it, Dt Loss=0.0288, Goal Loss=0.3631, MIE Loss=0.0036, MSE Loss R=0.2089, BCE Loss G=0.1507]Epoch 62/500: 100%|██████████| 4/4 [00:10<00:00,  2.68s/it, Dt Loss=0.0288, Goal Loss=0.3631, MIE Loss=0.0036, MSE Loss R=0.2089, BCE Loss G=0.1507]
-2024-11-20 14:18:15,012 - INFO - Epoch [62/500] completed. Average Goal Loss: 0.1775
-2024-11-20 14:18:15,013 - INFO - Epoch [62/500] completed. Average Action Loss: 0.0293
-2024-11-20 14:18:15,013 - INFO - ===================================================================================
-2024-11-20 14:18:29,631 - INFO - Epoch [62/500]
-Action Validation Loss: 0.0269 
- Goal Validation Loss: 0.1600 
- MIE Validation Loss: 0.0033 
- MSE R Validation Loss: 0.0450 
- BCE G Validation Loss: 0.1116
-2024-11-20 14:18:29,631 - INFO - ===================================================================================
-2024-11-20 14:18:29,632 - INFO - Completed in 0h 29m
-Epoch 63/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 63/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0294, Goal Loss=0.1366, MIE Loss=0.0017, MSE Loss R=0.0217, BCE Loss G=0.1133]2024-11-20 14:18:34,935 - INFO - Epoch [63/500], Batch [0/4]
- Dt Loss: 0.0294
- Goal Loss: 0.1366, MIE Loss: 0.0017
- MSE Loss R: 0.0217, BCE Loss G: 0.1133
-Epoch 63/500:  25%|██▌       | 1/4 [00:05<00:15,  5.30s/it, Dt Loss=0.0294, Goal Loss=0.1366, MIE Loss=0.0017, MSE Loss R=0.0217, BCE Loss G=0.1133]Epoch 63/500:  25%|██▌       | 1/4 [00:07<00:15,  5.30s/it, Dt Loss=0.0288, Goal Loss=0.1172, MIE Loss=0.0007, MSE Loss R=0.0182, BCE Loss G=0.0983]Epoch 63/500:  50%|█████     | 2/4 [00:07<00:06,  3.41s/it, Dt Loss=0.0288, Goal Loss=0.1172, MIE Loss=0.0007, MSE Loss R=0.0182, BCE Loss G=0.0983]Epoch 63/500:  50%|█████     | 2/4 [00:09<00:06,  3.41s/it, Dt Loss=0.0287, Goal Loss=0.1732, MIE Loss=0.0021, MSE Loss R=0.0484, BCE Loss G=0.1228]Epoch 63/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.94s/it, Dt Loss=0.0287, Goal Loss=0.1732, MIE Loss=0.0021, MSE Loss R=0.0484, BCE Loss G=0.1228]Epoch 63/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.94s/it, Dt Loss=0.0286, Goal Loss=0.1178, MIE Loss=0.0007, MSE Loss R=0.0152, BCE Loss G=0.1019]Epoch 63/500: 100%|██████████| 4/4 [00:11<00:00,  2.38s/it, Dt Loss=0.0286, Goal Loss=0.1178, MIE Loss=0.0007, MSE Loss R=0.0152, BCE Loss G=0.1019]Epoch 63/500: 100%|██████████| 4/4 [00:11<00:00,  2.92s/it, Dt Loss=0.0286, Goal Loss=0.1178, MIE Loss=0.0007, MSE Loss R=0.0152, BCE Loss G=0.1019]
-2024-11-20 14:18:41,308 - INFO - Epoch [63/500] completed. Average Goal Loss: 0.1362
-2024-11-20 14:18:41,308 - INFO - Epoch [63/500] completed. Average Action Loss: 0.0289
-2024-11-20 14:18:41,309 - INFO - ===================================================================================
-2024-11-20 14:18:55,749 - INFO - Epoch [63/500]
-Action Validation Loss: 0.0272 
- Goal Validation Loss: 0.1569 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0446 
- BCE G Validation Loss: 0.1115
-2024-11-20 14:18:55,749 - INFO - ===================================================================================
-2024-11-20 14:18:55,750 - INFO - Completed in 0h 29m
-Epoch 64/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 64/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0286, Goal Loss=0.2801, MIE Loss=0.0030, MSE Loss R=0.1353, BCE Loss G=0.1418]2024-11-20 14:19:01,301 - INFO - Epoch [64/500], Batch [0/4]
- Dt Loss: 0.0286
- Goal Loss: 0.2801, MIE Loss: 0.0030
- MSE Loss R: 0.1353, BCE Loss G: 0.1418
-Epoch 64/500:  25%|██▌       | 1/4 [00:05<00:16,  5.55s/it, Dt Loss=0.0286, Goal Loss=0.2801, MIE Loss=0.0030, MSE Loss R=0.1353, BCE Loss G=0.1418]Epoch 64/500:  25%|██▌       | 1/4 [00:07<00:16,  5.55s/it, Dt Loss=0.0297, Goal Loss=0.1211, MIE Loss=0.0011, MSE Loss R=0.0136, BCE Loss G=0.1065]Epoch 64/500:  50%|█████     | 2/4 [00:07<00:06,  3.44s/it, Dt Loss=0.0297, Goal Loss=0.1211, MIE Loss=0.0011, MSE Loss R=0.0136, BCE Loss G=0.1065]Epoch 64/500:  50%|█████     | 2/4 [00:09<00:06,  3.44s/it, Dt Loss=0.0290, Goal Loss=0.1224, MIE Loss=0.0009, MSE Loss R=0.0142, BCE Loss G=0.1073]Epoch 64/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.83s/it, Dt Loss=0.0290, Goal Loss=0.1224, MIE Loss=0.0009, MSE Loss R=0.0142, BCE Loss G=0.1073]Epoch 64/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.83s/it, Dt Loss=0.0295, Goal Loss=0.1783, MIE Loss=0.0020, MSE Loss R=0.0515, BCE Loss G=0.1248]Epoch 64/500: 100%|██████████| 4/4 [00:11<00:00,  2.38s/it, Dt Loss=0.0295, Goal Loss=0.1783, MIE Loss=0.0020, MSE Loss R=0.0515, BCE Loss G=0.1248]Epoch 64/500: 100%|██████████| 4/4 [00:11<00:00,  2.92s/it, Dt Loss=0.0295, Goal Loss=0.1783, MIE Loss=0.0020, MSE Loss R=0.0515, BCE Loss G=0.1248]
-2024-11-20 14:19:07,411 - INFO - Epoch [64/500] completed. Average Goal Loss: 0.1755
-2024-11-20 14:19:07,412 - INFO - Epoch [64/500] completed. Average Action Loss: 0.0292
-2024-11-20 14:19:07,412 - INFO - ===================================================================================
-2024-11-20 14:19:21,774 - INFO - Epoch [64/500]
-Action Validation Loss: 0.0264 
- Goal Validation Loss: 0.1571 
- MIE Validation Loss: 0.0015 
- MSE R Validation Loss: 0.0441 
- BCE G Validation Loss: 0.1114
-2024-11-20 14:19:21,774 - INFO - ===================================================================================
-2024-11-20 14:19:21,775 - INFO - Completed in 0h 30m
-Epoch 65/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 65/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0295, Goal Loss=0.1239, MIE Loss=0.0009, MSE Loss R=0.0149, BCE Loss G=0.1081]2024-11-20 14:19:27,446 - INFO - Epoch [65/500], Batch [0/4]
- Dt Loss: 0.0295
- Goal Loss: 0.1239, MIE Loss: 0.0009
- MSE Loss R: 0.0149, BCE Loss G: 0.1081
-Epoch 65/500:  25%|██▌       | 1/4 [00:05<00:17,  5.67s/it, Dt Loss=0.0295, Goal Loss=0.1239, MIE Loss=0.0009, MSE Loss R=0.0149, BCE Loss G=0.1081]Epoch 65/500:  25%|██▌       | 1/4 [00:07<00:17,  5.67s/it, Dt Loss=0.0282, Goal Loss=0.1222, MIE Loss=0.0007, MSE Loss R=0.0246, BCE Loss G=0.0969]Epoch 65/500:  50%|█████     | 2/4 [00:07<00:06,  3.47s/it, Dt Loss=0.0282, Goal Loss=0.1222, MIE Loss=0.0007, MSE Loss R=0.0246, BCE Loss G=0.0969]Epoch 65/500:  50%|█████     | 2/4 [00:09<00:06,  3.47s/it, Dt Loss=0.0285, Goal Loss=0.1184, MIE Loss=0.0006, MSE Loss R=0.0176, BCE Loss G=0.1002]Epoch 65/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.86s/it, Dt Loss=0.0285, Goal Loss=0.1184, MIE Loss=0.0006, MSE Loss R=0.0176, BCE Loss G=0.1002]Epoch 65/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.86s/it, Dt Loss=0.0294, Goal Loss=0.1180, MIE Loss=0.0007, MSE Loss R=0.0139, BCE Loss G=0.1035]Epoch 65/500: 100%|██████████| 4/4 [00:11<00:00,  2.38s/it, Dt Loss=0.0294, Goal Loss=0.1180, MIE Loss=0.0007, MSE Loss R=0.0139, BCE Loss G=0.1035]Epoch 65/500: 100%|██████████| 4/4 [00:11<00:00,  2.94s/it, Dt Loss=0.0294, Goal Loss=0.1180, MIE Loss=0.0007, MSE Loss R=0.0139, BCE Loss G=0.1035]
-2024-11-20 14:19:33,528 - INFO - Epoch [65/500] completed. Average Goal Loss: 0.1206
-2024-11-20 14:19:33,528 - INFO - Epoch [65/500] completed. Average Action Loss: 0.0289
-2024-11-20 14:19:33,528 - INFO - ===================================================================================
-2024-11-20 14:19:48,315 - INFO - Epoch [65/500]
-Action Validation Loss: 0.0263 
- Goal Validation Loss: 0.1566 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0445 
- BCE G Validation Loss: 0.1115
-2024-11-20 14:19:48,316 - INFO - ===================================================================================
-2024-11-20 14:19:48,316 - INFO - Completed in 0h 30m
-Epoch 66/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 66/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0286, Goal Loss=0.1701, MIE Loss=0.0017, MSE Loss R=0.0465, BCE Loss G=0.1219]2024-11-20 14:19:53,792 - INFO - Epoch [66/500], Batch [0/4]
- Dt Loss: 0.0286
- Goal Loss: 0.1701, MIE Loss: 0.0017
- MSE Loss R: 0.0465, BCE Loss G: 0.1219
-Epoch 66/500:  25%|██▌       | 1/4 [00:05<00:16,  5.48s/it, Dt Loss=0.0286, Goal Loss=0.1701, MIE Loss=0.0017, MSE Loss R=0.0465, BCE Loss G=0.1219]Epoch 66/500:  25%|██▌       | 1/4 [00:07<00:16,  5.48s/it, Dt Loss=0.0284, Goal Loss=0.1185, MIE Loss=0.0006, MSE Loss R=0.0215, BCE Loss G=0.0964]Epoch 66/500:  50%|█████     | 2/4 [00:07<00:06,  3.42s/it, Dt Loss=0.0284, Goal Loss=0.1185, MIE Loss=0.0006, MSE Loss R=0.0215, BCE Loss G=0.0964]Epoch 66/500:  50%|█████     | 2/4 [00:09<00:06,  3.42s/it, Dt Loss=0.0283, Goal Loss=0.1175, MIE Loss=0.0005, MSE Loss R=0.0174, BCE Loss G=0.0996]Epoch 66/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.74s/it, Dt Loss=0.0283, Goal Loss=0.1175, MIE Loss=0.0005, MSE Loss R=0.0174, BCE Loss G=0.0996]Epoch 66/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.74s/it, Dt Loss=0.0289, Goal Loss=0.1203, MIE Loss=0.0008, MSE Loss R=0.0134, BCE Loss G=0.1061]Epoch 66/500: 100%|██████████| 4/4 [00:10<00:00,  2.25s/it, Dt Loss=0.0289, Goal Loss=0.1203, MIE Loss=0.0008, MSE Loss R=0.0134, BCE Loss G=0.1061]Epoch 66/500: 100%|██████████| 4/4 [00:11<00:00,  2.82s/it, Dt Loss=0.0289, Goal Loss=0.1203, MIE Loss=0.0008, MSE Loss R=0.0134, BCE Loss G=0.1061]
-2024-11-20 14:19:59,615 - INFO - Epoch [66/500] completed. Average Goal Loss: 0.1316
-2024-11-20 14:19:59,615 - INFO - Epoch [66/500] completed. Average Action Loss: 0.0285
-2024-11-20 14:19:59,615 - INFO - ===================================================================================
-2024-11-20 14:20:15,870 - INFO - Epoch [66/500]
-Action Validation Loss: 0.0265 
- Goal Validation Loss: 0.1570 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0448 
- BCE G Validation Loss: 0.1115
-2024-11-20 14:20:15,871 - INFO - ===================================================================================
-2024-11-20 14:20:15,871 - INFO - Completed in 0h 30m
-Epoch 67/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 67/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0291, Goal Loss=0.1172, MIE Loss=0.0006, MSE Loss R=0.0126, BCE Loss G=0.1041]2024-11-20 14:20:21,294 - INFO - Epoch [67/500], Batch [0/4]
- Dt Loss: 0.0291
- Goal Loss: 0.1172, MIE Loss: 0.0006
- MSE Loss R: 0.0126, BCE Loss G: 0.1041
-Epoch 67/500:  25%|██▌       | 1/4 [00:05<00:16,  5.42s/it, Dt Loss=0.0291, Goal Loss=0.1172, MIE Loss=0.0006, MSE Loss R=0.0126, BCE Loss G=0.1041]Epoch 67/500:  25%|██▌       | 1/4 [00:07<00:16,  5.42s/it, Dt Loss=0.0286, Goal Loss=0.3218, MIE Loss=0.0028, MSE Loss R=0.1718, BCE Loss G=0.1472]Epoch 67/500:  50%|█████     | 2/4 [00:07<00:07,  3.53s/it, Dt Loss=0.0286, Goal Loss=0.3218, MIE Loss=0.0028, MSE Loss R=0.1718, BCE Loss G=0.1472]Epoch 67/500:  50%|█████     | 2/4 [00:09<00:07,  3.53s/it, Dt Loss=0.0285, Goal Loss=0.3188, MIE Loss=0.0025, MSE Loss R=0.1701, BCE Loss G=0.1462]Epoch 67/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.86s/it, Dt Loss=0.0285, Goal Loss=0.3188, MIE Loss=0.0025, MSE Loss R=0.1701, BCE Loss G=0.1462]Epoch 67/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.86s/it, Dt Loss=0.0287, Goal Loss=0.1214, MIE Loss=0.0006, MSE Loss R=0.0183, BCE Loss G=0.1025]Epoch 67/500: 100%|██████████| 4/4 [00:11<00:00,  2.34s/it, Dt Loss=0.0287, Goal Loss=0.1214, MIE Loss=0.0006, MSE Loss R=0.0183, BCE Loss G=0.1025]Epoch 67/500: 100%|██████████| 4/4 [00:11<00:00,  2.91s/it, Dt Loss=0.0287, Goal Loss=0.1214, MIE Loss=0.0006, MSE Loss R=0.0183, BCE Loss G=0.1025]
-2024-11-20 14:20:27,529 - INFO - Epoch [67/500] completed. Average Goal Loss: 0.2198
-2024-11-20 14:20:27,529 - INFO - Epoch [67/500] completed. Average Action Loss: 0.0287
-2024-11-20 14:20:27,529 - INFO - ===================================================================================
-2024-11-20 14:20:43,252 - INFO - Epoch [67/500]
-Action Validation Loss: 0.0266 
- Goal Validation Loss: 0.1559 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1113
-2024-11-20 14:20:43,253 - INFO - ===================================================================================
-2024-11-20 14:20:43,253 - INFO - Completed in 0h 31m
-Epoch 68/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 68/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0286, Goal Loss=0.1402, MIE Loss=0.0014, MSE Loss R=0.0237, BCE Loss G=0.1152]2024-11-20 14:20:48,541 - INFO - Epoch [68/500], Batch [0/4]
- Dt Loss: 0.0286
- Goal Loss: 0.1402, MIE Loss: 0.0014
- MSE Loss R: 0.0237, BCE Loss G: 0.1152
-Epoch 68/500:  25%|██▌       | 1/4 [00:05<00:15,  5.29s/it, Dt Loss=0.0286, Goal Loss=0.1402, MIE Loss=0.0014, MSE Loss R=0.0237, BCE Loss G=0.1152]Epoch 68/500:  25%|██▌       | 1/4 [00:07<00:15,  5.29s/it, Dt Loss=0.0286, Goal Loss=0.1340, MIE Loss=0.0010, MSE Loss R=0.0204, BCE Loss G=0.1125]Epoch 68/500:  50%|█████     | 2/4 [00:07<00:06,  3.34s/it, Dt Loss=0.0286, Goal Loss=0.1340, MIE Loss=0.0010, MSE Loss R=0.0204, BCE Loss G=0.1125]Epoch 68/500:  50%|█████     | 2/4 [00:09<00:06,  3.34s/it, Dt Loss=0.0284, Goal Loss=0.1225, MIE Loss=0.0007, MSE Loss R=0.0147, BCE Loss G=0.1071]Epoch 68/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.69s/it, Dt Loss=0.0284, Goal Loss=0.1225, MIE Loss=0.0007, MSE Loss R=0.0147, BCE Loss G=0.1071]Epoch 68/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.69s/it, Dt Loss=0.0282, Goal Loss=0.1265, MIE Loss=0.0008, MSE Loss R=0.0163, BCE Loss G=0.1093]Epoch 68/500: 100%|██████████| 4/4 [00:10<00:00,  2.25s/it, Dt Loss=0.0282, Goal Loss=0.1265, MIE Loss=0.0008, MSE Loss R=0.0163, BCE Loss G=0.1093]Epoch 68/500: 100%|██████████| 4/4 [00:11<00:00,  2.78s/it, Dt Loss=0.0282, Goal Loss=0.1265, MIE Loss=0.0008, MSE Loss R=0.0163, BCE Loss G=0.1093]
-2024-11-20 14:20:54,370 - INFO - Epoch [68/500] completed. Average Goal Loss: 0.1308
-2024-11-20 14:20:54,371 - INFO - Epoch [68/500] completed. Average Action Loss: 0.0284
-2024-11-20 14:20:54,371 - INFO - ===================================================================================
-2024-11-20 14:21:10,612 - INFO - Epoch [68/500]
-Action Validation Loss: 0.0266 
- Goal Validation Loss: 0.1559 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1113
-2024-11-20 14:21:10,613 - INFO - ===================================================================================
-2024-11-20 14:21:10,613 - INFO - Completed in 0h 31m
-Epoch 69/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 69/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0281, Goal Loss=0.1229, MIE Loss=0.0007, MSE Loss R=0.0147, BCE Loss G=0.1076]2024-11-20 14:21:16,162 - INFO - Epoch [69/500], Batch [0/4]
- Dt Loss: 0.0281
- Goal Loss: 0.1229, MIE Loss: 0.0007
- MSE Loss R: 0.0147, BCE Loss G: 0.1076
-Epoch 69/500:  25%|██▌       | 1/4 [00:05<00:16,  5.55s/it, Dt Loss=0.0281, Goal Loss=0.1229, MIE Loss=0.0007, MSE Loss R=0.0147, BCE Loss G=0.1076]Epoch 69/500:  25%|██▌       | 1/4 [00:07<00:16,  5.55s/it, Dt Loss=0.0283, Goal Loss=0.1214, MIE Loss=0.0005, MSE Loss R=0.0201, BCE Loss G=0.1008]Epoch 69/500:  50%|█████     | 2/4 [00:07<00:06,  3.50s/it, Dt Loss=0.0283, Goal Loss=0.1214, MIE Loss=0.0005, MSE Loss R=0.0201, BCE Loss G=0.1008]Epoch 69/500:  50%|█████     | 2/4 [00:09<00:06,  3.50s/it, Dt Loss=0.0283, Goal Loss=0.1657, MIE Loss=0.0015, MSE Loss R=0.0432, BCE Loss G=0.1210]Epoch 69/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.79s/it, Dt Loss=0.0283, Goal Loss=0.1657, MIE Loss=0.0015, MSE Loss R=0.0432, BCE Loss G=0.1210]Epoch 69/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.79s/it, Dt Loss=0.0288, Goal Loss=0.1224, MIE Loss=0.0005, MSE Loss R=0.0225, BCE Loss G=0.0994]Epoch 69/500: 100%|██████████| 4/4 [00:11<00:00,  2.29s/it, Dt Loss=0.0288, Goal Loss=0.1224, MIE Loss=0.0005, MSE Loss R=0.0225, BCE Loss G=0.0994]Epoch 69/500: 100%|██████████| 4/4 [00:11<00:00,  2.87s/it, Dt Loss=0.0288, Goal Loss=0.1224, MIE Loss=0.0005, MSE Loss R=0.0225, BCE Loss G=0.0994]
-2024-11-20 14:21:22,077 - INFO - Epoch [69/500] completed. Average Goal Loss: 0.1331
-2024-11-20 14:21:22,077 - INFO - Epoch [69/500] completed. Average Action Loss: 0.0284
-2024-11-20 14:21:22,078 - INFO - ===================================================================================
-2024-11-20 14:21:36,938 - INFO - Epoch [69/500]
-Action Validation Loss: 0.0273 
- Goal Validation Loss: 0.1558 
- MIE Validation Loss: 0.0005 
- MSE R Validation Loss: 0.0440 
- BCE G Validation Loss: 0.1113
-2024-11-20 14:21:36,938 - INFO - ===================================================================================
-2024-11-20 14:21:36,939 - INFO - Completed in 0h 32m
-Epoch 70/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 70/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0290, Goal Loss=0.1194, MIE Loss=0.0006, MSE Loss R=0.0142, BCE Loss G=0.1045]2024-11-20 14:21:42,532 - INFO - Epoch [70/500], Batch [0/4]
- Dt Loss: 0.0290
- Goal Loss: 0.1194, MIE Loss: 0.0006
- MSE Loss R: 0.0142, BCE Loss G: 0.1045
-Epoch 70/500:  25%|██▌       | 1/4 [00:05<00:16,  5.59s/it, Dt Loss=0.0290, Goal Loss=0.1194, MIE Loss=0.0006, MSE Loss R=0.0142, BCE Loss G=0.1045]Epoch 70/500:  25%|██▌       | 1/4 [00:07<00:16,  5.59s/it, Dt Loss=0.0282, Goal Loss=0.2905, MIE Loss=0.0023, MSE Loss R=0.1449, BCE Loss G=0.1433]Epoch 70/500:  50%|█████     | 2/4 [00:07<00:06,  3.45s/it, Dt Loss=0.0282, Goal Loss=0.2905, MIE Loss=0.0023, MSE Loss R=0.1449, BCE Loss G=0.1433]Epoch 70/500:  50%|█████     | 2/4 [00:09<00:06,  3.45s/it, Dt Loss=0.0282, Goal Loss=0.1205, MIE Loss=0.0006, MSE Loss R=0.0154, BCE Loss G=0.1044]Epoch 70/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.77s/it, Dt Loss=0.0282, Goal Loss=0.1205, MIE Loss=0.0006, MSE Loss R=0.0154, BCE Loss G=0.1044]Epoch 70/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.77s/it, Dt Loss=0.0287, Goal Loss=0.3373, MIE Loss=0.0022, MSE Loss R=0.1903, BCE Loss G=0.1448]Epoch 70/500: 100%|██████████| 4/4 [00:11<00:00,  2.33s/it, Dt Loss=0.0287, Goal Loss=0.3373, MIE Loss=0.0022, MSE Loss R=0.1903, BCE Loss G=0.1448]Epoch 70/500: 100%|██████████| 4/4 [00:11<00:00,  2.89s/it, Dt Loss=0.0287, Goal Loss=0.3373, MIE Loss=0.0022, MSE Loss R=0.1903, BCE Loss G=0.1448]
-2024-11-20 14:21:48,481 - INFO - Epoch [70/500] completed. Average Goal Loss: 0.2169
-2024-11-20 14:21:48,481 - INFO - Epoch [70/500] completed. Average Action Loss: 0.0285
-2024-11-20 14:21:48,481 - INFO - ===================================================================================
-2024-11-20 14:22:02,977 - INFO - Epoch [70/500]
-Action Validation Loss: 0.0258 
- Goal Validation Loss: 0.1573 
- MIE Validation Loss: 0.0022 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1113
-2024-11-20 14:22:02,977 - INFO - ===================================================================================
-2024-11-20 14:22:02,977 - INFO - Completed in 0h 32m
-Epoch 71/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 71/500:   0%|          | 0/4 [00:06<?, ?it/s, Dt Loss=0.0281, Goal Loss=0.1259, MIE Loss=0.0009, MSE Loss R=0.0158, BCE Loss G=0.1093]2024-11-20 14:22:09,107 - INFO - Epoch [71/500], Batch [0/4]
- Dt Loss: 0.0281
- Goal Loss: 0.1259, MIE Loss: 0.0009
- MSE Loss R: 0.0158, BCE Loss G: 0.1093
-Epoch 71/500:  25%|██▌       | 1/4 [00:06<00:18,  6.13s/it, Dt Loss=0.0281, Goal Loss=0.1259, MIE Loss=0.0009, MSE Loss R=0.0158, BCE Loss G=0.1093]Epoch 71/500:  25%|██▌       | 1/4 [00:08<00:18,  6.13s/it, Dt Loss=0.0280, Goal Loss=0.1235, MIE Loss=0.0006, MSE Loss R=0.0154, BCE Loss G=0.1074]Epoch 71/500:  50%|█████     | 2/4 [00:08<00:07,  3.70s/it, Dt Loss=0.0280, Goal Loss=0.1235, MIE Loss=0.0006, MSE Loss R=0.0154, BCE Loss G=0.1074]Epoch 71/500:  50%|█████     | 2/4 [00:10<00:07,  3.70s/it, Dt Loss=0.0285, Goal Loss=0.1780, MIE Loss=0.0015, MSE Loss R=0.0515, BCE Loss G=0.1251]Epoch 71/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.96s/it, Dt Loss=0.0285, Goal Loss=0.1780, MIE Loss=0.0015, MSE Loss R=0.0515, BCE Loss G=0.1251]Epoch 71/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.96s/it, Dt Loss=0.0277, Goal Loss=0.1266, MIE Loss=0.0005, MSE Loss R=0.0256, BCE Loss G=0.1005]Epoch 71/500: 100%|██████████| 4/4 [00:11<00:00,  2.41s/it, Dt Loss=0.0277, Goal Loss=0.1266, MIE Loss=0.0005, MSE Loss R=0.0256, BCE Loss G=0.1005]Epoch 71/500: 100%|██████████| 4/4 [00:12<00:00,  3.04s/it, Dt Loss=0.0277, Goal Loss=0.1266, MIE Loss=0.0005, MSE Loss R=0.0256, BCE Loss G=0.1005]
-2024-11-20 14:22:15,141 - INFO - Epoch [71/500] completed. Average Goal Loss: 0.1385
-2024-11-20 14:22:15,141 - INFO - Epoch [71/500] completed. Average Action Loss: 0.0281
-2024-11-20 14:22:15,141 - INFO - ===================================================================================
-2024-11-20 14:22:30,289 - INFO - Epoch [71/500]
-Action Validation Loss: 0.0258 
- Goal Validation Loss: 0.1556 
- MIE Validation Loss: 0.0005 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1112
-2024-11-20 14:22:30,290 - INFO - ===================================================================================
-2024-11-20 14:22:30,290 - INFO - Completed in 0h 33m
-Epoch 72/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 72/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0282, Goal Loss=0.1263, MIE Loss=0.0004, MSE Loss R=0.0261, BCE Loss G=0.0999]2024-11-20 14:22:36,147 - INFO - Epoch [72/500], Batch [0/4]
- Dt Loss: 0.0282
- Goal Loss: 0.1263, MIE Loss: 0.0004
- MSE Loss R: 0.0261, BCE Loss G: 0.0999
-Epoch 72/500:  25%|██▌       | 1/4 [00:05<00:17,  5.86s/it, Dt Loss=0.0282, Goal Loss=0.1263, MIE Loss=0.0004, MSE Loss R=0.0261, BCE Loss G=0.0999]Epoch 72/500:  25%|██▌       | 1/4 [00:07<00:17,  5.86s/it, Dt Loss=0.0288, Goal Loss=0.1987, MIE Loss=0.0016, MSE Loss R=0.0679, BCE Loss G=0.1292]Epoch 72/500:  50%|█████     | 2/4 [00:07<00:07,  3.59s/it, Dt Loss=0.0288, Goal Loss=0.1987, MIE Loss=0.0016, MSE Loss R=0.0679, BCE Loss G=0.1292]Epoch 72/500:  50%|█████     | 2/4 [00:09<00:07,  3.59s/it, Dt Loss=0.0280, Goal Loss=0.1231, MIE Loss=0.0005, MSE Loss R=0.0202, BCE Loss G=0.1025]Epoch 72/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.89s/it, Dt Loss=0.0280, Goal Loss=0.1231, MIE Loss=0.0005, MSE Loss R=0.0202, BCE Loss G=0.1025]Epoch 72/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.89s/it, Dt Loss=0.0284, Goal Loss=0.2136, MIE Loss=0.0017, MSE Loss R=0.0792, BCE Loss G=0.1327]Epoch 72/500: 100%|██████████| 4/4 [00:11<00:00,  2.36s/it, Dt Loss=0.0284, Goal Loss=0.2136, MIE Loss=0.0017, MSE Loss R=0.0792, BCE Loss G=0.1327]Epoch 72/500: 100%|██████████| 4/4 [00:11<00:00,  2.97s/it, Dt Loss=0.0284, Goal Loss=0.2136, MIE Loss=0.0017, MSE Loss R=0.0792, BCE Loss G=0.1327]
-2024-11-20 14:22:42,171 - INFO - Epoch [72/500] completed. Average Goal Loss: 0.1654
-2024-11-20 14:22:42,172 - INFO - Epoch [72/500] completed. Average Action Loss: 0.0283
-2024-11-20 14:22:42,172 - INFO - ===================================================================================
-2024-11-20 14:22:57,451 - INFO - Epoch [72/500]
-Action Validation Loss: 0.0261 
- Goal Validation Loss: 0.1564 
- MIE Validation Loss: 0.0013 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1112
-2024-11-20 14:22:57,452 - INFO - ===================================================================================
-2024-11-20 14:22:57,452 - INFO - Completed in 0h 33m
-Epoch 73/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 73/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0280, Goal Loss=0.1296, MIE Loss=0.0005, MSE Loss R=0.0312, BCE Loss G=0.0980]2024-11-20 14:23:02,955 - INFO - Epoch [73/500], Batch [0/4]
- Dt Loss: 0.0280
- Goal Loss: 0.1296, MIE Loss: 0.0005
- MSE Loss R: 0.0312, BCE Loss G: 0.0980
-Epoch 73/500:  25%|██▌       | 1/4 [00:05<00:16,  5.50s/it, Dt Loss=0.0280, Goal Loss=0.1296, MIE Loss=0.0005, MSE Loss R=0.0312, BCE Loss G=0.0980]Epoch 73/500:  25%|██▌       | 1/4 [00:07<00:16,  5.50s/it, Dt Loss=0.0283, Goal Loss=0.2225, MIE Loss=0.0016, MSE Loss R=0.0870, BCE Loss G=0.1338]Epoch 73/500:  50%|█████     | 2/4 [00:07<00:06,  3.44s/it, Dt Loss=0.0283, Goal Loss=0.2225, MIE Loss=0.0016, MSE Loss R=0.0870, BCE Loss G=0.1338]Epoch 73/500:  50%|█████     | 2/4 [00:09<00:06,  3.44s/it, Dt Loss=0.0281, Goal Loss=0.1242, MIE Loss=0.0005, MSE Loss R=0.0186, BCE Loss G=0.1051]Epoch 73/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.86s/it, Dt Loss=0.0281, Goal Loss=0.1242, MIE Loss=0.0005, MSE Loss R=0.0186, BCE Loss G=0.1051]Epoch 73/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.86s/it, Dt Loss=0.0280, Goal Loss=0.1421, MIE Loss=0.0009, MSE Loss R=0.0259, BCE Loss G=0.1153]Epoch 73/500: 100%|██████████| 4/4 [00:11<00:00,  2.35s/it, Dt Loss=0.0280, Goal Loss=0.1421, MIE Loss=0.0009, MSE Loss R=0.0259, BCE Loss G=0.1153]Epoch 73/500: 100%|██████████| 4/4 [00:11<00:00,  2.92s/it, Dt Loss=0.0280, Goal Loss=0.1421, MIE Loss=0.0009, MSE Loss R=0.0259, BCE Loss G=0.1153]
-2024-11-20 14:23:09,121 - INFO - Epoch [73/500] completed. Average Goal Loss: 0.1546
-2024-11-20 14:23:09,122 - INFO - Epoch [73/500] completed. Average Action Loss: 0.0281
-2024-11-20 14:23:09,122 - INFO - ===================================================================================
-2024-11-20 14:23:23,656 - INFO - Epoch [73/500]
-Action Validation Loss: 0.0261 
- Goal Validation Loss: 0.1558 
- MIE Validation Loss: 0.0008 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1112
-2024-11-20 14:23:23,657 - INFO - ===================================================================================
-2024-11-20 14:23:23,657 - INFO - Completed in 0h 34m
-Epoch 74/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 74/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0282, Goal Loss=0.1242, MIE Loss=0.0006, MSE Loss R=0.0162, BCE Loss G=0.1075]2024-11-20 14:23:29,099 - INFO - Epoch [74/500], Batch [0/4]
- Dt Loss: 0.0282
- Goal Loss: 0.1242, MIE Loss: 0.0006
- MSE Loss R: 0.0162, BCE Loss G: 0.1075
-Epoch 74/500:  25%|██▌       | 1/4 [00:05<00:16,  5.44s/it, Dt Loss=0.0282, Goal Loss=0.1242, MIE Loss=0.0006, MSE Loss R=0.0162, BCE Loss G=0.1075]Epoch 74/500:  25%|██▌       | 1/4 [00:07<00:16,  5.44s/it, Dt Loss=0.0278, Goal Loss=0.1255, MIE Loss=0.0006, MSE Loss R=0.0162, BCE Loss G=0.1087]Epoch 74/500:  50%|█████     | 2/4 [00:07<00:06,  3.42s/it, Dt Loss=0.0278, Goal Loss=0.1255, MIE Loss=0.0006, MSE Loss R=0.0162, BCE Loss G=0.1087]Epoch 74/500:  50%|█████     | 2/4 [00:09<00:06,  3.42s/it, Dt Loss=0.0280, Goal Loss=0.2793, MIE Loss=0.0018, MSE Loss R=0.1355, BCE Loss G=0.1420]Epoch 74/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0280, Goal Loss=0.2793, MIE Loss=0.0018, MSE Loss R=0.1355, BCE Loss G=0.1420]Epoch 74/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0273, Goal Loss=0.1308, MIE Loss=0.0007, MSE Loss R=0.0182, BCE Loss G=0.1119]Epoch 74/500: 100%|██████████| 4/4 [00:11<00:00,  2.34s/it, Dt Loss=0.0273, Goal Loss=0.1308, MIE Loss=0.0007, MSE Loss R=0.0182, BCE Loss G=0.1119]Epoch 74/500: 100%|██████████| 4/4 [00:11<00:00,  2.89s/it, Dt Loss=0.0273, Goal Loss=0.1308, MIE Loss=0.0007, MSE Loss R=0.0182, BCE Loss G=0.1119]
-2024-11-20 14:23:35,222 - INFO - Epoch [74/500] completed. Average Goal Loss: 0.1650
-2024-11-20 14:23:35,222 - INFO - Epoch [74/500] completed. Average Action Loss: 0.0278
-2024-11-20 14:23:35,222 - INFO - ===================================================================================
-2024-11-20 14:23:49,930 - INFO - Epoch [74/500]
-Action Validation Loss: 0.0259 
- Goal Validation Loss: 0.1561 
- MIE Validation Loss: 0.0007 
- MSE R Validation Loss: 0.0441 
- BCE G Validation Loss: 0.1113
-2024-11-20 14:23:49,930 - INFO - ===================================================================================
-2024-11-20 14:23:49,930 - INFO - Completed in 0h 34m
-Epoch 75/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 75/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0281, Goal Loss=0.1248, MIE Loss=0.0005, MSE Loss R=0.0165, BCE Loss G=0.1078]2024-11-20 14:23:55,234 - INFO - Epoch [75/500], Batch [0/4]
- Dt Loss: 0.0281
- Goal Loss: 0.1248, MIE Loss: 0.0005
- MSE Loss R: 0.0165, BCE Loss G: 0.1078
-Epoch 75/500:  25%|██▌       | 1/4 [00:05<00:15,  5.30s/it, Dt Loss=0.0281, Goal Loss=0.1248, MIE Loss=0.0005, MSE Loss R=0.0165, BCE Loss G=0.1078]Epoch 75/500:  25%|██▌       | 1/4 [00:07<00:15,  5.30s/it, Dt Loss=0.0275, Goal Loss=0.1269, MIE Loss=0.0006, MSE Loss R=0.0165, BCE Loss G=0.1098]Epoch 75/500:  50%|█████     | 2/4 [00:07<00:06,  3.33s/it, Dt Loss=0.0275, Goal Loss=0.1269, MIE Loss=0.0006, MSE Loss R=0.0165, BCE Loss G=0.1098]Epoch 75/500:  50%|█████     | 2/4 [00:09<00:06,  3.33s/it, Dt Loss=0.0278, Goal Loss=0.1308, MIE Loss=0.0004, MSE Loss R=0.0310, BCE Loss G=0.0995]Epoch 75/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.72s/it, Dt Loss=0.0278, Goal Loss=0.1308, MIE Loss=0.0004, MSE Loss R=0.0310, BCE Loss G=0.0995]Epoch 75/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.72s/it, Dt Loss=0.0280, Goal Loss=0.1242, MIE Loss=0.0004, MSE Loss R=0.0204, BCE Loss G=0.1033]Epoch 75/500: 100%|██████████| 4/4 [00:10<00:00,  2.29s/it, Dt Loss=0.0280, Goal Loss=0.1242, MIE Loss=0.0004, MSE Loss R=0.0204, BCE Loss G=0.1033]Epoch 75/500: 100%|██████████| 4/4 [00:11<00:00,  2.83s/it, Dt Loss=0.0280, Goal Loss=0.1242, MIE Loss=0.0004, MSE Loss R=0.0204, BCE Loss G=0.1033]
-2024-11-20 14:24:01,238 - INFO - Epoch [75/500] completed. Average Goal Loss: 0.1267
-2024-11-20 14:24:01,238 - INFO - Epoch [75/500] completed. Average Action Loss: 0.0279
-2024-11-20 14:24:01,239 - INFO - ===================================================================================
-2024-11-20 14:24:15,970 - INFO - Epoch [75/500]
-Action Validation Loss: 0.0258 
- Goal Validation Loss: 0.1554 
- MIE Validation Loss: 0.0004 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1111
-2024-11-20 14:24:15,971 - INFO - ===================================================================================
-2024-11-20 14:24:15,971 - INFO - Completed in 0h 34m
-Epoch 76/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 76/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0275, Goal Loss=0.1268, MIE Loss=0.0003, MSE Loss R=0.0272, BCE Loss G=0.0993]2024-11-20 14:24:21,416 - INFO - Epoch [76/500], Batch [0/4]
- Dt Loss: 0.0275
- Goal Loss: 0.1268, MIE Loss: 0.0003
- MSE Loss R: 0.0272, BCE Loss G: 0.0993
-Epoch 76/500:  25%|██▌       | 1/4 [00:05<00:16,  5.44s/it, Dt Loss=0.0275, Goal Loss=0.1268, MIE Loss=0.0003, MSE Loss R=0.0272, BCE Loss G=0.0993]Epoch 76/500:  25%|██▌       | 1/4 [00:07<00:16,  5.44s/it, Dt Loss=0.0278, Goal Loss=0.1983, MIE Loss=0.0014, MSE Loss R=0.0671, BCE Loss G=0.1298]Epoch 76/500:  50%|█████     | 2/4 [00:07<00:07,  3.51s/it, Dt Loss=0.0278, Goal Loss=0.1983, MIE Loss=0.0014, MSE Loss R=0.0671, BCE Loss G=0.1298]Epoch 76/500:  50%|█████     | 2/4 [00:10<00:07,  3.51s/it, Dt Loss=0.0278, Goal Loss=0.1315, MIE Loss=0.0007, MSE Loss R=0.0188, BCE Loss G=0.1120]Epoch 76/500:  75%|███████▌  | 3/4 [00:10<00:03,  3.01s/it, Dt Loss=0.0278, Goal Loss=0.1315, MIE Loss=0.0007, MSE Loss R=0.0188, BCE Loss G=0.1120]Epoch 76/500:  75%|███████▌  | 3/4 [00:11<00:03,  3.01s/it, Dt Loss=0.0274, Goal Loss=0.1400, MIE Loss=0.0008, MSE Loss R=0.0238, BCE Loss G=0.1154]Epoch 76/500: 100%|██████████| 4/4 [00:11<00:00,  2.46s/it, Dt Loss=0.0274, Goal Loss=0.1400, MIE Loss=0.0008, MSE Loss R=0.0238, BCE Loss G=0.1154]Epoch 76/500: 100%|██████████| 4/4 [00:12<00:00,  3.00s/it, Dt Loss=0.0274, Goal Loss=0.1400, MIE Loss=0.0008, MSE Loss R=0.0238, BCE Loss G=0.1154]
-2024-11-20 14:24:27,992 - INFO - Epoch [76/500] completed. Average Goal Loss: 0.1492
-2024-11-20 14:24:27,993 - INFO - Epoch [76/500] completed. Average Action Loss: 0.0277
-2024-11-20 14:24:27,993 - INFO - ===================================================================================
-2024-11-20 14:24:42,356 - INFO - Epoch [76/500]
-Action Validation Loss: 0.0255 
- Goal Validation Loss: 0.1556 
- MIE Validation Loss: 0.0006 
- MSE R Validation Loss: 0.0439 
- BCE G Validation Loss: 0.1111
-2024-11-20 14:24:42,357 - INFO - ===================================================================================
-2024-11-20 14:24:42,357 - INFO - Completed in 0h 35m
-Epoch 77/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 77/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0280, Goal Loss=0.1237, MIE Loss=0.0004, MSE Loss R=0.0188, BCE Loss G=0.1044]2024-11-20 14:24:47,521 - INFO - Epoch [77/500], Batch [0/4]
- Dt Loss: 0.0280
- Goal Loss: 0.1237, MIE Loss: 0.0004
- MSE Loss R: 0.0188, BCE Loss G: 0.1044
-Epoch 77/500:  25%|██▌       | 1/4 [00:05<00:15,  5.16s/it, Dt Loss=0.0280, Goal Loss=0.1237, MIE Loss=0.0004, MSE Loss R=0.0188, BCE Loss G=0.1044]Epoch 77/500:  25%|██▌       | 1/4 [00:07<00:15,  5.16s/it, Dt Loss=0.0269, Goal Loss=0.1276, MIE Loss=0.0006, MSE Loss R=0.0167, BCE Loss G=0.1104]Epoch 77/500:  50%|█████     | 2/4 [00:07<00:06,  3.30s/it, Dt Loss=0.0269, Goal Loss=0.1276, MIE Loss=0.0006, MSE Loss R=0.0167, BCE Loss G=0.1104]Epoch 77/500:  50%|█████     | 2/4 [00:09<00:06,  3.30s/it, Dt Loss=0.0281, Goal Loss=0.1222, MIE Loss=0.0004, MSE Loss R=0.0185, BCE Loss G=0.1034]Epoch 77/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.74s/it, Dt Loss=0.0281, Goal Loss=0.1222, MIE Loss=0.0004, MSE Loss R=0.0185, BCE Loss G=0.1034]Epoch 77/500:  75%|███████▌  | 3/4 [00:10<00:02,  2.74s/it, Dt Loss=0.0273, Goal Loss=0.1240, MIE Loss=0.0003, MSE Loss R=0.0222, BCE Loss G=0.1015]Epoch 77/500: 100%|██████████| 4/4 [00:10<00:00,  2.28s/it, Dt Loss=0.0273, Goal Loss=0.1240, MIE Loss=0.0003, MSE Loss R=0.0222, BCE Loss G=0.1015]Epoch 77/500: 100%|██████████| 4/4 [00:11<00:00,  2.81s/it, Dt Loss=0.0273, Goal Loss=0.1240, MIE Loss=0.0003, MSE Loss R=0.0222, BCE Loss G=0.1015]
-2024-11-20 14:24:53,596 - INFO - Epoch [77/500] completed. Average Goal Loss: 0.1244
-2024-11-20 14:24:53,597 - INFO - Epoch [77/500] completed. Average Action Loss: 0.0276
-2024-11-20 14:24:53,597 - INFO - ===================================================================================
-2024-11-20 14:25:08,649 - INFO - Epoch [77/500]
-Action Validation Loss: 0.0257 
- Goal Validation Loss: 0.1553 
- MIE Validation Loss: 0.0004 
- MSE R Validation Loss: 0.0438 
- BCE G Validation Loss: 0.1111
-2024-11-20 14:25:08,650 - INFO - ===================================================================================
-2024-11-20 14:25:08,651 - INFO - Completed in 0h 35m
-Epoch 78/500:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 78/500:   0%|          | 0/4 [00:05<?, ?it/s, Dt Loss=0.0275, Goal Loss=0.1233, MIE Loss=0.0005, MSE Loss R=0.0152, BCE Loss G=0.1076]2024-11-20 14:25:14,335 - INFO - Epoch [78/500], Batch [0/4]
- Dt Loss: 0.0275
- Goal Loss: 0.1233, MIE Loss: 0.0005
- MSE Loss R: 0.0152, BCE Loss G: 0.1076
-Epoch 78/500:  25%|██▌       | 1/4 [00:05<00:17,  5.68s/it, Dt Loss=0.0275, Goal Loss=0.1233, MIE Loss=0.0005, MSE Loss R=0.0152, BCE Loss G=0.1076]Epoch 78/500:  25%|██▌       | 1/4 [00:07<00:17,  5.68s/it, Dt Loss=0.0278, Goal Loss=0.1209, MIE Loss=0.0003, MSE Loss R=0.0197, BCE Loss G=0.1009]Epoch 78/500:  50%|█████     | 2/4 [00:07<00:07,  3.50s/it, Dt Loss=0.0278, Goal Loss=0.1209, MIE Loss=0.0003, MSE Loss R=0.0197, BCE Loss G=0.1009]Epoch 78/500:  50%|█████     | 2/4 [00:09<00:07,  3.50s/it, Dt Loss=0.0279, Goal Loss=0.1236, MIE Loss=0.0003, MSE Loss R=0.0269, BCE Loss G=0.0964]Epoch 78/500:  75%|███████▌  | 3/4 [00:09<00:02,  2.81s/it, Dt Loss=0.0279, Goal Loss=0.1236, MIE Loss=0.0003, MSE Loss R=0.0269, BCE Loss G=0.0964]Epoch 78/500:  75%|███████▌  | 3/4 [00:11<00:02,  2.81s/it, Dt Loss=0.0283, Goal Loss=0.1415, MIE Loss=0.0007, MSE Loss R=0.0262, BCE Loss G=0.1146]Epoch 78/500: 100%|██████████| 4/4 [00:11<00:00,  2.25s/it, Dt Loss=0.0283, Goal Loss=0.1415, MIE Loss=0.0007, MSE Loss R=0.0262, BCE Loss G=0.1146]Epoch 78/500: 100%|██████████| 4/4 [00:11<00:00,  2.88s/it, Dt Loss=0.0283, Goal Loss=0.1415, MIE Loss=0.0007, MSE Loss R=0.0262, BCE Loss G=0.1146]
-2024-11-20 14:25:20,156 - INFO - Epoch [78/500] completed. Average Goal Loss: 0.1273
-2024-11-20 14:25:20,156 - INFO - Epoch [78/500] completed. Average Action Loss: 0.0279
-2024-11-20 14:25:20,156 - INFO - ===================================================================================
+2024-11-22 06:47:52,104 - INFO - Starting.
+2024-11-22 06:47:52,104 - INFO - Loading Data.

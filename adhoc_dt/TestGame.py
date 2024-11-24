@@ -159,7 +159,7 @@ class Test:
                 
                 # adhoc agent选择动作
                 action_ad, S = agent.take_action(o_list, a_list, g_list, t_list, env.n_actions)
-                # action_ad= agent.take_action()
+                # action_ad = agent.take_action()
                 # action_ad = np.random.randint(0, env.n_actions, size=(1,))
                 # 拼接
                 actions[teammate_idx] = action_ad[0]
@@ -189,7 +189,105 @@ class Test:
             return_list.append(total_reward)
             # print(f"Episode {episode} return: {total_reward}")
         # print("Average Return:", sum(return_list)/ len(return_list))
-        return sum(return_list)/ len(return_list)
+        return sum(return_list)/ len(return_list), min(return_list), max(return_list)
+
+    def test_game_dt(self, test_episodes, agent, K=20):
+            # 加载模型
+            self.init_game_setting()
+
+            if "filled" in self.buffer.scheme:
+                del self.buffer.scheme["filled"]
+            
+
+            env = self.env
+            episode = 0
+            return_list = []
+
+
+            # 测试实训
+            while episode < test_episodes:
+                o_list = []
+                a_list = []
+                R_list = []
+                t_list = []
+                # 随机选择一种队友
+                teammate_model_idx = random.randint(0, len(self.teammate_list) - 1)
+                self.mac.load_models(self.teammate_list[teammate_model_idx])
+                self.mac.init_hidden(batch_size=1)
+                batch = self.new_batch()
+                obs, state = env.reset()
+                done = False
+                step_count = 0
+                total_reward = 0
+                # 随机选择一个个体作为ad hoc agent
+                teammate_idx = random.randint(0, self.env.n_agents - 1)
+                # 开始游戏循环
+                while not done and step_count < self.episode_limit:
+
+                    pre_transition_data = {
+                        "state": [],
+                        "avail_actions": [],
+                        "obs": [],
+                    }
+
+                    obs = env.get_obs()
+                    state = env.get_state()
+                    avail_actions = env.get_avail_actions()
+                    pre_transition_data["state"].append([state])
+                    pre_transition_data["avail_actions"].append([avail_actions])
+                    pre_transition_data["obs"].append([obs])
+                    batch.update(pre_transition_data, bs=[0], ts=step_count)
+
+                    # 记录数据
+                    o_list.append(obs[teammate_idx])
+                    t_list.append(torch.tensor(step_count))
+                    if len(R_list) == 0:
+                        R_list.append(80)
+                    # 维持列表长度
+                    if len(o_list) > K:
+                        o_list = o_list[-K:]
+                        t_list = t_list[-K:]
+                        a_list = a_list[-K+1:]
+                        R_list = R_list[-K+1:]
+
+                    # 队友选择动作
+                    actions_tensor = self.mac.select_actions(batch, bs=[0],t_ep=step_count, t_env=step_count, test_mode=True)
+                    actions = actions_tensor[0].numpy()
+                    
+                    # adhoc agent选择动作
+                    action_ad = agent.take_action(o_list, a_list, R_list, t_list, env.n_actions)
+                    # action_ad = agent.take_action()
+                    # action_ad = np.random.randint(0, env.n_actions, size=(1,))
+                    # 拼接
+                    actions[teammate_idx] = action_ad[0]
+                    # actions = np.concatenate([actions[:-1], action_ad])
+                    
+                    a_list.append(actions[teammate_idx])
+
+                    # 执行动作并获取下一步
+                    reward, done, info = env.step(actions)
+
+                    R_list.append(R_list[-1] - reward)
+
+                    post_transition_data = {
+                        "actions": [],
+                        "reward": [],
+                        "terminated": [],
+                    }
+                    post_transition_data["actions"].append([actions])
+                    post_transition_data["reward"].append([reward])
+                    post_transition_data["terminated"].append([done])
+                    
+                    batch.update(post_transition_data, bs=[0], ts=step_count)
+
+                    # 累积奖励
+                    total_reward += reward
+                    step_count += 1
+                episode += 1
+                return_list.append(total_reward)
+                # print(f"Episode {episode} return: {total_reward}")
+            # print("Average Return:", sum(return_list)/ len(return_list))
+            return sum(return_list)/ len(return_list), min(return_list), max(return_list)
 
 if __name__ == "__main__":
     test = Test('PP4a')
