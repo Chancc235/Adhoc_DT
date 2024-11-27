@@ -22,18 +22,6 @@ from Trainer import SequenceTrainer, BaseTrainer, GoalTrainer
 from TestGame import Test
 from Agent.Adhoc_DT import Adhoc_DT
 
-def test(train_loader, device, num_epochs, batch_size):
-    for epoch in range(num_epochs):
-        with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}") as pbar:
-            for batch_idx, episodes_data in enumerate(pbar):
-                # for DT
-                o, a, g, d, timesteps, mask = get_batch(episodes_data, device, batch_size=episodes_data["state"].size(0), max_ep_len=episodes_data["state"].size(1), max_len=30)
-                print(o.shape)
-                print(a.shape)
-                print(g.shape)
-                print(d.shape)
-                print(timesteps.shape)
-                print(mask.shape)
 
 # 定义训练函数
 def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, dt_train_steps, goal_steps, model_save_path="models"):
