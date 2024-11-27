@@ -288,7 +288,3 @@ class Test:
                 # print(f"Episode {episode} return: {total_reward}")
             # print("Average Return:", sum(return_list)/ len(return_list))
             return sum(return_list)/ len(return_list), min(return_list), max(return_list)
-
-if __name__ == "__main__":
-    test = Test('PP4a')
-    test.test_game(10)

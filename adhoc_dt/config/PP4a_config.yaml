@@ -10,7 +10,7 @@ beta: 100   # MIE第一项的权重
 gama: 100   # MIE第二项的权重
 clip_value: 2
 num_agents: 4
-goal_steps: 3
+goal_steps: 8
 
 # train_model function
 num_epochs: 100

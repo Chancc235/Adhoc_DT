@@ -1634,3 +1634,774 @@ Action Validation Loss: 0.0075
  BCE G Validation Loss: 0.1152
 2024-11-24 17:13:43,641 - INFO - ===================================================================================
 2024-11-24 17:13:43,641 - INFO - Completed in 3h 47m
+2024-11-24 17:16:55,354 - INFO - 68 Test Returns: 58.0
+2024-11-24 17:16:55,385 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_68.pth
+2024-11-24 17:17:07,309 - INFO - Epoch [69/100], Batch [0/26]
+ Dt Loss: 0.0101
+ Goal Loss: 0.2227, MIE Loss: 0.0005
+ MSE Loss R: 0.0887, BCE Loss G: 0.1335
+2024-11-24 17:17:26,657 - INFO - Epoch [69/100], Batch [10/26]
+ Dt Loss: 0.0099
+ Goal Loss: 0.1994, MIE Loss: 0.0000
+ MSE Loss R: 0.0711, BCE Loss G: 0.1284
+2024-11-24 17:17:47,337 - INFO - Epoch [69/100], Batch [20/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1518, MIE Loss: 0.0001
+ MSE Loss R: 0.0335, BCE Loss G: 0.1182
+2024-11-24 17:17:58,430 - INFO - Epoch [69/100] completed. Average Goal Loss: 0.1513
+2024-11-24 17:17:58,430 - INFO - Epoch [69/100] completed. Average Action Loss: 0.0097
+2024-11-24 17:17:58,430 - INFO - ===================================================================================
+2024-11-24 17:18:54,211 - INFO - Epoch [69/100]
+Action Validation Loss: 0.0075 
+ Goal Validation Loss: 0.1546 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0438 
+ BCE G Validation Loss: 0.1107
+2024-11-24 17:18:54,212 - INFO - ===================================================================================
+2024-11-24 17:18:54,213 - INFO - Completed in 3h 52m
+2024-11-24 17:19:06,649 - INFO - Epoch [70/100], Batch [0/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1219, MIE Loss: 0.0002
+ MSE Loss R: 0.0211, BCE Loss G: 0.1006
+2024-11-24 17:19:26,229 - INFO - Epoch [70/100], Batch [10/26]
+ Dt Loss: 0.0097
+ Goal Loss: 0.1309, MIE Loss: 0.0002
+ MSE Loss R: 0.0280, BCE Loss G: 0.1027
+2024-11-24 17:19:45,882 - INFO - Epoch [70/100], Batch [20/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1270, MIE Loss: 0.0001
+ MSE Loss R: 0.0205, BCE Loss G: 0.1064
+2024-11-24 17:19:56,647 - INFO - Epoch [70/100] completed. Average Goal Loss: 0.1488
+2024-11-24 17:19:56,647 - INFO - Epoch [70/100] completed. Average Action Loss: 0.0096
+2024-11-24 17:19:56,648 - INFO - ===================================================================================
+2024-11-24 17:20:53,372 - INFO - Epoch [70/100]
+Action Validation Loss: 0.0075 
+ Goal Validation Loss: 0.1550 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0441 
+ BCE G Validation Loss: 0.1109
+2024-11-24 17:20:53,373 - INFO - ===================================================================================
+2024-11-24 17:20:53,373 - INFO - Completed in 3h 54m
+2024-11-24 17:23:48,833 - INFO - 70 Test Returns: 59.2
+2024-11-24 17:23:48,869 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_70.pth
+2024-11-24 17:24:00,810 - INFO - Epoch [71/100], Batch [0/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1201, MIE Loss: 0.0002
+ MSE Loss R: 0.0236, BCE Loss G: 0.0963
+2024-11-24 17:24:20,126 - INFO - Epoch [71/100], Batch [10/26]
+ Dt Loss: 0.0097
+ Goal Loss: 0.1132, MIE Loss: 0.0001
+ MSE Loss R: 0.0130, BCE Loss G: 0.1001
+2024-11-24 17:24:39,378 - INFO - Epoch [71/100], Batch [20/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1235, MIE Loss: 0.0002
+ MSE Loss R: 0.0214, BCE Loss G: 0.1020
+2024-11-24 17:24:50,731 - INFO - Epoch [71/100] completed. Average Goal Loss: 0.1540
+2024-11-24 17:24:50,731 - INFO - Epoch [71/100] completed. Average Action Loss: 0.0096
+2024-11-24 17:24:50,731 - INFO - ===================================================================================
+2024-11-24 17:25:50,403 - INFO - Epoch [71/100]
+Action Validation Loss: 0.0074 
+ Goal Validation Loss: 0.1553 
+ MIE Validation Loss: 0.0003 
+ MSE R Validation Loss: 0.0438 
+ BCE G Validation Loss: 0.1112
+2024-11-24 17:25:50,404 - INFO - ===================================================================================
+2024-11-24 17:25:50,404 - INFO - Completed in 3h 59m
+2024-11-24 17:26:02,654 - INFO - Epoch [72/100], Batch [0/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.2739, MIE Loss: 0.0003
+ MSE Loss R: 0.1364, BCE Loss G: 0.1372
+2024-11-24 17:26:21,250 - INFO - Epoch [72/100], Batch [10/26]
+ Dt Loss: 0.0098
+ Goal Loss: 0.1287, MIE Loss: 0.0000
+ MSE Loss R: 0.0179, BCE Loss G: 0.1108
+2024-11-24 17:26:39,584 - INFO - Epoch [72/100], Batch [20/26]
+ Dt Loss: 0.0097
+ Goal Loss: 0.1179, MIE Loss: 0.0002
+ MSE Loss R: 0.0185, BCE Loss G: 0.0991
+2024-11-24 17:26:51,567 - INFO - Epoch [72/100] completed. Average Goal Loss: 0.1546
+2024-11-24 17:26:51,567 - INFO - Epoch [72/100] completed. Average Action Loss: 0.0095
+2024-11-24 17:26:51,568 - INFO - ===================================================================================
+2024-11-24 17:27:50,846 - INFO - Epoch [72/100]
+Action Validation Loss: 0.0075 
+ Goal Validation Loss: 0.1580 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0453 
+ BCE G Validation Loss: 0.1127
+2024-11-24 17:27:50,847 - INFO - ===================================================================================
+2024-11-24 17:27:50,847 - INFO - Completed in 4h 1m
+2024-11-24 17:30:52,203 - INFO - 72 Test Returns: 55.0
+2024-11-24 17:30:52,232 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_72.pth
+2024-11-24 17:31:03,887 - INFO - Epoch [73/100], Batch [0/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1368, MIE Loss: 0.0000
+ MSE Loss R: 0.0214, BCE Loss G: 0.1154
+2024-11-24 17:31:23,596 - INFO - Epoch [73/100], Batch [10/26]
+ Dt Loss: 0.0098
+ Goal Loss: 0.1735, MIE Loss: 0.0000
+ MSE Loss R: 0.0738, BCE Loss G: 0.0998
+2024-11-24 17:31:43,103 - INFO - Epoch [73/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1256, MIE Loss: 0.0001
+ MSE Loss R: 0.0166, BCE Loss G: 0.1089
+2024-11-24 17:31:54,564 - INFO - Epoch [73/100] completed. Average Goal Loss: 0.1550
+2024-11-24 17:31:54,565 - INFO - Epoch [73/100] completed. Average Action Loss: 0.0095
+2024-11-24 17:31:54,565 - INFO - ===================================================================================
+2024-11-24 17:32:53,338 - INFO - Epoch [73/100]
+Action Validation Loss: 0.0074 
+ Goal Validation Loss: 0.1552 
+ MIE Validation Loss: 0.0003 
+ MSE R Validation Loss: 0.0438 
+ BCE G Validation Loss: 0.1111
+2024-11-24 17:32:53,338 - INFO - ===================================================================================
+2024-11-24 17:32:53,338 - INFO - Completed in 4h 6m
+2024-11-24 17:33:04,918 - INFO - Epoch [74/100], Batch [0/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1224, MIE Loss: 0.0002
+ MSE Loss R: 0.0150, BCE Loss G: 0.1072
+2024-11-24 17:33:23,763 - INFO - Epoch [74/100], Batch [10/26]
+ Dt Loss: 0.0098
+ Goal Loss: 0.1320, MIE Loss: 0.0000
+ MSE Loss R: 0.0324, BCE Loss G: 0.0995
+2024-11-24 17:33:42,043 - INFO - Epoch [74/100], Batch [20/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1173, MIE Loss: 0.0003
+ MSE Loss R: 0.0227, BCE Loss G: 0.0944
+2024-11-24 17:33:52,883 - INFO - Epoch [74/100] completed. Average Goal Loss: 0.1450
+2024-11-24 17:33:52,883 - INFO - Epoch [74/100] completed. Average Action Loss: 0.0095
+2024-11-24 17:33:52,883 - INFO - ===================================================================================
+2024-11-24 17:34:50,650 - INFO - Epoch [74/100]
+Action Validation Loss: 0.0074 
+ Goal Validation Loss: 0.1567 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0455 
+ BCE G Validation Loss: 0.1111
+2024-11-24 17:34:50,650 - INFO - ===================================================================================
+2024-11-24 17:34:50,651 - INFO - Completed in 4h 8m
+2024-11-24 17:38:00,222 - INFO - 74 Test Returns: 58.4
+2024-11-24 17:38:00,251 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_74.pth
+2024-11-24 17:38:11,816 - INFO - Epoch [75/100], Batch [0/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1365, MIE Loss: 0.0002
+ MSE Loss R: 0.0245, BCE Loss G: 0.1118
+2024-11-24 17:38:31,669 - INFO - Epoch [75/100], Batch [10/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1098, MIE Loss: 0.0004
+ MSE Loss R: 0.0132, BCE Loss G: 0.0962
+2024-11-24 17:38:50,840 - INFO - Epoch [75/100], Batch [20/26]
+ Dt Loss: 0.0097
+ Goal Loss: 0.1070, MIE Loss: 0.0001
+ MSE Loss R: 0.0107, BCE Loss G: 0.0962
+2024-11-24 17:39:01,910 - INFO - Epoch [75/100] completed. Average Goal Loss: 0.1313
+2024-11-24 17:39:01,911 - INFO - Epoch [75/100] completed. Average Action Loss: 0.0095
+2024-11-24 17:39:01,911 - INFO - ===================================================================================
+2024-11-24 17:40:01,427 - INFO - Epoch [75/100]
+Action Validation Loss: 0.0074 
+ Goal Validation Loss: 0.1598 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0483 
+ BCE G Validation Loss: 0.1114
+2024-11-24 17:40:01,427 - INFO - ===================================================================================
+2024-11-24 17:40:01,428 - INFO - Completed in 4h 13m
+2024-11-24 17:40:13,206 - INFO - Epoch [76/100], Batch [0/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1228, MIE Loss: 0.0001
+ MSE Loss R: 0.0157, BCE Loss G: 0.1070
+2024-11-24 17:40:33,413 - INFO - Epoch [76/100], Batch [10/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.2559, MIE Loss: 0.0000
+ MSE Loss R: 0.1193, BCE Loss G: 0.1365
+2024-11-24 17:40:52,294 - INFO - Epoch [76/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1498, MIE Loss: 0.0000
+ MSE Loss R: 0.0312, BCE Loss G: 0.1186
+2024-11-24 17:41:03,049 - INFO - Epoch [76/100] completed. Average Goal Loss: 0.1738
+2024-11-24 17:41:03,050 - INFO - Epoch [76/100] completed. Average Action Loss: 0.0094
+2024-11-24 17:41:03,050 - INFO - ===================================================================================
+2024-11-24 17:42:01,190 - INFO - Epoch [76/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1558 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0452 
+ BCE G Validation Loss: 0.1106
+2024-11-24 17:42:01,190 - INFO - ===================================================================================
+2024-11-24 17:42:01,191 - INFO - Completed in 4h 15m
+2024-11-24 17:44:48,365 - INFO - 76 Test Returns: 56.2
+2024-11-24 17:44:48,394 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_76.pth
+2024-11-24 17:45:00,133 - INFO - Epoch [77/100], Batch [0/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1282, MIE Loss: 0.0000
+ MSE Loss R: 0.0265, BCE Loss G: 0.1017
+2024-11-24 17:45:18,573 - INFO - Epoch [77/100], Batch [10/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1335, MIE Loss: 0.0000
+ MSE Loss R: 0.0203, BCE Loss G: 0.1132
+2024-11-24 17:45:36,350 - INFO - Epoch [77/100], Batch [20/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1196, MIE Loss: 0.0001
+ MSE Loss R: 0.0150, BCE Loss G: 0.1046
+2024-11-24 17:45:46,256 - INFO - Epoch [77/100] completed. Average Goal Loss: 0.1376
+2024-11-24 17:45:46,256 - INFO - Epoch [77/100] completed. Average Action Loss: 0.0094
+2024-11-24 17:45:46,256 - INFO - ===================================================================================
+2024-11-24 17:46:43,612 - INFO - Epoch [77/100]
+Action Validation Loss: 0.0074 
+ Goal Validation Loss: 0.1565 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0452 
+ BCE G Validation Loss: 0.1113
+2024-11-24 17:46:43,612 - INFO - ===================================================================================
+2024-11-24 17:46:43,613 - INFO - Completed in 4h 20m
+2024-11-24 17:46:55,637 - INFO - Epoch [78/100], Batch [0/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1302, MIE Loss: 0.0000
+ MSE Loss R: 0.0192, BCE Loss G: 0.1109
+2024-11-24 17:47:15,305 - INFO - Epoch [78/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.3194, MIE Loss: 0.0001
+ MSE Loss R: 0.1772, BCE Loss G: 0.1421
+2024-11-24 17:47:33,301 - INFO - Epoch [78/100], Batch [20/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1112, MIE Loss: 0.0000
+ MSE Loss R: 0.0115, BCE Loss G: 0.0996
+2024-11-24 17:47:44,336 - INFO - Epoch [78/100] completed. Average Goal Loss: 0.1442
+2024-11-24 17:47:44,336 - INFO - Epoch [78/100] completed. Average Action Loss: 0.0094
+2024-11-24 17:47:44,336 - INFO - ===================================================================================
+2024-11-24 17:48:45,308 - INFO - Epoch [78/100]
+Action Validation Loss: 0.0073 
+ Goal Validation Loss: 0.1564 
+ MIE Validation Loss: 0.0005 
+ MSE R Validation Loss: 0.0444 
+ BCE G Validation Loss: 0.1115
+2024-11-24 17:48:45,309 - INFO - ===================================================================================
+2024-11-24 17:48:45,309 - INFO - Completed in 4h 22m
+2024-11-24 17:51:44,297 - INFO - 78 Test Returns: 55.2
+2024-11-24 17:51:44,327 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_78.pth
+2024-11-24 17:52:02,288 - INFO - Epoch [79/100], Batch [0/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1232, MIE Loss: 0.0002
+ MSE Loss R: 0.0149, BCE Loss G: 0.1081
+2024-11-24 17:52:45,067 - INFO - Epoch [79/100], Batch [10/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1249, MIE Loss: 0.0002
+ MSE Loss R: 0.0197, BCE Loss G: 0.1050
+2024-11-24 17:53:05,094 - INFO - Epoch [79/100], Batch [20/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1708, MIE Loss: 0.0003
+ MSE Loss R: 0.0485, BCE Loss G: 0.1220
+2024-11-24 17:53:17,278 - INFO - Epoch [79/100] completed. Average Goal Loss: 0.1530
+2024-11-24 17:53:17,278 - INFO - Epoch [79/100] completed. Average Action Loss: 0.0094
+2024-11-24 17:53:17,278 - INFO - ===================================================================================
+2024-11-24 17:54:18,154 - INFO - Epoch [79/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1544 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1105
+2024-11-24 17:54:18,154 - INFO - ===================================================================================
+2024-11-24 17:54:18,176 - INFO - Completed in 4h 28m
+2024-11-24 17:54:30,579 - INFO - Epoch [80/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1274, MIE Loss: 0.0001
+ MSE Loss R: 0.0173, BCE Loss G: 0.1100
+2024-11-24 17:54:50,690 - INFO - Epoch [80/100], Batch [10/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1133, MIE Loss: 0.0001
+ MSE Loss R: 0.0148, BCE Loss G: 0.0985
+2024-11-24 17:55:11,082 - INFO - Epoch [80/100], Batch [20/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1747, MIE Loss: 0.0001
+ MSE Loss R: 0.0515, BCE Loss G: 0.1231
+2024-11-24 17:55:22,039 - INFO - Epoch [80/100] completed. Average Goal Loss: 0.1441
+2024-11-24 17:55:22,039 - INFO - Epoch [80/100] completed. Average Action Loss: 0.0094
+2024-11-24 17:55:22,039 - INFO - ===================================================================================
+2024-11-24 17:56:21,494 - INFO - Epoch [80/100]
+Action Validation Loss: 0.0073 
+ Goal Validation Loss: 0.1557 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0448 
+ BCE G Validation Loss: 0.1109
+2024-11-24 17:56:21,494 - INFO - ===================================================================================
+2024-11-24 17:56:21,495 - INFO - Completed in 4h 30m
+2024-11-24 17:59:36,969 - INFO - 80 Test Returns: 59.0
+2024-11-24 17:59:37,004 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_80.pth
+2024-11-24 17:59:49,579 - INFO - Epoch [81/100], Batch [0/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.2605, MIE Loss: 0.0001
+ MSE Loss R: 0.1224, BCE Loss G: 0.1380
+2024-11-24 18:00:11,443 - INFO - Epoch [81/100], Batch [10/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1237, MIE Loss: 0.0000
+ MSE Loss R: 0.0153, BCE Loss G: 0.1084
+2024-11-24 18:00:32,494 - INFO - Epoch [81/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1223, MIE Loss: 0.0001
+ MSE Loss R: 0.0159, BCE Loss G: 0.1063
+2024-11-24 18:00:43,876 - INFO - Epoch [81/100] completed. Average Goal Loss: 0.1454
+2024-11-24 18:00:43,876 - INFO - Epoch [81/100] completed. Average Action Loss: 0.0094
+2024-11-24 18:00:43,876 - INFO - ===================================================================================
+2024-11-24 18:01:44,400 - INFO - Epoch [81/100]
+Action Validation Loss: 0.0073 
+ Goal Validation Loss: 0.1559 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0444 
+ BCE G Validation Loss: 0.1115
+2024-11-24 18:01:44,401 - INFO - ===================================================================================
+2024-11-24 18:01:44,401 - INFO - Completed in 4h 35m
+2024-11-24 18:01:56,529 - INFO - Epoch [82/100], Batch [0/26]
+ Dt Loss: 0.0097
+ Goal Loss: 0.1160, MIE Loss: 0.0002
+ MSE Loss R: 0.0132, BCE Loss G: 0.1026
+2024-11-24 18:02:15,812 - INFO - Epoch [82/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1263, MIE Loss: 0.0002
+ MSE Loss R: 0.0175, BCE Loss G: 0.1086
+2024-11-24 18:02:35,254 - INFO - Epoch [82/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1607, MIE Loss: 0.0001
+ MSE Loss R: 0.0510, BCE Loss G: 0.1095
+2024-11-24 18:02:46,636 - INFO - Epoch [82/100] completed. Average Goal Loss: 0.1562
+2024-11-24 18:02:46,636 - INFO - Epoch [82/100] completed. Average Action Loss: 0.0094
+2024-11-24 18:02:46,636 - INFO - ===================================================================================
+2024-11-24 18:03:48,292 - INFO - Epoch [82/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1571 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0445 
+ BCE G Validation Loss: 0.1126
+2024-11-24 18:03:48,293 - INFO - ===================================================================================
+2024-11-24 18:03:48,293 - INFO - Completed in 4h 37m
+2024-11-24 18:06:55,656 - INFO - 82 Test Returns: 59.8
+2024-11-24 18:06:55,689 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_82.pth
+2024-11-24 18:07:08,601 - INFO - Epoch [83/100], Batch [0/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1275, MIE Loss: 0.0001
+ MSE Loss R: 0.0188, BCE Loss G: 0.1086
+2024-11-24 18:07:28,314 - INFO - Epoch [83/100], Batch [10/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1225, MIE Loss: 0.0001
+ MSE Loss R: 0.0166, BCE Loss G: 0.1059
+2024-11-24 18:07:47,246 - INFO - Epoch [83/100], Batch [20/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1241, MIE Loss: 0.0000
+ MSE Loss R: 0.0239, BCE Loss G: 0.1002
+2024-11-24 18:07:57,563 - INFO - Epoch [83/100] completed. Average Goal Loss: 0.1491
+2024-11-24 18:07:57,564 - INFO - Epoch [83/100] completed. Average Action Loss: 0.0094
+2024-11-24 18:07:57,564 - INFO - ===================================================================================
+2024-11-24 18:08:57,211 - INFO - Epoch [83/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1546 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1107
+2024-11-24 18:08:57,211 - INFO - ===================================================================================
+2024-11-24 18:08:57,212 - INFO - Completed in 4h 42m
+2024-11-24 18:09:08,478 - INFO - Epoch [84/100], Batch [0/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1269, MIE Loss: 0.0000
+ MSE Loss R: 0.0174, BCE Loss G: 0.1095
+2024-11-24 18:09:31,618 - INFO - Epoch [84/100], Batch [10/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.2981, MIE Loss: 0.0000
+ MSE Loss R: 0.1583, BCE Loss G: 0.1397
+2024-11-24 18:09:49,747 - INFO - Epoch [84/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1640, MIE Loss: 0.0000
+ MSE Loss R: 0.0424, BCE Loss G: 0.1216
+2024-11-24 18:10:00,117 - INFO - Epoch [84/100] completed. Average Goal Loss: 0.1626
+2024-11-24 18:10:00,117 - INFO - Epoch [84/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:10:00,117 - INFO - ===================================================================================
+2024-11-24 18:10:53,324 - INFO - Epoch [84/100]
+Action Validation Loss: 0.0073 
+ Goal Validation Loss: 0.1659 
+ MIE Validation Loss: 0.0003 
+ MSE R Validation Loss: 0.0524 
+ BCE G Validation Loss: 0.1132
+2024-11-24 18:10:53,324 - INFO - ===================================================================================
+2024-11-24 18:10:53,324 - INFO - Completed in 4h 44m
+2024-11-24 18:13:56,142 - INFO - 84 Test Returns: 60.0
+2024-11-24 18:13:56,184 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_84.pth
+2024-11-24 18:14:06,731 - INFO - Epoch [85/100], Batch [0/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1612, MIE Loss: 0.0001
+ MSE Loss R: 0.0557, BCE Loss G: 0.1054
+2024-11-24 18:14:28,077 - INFO - Epoch [85/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.2093, MIE Loss: 0.0000
+ MSE Loss R: 0.0793, BCE Loss G: 0.1300
+2024-11-24 18:14:47,582 - INFO - Epoch [85/100], Batch [20/26]
+ Dt Loss: 0.0089
+ Goal Loss: 0.1277, MIE Loss: 0.0001
+ MSE Loss R: 0.0178, BCE Loss G: 0.1099
+2024-11-24 18:14:58,001 - INFO - Epoch [85/100] completed. Average Goal Loss: 0.1435
+2024-11-24 18:14:58,001 - INFO - Epoch [85/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:14:58,002 - INFO - ===================================================================================
+2024-11-24 18:15:53,185 - INFO - Epoch [85/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1573 
+ MIE Validation Loss: 0.0002 
+ MSE R Validation Loss: 0.0459 
+ BCE G Validation Loss: 0.1111
+2024-11-24 18:15:53,185 - INFO - ===================================================================================
+2024-11-24 18:15:53,185 - INFO - Completed in 4h 49m
+2024-11-24 18:16:03,432 - INFO - Epoch [86/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1171, MIE Loss: 0.0001
+ MSE Loss R: 0.0122, BCE Loss G: 0.1048
+2024-11-24 18:16:23,215 - INFO - Epoch [86/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1311, MIE Loss: 0.0001
+ MSE Loss R: 0.0217, BCE Loss G: 0.1092
+2024-11-24 18:16:42,607 - INFO - Epoch [86/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1116, MIE Loss: 0.0001
+ MSE Loss R: 0.0102, BCE Loss G: 0.1013
+2024-11-24 18:16:53,234 - INFO - Epoch [86/100] completed. Average Goal Loss: 0.1284
+2024-11-24 18:16:53,235 - INFO - Epoch [86/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:16:53,235 - INFO - ===================================================================================
+2024-11-24 18:17:48,573 - INFO - Epoch [86/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1564 
+ MIE Validation Loss: 0.0002 
+ MSE R Validation Loss: 0.0452 
+ BCE G Validation Loss: 0.1109
+2024-11-24 18:17:48,574 - INFO - ===================================================================================
+2024-11-24 18:17:48,574 - INFO - Completed in 4h 51m
+2024-11-24 18:20:56,417 - INFO - 86 Test Returns: 56.0
+2024-11-24 18:20:56,477 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_86.pth
+2024-11-24 18:21:07,757 - INFO - Epoch [87/100], Batch [0/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1270, MIE Loss: 0.0001
+ MSE Loss R: 0.0181, BCE Loss G: 0.1087
+2024-11-24 18:21:45,359 - INFO - Epoch [87/100], Batch [10/26]
+ Dt Loss: 0.0090
+ Goal Loss: 0.1178, MIE Loss: 0.0001
+ MSE Loss R: 0.0129, BCE Loss G: 0.1047
+2024-11-24 18:22:06,284 - INFO - Epoch [87/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1622, MIE Loss: 0.0002
+ MSE Loss R: 0.0419, BCE Loss G: 0.1201
+2024-11-24 18:22:18,097 - INFO - Epoch [87/100] completed. Average Goal Loss: 0.1405
+2024-11-24 18:22:18,098 - INFO - Epoch [87/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:22:18,098 - INFO - ===================================================================================
+2024-11-24 18:23:14,649 - INFO - Epoch [87/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1555 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1115
+2024-11-24 18:23:14,650 - INFO - ===================================================================================
+2024-11-24 18:23:14,650 - INFO - Completed in 4h 56m
+2024-11-24 18:23:25,366 - INFO - Epoch [88/100], Batch [0/26]
+ Dt Loss: 0.0090
+ Goal Loss: 0.1211, MIE Loss: 0.0001
+ MSE Loss R: 0.0165, BCE Loss G: 0.1045
+2024-11-24 18:23:44,926 - INFO - Epoch [88/100], Batch [10/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1295, MIE Loss: 0.0000
+ MSE Loss R: 0.0192, BCE Loss G: 0.1103
+2024-11-24 18:24:05,440 - INFO - Epoch [88/100], Batch [20/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1187, MIE Loss: 0.0001
+ MSE Loss R: 0.0138, BCE Loss G: 0.1047
+2024-11-24 18:24:17,234 - INFO - Epoch [88/100] completed. Average Goal Loss: 0.1420
+2024-11-24 18:24:17,258 - INFO - Epoch [88/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:24:17,258 - INFO - ===================================================================================
+2024-11-24 18:25:16,857 - INFO - Epoch [88/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1553 
+ MIE Validation Loss: 0.0003 
+ MSE R Validation Loss: 0.0442 
+ BCE G Validation Loss: 0.1108
+2024-11-24 18:25:16,858 - INFO - ===================================================================================
+2024-11-24 18:25:16,858 - INFO - Completed in 4h 58m
+2024-11-24 18:28:33,884 - INFO - 88 Test Returns: 57.4
+2024-11-24 18:28:33,916 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_88.pth
+2024-11-24 18:28:47,263 - INFO - Epoch [89/100], Batch [0/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1492, MIE Loss: 0.0002
+ MSE Loss R: 0.0329, BCE Loss G: 0.1161
+2024-11-24 18:29:07,093 - INFO - Epoch [89/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.2775, MIE Loss: 0.0002
+ MSE Loss R: 0.1372, BCE Loss G: 0.1401
+2024-11-24 18:29:28,139 - INFO - Epoch [89/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1134, MIE Loss: 0.0002
+ MSE Loss R: 0.0135, BCE Loss G: 0.0998
+2024-11-24 18:29:40,181 - INFO - Epoch [89/100] completed. Average Goal Loss: 0.1455
+2024-11-24 18:29:40,182 - INFO - Epoch [89/100] completed. Average Action Loss: 0.0093
+2024-11-24 18:29:40,182 - INFO - ===================================================================================
+2024-11-24 18:30:39,537 - INFO - Epoch [89/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1572 
+ MIE Validation Loss: 0.0025 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1108
+2024-11-24 18:30:39,538 - INFO - ===================================================================================
+2024-11-24 18:30:39,538 - INFO - Completed in 5h 4m
+2024-11-24 18:30:51,039 - INFO - Epoch [90/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1439, MIE Loss: 0.0019
+ MSE Loss R: 0.0278, BCE Loss G: 0.1142
+2024-11-24 18:31:12,024 - INFO - Epoch [90/100], Batch [10/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.1883, MIE Loss: 0.0000
+ MSE Loss R: 0.0666, BCE Loss G: 0.1217
+2024-11-24 18:31:32,298 - INFO - Epoch [90/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1162, MIE Loss: 0.0000
+ MSE Loss R: 0.0136, BCE Loss G: 0.1026
+2024-11-24 18:31:43,736 - INFO - Epoch [90/100] completed. Average Goal Loss: 0.1351
+2024-11-24 18:31:43,736 - INFO - Epoch [90/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:31:43,737 - INFO - ===================================================================================
+2024-11-24 18:32:40,884 - INFO - Epoch [90/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1547 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0441 
+ BCE G Validation Loss: 0.1106
+2024-11-24 18:32:40,885 - INFO - ===================================================================================
+2024-11-24 18:32:40,886 - INFO - Completed in 5h 6m
+2024-11-24 18:35:56,987 - INFO - 90 Test Returns: 55.8
+2024-11-24 18:35:57,016 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_90.pth
+2024-11-24 18:36:09,334 - INFO - Epoch [91/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1185, MIE Loss: 0.0000
+ MSE Loss R: 0.0138, BCE Loss G: 0.1047
+2024-11-24 18:36:30,747 - INFO - Epoch [91/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1340, MIE Loss: 0.0000
+ MSE Loss R: 0.0201, BCE Loss G: 0.1139
+2024-11-24 18:36:52,942 - INFO - Epoch [91/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1183, MIE Loss: 0.0001
+ MSE Loss R: 0.0157, BCE Loss G: 0.1025
+2024-11-24 18:37:06,029 - INFO - Epoch [91/100] completed. Average Goal Loss: 0.1510
+2024-11-24 18:37:06,029 - INFO - Epoch [91/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:37:06,029 - INFO - ===================================================================================
+2024-11-24 18:38:04,435 - INFO - Epoch [91/100]
+Action Validation Loss: 0.0072 
+ Goal Validation Loss: 0.1573 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0454 
+ BCE G Validation Loss: 0.1119
+2024-11-24 18:38:04,436 - INFO - ===================================================================================
+2024-11-24 18:38:04,437 - INFO - Completed in 5h 11m
+2024-11-24 18:38:15,531 - INFO - Epoch [92/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1128, MIE Loss: 0.0000
+ MSE Loss R: 0.0119, BCE Loss G: 0.1009
+2024-11-24 18:38:35,272 - INFO - Epoch [92/100], Batch [10/26]
+ Dt Loss: 0.0088
+ Goal Loss: 0.1976, MIE Loss: 0.0002
+ MSE Loss R: 0.0719, BCE Loss G: 0.1255
+2024-11-24 18:38:55,847 - INFO - Epoch [92/100], Batch [20/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1101, MIE Loss: 0.0002
+ MSE Loss R: 0.0106, BCE Loss G: 0.0993
+2024-11-24 18:39:07,380 - INFO - Epoch [92/100] completed. Average Goal Loss: 0.1321
+2024-11-24 18:39:07,380 - INFO - Epoch [92/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:39:07,381 - INFO - ===================================================================================
+2024-11-24 18:40:03,083 - INFO - Epoch [92/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1566 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0454 
+ BCE G Validation Loss: 0.1111
+2024-11-24 18:40:03,084 - INFO - ===================================================================================
+2024-11-24 18:40:03,084 - INFO - Completed in 5h 13m
+2024-11-24 18:43:18,435 - INFO - 92 Test Returns: 58.8
+2024-11-24 18:43:18,465 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_92.pth
+2024-11-24 18:43:30,459 - INFO - Epoch [93/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1106, MIE Loss: 0.0002
+ MSE Loss R: 0.0156, BCE Loss G: 0.0949
+2024-11-24 18:43:49,635 - INFO - Epoch [93/100], Batch [10/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1290, MIE Loss: 0.0002
+ MSE Loss R: 0.0302, BCE Loss G: 0.0986
+2024-11-24 18:44:08,612 - INFO - Epoch [93/100], Batch [20/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1124, MIE Loss: 0.0001
+ MSE Loss R: 0.0134, BCE Loss G: 0.0989
+2024-11-24 18:44:20,697 - INFO - Epoch [93/100] completed. Average Goal Loss: 0.1463
+2024-11-24 18:44:20,697 - INFO - Epoch [93/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:44:20,697 - INFO - ===================================================================================
+2024-11-24 18:45:24,918 - INFO - Epoch [93/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1547 
+ MIE Validation Loss: 0.0002 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1107
+2024-11-24 18:45:24,918 - INFO - ===================================================================================
+2024-11-24 18:45:24,919 - INFO - Completed in 5h 19m
+2024-11-24 18:45:37,410 - INFO - Epoch [94/100], Batch [0/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1197, MIE Loss: 0.0001
+ MSE Loss R: 0.0154, BCE Loss G: 0.1042
+2024-11-24 18:45:57,628 - INFO - Epoch [94/100], Batch [10/26]
+ Dt Loss: 0.0095
+ Goal Loss: 0.1239, MIE Loss: 0.0001
+ MSE Loss R: 0.0155, BCE Loss G: 0.1083
+2024-11-24 18:46:19,326 - INFO - Epoch [94/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1431, MIE Loss: 0.0000
+ MSE Loss R: 0.0269, BCE Loss G: 0.1162
+2024-11-24 18:46:30,727 - INFO - Epoch [94/100] completed. Average Goal Loss: 0.1450
+2024-11-24 18:46:30,728 - INFO - Epoch [94/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:46:30,728 - INFO - ===================================================================================
+2024-11-24 18:47:27,753 - INFO - Epoch [94/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1554 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1115
+2024-11-24 18:47:27,753 - INFO - ===================================================================================
+2024-11-24 18:47:27,754 - INFO - Completed in 5h 21m
+2024-11-24 18:50:35,295 - INFO - 94 Test Returns: 58.4
+2024-11-24 18:50:35,326 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_94.pth
+2024-11-24 18:50:48,334 - INFO - Epoch [95/100], Batch [0/26]
+ Dt Loss: 0.0088
+ Goal Loss: 0.1530, MIE Loss: 0.0000
+ MSE Loss R: 0.0341, BCE Loss G: 0.1188
+2024-11-24 18:51:08,080 - INFO - Epoch [95/100], Batch [10/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1260, MIE Loss: 0.0001
+ MSE Loss R: 0.0241, BCE Loss G: 0.1019
+2024-11-24 18:51:27,825 - INFO - Epoch [95/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1167, MIE Loss: 0.0001
+ MSE Loss R: 0.0191, BCE Loss G: 0.0975
+2024-11-24 18:51:39,016 - INFO - Epoch [95/100] completed. Average Goal Loss: 0.1542
+2024-11-24 18:51:39,016 - INFO - Epoch [95/100] completed. Average Action Loss: 0.0092
+2024-11-24 18:51:39,016 - INFO - ===================================================================================
+2024-11-24 18:52:41,530 - INFO - Epoch [95/100]
+Action Validation Loss: 0.0071 
+ Goal Validation Loss: 0.1561 
+ MIE Validation Loss: 0.0002 
+ MSE R Validation Loss: 0.0440 
+ BCE G Validation Loss: 0.1120
+2024-11-24 18:52:41,530 - INFO - ===================================================================================
+2024-11-24 18:52:41,531 - INFO - Completed in 5h 26m
+2024-11-24 18:52:54,016 - INFO - Epoch [96/100], Batch [0/26]
+ Dt Loss: 0.0090
+ Goal Loss: 0.3148, MIE Loss: 0.0001
+ MSE Loss R: 0.1774, BCE Loss G: 0.1373
+2024-11-24 18:53:14,302 - INFO - Epoch [96/100], Batch [10/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1244, MIE Loss: 0.0001
+ MSE Loss R: 0.0165, BCE Loss G: 0.1079
+2024-11-24 18:53:33,695 - INFO - Epoch [96/100], Batch [20/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1995, MIE Loss: 0.0033
+ MSE Loss R: 0.0669, BCE Loss G: 0.1293
+2024-11-24 18:53:45,257 - INFO - Epoch [96/100] completed. Average Goal Loss: 0.1642
+2024-11-24 18:53:45,257 - INFO - Epoch [96/100] completed. Average Action Loss: 0.0091
+2024-11-24 18:53:45,257 - INFO - ===================================================================================
+2024-11-24 18:54:47,284 - INFO - Epoch [96/100]
+Action Validation Loss: 0.0069 
+ Goal Validation Loss: 0.1546 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0440 
+ BCE G Validation Loss: 0.1107
+2024-11-24 18:54:47,285 - INFO - ===================================================================================
+2024-11-24 18:54:47,285 - INFO - Completed in 5h 28m
+2024-11-24 18:57:55,152 - INFO - 96 Test Returns: 58.8
+2024-11-24 18:57:55,194 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_96.pth
+2024-11-24 18:58:06,802 - INFO - Epoch [97/100], Batch [0/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1242, MIE Loss: 0.0000
+ MSE Loss R: 0.0228, BCE Loss G: 0.1015
+2024-11-24 18:58:26,842 - INFO - Epoch [97/100], Batch [10/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.1181, MIE Loss: 0.0001
+ MSE Loss R: 0.0134, BCE Loss G: 0.1046
+2024-11-24 18:58:45,681 - INFO - Epoch [97/100], Batch [20/26]
+ Dt Loss: 0.0091
+ Goal Loss: 0.1648, MIE Loss: 0.0001
+ MSE Loss R: 0.0434, BCE Loss G: 0.1213
+2024-11-24 18:58:58,103 - INFO - Epoch [97/100] completed. Average Goal Loss: 0.1518
+2024-11-24 18:58:58,103 - INFO - Epoch [97/100] completed. Average Action Loss: 0.0091
+2024-11-24 18:58:58,104 - INFO - ===================================================================================
+2024-11-24 18:59:56,868 - INFO - Epoch [97/100]
+Action Validation Loss: 0.0070 
+ Goal Validation Loss: 0.1561 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0453 
+ BCE G Validation Loss: 0.1108
+2024-11-24 18:59:56,869 - INFO - ===================================================================================
+2024-11-24 18:59:56,870 - INFO - Completed in 5h 33m
+2024-11-24 19:00:07,591 - INFO - Epoch [98/100], Batch [0/26]
+ Dt Loss: 0.0089
+ Goal Loss: 0.1353, MIE Loss: 0.0000
+ MSE Loss R: 0.0368, BCE Loss G: 0.0985
+2024-11-24 19:00:27,112 - INFO - Epoch [98/100], Batch [10/26]
+ Dt Loss: 0.0093
+ Goal Loss: 0.2568, MIE Loss: 0.0001
+ MSE Loss R: 0.1197, BCE Loss G: 0.1370
+2024-11-24 19:00:46,722 - INFO - Epoch [98/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.2629, MIE Loss: 0.0002
+ MSE Loss R: 0.1250, BCE Loss G: 0.1377
+2024-11-24 19:00:58,170 - INFO - Epoch [98/100] completed. Average Goal Loss: 0.1400
+2024-11-24 19:00:58,170 - INFO - Epoch [98/100] completed. Average Action Loss: 0.0091
+2024-11-24 19:00:58,170 - INFO - ===================================================================================
+2024-11-24 19:01:57,481 - INFO - Epoch [98/100]
+Action Validation Loss: 0.0069 
+ Goal Validation Loss: 0.1545 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0438 
+ BCE G Validation Loss: 0.1107
+2024-11-24 19:01:57,482 - INFO - ===================================================================================
+2024-11-24 19:01:57,482 - INFO - Completed in 5h 35m
+2024-11-24 19:05:06,528 - INFO - 98 Test Returns: 56.4
+2024-11-24 19:05:06,557 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_98.pth
+2024-11-24 19:05:19,057 - INFO - Epoch [99/100], Batch [0/26]
+ Dt Loss: 0.0096
+ Goal Loss: 0.3141, MIE Loss: 0.0001
+ MSE Loss R: 0.1700, BCE Loss G: 0.1441
+2024-11-24 19:05:42,800 - INFO - Epoch [99/100], Batch [10/26]
+ Dt Loss: 0.0094
+ Goal Loss: 0.1291, MIE Loss: 0.0001
+ MSE Loss R: 0.0185, BCE Loss G: 0.1105
+2024-11-24 19:06:02,112 - INFO - Epoch [99/100], Batch [20/26]
+ Dt Loss: 0.0092
+ Goal Loss: 0.1158, MIE Loss: 0.0001
+ MSE Loss R: 0.0145, BCE Loss G: 0.1011
+2024-11-24 19:06:14,693 - INFO - Epoch [99/100] completed. Average Goal Loss: 0.1494
+2024-11-24 19:06:14,694 - INFO - Epoch [99/100] completed. Average Action Loss: 0.0092
+2024-11-24 19:06:14,694 - INFO - ===================================================================================
+2024-11-24 19:07:15,267 - INFO - Epoch [99/100]
+Action Validation Loss: 0.0070 
+ Goal Validation Loss: 0.1559 
+ MIE Validation Loss: 0.0001 
+ MSE R Validation Loss: 0.0443 
+ BCE G Validation Loss: 0.1115
+2024-11-24 19:07:15,268 - INFO - ===================================================================================
+2024-11-24 19:07:15,268 - INFO - Completed in 5h 40m
+2024-11-24 19:07:27,833 - INFO - Epoch [100/100], Batch [0/26]
+ Dt Loss: 0.0089
+ Goal Loss: 0.1263, MIE Loss: 0.0001
+ MSE Loss R: 0.0165, BCE Loss G: 0.1096
+2024-11-24 19:07:46,608 - INFO - Epoch [100/100], Batch [10/26]
+ Dt Loss: 0.0089
+ Goal Loss: 0.1238, MIE Loss: 0.0001
+ MSE Loss R: 0.0201, BCE Loss G: 0.1036
+2024-11-24 19:08:05,136 - INFO - Epoch [100/100], Batch [20/26]
+ Dt Loss: 0.0090
+ Goal Loss: 0.2014, MIE Loss: 0.0000
+ MSE Loss R: 0.0750, BCE Loss G: 0.1264
+2024-11-24 19:08:15,811 - INFO - Epoch [100/100] completed. Average Goal Loss: 0.1423
+2024-11-24 19:08:15,812 - INFO - Epoch [100/100] completed. Average Action Loss: 0.0090
+2024-11-24 19:08:15,812 - INFO - ===================================================================================
+2024-11-24 19:09:17,119 - INFO - Epoch [100/100]
+Action Validation Loss: 0.0070 
+ Goal Validation Loss: 0.1559 
+ MIE Validation Loss: 0.0000 
+ MSE R Validation Loss: 0.0439 
+ BCE G Validation Loss: 0.1121
+2024-11-24 19:09:17,120 - INFO - ===================================================================================
+2024-11-24 19:09:17,120 - INFO - Completed in 5h 43m
+2024-11-24 19:12:27,445 - INFO - 100 Test Returns: 57.6
+2024-11-24 19:12:27,475 - INFO - Model checkpoint saved at training_output/20241124_132503/models/epoch_100.pth
+2024-11-24 19:12:27,718 - INFO - Training completed.
