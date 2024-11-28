@@ -1,4 +1,5 @@
 from envs.stag_hunt.stag_hunt import StagHunt
+from envs.lbf.foraging import ForagingEnv
 import numpy as np
 import yaml
 import random
@@ -12,14 +13,22 @@ from functools import partial
 from components.episode_buffer import EpisodeBatch
 import torch
 
+from Agent.RandomAgent import RandomAgent
+
 class Test:
-    def __init__(self, env_type:str):
+    def __init__(self, env_type:str, random=False,):
 
         self.env_type = env_type
+        self.random = random
         if self.env_type == 'PP4a':
             self.env_name ='stag_hunt'
             self.test_yaml = 'test_PP.yaml'
             self.teammate_model_path = f'../saves/PP4a/PP4a_test_models/3/'
+        elif self.env_type == 'LBF':
+            self.env_name ='lbf'
+            self.test_yaml = 'test_LBF.yaml'
+            self.teammate_model_path = f'../saves/LBF/LBF_test_models/3/'
+            # self.teammate_model_path = f'../saves/LBF/LBF_models/0/'
 
         teammate_list = []
         for file_name in os.listdir(self.teammate_model_path):
@@ -39,19 +48,24 @@ class Test:
     def merge_dicts(self, base_dict, custom_dict):
         for key, value in custom_dict.items():
             if isinstance(value, dict) and key in base_dict:
-                merge_dicts(base_dict[key], value)
+                self.merge_dicts(base_dict[key], value)
             else:
                 base_dict[key] = value
 
     def init_game_setting(self):
+        #if self.env_type == "PP4a":
         env_config_path = f'../src/config/envs/{self.env_name}.yaml'
         args_dict = self.load_args_from_yaml(f'../src/config/{self.test_yaml}')
+        test_dict = args_dict
         default_dict = self.load_args_from_yaml('../src/config/default.yaml')
         env_args = self.load_args_from_yaml(env_config_path)
 
         game_args = env_args['env_args']
         game_args['seed'] = random.randint(1, 10000)
-        self.episode_limit = game_args['episode_limit']
+        if self.env_type == "PP4a":
+            self.episode_limit = game_args['episode_limit']
+        if self.env_type == "LBF":
+            self.episode_limit = 50
         self.merge_dicts(args_dict, default_dict)
         self.merge_dicts(args_dict, game_args)
 
@@ -61,13 +75,16 @@ class Test:
         args.device = "cuda"
 
         # 初始化环境
-        self.env = StagHunt(**game_args)
+        if self.env_name =='stag_hunt':
+            self.env = StagHunt(**game_args)
+        if self.env_name == 'lbf':
+            self.env = ForagingEnv(**game_args)
         env_info = self.env.get_env_info()
         args.n_actions = self.env.n_actions
         args.n_agents = self.env.n_agents
-
+        # print(args)
         groups = {
-            "agents": game_args['n_agents']
+            "agents": args.n_agents
         }
 
         scheme = {
@@ -84,14 +101,20 @@ class Test:
         }
 
         global_groups = {
-            "agents": game_args['n_agents']
+            "agents": args.n_agents
         }
         self.buffer = MetaReplayBuffer(scheme, global_groups, 1024, env_info["episode_limit"] + 1,
                                     preprocess=preprocess,
                                     device=args.device)
         # 设置 explore agent 控制器
+        if self.env_type == 'LBF':
+            args.max_food = test_dict['env_args']['max_food']
+            args.field_size = test_dict['env_args']['field_size']
+            args.sight = test_dict['env_args']['sight']
+            args.population_alg = 'vdn'
+
         self.mac = mac_REGISTRY[args.mac](self.buffer.scheme, groups, args)
-        self.new_batch = partial(EpisodeBatch, self.buffer.scheme, groups, 1, game_args['episode_limit'] + 1,
+        self.new_batch = partial(EpisodeBatch, self.buffer.scheme, groups, 1, self.episode_limit + 1,
                                     preprocess=preprocess, device=args.device)
     
     def test_game(self, test_episodes, agent, K=20):
@@ -158,7 +181,10 @@ class Test:
                 actions = actions_tensor[0].numpy()
                 
                 # adhoc agent选择动作
-                action_ad, S = agent.take_action(o_list, a_list, g_list, t_list, env.n_actions)
+                if self.random:
+                    action_ad = agent.take_action()
+                else:
+                    action_ad, S = agent.take_action(o_list, a_list, g_list, t_list, env.n_actions)
                 # action_ad = agent.take_action()
                 # action_ad = np.random.randint(0, env.n_actions, size=(1,))
                 # 拼接
@@ -166,7 +192,9 @@ class Test:
                 # actions = np.concatenate([actions[:-1], action_ad])
                 
                 a_list.append(actions[teammate_idx])
-                g_list.append(S)
+                
+                if not self.random:
+                    g_list.append(S)
 
                 # 执行动作并获取下一步
                 reward, done, info = env.step(actions)
@@ -187,8 +215,8 @@ class Test:
                 step_count += 1
             episode += 1
             return_list.append(total_reward)
-            # print(f"Episode {episode} return: {total_reward}")
-        # print("Average Return:", sum(return_list)/ len(return_list))
+            #print(f"Episode {episode} return: {total_reward}")
+        #print("Average Return:", sum(return_list)/ len(return_list))
         return sum(return_list)/ len(return_list), min(return_list), max(return_list)
 
     def test_game_dt(self, test_episodes, agent, K=20):
@@ -285,6 +313,11 @@ class Test:
                     step_count += 1
                 episode += 1
                 return_list.append(total_reward)
-                # print(f"Episode {episode} return: {total_reward}")
-            # print("Average Return:", sum(return_list)/ len(return_list))
+                #print(f"Episode {episode} return: {total_reward}")
+            #print("Average Return:", sum(return_list)/ len(return_list))
             return sum(return_list)/ len(return_list), min(return_list), max(return_list)
+
+if __name__ == "__main__":
+    test = Test(env_type="LBF", random=True)
+    randomAgent = RandomAgent(n_actions=6)
+    test.test_game(50, randomAgent)

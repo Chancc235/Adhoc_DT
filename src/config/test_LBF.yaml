@@ -1,0 +1,14 @@
+mac: "basic"
+action_selector: epsilon_greedy
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+explore_alg: stage2_LBF
+population_alg: vdn
+
+agent: "rnn"
+
+env_args:
+  field_size: 20
+  max_food: 4
+  sight: 2
