@@ -2,11 +2,11 @@ import torch
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.ReturnNet import ReturnNet
-from Networks.GoalDecoder import GoalDecoder
+from Networks.GoalDecoder import GoalDecoder, GoalDecoder_lbf
 
 # 假设有 10 个 agent，每个 agent 的 state_dim 是 16
 num_agents = 4
-state_dim = 75
+state_dim = 2
 embed_dim = 32
 num_heads = 4
 batch_size = 1
@@ -39,10 +39,10 @@ print(returns.shape)
 print(returns)
 
 # 目标解码器
-goal_decoder = GoalDecoder(embed_dim, 1, 512, state_dim, 4)
+goal_decoder = GoalDecoder_lbf(embed_dim, 1, 512, state_dim, 4)
 goal_decoder.eval()
 goal = goal_decoder(encoded_output, returns)
-goal = (goal > 0.5).float()
+#goal = (goal > 0.5).float()
 
 print(goal.shape)
 print(goal)
