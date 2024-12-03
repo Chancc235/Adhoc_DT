@@ -1,0 +1,135 @@
+/home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/gym/logger.py:34: UserWarning: [33mWARN: Overriding environment Overcooked-v0[0m
+  warnings.warn(colorize("%s: %s" % ("WARN", msg % args), "yellow"))
+[DEBUG 05:28:34] git.cmd Popen(['git', 'version'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.cmd Popen(['git', 'version'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.util Failed checking if running in CYGWIN due to: FileNotFoundError(2, "No such file or directory: '/usr/bin/uname'")
+[DEBUG 05:28:34] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/cike/marl_collector, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:34] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:35] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/cike/marl_collector, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 05:28:35] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:35] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/cike/marl_collector, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:28:35] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/cike/marl_collector, stdin=<valid stream>, shell=False, universal_newlines=False)
+[INFO 05:28:35] root Saving to FileStorageObserver in results/sacred.
+[DEBUG 05:28:36] pymarl Using capture mode "fd"
+/home/cike/marl_collector/src/envs/overcooked/overcooked_ai
+/home/cike/marl_collector/src/envs/overcooked/overcooked_ai
+pygame 2.6.1 (SDL 2.28.4, Python 3.7.12)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+[INFO 05:28:36] pymarl Running command 'my_main'
+[INFO 05:28:36] pymarl Started run with ID "42"
+[DEBUG 05:28:36] pymarl Starting Heartbeat
+[DEBUG 05:28:36] my_main Started
+[INFO 05:28:36] my_main Experiment Parameters:
+[INFO 05:28:36] my_main 
+
+{   'agent': 'rnn',
+    'alg2agent': {   'controllable': [   0,
+                                         1],
+                     'teammate': [   0]},
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 1024,
+    'checkpoint_path': '',
+    'critic_lr': 0.0005,
+    'cur_episodes': 32,
+    'env': 'lbf',
+    'env_args': {   'field_size': 20,
+                    'force_coop': True,
+                    'is_print': False,
+                    'max_food': 4,
+                    'need_render': False,
+                    'partiteammate_observe': False,
+                    'players': 2,
+                    'remote': False,
+                    'render_output_path': 'logs',
+                    'seed': 1024,
+                    'sight': 2},
+    'episodes_per_teammate': 64,
+    'epsilon_anneal_time': 1000000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'exp_name': 'stage2_collector',
+    'explore_alg': 'vdn',
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'ind': 'collector',
+    'inner_loop_episodes': 128,
+    'label': 'default_label',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'local_saves_path': 'saves',
+    'log_interval': 10000,
+    'lr': 0.0005,
+    'mac': 'basic',
+    'meta_update_times': 8,
+    'n_sub_modules': 4,
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimize_meta': True,
+    'points_per_teammate': 64,
+    'pop': 'collector',
+    'population_alg': 'qmix',
+    'population_directories': 'models/',
+    'population_size': 3,
+    'repeat_id': 1,
+    'rnn_hidden_dim': 64,
+    'runner': 'meta',
+    'runner_log_interval': 10000,
+    'save_BR': True,
+    'save_BR_episodes': 1024,
+    'save_model': False,
+    'save_model_interval': 2000000,
+    'save_population': False,
+    'save_population_episodes': 2048,
+    'save_replay': False,
+    'seed': 470694545,
+    't_max': 1,
+    'teammate_alg': 'vdn',
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'test_percent': 0.2,
+    'train_test_split': False,
+    'use_cuda': True,
+    'use_history': True,
+    'use_tensorboard': True,
+    'z_dim': 8}
+
+[INFO 05:28:36] my_main ================ MetaEpoch: 0 ================
+[INFO 05:28:36] my_main Time passed: 0 seconds
+[INFO 05:28:36] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 05:28:36] my_main Chosen Teammate: 0  1
+[INFO 05:28:36] root Runing batch
+[INFO 05:28:38] root Get batch
+[INFO 05:28:38] root episode 0 Inserted
+========> Train Pop <========
+Size: 12 win_mean: 0.14225260416666666
+========> Test Pop <=========
+Size: 12 win_mean: 0.14225260416666666
+29
+namespace(action_selector='epsilon_greedy', agent='rnn', agent_ids=[0, 1], agent_output_type='q', alg2agent={'controllable': [0, 1], 'teammate': [0]}, ally_ids=[], batch_size=32, batch_size_run=1, buffer_cpu_only=True, buffer_size=2000, checkpoint_path='', critic_lr=0.0005, cur_episodes=32, device='cuda', double_q=True, env='lbf', env_args={'field_size': 20, 'max_food': 4, 'sight': 2, 'players': 2, 'force_coop': True, 'partiteammate_observe': False, 'is_print': False, 'seed': 0, 'need_render': False, 'remote': False, 'render_output_path': 'logs'}, env_info={'field_size': 20, 'max_food': 4, 'state_shape': 21, 'obs_shape': 21, 'n_actions': 6, 'n_agents': 2, 'episode_limit': 50}, episodes_per_teammate=64, epsilon_anneal_time=1000000, epsilon_finish=0.05, epsilon_start=1.0, evaluate=False, exp_name='stage2_collector', explore_alg='vdn', gamma=0.99, grad_norm_clip=10, ind='collector', inner_loop_episodes=128, label='default_label', learner='q_learner', learner_log_interval=10000, load_step=0, local_results_path='results', local_saves_path='saves', log_interval=10000, lr=0.0005, mac='basic', meta_update_times=8, mixer='vdn', n_actions=6, n_agents=2, n_ally_agents=0, n_env_agents=2, n_sub_modules=4, n_tasks=12, name='vdn', obs_agent_id=True, obs_last_action=True, optim_alpha=0.99, optim_eps=1e-05, optimize_meta=True, points_per_teammate=64, pop='collector', population_alg='qmix', population_directories=['models/'], population_size=3, repeat_id=1, rnn_hidden_dim=64, runner='meta', runner_log_interval=10000, save_BR=True, save_BR_episodes=1024, save_model=False, save_model_interval=2000000, save_population=False, save_population_episodes=2048, save_replay=False, seed=470694545, state_dim=21, state_shape=21, t_max=1, target_update_interval=200, teammate_alg='vdn', test_greedy=True, test_interval=10000, test_nepisode=32, test_percent=0.2, train_test_split=False, unique_token='stage2_collector__2024-11-30_05-28-36_dqeuPK', use_cuda=True, use_history=True, use_tensorboard=True, z_dim=8)
+/home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/sacred/stdout_capturing.py:184: UserWarning: tee_stdout.wait timeout. Forcibly terminating.
+  warnings.warn("tee_stdout.wait timeout. Forcibly terminating.")
+/home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/sacred/stdout_capturing.py:190: UserWarning: tee_stderr.wait timeout. Forcibly terminating.
+  warnings.warn("tee_stderr.wait timeout. Forcibly terminating.")
+[DEBUG 05:28:40] pymarl Stopping Heartbeat
+[ERROR 05:28:40] pymarl Failed after 0:00:04!
+Traceback (most recent calls WITHOUT Sacred internals):
+  File "src/meta_main.py", line 43, in my_main
+    run(_run, config, _log)
+  File "src/meta_main.py", line 80, in run
+    pop.run()
+  File "/home/cike/marl_collector/src/meta/population/collector_population.py", line 62, in run
+    self.BRI.save_trajectories()  # Changed to save collected trajectories
+  File "/home/cike/marl_collector/src/meta/individual/collector_individual.py", line 157, in save_trajectories
+    with open(save_path, 'wb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'saves/trajectorys/buffer_1.pkl'
+

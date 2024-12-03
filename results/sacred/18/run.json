@@ -1,0 +1,132 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/cike/marl_collector/src",
+    "dependencies": [
+      "munch==2.5.0",
+      "numpy==1.21.6",
+      "PyYAML==6.0",
+      "sacred==0.8.2",
+      "torch==1.13.1"
+    ],
+    "mainfile": "meta_main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "25d5fcc17940e39bf54af958f70587f93941da35",
+        "dirty": true,
+        "url": "git@github.com:Chancc235/Adhoc_DT.git"
+      },
+      {
+        "commit": "25d5fcc17940e39bf54af958f70587f93941da35",
+        "dirty": true,
+        "url": "git@github.com:Chancc235/Adhoc_DT.git"
+      },
+      {
+        "commit": "25d5fcc17940e39bf54af958f70587f93941da35",
+        "dirty": true,
+        "url": "git@github.com:Chancc235/Adhoc_DT.git"
+      }
+    ],
+    "sources": [
+      [
+        "meta_main.py",
+        "_sources/meta_main_a74be827ec41963b97b9ab4d77c6d25a.py"
+      ],
+      [
+        "utils/config_utils.py",
+        "_sources/config_utils_11a418cc99d65a52a4ab3d9c9e93f913.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_867f86b10403f8b7e6826558d04fb18e.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/sacred/config/captured_function.py\", line 42, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"src/meta_main.py\", line 43, in my_main\n    run(_run, config, _log)\n",
+    "  File \"src/meta_main.py\", line 80, in run\n    pop.run()\n",
+    "  File \"/home/cike/marl_collector/src/meta/population/collector_population.py\", line 51, in run\n    self.BRI.runner.mac.load_models(teammate)\n",
+    "  File \"/home/cike/marl_collector/src/controllers/basic_controller.py\", line 76, in load_models\n    self.agent.load_models(path)\n",
+    "  File \"/home/cike/marl_collector/src/modules/agents/rnn_agent.py\", line 36, in load_models\n    self.load_state_dict(th.load(f\"{path}/agent.th\", map_location=lambda storage, loc: storage))\n",
+    "  File \"/home/cike/anaconda3/envs/pymarl2/lib/python3.7/site-packages/torch/nn/modules/module.py\", line 1672, in load_state_dict\n    self.__class__.__name__, \"\\n\\t\".join(error_msgs)))\n",
+    "RuntimeError: Error(s) in loading state_dict for RNNAgent:\n\tsize mismatch for fc1.weight: copying a param with shape torch.Size([64, 29]) from checkpoint, the shape in current model is torch.Size([64, 31]).\n"
+  ],
+  "heartbeat": "2024-11-29T16:22:47.989261",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz",
+    "gpus": {
+      "driver_version": "470.182.03",
+      "gpus": [
+        {
+          "model": "Tesla P100-PCIE-16GB",
+          "persistence_mode": false,
+          "total_memory": 16280
+        },
+        {
+          "model": "Tesla P100-PCIE-16GB",
+          "persistence_mode": false,
+          "total_memory": 16280
+        },
+        {
+          "model": "Quadro RTX 8000",
+          "persistence_mode": false,
+          "total_memory": 48601
+        },
+        {
+          "model": "Tesla P100-PCIE-16GB",
+          "persistence_mode": false,
+          "total_memory": 16280
+        },
+        {
+          "model": "Tesla P100-PCIE-16GB",
+          "persistence_mode": false,
+          "total_memory": 16280
+        }
+      ]
+    },
+    "hostname": "89ddac7113b8",
+    "os": [
+      "Linux",
+      "Linux-4.15.0-213-generic-x86_64-with-debian-buster-sid"
+    ],
+    "python_version": "3.7.12"
+  },
+  "meta": {
+    "command": "my_main",
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [],
+      "help": false,
+      "with": false
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-11-29T16:22:45.642108",
+  "status": "FAILED",
+  "stop_time": "2024-11-29T16:22:47.992123"
+}

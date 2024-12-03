@@ -45,7 +45,6 @@ class CollectorPopulation(StrPopulation):
             self.logger.console_logger.info(f"Chosen Teammate: {self.teammate_id}  {teammate_name}")
 
             # teammate = os.path.join(teammate.split('/')[-3], os.path.join(teammate.split('/')[-2], teammate.split('/')[-1]))
-            # print(teammate)
             # Set the randomly selected teammate for BRI to interact with
             # self.BRI.set_agents(teammate)
             self.BRI.runner.mac.load_models(teammate)

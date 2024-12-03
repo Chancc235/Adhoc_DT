@@ -11,7 +11,7 @@ env_args:
 
 t_max: 5000000
 runner: meta
-batch_size_run: 32
+batch_size_run: 128
 
 # ====> population config <====
 population_alg: vdn # vdn, qmix
@@ -20,7 +20,7 @@ population_size: 4
 optimize_meta: False # Set 'False' for no diversity among population
 inner_loop_episodes: 128 # runs of each inner loop
 meta_update_times: 8 # gradient update times for each meta update
-cur_episodes: 32 # num of trajectories for estimating loss
+cur_episodes: 16 # num of trajectories for estimating loss
 
 save_population: True
 save_population_episodes: 4096

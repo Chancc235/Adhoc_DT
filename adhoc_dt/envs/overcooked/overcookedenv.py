@@ -76,7 +76,7 @@ class OvercookedMultiEnv(MultiAgentEnv):
 
         # try:
         # TODO: need better implementation
-        self.render_init("src/envs/overcooked/overcooked_ai/overcooked_ai_js/assets")
+        self.render_init("envs/overcooked/overcooked_ai/overcooked_ai_js/assets")
         # except:
         # print("Warning: can't create visualization in current env setting.")
 
@@ -114,6 +114,8 @@ class OvercookedMultiEnv(MultiAgentEnv):
     def reset(self, arg_dict=None):
         """Reset the environment.
         """
+        if arg_dict == None:
+            arg_dict = {}
         render_type = arg_dict.get("render_type", "")
         self.base_env.reset()   # reset base environment
         # self.ego_agent_idx = 0  # set ego_agent_idx to 0

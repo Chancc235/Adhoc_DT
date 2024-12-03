@@ -1,0 +1,1 @@
+nohup python ./process_data/process_raw_overcooked.py > output.log 2>&1 &

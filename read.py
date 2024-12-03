@@ -2,7 +2,7 @@ import pickle
 import torch
 
 # 文件路径
-file_path = './saves/PP4a/PP4a_trajectorys4/buffer_1024.pkl'
+file_path = './saves/overcooked/overcooked_trajectorys1/buffer_5120.pkl'
 # 打开并读取 .plk 文件
 with open(file_path, 'rb') as file:
     data = pickle.load(file)
@@ -22,11 +22,12 @@ print(data["transition_data"]["avail_actions"].shape)
 print(data["transition_data"]["reward"].shape)
 print(data["transition_data"]["terminated"].shape)
 
+'''
 for i in data["transition_data"]["terminated"]:
     if any(i):
         print(i)
 
-'''
+
 
 tensor = data["transition_data"]["reward"]
 

@@ -211,14 +211,10 @@ class DecisionTransformer_lbf(TrajectoryModel):
             attention_mask = torch.ones((batch_size, seq_length), dtype=torch.long)
 
         # embed each modality with a different head
-        states = states[..., [-3, -2]]
         state_embeddings = self.embed_state(states)
         actions = actions.to(torch.float32)
         action_embeddings = self.embed_action(actions)
-        goal = goal[..., [-3, -2]]
-        print(goal.shape)
         goal = goal.view(goal.shape[0], goal.shape[1], goal.shape[2] * goal.shape[3])
-        print(goal.shape)
         goal_embeddings = self.embed_goal(goal)
         time_embeddings = self.embed_timestep(timesteps)
 
@@ -260,7 +256,7 @@ class DecisionTransformer_lbf(TrajectoryModel):
 
     def get_action(self, states, actions, goal, timesteps, **kwargs):
         # we don't care about the past rewards in this model
-
+        states = states[..., [-3, -2]]
         states = states.reshape(1, -1, self.state_dim)
         actions = actions.reshape(1, -1, self.act_dim)
         goal = goal.reshape(1, -1, self.num_agents, self.state_dim)

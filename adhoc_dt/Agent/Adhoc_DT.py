@@ -2,11 +2,12 @@ from Networks.dt_models.decision_transformer import DecisionTransformer
 import torch.nn.functional as F
 import torch
 class Adhoc_DT:
-    def __init__(self, dt_model, state_encoder, return_net, goal_decoder):
+    def __init__(self, dt_model, state_encoder, return_net, goal_decoder, env_type='PP4a'):
         self.state_encoder = state_encoder
         self.dt_model = dt_model
         self.return_net = return_net
         self.goal_decoder = goal_decoder
+        self.env_type = env_type
 
 
     def take_action(self, o_list, a_list, g_list, t_list, act_dim):
@@ -34,6 +35,8 @@ class Adhoc_DT:
         t = torch.tensor(t_list).to(device="cuda")
 
         # 计算状态embeding
+        if self.env_type == "LBF":
+            obs = obs[..., [-3, -2]]
         z_mu, z_log_var = self.state_encoder(obs)
         z_log_var = torch.clamp(z_log_var, min=-10, max=10)
         z_std = torch.exp(0.5 * z_log_var)
@@ -41,14 +44,16 @@ class Adhoc_DT:
         # 计算奖励
         r = self.return_net(z)
         # 预测子目标
-        pred_g = (self.goal_decoder(z, r) > 0.5).float().permute(1, 0, 2)
+        if self.env_type == "PP4a":
+            pred_g = (self.goal_decoder(z, r) > 0.5).float().permute(1, 0, 2)
+        elif self.env_type == "LBF":
+            pred_g = self.goal_decoder(z, r).permute(1, 0, 2)
         # 拼接新的子目标
         g_list.append(pred_g)
         new_g = torch.cat(g_list, dim=0)
         o = o.unsqueeze(0)
         a = a.unsqueeze(0)
         t = t.unsqueeze(0)
-        new_g = new_g.unsqueeze(0)
         # print(new_g.shape)
         # print(a.shape)
         # print(o.shape)

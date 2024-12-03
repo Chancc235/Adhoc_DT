@@ -2,8 +2,9 @@ from Networks.dt_models.decision_transformer import DecisionTransformer
 import torch.nn.functional as F
 import torch
 class DtAgent:
-    def __init__(self, dt_model):
+    def __init__(self, dt_model, env_type='PP4a'):
         self.dt_model = dt_model
+        self.env_type = env_type
 
     def take_action(self, o_list, a_list, R_list, t_list, act_dim):
 
@@ -25,6 +26,10 @@ class DtAgent:
         o = o.to(device="cuda")
         o = o.view(len(o_list), o_list[0].shape[0])
         t = torch.tensor(t_list).to(device="cuda")
+        '''
+        if self.env_type == "LBF":
+            o = o[..., [-3, -2]]
+        '''
         R_list = [r.unsqueeze(0) if r.dim() == 0 else r for r in R_list]
         R = torch.cat(R_list, dim=0).unsqueeze(0)
         o = o.unsqueeze(0)
