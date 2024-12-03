@@ -1,0 +1,1943 @@
+[INFO 02:02:21] pymarl Running command 'my_main'
+[INFO 02:02:21] pymarl Started run with ID "29"
+[DEBUG 02:02:21] pymarl Starting Heartbeat
+[DEBUG 02:02:21] my_main Started
+[INFO 02:02:21] my_main Experiment Parameters:
+[INFO 02:02:21] my_main 
+
+{   'agent': 'rnn',
+    'alg2agent': {   'controllable': [   0,
+                                         1],
+                     'teammate': [   0]},
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 1024,
+    'checkpoint_path': '',
+    'critic_lr': 0.0005,
+    'cur_episodes': 32,
+    'env': 'lbf',
+    'env_args': {   'field_size': 20,
+                    'force_coop': True,
+                    'is_print': False,
+                    'max_food': 4,
+                    'need_render': False,
+                    'partiteammate_observe': False,
+                    'players': 2,
+                    'remote': False,
+                    'render_output_path': 'logs',
+                    'seed': 1024,
+                    'sight': 2},
+    'episodes_per_teammate': 64,
+    'epsilon_anneal_time': 1000000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'exp_name': 'stage2_collector',
+    'explore_alg': 'vdn',
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'ind': 'collector',
+    'inner_loop_episodes': 128,
+    'label': 'default_label',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'local_saves_path': 'saves',
+    'log_interval': 10000,
+    'lr': 0.0005,
+    'mac': 'basic',
+    'meta_update_times': 8,
+    'n_sub_modules': 4,
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimize_meta': True,
+    'points_per_teammate': 64,
+    'pop': 'collector',
+    'population_alg': 'qmix',
+    'population_directories': 'models/',
+    'population_size': 3,
+    'repeat_id': 1,
+    'rnn_hidden_dim': 64,
+    'runner': 'meta',
+    'runner_log_interval': 10000,
+    'save_BR': True,
+    'save_BR_episodes': 1024,
+    'save_model': False,
+    'save_model_interval': 2000000,
+    'save_population': False,
+    'save_population_episodes': 2048,
+    'save_replay': False,
+    'seed': 527232206,
+    't_max': 1024,
+    'teammate_alg': 'vdn',
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'test_percent': 0.2,
+    'train_test_split': False,
+    'use_cuda': True,
+    'use_history': True,
+    'use_tensorboard': True,
+    'z_dim': 8}
+
+[INFO 02:02:21] my_main ================ MetaEpoch: 0 ================
+[INFO 02:02:21] my_main Time passed: 0 seconds
+[INFO 02:02:21] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:21] my_main Chosen Teammate: 0  2
+[INFO 02:02:21] root Runing batch
+[INFO 02:02:23] root Get batch
+[INFO 02:02:23] root episode 0 Inserted
+[INFO 02:02:23] my_main ================ MetaEpoch: 1 ================
+[INFO 02:02:23] my_main Time passed: 1 seconds
+[INFO 02:02:23] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:23] my_main Chosen Teammate: 1  0
+[INFO 02:02:23] root Runing batch
+[INFO 02:02:23] root Get batch
+[INFO 02:02:23] root episode 1 Inserted
+[INFO 02:02:23] my_main ================ MetaEpoch: 2 ================
+[INFO 02:02:23] my_main Time passed: 2 seconds
+[INFO 02:02:23] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:23] my_main Chosen Teammate: 2  1
+[INFO 02:02:23] root Runing batch
+[INFO 02:02:23] root Get batch
+[INFO 02:02:23] root episode 2 Inserted
+[INFO 02:02:23] my_main ================ MetaEpoch: 3 ================
+[INFO 02:02:23] my_main Time passed: 2 seconds
+[INFO 02:02:23] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:23] my_main Chosen Teammate: 3  1
+[INFO 02:02:23] root Runing batch
+[INFO 02:02:24] root Get batch
+[INFO 02:02:24] root episode 3 Inserted
+[INFO 02:02:24] my_main ================ MetaEpoch: 4 ================
+[INFO 02:02:24] my_main Time passed: 2 seconds
+[INFO 02:02:24] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:24] my_main Chosen Teammate: 4  2
+[INFO 02:02:24] root Runing batch
+[INFO 02:02:24] root Get batch
+[INFO 02:02:24] root episode 4 Inserted
+[INFO 02:02:24] my_main ================ MetaEpoch: 5 ================
+[INFO 02:02:24] my_main Time passed: 2 seconds
+[INFO 02:02:24] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:24] my_main Chosen Teammate: 5  2
+[INFO 02:02:24] root Runing batch
+[INFO 02:02:24] root Get batch
+[INFO 02:02:24] root episode 5 Inserted
+[INFO 02:02:24] my_main ================ MetaEpoch: 6 ================
+[INFO 02:02:24] my_main Time passed: 3 seconds
+[INFO 02:02:24] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:24] my_main Chosen Teammate: 6  0
+[INFO 02:02:24] root Runing batch
+[INFO 02:02:24] root Get batch
+[INFO 02:02:24] root episode 6 Inserted
+[INFO 02:02:24] my_main ================ MetaEpoch: 7 ================
+[INFO 02:02:24] my_main Time passed: 3 seconds
+[INFO 02:02:24] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:24] my_main Chosen Teammate: 7  0
+[INFO 02:02:24] root Runing batch
+[INFO 02:02:24] root Get batch
+[INFO 02:02:24] root episode 7 Inserted
+[INFO 02:02:24] my_main ================ MetaEpoch: 8 ================
+[INFO 02:02:24] my_main Time passed: 3 seconds
+[INFO 02:02:24] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:24] my_main Chosen Teammate: 8  1
+[INFO 02:02:24] root Runing batch
+[INFO 02:02:25] root Get batch
+[INFO 02:02:25] root episode 8 Inserted
+[INFO 02:02:25] my_main ================ MetaEpoch: 9 ================
+[INFO 02:02:25] my_main Time passed: 3 seconds
+[INFO 02:02:25] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:25] my_main Chosen Teammate: 0  2
+[INFO 02:02:25] root Runing batch
+[INFO 02:02:25] root Get batch
+[INFO 02:02:25] root episode 9 Inserted
+[INFO 02:02:25] my_main ================ MetaEpoch: 10 ================
+[INFO 02:02:25] my_main Time passed: 3 seconds
+[INFO 02:02:25] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:25] my_main Chosen Teammate: 1  0
+[INFO 02:02:25] root Runing batch
+[INFO 02:02:25] root Get batch
+[INFO 02:02:25] root episode 10 Inserted
+[INFO 02:02:25] my_main ================ MetaEpoch: 11 ================
+[INFO 02:02:25] my_main Time passed: 4 seconds
+[INFO 02:02:25] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:25] my_main Chosen Teammate: 2  1
+[INFO 02:02:25] root Runing batch
+[INFO 02:02:25] root Get batch
+[INFO 02:02:25] root episode 11 Inserted
+[INFO 02:02:25] my_main ================ MetaEpoch: 12 ================
+[INFO 02:02:25] my_main Time passed: 4 seconds
+[INFO 02:02:25] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:25] my_main Chosen Teammate: 3  1
+[INFO 02:02:25] root Runing batch
+[INFO 02:02:26] root Get batch
+[INFO 02:02:26] root episode 12 Inserted
+[INFO 02:02:26] my_main ================ MetaEpoch: 13 ================
+[INFO 02:02:26] my_main Time passed: 4 seconds
+[INFO 02:02:26] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:26] my_main Chosen Teammate: 4  2
+[INFO 02:02:26] root Runing batch
+[INFO 02:02:26] root Get batch
+[INFO 02:02:26] root episode 13 Inserted
+[INFO 02:02:26] my_main ================ MetaEpoch: 14 ================
+[INFO 02:02:26] my_main Time passed: 4 seconds
+[INFO 02:02:26] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:26] my_main Chosen Teammate: 5  2
+[INFO 02:02:26] root Runing batch
+[INFO 02:02:26] root Get batch
+[INFO 02:02:26] root episode 14 Inserted
+[INFO 02:02:26] my_main ================ MetaEpoch: 15 ================
+[INFO 02:02:26] my_main Time passed: 5 seconds
+[INFO 02:02:26] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:26] my_main Chosen Teammate: 6  0
+[INFO 02:02:26] root Runing batch
+========> Train Pop <========
+Size: 9 win_mean: 0.4270833333333333
+========> Test Pop <=========
+Size: 9 win_mean: 0.4270833333333333
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True[INFO 02:02:26] root Get batch
+[INFO 02:02:26] root episode 15 Inserted
+[INFO 02:02:26] my_main ================ MetaEpoch: 16 ================
+[INFO 02:02:26] my_main Time passed: 5 seconds
+[INFO 02:02:26] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:26] my_main Chosen Teammate: 7  0
+[INFO 02:02:26] root Runing batch
+[INFO 02:02:27] root Get batch
+[INFO 02:02:27] root episode 16 Inserted
+[INFO 02:02:27] my_main ================ MetaEpoch: 17 ================
+[INFO 02:02:27] my_main Time passed: 5 seconds
+[INFO 02:02:27] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:27] my_main Chosen Teammate: 8  1
+[INFO 02:02:27] root Runing batch
+[INFO 02:02:27] root Get batch
+[INFO 02:02:27] root episode 17 Inserted
+[INFO 02:02:27] my_main ================ MetaEpoch: 18 ================
+[INFO 02:02:27] my_main Time passed: 5 seconds
+[INFO 02:02:27] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:27] my_main Chosen Teammate: 0  2
+[INFO 02:02:27] root Runing batch
+[INFO 02:02:27] root Get batch
+[INFO 02:02:27] root episode 18 Inserted
+[INFO 02:02:27] my_main ================ MetaEpoch: 19 ================
+[INFO 02:02:27] my_main Time passed: 6 seconds
+[INFO 02:02:27] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:27] my_main Chosen Teammate: 1  0
+[INFO 02:02:27] root Runing batch
+[INFO 02:02:27] root Get batch
+[INFO 02:02:27] root episode 19 Inserted
+[INFO 02:02:27] my_main ================ MetaEpoch: 20 ================
+[INFO 02:02:27] my_main Time passed: 6 seconds
+[INFO 02:02:27] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:27] my_main Chosen Teammate: 2  1
+[INFO 02:02:27] root Runing batch
+[INFO 02:02:28] root Get batch
+[INFO 02:02:28] root episode 20 Inserted
+[INFO 02:02:28] my_main ================ MetaEpoch: 21 ================
+[INFO 02:02:28] my_main Time passed: 6 seconds
+[INFO 02:02:28] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:28] my_main Chosen Teammate: 3  1
+[INFO 02:02:28] root Runing batch
+[INFO 02:02:28] root Get batch
+[INFO 02:02:28] root episode 21 Inserted
+[INFO 02:02:28] my_main ================ MetaEpoch: 22 ================
+[INFO 02:02:28] my_main Time passed: 6 seconds
+[INFO 02:02:28] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:28] my_main Chosen Teammate: 4  2
+[INFO 02:02:28] root Runing batch
+[INFO 02:02:28] root Get batch
+[INFO 02:02:28] root episode 22 Inserted
+[INFO 02:02:28] my_main ================ MetaEpoch: 23 ================
+[INFO 02:02:28] my_main Time passed: 7 seconds
+[INFO 02:02:28] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:28] my_main Chosen Teammate: 5  2
+[INFO 02:02:28] root Runing batch
+[INFO 02:02:28] root Get batch
+[INFO 02:02:28] root episode 23 Inserted
+[INFO 02:02:28] my_main ================ MetaEpoch: 24 ================
+[INFO 02:02:28] my_main Time passed: 7 seconds
+[INFO 02:02:28] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:28] my_main Chosen Teammate: 6  0
+[INFO 02:02:28] root Runing batch
+[INFO 02:02:29] root Get batch
+[INFO 02:02:29] root episode 24 Inserted
+[INFO 02:02:29] my_main ================ MetaEpoch: 25 ================
+[INFO 02:02:29] my_main Time passed: 7 seconds
+[INFO 02:02:29] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:29] my_main Chosen Teammate: 7  0
+[INFO 02:02:29] root Runing batch
+[INFO 02:02:29] root Get batch
+[INFO 02:02:29] root episode 25 Inserted
+[INFO 02:02:29] my_main ================ MetaEpoch: 26 ================
+[INFO 02:02:29] my_main Time passed: 8 seconds
+[INFO 02:02:29] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:29] my_main Chosen Teammate: 8  1
+[INFO 02:02:29] root Runing batch
+[INFO 02:02:29] root Get batch
+[INFO 02:02:29] root episode 26 Inserted
+[INFO 02:02:29] my_main ================ MetaEpoch: 27 ================
+[INFO 02:02:29] my_main Time passed: 8 seconds
+[INFO 02:02:29] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:29] my_main Chosen Teammate: 0  2
+[INFO 02:02:29] root Runing batch
+[INFO 02:02:30] root Get batch
+[INFO 02:02:30] root episode 27 Inserted
+[INFO 02:02:30] my_main ================ MetaEpoch: 28 ================
+[INFO 02:02:30] my_main Time passed: 8 seconds
+[INFO 02:02:30] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:30] my_main Chosen Teammate: 1  0
+[INFO 02:02:30] root Runing batch
+[INFO 02:02:30] root Get batch
+[INFO 02:02:30] root episode 28 Inserted
+[INFO 02:02:30] my_main ================ MetaEpoch: 29 ================
+[INFO 02:02:30] my_main Time passed: 8 seconds
+[INFO 02:02:30] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:30] my_main Chosen Teammate: 2  1
+[INFO 02:02:30] root Runing batch
+[INFO 02:02:30] root Get batch
+[INFO 02:02:30] root episode 29 Inserted
+[INFO 02:02:30] my_main ================ MetaEpoch: 30 ================
+[INFO 02:02:30] my_main Time passed: 9 seconds
+[INFO 02:02:30] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:30] my_main Chosen Teammate: 3  1
+[INFO 02:02:30] root Runing batch
+[INFO 02:02:31] root Get batch
+[INFO 02:02:31] root episode 30 Inserted
+[INFO 02:02:31] my_main ================ MetaEpoch: 31 ================
+[INFO 02:02:31] my_main Time passed: 9 seconds
+[INFO 02:02:31] my_main Status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+[INFO 02:02:31] my_main Chosen Teammate: 4  2
+[INFO 02:02:31] root Runing batch
+
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True True
+True[INFO 02:02:31] root Get batch
+[INFO 02:02:31] root episode 31 Inserted
+[INFO 02:02:31] my_main ================ MetaEpoch: 32 ================
+[INFO 02:02:31] my_main Time passed: 9 seconds
+[INFO 02:02:31] my_main Status: [0, 0, 0, 0, 0.421875, 0, 0, 0, 0]
+[INFO 02:02:31] my_main Chosen Teammate: 5  2
+[INFO 02:02:31] root Runing batch

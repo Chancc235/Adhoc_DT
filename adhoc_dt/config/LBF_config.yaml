@@ -2,10 +2,10 @@ env: lbf
 type: LBF
 
 device: cuda
-batch_size: 1024
+batch_size: 8192
 lr: 0.001
 weight_decay: 0.00001
-alpha: 0.0001   # 预测r的MSE的权重
+alpha: 100   # 预测r的MSE的权重
 beta: 100   # MIE第一项的权重
 gama: 100   # MIE第二项的权重
 clip_value: 2
@@ -20,15 +20,15 @@ test_interval: 2
 
 # network
 state_dim: 2
-embed_dim: 64
+embed_dim: 512
 TeammateEncoder_num_heads: 4
 goal_dim: 2
 act_dim: 6
 max_ep_len: 51
 
 # DT
-dt_embed_dim: 64
-K: 20
+dt_embed_dim: 128
+K: 45
 n_layer: 3
 n_head: 1
 dt_activation_function: relu

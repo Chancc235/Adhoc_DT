@@ -1,7 +1,7 @@
 import torch
 from utils_dt import preprocess_data
-data_path = "data/LBF_episodes_datas.pt"
-sav_data_path = "data/LBF_episodes_datas_rtg.pt"
+data_path = "data/overcooked_episodes_datas.pt"
+sav_data_path = "data/overcooked_episodes_datas_rtg.pt"
 # data_path = "data/PP4a_test.pt"
 # sav_data_path = "data/PP4a_test_rtg.pt"
 data = torch.load(data_path)

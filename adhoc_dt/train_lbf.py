@@ -18,7 +18,7 @@ from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.GoalDecoder import GoalDecoder_lbf
 from Networks.dt_models.decision_transformer import DecisionTransformer_lbf
 from Data import CustomDataset
-from Trainer import SequenceTrainer, BaseTrainer, GoalTrainer
+from Trainer import SequenceTrainer_lbf, BaseTrainer, GoalTrainer_lbf
 from TestGame import Test
 from Agent.Adhoc_DT import Adhoc_DT
 
@@ -100,7 +100,8 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                 dt_model=trainer_dt.model, 
                 state_encoder=trainer_goal.adhocencoder, 
                 return_net=trainer_goal.returnnet, 
-                goal_decoder=trainer_goal.goaldecoder
+                goal_decoder=trainer_goal.goaldecoder,
+                env_type="LBF"
             )
             returns, low, high = test.test_game(50, agent, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
@@ -116,6 +117,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
             if not os.path.exists(dir_path):
                 os.makedirs(dir_path)
             save_path = os.path.join(dir_path, f"epoch_{epoch+1}.pth") 
+            '''
             torch.save({
                 'epoch': epoch + 1,
                 'model_state_dict': {
@@ -128,6 +130,7 @@ def train_model(logger, trainer_dt, trainer_goal, train_loader, val_loader, num_
                 'action_loss': epoch_action_loss / len(train_loader),
                 'goal_loss': epoch_goal_loss / len(train_loader),
             }, save_path)
+            '''
             logger.info(f"Model checkpoint saved at {save_path}")
     end_time = time.time()
     total_duration = end_time - start_time
@@ -151,7 +154,7 @@ if __name__ == "__main__":
     teammateencoder = TeammateEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"], num_heads=config["TeammateEncoder_num_heads"]).to(device)
     adhocagentEncoder = AdhocAgentEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"]).to(device)
     returnnet = ReturnNet(input_dim=config["embed_dim"]).to(device)
-    goaldecoder = GoalDecoder_lbf(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=256, output_dim=config["goal_dim"], num=config["num_agents"]).to(device)
+    goaldecoder = GoalDecoder_lbf(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=512, output_dim=config["goal_dim"], num=config["num_agents"]).to(device)
     dt = DecisionTransformer_lbf(
         state_dim=config["state_dim"],
         num_agents=config["num_agents"],
@@ -181,7 +184,7 @@ if __name__ == "__main__":
     )
 
     # 初始化 Trainer
-    trainer_dt = SequenceTrainer(
+    trainer_dt = SequenceTrainer_lbf(
         model=dt,
         optimizer=optimizer,
         batch_size=config["batch_size"],
@@ -205,7 +208,7 @@ if __name__ == "__main__":
         lambda steps: min((steps+1)/warmup_steps, 1)
     )
 
-    trainer_goal = GoalTrainer(
+    trainer_goal = GoalTrainer_lbf(
         teammateencoder, 
         adhocagentEncoder, 
         returnnet, goaldecoder, 
