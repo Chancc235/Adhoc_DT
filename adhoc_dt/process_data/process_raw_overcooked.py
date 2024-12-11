@@ -58,15 +58,8 @@ episodes = []
 total_reward = 0
 cnt = 0
 for i in range(num_episodes):
-<<<<<<< HEAD
     if reward[i, :max_steps].sum() == 10:
         continue
-=======
-    '''
-    if reward[i, :max_steps].sum() < 10:
-        continue
-    '''
->>>>>>> 2a71ab5f6832051bc116e9f1db402a405d4a0dc2
     for agent_idx in range(2):
         cnt += 1
         total_reward += reward[i, :max_steps].sum()

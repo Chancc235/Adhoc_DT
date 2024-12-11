@@ -34,3 +34,44 @@
  Dt Loss: 0.0407
  Goal Loss: 2.7048, MIE Loss: 0.0546
  MSE Loss R: 1.7975, BCE Loss G: 0.1902
+2024-12-11 03:50:20,672 - INFO - Epoch [1/100], Batch [80/89]
+ Dt Loss: 0.0410
+ Goal Loss: 3.7065, MIE Loss: 0.0373
+ MSE Loss R: 1.9654, BCE Loss G: 0.2129
+2024-12-11 03:50:36,184 - INFO - Epoch [1/100] completed. Average Goal Loss: 12.7892
+2024-12-11 03:50:36,184 - INFO - Epoch [1/100] completed. Average Action Loss: 0.0591
+2024-12-11 03:50:36,184 - INFO - ===================================================================================
+2024-12-11 03:51:20,234 - INFO - Epoch [1/100]
+Action Validation Loss: 0.0374 
+ Goal Validation Loss: 2.6692 
+ MIE Validation Loss: 0.0020 
+ MSE R Validation Loss: 0.2266 
+ BCE G Validation Loss: 0.0163
+2024-12-11 03:51:20,241 - INFO - ===================================================================================
+2024-12-11 03:51:20,242 - INFO - Completed in 0h 3m
+2024-12-11 03:57:23,368 - INFO - 1 Test Returns: 0.035
+2024-12-11 03:57:23,369 - INFO - Model checkpoint saved at training_output/20241211_034628/models/epoch_1.pth
+2024-12-11 03:57:27,310 - INFO - Epoch [2/100], Batch [0/89]
+ Dt Loss: 0.0391
+ Goal Loss: 3.2730, MIE Loss: 0.0246
+ MSE Loss R: 1.3434, BCE Loss G: 0.1873
+2024-12-11 03:57:52,779 - INFO - Epoch [2/100], Batch [10/89]
+ Dt Loss: 0.0389
+ Goal Loss: 3.5036, MIE Loss: 0.0378
+ MSE Loss R: 0.3752, BCE Loss G: 0.2272
+2024-12-11 03:58:17,783 - INFO - Epoch [2/100], Batch [20/89]
+ Dt Loss: 0.0459
+ Goal Loss: 10.8747, MIE Loss: 0.0204
+ MSE Loss R: 15.2567, BCE Loss G: 0.1918
+2024-12-11 03:58:45,857 - INFO - Epoch [2/100], Batch [30/89]
+ Dt Loss: 0.0373
+ Goal Loss: 3.2024, MIE Loss: 0.0167
+ MSE Loss R: 4.6612, BCE Loss G: 0.1976
+2024-12-11 03:59:11,073 - INFO - Epoch [2/100], Batch [40/89]
+ Dt Loss: 0.0409
+ Goal Loss: 7.0353, MIE Loss: 0.0176
+ MSE Loss R: 2.5761, BCE Loss G: 0.1894
+2024-12-11 03:59:39,170 - INFO - Epoch [2/100], Batch [50/89]
+ Dt Loss: 0.0346
+ Goal Loss: 1.7951, MIE Loss: 0.0261
+ MSE Loss R: 2.1779, BCE Loss G: 0.2166
