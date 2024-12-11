@@ -37,7 +37,7 @@ class AdhocAgentEncoder(nn.Module):
         x = self.fc3(x)            # (batch_size, embed_dim * 2)
                 
         # 分割输出，得到均值和对数方差
-        mean = x[:, :x.size(1) // 2]  # 取前一半作为均值
-        log_var = x[:, x.size(1) // 2:]  # 取后一半作为对数方差
+        mean = x[..., :x.size(1) // 2]  # 取前一半作为均值
+        log_var = x[..., x.size(1) // 2:]  # 取后一半作为对数方差
  
         return mean, log_var

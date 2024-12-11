@@ -6,7 +6,12 @@ import os
 
 # 定义文件路径列表
 dir_root_path = '../saves/overcooked/'
+<<<<<<< HEAD
+# dir_path_list = ['overcooked_trajectorys1', 'overcooked_trajectorys2', 'overcooked_trajectorys3', 'overcooked_trajectorys4', 'overcooked_trajectorys5']
+dir_path_list = ['overcooked_trajectorys6']
+=======
 dir_path_list = ['overcooked_trajectorys1', 'overcooked_trajectorys2', 'overcooked_trajectorys3', 'overcooked_trajectorys4', 'overcooked_trajectorys5']
+>>>>>>> 2a71ab5f6832051bc116e9f1db402a405d4a0dc2
 # 初始化列表，用于拼接原始数据
 actions_list = []
 state_list = []
@@ -53,10 +58,15 @@ episodes = []
 total_reward = 0
 cnt = 0
 for i in range(num_episodes):
+<<<<<<< HEAD
+    if reward[i, :max_steps].sum() == 10:
+        continue
+=======
     '''
     if reward[i, :max_steps].sum() < 10:
         continue
     '''
+>>>>>>> 2a71ab5f6832051bc116e9f1db402a405d4a0dc2
     for agent_idx in range(2):
         cnt += 1
         total_reward += reward[i, :max_steps].sum()
@@ -79,4 +89,8 @@ for i in range(num_episodes):
 print("有效episode数", cnt)
 print("平均reward", total_reward/cnt)
 
+<<<<<<< HEAD
+torch.save(episodes, 'data/overcooked_episodes_datas2.pt')
+=======
 torch.save(episodes, 'data/overcooked_episodes_datas.pt')
+>>>>>>> 2a71ab5f6832051bc116e9f1db402a405d4a0dc2

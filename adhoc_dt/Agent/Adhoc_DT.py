@@ -36,7 +36,14 @@ class Adhoc_DT:
 
         # 计算状态embeding
         if self.env_type == "LBF":
-            obs = obs[..., [-3, -2]]
+            obs = obs[..., [-3, -2]].to(torch.long)
+            obs = F.one_hot(obs, 20).to(torch.float32)
+            obs = obs.view(obs.shape[0], obs.shape[1]*obs.shape[2])
+
+            o = o[..., [-3, -2]].to(torch.long)
+            o = F.one_hot(o, 20).to(torch.float32)
+            o = o.view(o.shape[0], o.shape[1]*o.shape[2])
+
         z_mu, z_log_var = self.state_encoder(obs)
         z_log_var = torch.clamp(z_log_var, min=-10, max=10)
         z_std = torch.exp(0.5 * z_log_var)
@@ -45,9 +52,14 @@ class Adhoc_DT:
         r = self.return_net(z)
         # 预测子目标
         if self.env_type == "PP4a":
-            pred_g = (self.goal_decoder(z, r) > 0.5).float().permute(1, 0, 2)
+            #pred_g = (self.goal_decoder(z, r) > 0.5).float().permute(1, 0, 2)
+            pred_g = torch.argmax(self.goal_decoder(z, r), dim=2).permute(1, 0, 2)
         elif self.env_type == "LBF":
-            pred_g = self.goal_decoder(z, r).permute(1, 0, 2)
+            x = self.goal_decoder(z, r)
+            max_indices = torch.argmax(x, dim=1) 
+            pred_g = torch.zeros_like(x).scatter_(1, max_indices.unsqueeze(1), 1).permute(1, 0, 2)
+            pred_g = pred_g.view(pred_g.shape[0], pred_g.shape[1] * pred_g.shape[2])
+        #print(pred_g.shape)
         # 拼接新的子目标
         g_list.append(pred_g)
         new_g = torch.cat(g_list, dim=0)
@@ -58,6 +70,7 @@ class Adhoc_DT:
         # print(a.shape)
         # print(o.shape)
         # print(t)
+        #print(new_g.shape)
         a_onehot = F.one_hot(a.to(torch.int64), num_classes=act_dim)
         ac_pred = self.dt_model.get_action(o, a_onehot, new_g, t)
         ac_pred = torch.argmax(ac_pred)

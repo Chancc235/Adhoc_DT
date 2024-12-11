@@ -214,7 +214,7 @@ class DecisionTransformer_lbf(TrajectoryModel):
         state_embeddings = self.embed_state(states)
         actions = actions.to(torch.float32)
         action_embeddings = self.embed_action(actions)
-        goal = goal.view(goal.shape[0], goal.shape[1], goal.shape[2] * goal.shape[3])
+        # goal = goal.view(goal.shape[0], goal.shape[1], goal.shape[2] * goal.shape[3])
         goal_embeddings = self.embed_goal(goal)
         time_embeddings = self.embed_timestep(timesteps)
 
@@ -256,10 +256,10 @@ class DecisionTransformer_lbf(TrajectoryModel):
 
     def get_action(self, states, actions, goal, timesteps, **kwargs):
         # we don't care about the past rewards in this model
-        states = states[..., [-3, -2]]
+        #states = states[..., [-3, -2]]
         states = states.reshape(1, -1, self.state_dim)
         actions = actions.reshape(1, -1, self.act_dim)
-        goal = goal.reshape(1, -1, self.num_agents, self.state_dim)
+        goal = goal.reshape(1, -1, self.num_agents*self.state_dim)
         timesteps = timesteps.reshape(1, -1)
 
         if self.max_length is not None:
@@ -279,7 +279,7 @@ class DecisionTransformer_lbf(TrajectoryModel):
                              device=actions.device), actions],
                 dim=1).to(dtype=torch.float32)
             goal = torch.cat(
-                [torch.zeros((goal.shape[0], self.max_length-goal.shape[1], goal.shape[2], goal.shape[3]), device=goal.device), goal],
+                [torch.zeros((goal.shape[0], self.max_length-goal.shape[1], goal.shape[2]), device=goal.device), goal],
                 dim=1).to(dtype=torch.float32)
             timesteps = torch.cat(
                 [torch.zeros((timesteps.shape[0], self.max_length-timesteps.shape[1]), device=timesteps.device), timesteps],

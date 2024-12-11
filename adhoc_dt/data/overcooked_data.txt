@@ -1,2 +1,9 @@
 有效episode数 67584
+<<<<<<< HEAD
 平均reward tensor(0.0358)
+
+55253
+0.0741
+=======
+平均reward tensor(0.0358)
+>>>>>>> 2a71ab5f6832051bc116e9f1db402a405d4a0dc2

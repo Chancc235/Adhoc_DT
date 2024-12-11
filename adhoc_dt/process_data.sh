@@ -1,0 +1,1 @@
+nohup python process_overcooked.py  > output.log 2>&1 &

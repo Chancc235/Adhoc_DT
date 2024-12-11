@@ -1,0 +1,36 @@
+2024-12-11 03:46:32,049 - INFO - Starting.
+2024-12-11 03:46:32,049 - INFO - Loading Data.
+2024-12-11 03:47:31,596 - INFO - Data loaded in 0.0 hours 0.0 minutes.
+2024-12-11 03:47:31,667 - INFO - Training Started.
+2024-12-11 03:47:36,703 - INFO - Epoch [1/100], Batch [0/89]
+ Dt Loss: 0.1680
+ Goal Loss: 91.0356, MIE Loss: 68.4963
+ MSE Loss R: 16.6936, BCE Loss G: 0.7353
+2024-12-11 03:47:57,187 - INFO - Epoch [1/100], Batch [10/89]
+ Dt Loss: 0.0846
+ Goal Loss: 22.4029, MIE Loss: 15.8922
+ MSE Loss R: 8.7817, BCE Loss G: 0.6168
+2024-12-11 03:48:18,136 - INFO - Epoch [1/100], Batch [20/89]
+ Dt Loss: 0.0663
+ Goal Loss: 13.8062, MIE Loss: 5.0812
+ MSE Loss R: 11.7317, BCE Loss G: 0.3062
+2024-12-11 03:48:38,507 - INFO - Epoch [1/100], Batch [30/89]
+ Dt Loss: 0.0523
+ Goal Loss: 5.8177, MIE Loss: 1.3072
+ MSE Loss R: 2.8145, BCE Loss G: 0.2104
+2024-12-11 03:48:58,712 - INFO - Epoch [1/100], Batch [40/89]
+ Dt Loss: 0.0462
+ Goal Loss: 2.6636, MIE Loss: 0.5125
+ MSE Loss R: 3.3852, BCE Loss G: 0.2411
+2024-12-11 03:49:19,196 - INFO - Epoch [1/100], Batch [50/89]
+ Dt Loss: 0.0429
+ Goal Loss: 2.2891, MIE Loss: 0.1898
+ MSE Loss R: 2.0611, BCE Loss G: 0.2029
+2024-12-11 03:49:40,166 - INFO - Epoch [1/100], Batch [60/89]
+ Dt Loss: 0.0463
+ Goal Loss: 7.6000, MIE Loss: 0.0921
+ MSE Loss R: 2.0076, BCE Loss G: 0.1846
+2024-12-11 03:50:00,773 - INFO - Epoch [1/100], Batch [70/89]
+ Dt Loss: 0.0407
+ Goal Loss: 2.7048, MIE Loss: 0.0546
+ MSE Loss R: 1.7975, BCE Loss G: 0.1902

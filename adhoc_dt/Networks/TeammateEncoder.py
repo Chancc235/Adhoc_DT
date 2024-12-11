@@ -43,10 +43,9 @@ class TeammateEncoder(nn.Module):
 
         # output
         output = self.output_layer(pooled_output)  # (batch_size, embed_dim * 2)
-        
         # 分割输出，得到均值和对数方差
-        mean = output[:, :output.size(1) // 2]  # 取前一半作为均值
-        log_var = output[:, output.size(1) // 2:]  # 取后一半作为对数方差
+        mean = output[..., :output.size(1) // 2]  # 取前一半作为均值
+        log_var = output[..., output.size(1) // 2:]  # 取后一半作为对数方差
  
         return mean, log_var
 
