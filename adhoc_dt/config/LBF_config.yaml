@@ -2,7 +2,7 @@ env: lbf
 type: LBF
 
 device: cuda
-batch_size: 1024
+batch_size: 4096
 lr: 0.01
 weight_decay: 0.00001
 alpha: 100   # 预测r的MSE的权重
@@ -11,7 +11,7 @@ gama: 100   # MIE第二项的权重
 sigma: 0.001 # goal部分的总权重
 clip_value: 2
 num_agents: 2
-goal_steps: 3
+goal_steps: 4
 
 # train_model function
 num_epochs: 100

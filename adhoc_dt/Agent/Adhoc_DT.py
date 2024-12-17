@@ -9,6 +9,17 @@ class Adhoc_DT:
         self.goal_decoder = goal_decoder
         self.env_type = env_type
 
+    def to_onehot(self, onehot_tensor, indices_to_onehot=[9, 10, 19, 23, 24]):
+        onehot_tensor = onehot_tensor[..., :29]
+        onehot_tensor = torch.clamp(onehot_tensor, min=0)
+        indices_to_onehot = [v + i * 10 for i, v in enumerate(indices_to_onehot)]
+        for index in indices_to_onehot:
+            values = onehot_tensor[..., index].to(torch.int64)
+            # 将该维度的值转为 one-hot 编码
+            onehot_values = F.one_hot(values, num_classes=11) 
+            onehot_tensor = torch.cat([onehot_tensor[..., :index], onehot_values, onehot_tensor[..., index + 1:]], dim=-1)
+
+        return onehot_tensor.to(torch.float32)
 
     def take_action(self, o_list, a_list, g_list, t_list, act_dim):
 
@@ -43,7 +54,9 @@ class Adhoc_DT:
             o = o[..., [-3, -2]].to(torch.long)
             o = F.one_hot(o, 20).to(torch.float32)
             o = o.view(o.shape[0], o.shape[1]*o.shape[2])
-
+        elif self.env_type == "overcooked":
+            obs = self.to_onehot(obs)
+            o = self.to_onehot(o)
         z_mu, z_log_var = self.state_encoder(obs)
         z_log_var = torch.clamp(z_log_var, min=-10, max=10)
         z_std = torch.exp(0.5 * z_log_var)
@@ -52,13 +65,17 @@ class Adhoc_DT:
         r = self.return_net(z)
         # 预测子目标
         if self.env_type == "PP4a":
-            #pred_g = (self.goal_decoder(z, r) > 0.5).float().permute(1, 0, 2)
-            pred_g = torch.argmax(self.goal_decoder(z, r), dim=2).permute(1, 0, 2)
-        elif self.env_type == "LBF":
             x = self.goal_decoder(z, r)
             max_indices = torch.argmax(x, dim=1) 
             pred_g = torch.zeros_like(x).scatter_(1, max_indices.unsqueeze(1), 1).permute(1, 0, 2)
             pred_g = pred_g.view(pred_g.shape[0], pred_g.shape[1] * pred_g.shape[2])
+        elif self.env_type == "LBF" or self.env_type == "overcooked":
+            x = self.goal_decoder(z, r)
+            max_indices = torch.argmax(x, dim=1) 
+            pred_g = torch.zeros_like(x).scatter_(1, max_indices.unsqueeze(1), 1).permute(1, 0, 2)
+            pred_g = pred_g.view(pred_g.shape[0], pred_g.shape[1] * pred_g.shape[2])
+        
+
         #print(pred_g.shape)
         # 拼接新的子目标
         g_list.append(pred_g)

@@ -111,7 +111,7 @@ class RTG_DT(TrajectoryModel):
 
     def get_action(self, states, actions, rtg, timesteps, **kwargs):
         # we don't care about the past rewards in this model
-        states = states[..., [-3, -2]]
+        
         states = states.reshape(1, -1, self.state_dim)
         actions = actions.reshape(1, -1, self.act_dim)
         rtg = rtg.reshape(1, -1, 1)

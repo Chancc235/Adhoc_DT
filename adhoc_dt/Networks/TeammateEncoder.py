@@ -21,12 +21,12 @@ class TeammateEncoder(nn.Module):
 
     def forward(self, states):
         # 输入 states 的形状：(num_agents, batch_size, state_dim)
-        
+
         # embedding
         embedded_states = self.embedding(states)  # (num_agents, batch_size, embed_dim)
         embedded_states = self.embed_layer_norm(embedded_states)
         # embedded_states = torch.clamp(embedded_states, min=-1e6, max=1e6)
-    
+
 
         # Multihead Attention
         attn_output, _ = self.self_attention(embedded_states, embedded_states, embedded_states)
