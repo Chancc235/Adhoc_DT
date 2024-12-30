@@ -165,3 +165,102 @@ class PromTrainer(BaseTrainer):
         )
 
         return loss.detach().cpu().item() / max_len
+
+
+
+class PromTrainer_lbf(BaseTrainer):
+    def train(self, episodes_data, device, max_ep_len, max_len):
+        self.model.train()
+        action_loss = 0.0
+        loss = self.train_step(episodes_data, device, max_ep_len, max_len)
+        action_loss += loss
+        if self.scheduler is not None:
+            self.scheduler.step()
+
+        return action_loss
+
+    def train_step(self, episodes_data, device, max_ep_len, max_len):
+        states_p, actions_p, rtg_p, dones_p, timesteps_p, attention_mask_p = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=int(max_len / 5))
+        states_p = states_p[..., [-3, -2]]
+        states, actions, rtg, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        states = states[..., [-3, -2]]
+        states = torch.cat((states_p, states), dim=1)
+        actions = torch.cat((actions_p, actions), dim=1)
+        rtg = torch.cat((rtg_p, rtg), dim=1)
+        dones = torch.cat((dones_p, dones), dim=1)
+        timesteps = torch.cat((timesteps_p, timesteps), dim=1)
+        attention_mask = torch.cat((attention_mask_p, attention_mask), dim=1)
+
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        state_preds, action_preds, rtg_preds = self.model.forward(
+            states, actions, rtg, timesteps, attention_mask=attention_mask,
+        )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), .25)
+        self.optimizer.step()
+
+        with torch.no_grad():
+            self.diagnostics['training/action_error'] = torch.mean((action_preds-action_target)**2).detach().cpu().item()
+
+        return loss.detach().cpu().item() / max_len
+
+    def evaluate(self, val_loader, device, max_ep_len, max_len):
+        self.model.eval()
+        action_loss = 0.0
+        for batch_idx, episodes_data in enumerate(val_loader):
+            """
+            states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len, goal_steps=goal_steps)
+            actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+            action_target = torch.clone(actions)
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, goal, timesteps, attention_mask=attention_mask,
+            )
+
+            act_dim = action_preds.shape[2]
+            action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+            """
+            loss = self.eval_step(episodes_data, device, max_ep_len, max_len)
+            action_loss += loss
+
+        return action_loss
+
+    def eval_step(self, episodes_data, device, max_ep_len, max_len):
+        states_p, actions_p, rtg_p, dones_p, timesteps_p, attention_mask_p = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=int(max_len / 5))
+        states_p = states_p[..., [-3, -2]]
+        states, actions, rtg, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=max_len)
+        states = states[..., [-3, -2]]
+        states = torch.cat((states_p, states), dim=1)
+        actions = torch.cat((actions_p, actions), dim=1)
+        rtg = torch.cat((rtg_p, rtg), dim=1)
+        timesteps = torch.cat((timesteps_p, timesteps), dim=1)
+        attention_mask = torch.cat((attention_mask_p, attention_mask), dim=1)
+
+        actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
+        action_target = torch.clone(actions)
+        # 使用 no_grad() 禁用梯度计算
+        with torch.no_grad():
+            state_preds, action_preds, reward_preds = self.model.forward(
+                states, actions, rtg, timesteps, attention_mask=attention_mask,
+            )
+
+        act_dim = action_preds.shape[2]
+        action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
+        loss = self.loss_fn(
+            None, action_preds, None,
+            None, action_target, None,
+        )
+
+        return loss.detach().cpu().item() / max_len

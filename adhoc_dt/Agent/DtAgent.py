@@ -38,10 +38,9 @@ class DtAgent:
         o = o.to(device="cuda")
         o = o.view(len(o_list), o_list[0].shape[0])
         t = torch.tensor(t_list).to(device="cuda")
-        '''
+        
         if self.env_type == "LBF":
             o = o[..., [-3, -2]]
-        '''
         if self.env_type == "overcooked":
             o = self.to_onehot(o)
         R_list = [r.unsqueeze(0) if r.dim() == 0 else r for r in R_list]
@@ -107,9 +106,8 @@ class DtAgent_prom_ok:
         o = o.to(device="cuda")
         o = o.view(len(o_list), o_list[0].shape[0])
         t = torch.tensor(t_list).to(device="cuda")
+
         '''
-        if self.env_type == "LBF":
-            o = o[..., [-3, -2]]
         if self.env_type == "overcooked":
             o = self.to_onehot(o)
         '''
