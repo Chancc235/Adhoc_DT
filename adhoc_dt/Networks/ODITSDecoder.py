@@ -9,6 +9,7 @@ class ProxyDecoder(nn.Module):
         super(ProxyDecoder, self).__init__()
         self.hyper_fc = nn.Sequential(
             nn.Linear(hyper_input_dim, sum([d[0] * d[1] for d in primary_layer_dims])),  # 展平成向量
+            nn.BatchNorm1d(sum([d[0] * d[1] for d in primary_layer_dims]))
         )
         self.primary_layer_dims = primary_layer_dims
 
@@ -40,6 +41,7 @@ class MarginalUtilityNet(nn.Module):
         input_dim = state_dim + action_dim
         # 添加GRU前的全连接层
         self.pre_fc = nn.Linear(input_dim, hidden_dim)
+        self.pre_bn = nn.BatchNorm1d(hidden_dim)
         self.pre_relu = nn.ReLU()
         
         self.gru = nn.GRU(hidden_dim, hidden_dim, batch_first=True)
@@ -57,9 +59,13 @@ class MarginalUtilityNet(nn.Module):
         if h_0 is None:
             batch_size = x.size(0)
             h_0 = torch.zeros(1, batch_size, self.hidden_dim, device=x.device)  # (1, batch_size, hidden_dim)
-
         # 通过GRU前的全连接层
-        x = self.pre_relu(self.pre_fc(x))  # (batch_size, 1, input_dim)
+        x = x.to(torch.float32)
+        x = x.squeeze(1)  # Remove time dimension for BatchNorm
+        x = self.pre_fc(x)
+        x = self.pre_bn(x)
+        x = self.pre_relu(x)
+        x = x.unsqueeze(1)  # Add time dimension back
             
         # GRU 提取特征
         _, h_n = self.gru(x, h_0)  # h_n: (1, batch_size, hidden_dim)
@@ -79,6 +85,7 @@ class TeamworkSituationDecoder(nn.Module):
         super(TeamworkSituationDecoder, self).__init__()
         self.hyper_fc = nn.Sequential(
             nn.Linear(hyper_input_dim, sum([d[0] * d[1] for d in primary_layer_dims])),  # 展平成向量
+            nn.BatchNorm1d(sum([d[0] * d[1] for d in primary_layer_dims]))
         )
         self.primary_layer_dims = primary_layer_dims
 
@@ -110,6 +117,7 @@ class IntegratingNet(nn.Module):
 
         # 添加GRU前的全连接层
         self.pre_fc = nn.Linear(input_dim, hidden_dim)
+        self.pre_bn = nn.BatchNorm1d(hidden_dim)
         self.pre_relu = nn.ReLU()
 
         self.hypernetwork = hypernetwork  # 超网络用于生成全连接层权重
@@ -121,14 +129,13 @@ class IntegratingNet(nn.Module):
         # x: (batch_size, 1, input_dim) - 输入序列
         # z: (batch_size, hyper_input_dim) - 超网络的输入向量
 
-        x = self.pre_relu(self.pre_fc(x))  # (batch_size, input_dim)
-        
-        # Add unsqueeze to make x 3D: (batch_size, 1, input_dim)
+        x = self.pre_fc(x)
+        x = self.pre_bn(x)
+        x = self.pre_relu(x)
         x = x.unsqueeze(1)
             
         # 通过 HyperNetwork 生成 FC 层权重
         weight = self.hypernetwork(z)  # (batch_size, fc_output_dim, fc_input_dim)
-
         # Now x is 3D and compatible with bmm
         output = torch.bmm(x, weight.transpose(1, 2))  # (batch_size, 1, fc_output_dim)
         return output

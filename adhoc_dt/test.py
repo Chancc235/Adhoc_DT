@@ -1,6 +1,6 @@
 import torch
 
-data = torch.load("./data/PP4a_episodes_datas_rtg_new.pt")
+data = torch.load("./data/overcooked_episodes_datas_rtg_new.pt")
 #print(data[1]["rtg"].shape)
 print(len(data))
 print(data[0]["reward"].shape)

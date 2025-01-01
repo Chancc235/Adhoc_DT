@@ -18,6 +18,7 @@ class TeamworkSituationEncoder(nn.Module):
         # 输出层: (batch_size, output_dim) -> (batch_size, output_dim * 2)
         self.output_layer = nn.Linear(output_dim, output_dim * 2)  # 全连接层输出均值和方差
         self.layer_norm = nn.LayerNorm(output_dim) # (batch_size, output_dim)
+        self.output_bn = nn.BatchNorm1d(output_dim * 2)
 
     def forward(self, states, actions):  # states: (batch_size, num_agents, state_dim), actions: (batch_size, num_agents, action_dim)
         # 拼接状态和动作
@@ -31,6 +32,7 @@ class TeamworkSituationEncoder(nn.Module):
         
         # 输出层
         output = self.output_layer(encoded)        # (batch_size, output_dim * 2)
+        output = self.output_bn(output)
         
         # 分割输出得到均值和对数方差
         mean = output[..., :output.size(1)//2]     # (batch_size, output_dim)  前半部分作为均值
@@ -54,6 +56,7 @@ class ProxyEncoder(nn.Module):
         # 输出层: (batch_size, output_dim) -> (batch_size, output_dim * 2)
         self.output_layer = nn.Linear(output_dim, output_dim * 2)  # 全连接层输出均值和方差
         self.layer_norm = nn.LayerNorm(output_dim) # (batch_size, output_dim)
+        self.output_bn = nn.BatchNorm1d(output_dim * 2)
 
     def forward(self, last_states, states, last_actions):  # states: (batch_size, state_dim), actions: (batch_size, action_dim)
         # 拼接状态和动作
@@ -61,11 +64,13 @@ class ProxyEncoder(nn.Module):
         x = torch.cat([last_states, states, last_actions], dim=1)    # (batch_size, state_dim+action_dim)
         
         # 编码
+        x = x.to(torch.float32)
         encoded = self.encoder(x)                  # (batch_size, output_dim)
         encoded = self.layer_norm(encoded)         # (batch_size, output_dim)
         
         # 输出层
         output = self.output_layer(encoded)        # (batch_size, output_dim * 2)
+        output = self.output_bn(output)
         
         # 分割输出得到均值和对数方差
         mean = output[..., :output.size(1)//2]     # (batch_size, output_dim)  前半部分作为均值
