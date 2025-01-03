@@ -16,6 +16,7 @@ class LiamTrainer:
         gamma=0.99,
         beta=0.1,
         alpha=0.1,
+        sita=0.1,
         batch_size=512,
         act_dim=5,
         update_freq=1,
@@ -37,9 +38,10 @@ class LiamTrainer:
         self.act_dim = act_dim
         self.update_freq = update_freq
         self.alpha = alpha
+        self.sita = sita
         
     def train_step(self, episodes_data, max_ep_len):
-        self.optimizer.zero_grad()
+        
         batch_size = episodes_data["state"].size(0)
         h_0 = torch.zeros(1, batch_size, self.liam_encoder.hidden_dim).to(self.device)
         
@@ -63,15 +65,17 @@ class LiamTrainer:
                 # 提取t+1时刻的数据
                 next_team_states = episodes_data["state"][:, ts+1].to(self.device)  # shape [batch, num, dim]
                 next_obs = episodes_data["obs"][:, ts+1, :].to(self.device)
-                next_action = torch.clone(F.one_hot(episodes_data["action"][:, ts+1].to(torch.int64), num_classes=self.act_dim)).to(self.device).unsqueeze(1)  # shape: [batch, 1, dim]
+                next_action = torch.clone(F.one_hot(episodes_data["action"][:, ts+1].to(torch.int64), num_classes=self.act_dim)).to(self.device).unsqueeze(1) # shape: [batch, 1, dim]
                 next_teammate_actions = torch.clone(F.one_hot(episodes_data["teammate_action"][:, ts+1].to(torch.int64), num_classes=self.act_dim)).to(self.device)  # shape: [batch, num, dim]
                 next_team_actions = torch.cat([next_action, next_teammate_actions], dim=1)  # shape: [batch, num+1, dim]
+                next_reward = episodes_data["reward"][:, ts+1].to(self.device)
 
                 next_next_obs = episodes_data["obs"][:, ts+2, :].to(self.device)
-                next_next_reward = episodes_data["reward"][:, ts+2].to(self.device)
+                
 
                 # Forward pass through encoder
                 action = action.squeeze(1)
+                next_action = next_action.squeeze(1)
                 z, h_new = self.liam_encoder(next_obs, action, h)
                 h = h_new
 
@@ -80,8 +84,9 @@ class LiamTrainer:
                 
                 # Calculate reconstruction loss
                 obs_flat = next_team_states.reshape(next_team_states.shape[0], -1)
-                actions_flat = next_team_actions.reshape(next_team_actions.shape[0], -1)
-                reconstruction_loss = F.mse_loss(reconstructed_obs, obs_flat) + F.cross_entropy(reconstructed_actions, actions_flat)
+                actions_flat = next_team_actions.reshape(next_team_actions.shape[0], -1).to(torch.float32)
+                
+                reconstruction_loss = F.mse_loss(reconstructed_obs, obs_flat) + F.cross_entropy(reconstructed_actions, actions_flat, reduction='mean')
 
                 # Get current Q value
                 Q = self.Q_net(z, action, obs)
@@ -93,10 +98,13 @@ class LiamTrainer:
 
                 # Get policy output for next state and take argmax
                 action_logits = self.policy_net(z, next_obs)
-                target_value = next_reward + self.gamma * next_V
+                target_value = next_reward.unsqueeze(-1) + self.gamma * next_V
                 V_loss = 0.5 * F.mse_loss(V, target_value.detach())
-                policy_loss = (Q - V) * F.cross_entropy(action_logits, next_action) + self.alpha * F.cross_entropy(action_logits, next_action)
-                a2c_loss = V_loss + policy_loss
+                next_action = next_action.to(torch.float32)
+
+                policy_loss = ((Q - V).detach() * F.cross_entropy(action_logits, next_action, reduction='none') ).mean() + self.alpha * F.cross_entropy(action_logits, next_action, reduction='mean')
+                entropy_loss = -torch.sum(F.softmax(action_logits, dim=-1) * F.log_softmax(action_logits, dim=-1), dim=-1).mean()
+                a2c_loss = V_loss + policy_loss + self.sita * entropy_loss
 
                 total_loss = reconstruction_loss + self.beta * a2c_loss
                 sum_total_loss += total_loss
@@ -104,6 +112,7 @@ class LiamTrainer:
                 sum_a2c_loss += a2c_loss
                 
                 # 反向传播
+                self.optimizer.zero_grad()
                 total_loss.backward()
                 torch.nn.utils.clip_grad_norm_(self.liam_encoder.parameters(), max_norm=1.0)
                 torch.nn.utils.clip_grad_norm_(self.reconstruction_decoder.parameters(), max_norm=1.0)
@@ -119,13 +128,11 @@ class LiamTrainer:
         }
 
     def train(self, episodes_data, max_ep_len):
-        self.teamwork_encoder.train()
-        self.proxy_encoder.train()
-        self.teamwork_decoder.train()
-        self.proxy_decoder.train()
-        self.integrating_net.train()
-        self.marginal_net.train()
-
+        self.liam_encoder.train()
+        self.reconstruction_decoder.train()
+        self.Q_net.train()
+        self.V_net.train()
+        self.policy_net.train()
         loss_dict = self.train_step(episodes_data, max_ep_len)
         return loss_dict
 

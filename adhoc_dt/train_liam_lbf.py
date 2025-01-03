@@ -12,12 +12,11 @@ import csv
 import time
 
 from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch_dt, preprocess_data
-from Networks.ODITSEncoder import ProxyEncoder, TeamworkSituationEncoder
-from Networks.ODITSDecoder import ProxyDecoder, TeamworkSituationDecoder, IntegratingNet, MarginalUtilityNet
+from Networks.LiamModule import ValueNetwork, QNetwork, PolicyNetwork, ReconstructionDecoder, Encoder
 from Data import CustomDataset
-from Trainer import ODITSTrainer
+from Trainer import LiamTrainer
 from TestGame import Test
-from Agent.OditsAgent import OditsAgent
+from Agent.LiamAgent import LiamAgent
 
 # 定义训练函数
 def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, act_dim, model_save_path="models"):
@@ -43,8 +42,8 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                 if batch_idx % 10 == 0:
                     logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}]\n "
                                 f"Total Loss: {loss_dict['total_loss']:.4f}\n"
-                                f"Q Loss: {loss_dict['Q_loss']:.4f}\n"
-                                f"MI Loss: {loss_dict['MI_loss']:.4f}\n ")
+                                f"a2c Loss: {loss_dict['a2c_loss']:.4f}\n"
+                                f"reconstruction Loss: {loss_dict['reconstruction_loss']:.4f}\n ")
             
         # 每个epoch结束后记录平均损失
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Total Loss: {epoch_loss / len(train_loader) :.4f}")
@@ -66,8 +65,8 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
         
         # 每隔指定的间隔进行测试
         if (epoch + 1) % test_interval == 0 or epoch + 1 == 1:
-            agent = OditsAgent(trainer.proxy_encoder, trainer.marginal_net, trainer.marginal_net, "PP4a")
-            returns, var = test.test_game_odits(50, agent)
+            agent = LiamAgent(trainer.liam_encoder , trainer.policy_net, "LBF")
+            returns, var = test.test_game_liam(50, agent)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
@@ -83,7 +82,7 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
 if __name__ == "__main__":
 
     env = "LBF"
-    config = load_config(f"./config/{env}_config_odits.yaml")
+    config = load_config(f"./config/{env}_config_liam.yaml")
     save_dir = create_save_directory()
     config["save_dir"] = save_dir
     logger = setup_logger(save_dir)
@@ -93,76 +92,59 @@ if __name__ == "__main__":
     # device = torch.device("cpu")
     device = config["device"]
     # 移动模型到设备
-
-    teamwork_encoder = TeamworkSituationEncoder(
-            state_dim=config["state_dim"],
-            action_dim=config["act_dim"],
-            num_agents=config["num_agents"],
-            output_dim=config["output_dim"],
-            hidden_dim=config["hidden_dim"]
-        ).to(device)
-        
-    proxy_encoder = ProxyEncoder(
-            state_dim=config["state_dim"],
-            action_dim=config["act_dim"],
-            output_dim=config["output_dim"],
-            hidden_dim=config["hidden_dim"]
-        ).to(device)
-    # Initialize decoders
-    primary_layer_dims = [(config["hidden_dim"], 1)]
-    teamwork_decoder = TeamworkSituationDecoder(
-        hyper_input_dim=config["output_dim"],
-        primary_layer_dims=primary_layer_dims
-    ).to(device)
-        
-    proxy_decoder = ProxyDecoder(
-        hyper_input_dim=config["output_dim"],
-        primary_layer_dims=primary_layer_dims
-    ).to(device)
-        
-    integrating_net = IntegratingNet(
-        input_dim=1,  # Changed to 1 since input is marginal utility
-        hidden_dim=config["hidden_dim"],
-        fc_input_dim=config["hidden_dim"],
-        fc_output_dim=1,
-        hypernetwork=teamwork_decoder
-    ).to(device)
-        
-    marginal_net = MarginalUtilityNet(
-        state_dim=config["state_dim"],
+    encoder = Encoder(
+        obs_dim=config["state_dim"],
         action_dim=config["act_dim"],
-        hidden_dim=config["hidden_dim"],
-        fc_input_dim=config["hidden_dim"],
-        fc_output_dim=1,
-        hypernetwork=proxy_decoder
-    ).to(device)
+        z_dim=config["z_dim"]
+    )
+    reconstruction_decoder = ReconstructionDecoder(
+        z_dim=config["z_dim"],
+        obs_dim=config["state_dim"],
+        action_dim=config["act_dim"],
+        num_agents=config["num_agents"]
+    )
+    policy_net = PolicyNetwork(
+        z_dim=config["z_dim"],
+        action_dim=config["act_dim"],
+        obs_dim=config["state_dim"]
+    )
+    Q_net = QNetwork(
+        obs_dim=config["state_dim"],
+        action_dim=config["act_dim"],
+        z_dim=config["z_dim"]
+    )
+    V_net = ValueNetwork(
+        obs_dim=config["state_dim"],
+        z_dim=config["z_dim"]
+    )
+    
     # trainer准备
     optimizer = torch.optim.AdamW(
-        list(teamwork_encoder.parameters()) +
-        list(proxy_encoder.parameters()) + 
-        list(teamwork_decoder.parameters()) + 
-        list(proxy_decoder.parameters()) + 
-        list(integrating_net.parameters()) +
-        list(marginal_net.parameters()),
+        list(encoder.parameters()) +
+        list(reconstruction_decoder.parameters()) +
+        list(Q_net.parameters()) +
+        list(V_net.parameters()) +
+        list(policy_net.parameters()),
         lr=config['lr'],
         weight_decay=config['weight_decay']
     )
 
     # 初始化 Trainer
-    trainer = ODITSTrainer(
-        teamwork_encoder,
-        proxy_encoder,
-        teamwork_decoder,
-        proxy_decoder,
-        integrating_net,
-        marginal_net,
-        optimizer,  
-        act_dim=config["act_dim"],
+    trainer = LiamTrainer(
+        liam_encoder=encoder,
+        reconstruction_decoder=reconstruction_decoder,
+        Q_net=Q_net,
+        V_net=V_net,
+        policy_net=policy_net,
+        optimizer=optimizer,  
         gamma=config["gamma"],
         beta=config["beta"],
+        alpha=config["alpha"],
+        sita=config["sita"],
         batch_size=config["batch_size"],
-        device=config["device"],
-        update_freq=config["update_freq"]
+        act_dim=config["act_dim"],
+        update_freq=config["update_freq"],
+        device=config["device"]
     )
 
     # 保存配置到输出文件夹
@@ -181,7 +163,7 @@ if __name__ == "__main__":
     logger.info(f"Data loaded in {hours} hours {minutes} minutes.")
 
     # 划分训练集和验证集
-    train_data, val_data = train_test_split(data, test_size=0.5, random_state=42)
+    train_data, val_data = train_test_split(data, test_size=0.7, random_state=42)
     train_dataset = CustomDataset(train_data)
     val_dataset = CustomDataset(val_data)
     # 创建训练集和测试集的 DataLoader

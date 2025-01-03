@@ -647,6 +647,94 @@ class Test:
         print("Average Return:", sum(return_list)/ len(return_list))
         return sum(return_list)/ len(return_list), np.var(return_list)
 
+    def test_game_liam(self, test_episodes, agent):
+        # 加载模型
+        self.init_game_setting()
+
+        if "filled" in self.buffer.scheme:
+            del self.buffer.scheme["filled"]
+        
+        env = self.env
+        episode = 0
+        return_list = []
+        # 测试实训
+        with tqdm(total=len(range(test_episodes)), desc="testing") as pbar:
+            for _ in range(test_episodes):
+
+                # 随机选择一种队友
+                teammate_model_idx = random.randint(0, len(self.teammate_list) - 1)
+                self.mac.load_models(self.teammate_list[teammate_model_idx])
+                self.mac.init_hidden(batch_size=1)
+                batch = self.new_batch()
+                obs, state = env.reset()
+                a = np.array(0)
+
+                done = False
+                step_count = 0
+                total_reward = 0
+                # 随机选择一个个体作为ad hoc agent
+                teammate_idx = random.randint(0, self.env.n_agents - 1)
+                # 开始游戏循环
+                h = None
+                while not done and step_count <= self.episode_limit:
+
+                    pre_transition_data = {
+                        "state": [],
+                        "avail_actions": [],
+                        "obs": [],
+                    }
+                    last_obs = obs[teammate_idx]
+                    last_action = a
+                    obs = env.get_obs()
+                    state = env.get_state()
+                    avail_actions = env.get_avail_actions()
+                    pre_transition_data["state"].append([state])
+                    pre_transition_data["avail_actions"].append([avail_actions])
+                    pre_transition_data["obs"].append([obs])
+                    batch.update(pre_transition_data, bs=[0], ts=step_count, mark_filled=True)
+
+                    # 队友选择动作
+                    actions_tensor = self.mac.select_actions(batch, bs=[0],t_ep=step_count, t_env=step_count, test_mode=True)
+                    actions = actions_tensor[0].numpy()
+                    
+                    # adhoc agent选择动作
+                    if self.random:
+                        action_ad = agent.take_action()
+                    else:
+                        action_ad, h_new = agent.take_action(obs[teammate_idx], last_action, h, self.n_actions)
+                        h = h_new
+                    # action_ad = agent.take_action()
+                    # action_ad = np.random.randint(0, env.n_actions, size=(1,))
+                    # 拼接
+                    actions[teammate_idx] = action_ad[0]
+                    a = action_ad[0]
+                    # 执行动作并获取下一步
+                    reward, done, info = env.step(actions)
+                    actions_chosen = {
+                        "actions": torch.tensor(actions).unsqueeze(1)
+                    }
+                    actions_chosen["actions"] = actions_chosen["actions"].to(batch.device)
+                    batch.update(actions_chosen, bs=[0], ts=step_count, mark_filled=False)
+                    post_transition_data = {
+                        "reward": [],
+                        "terminated": [],
+                    }
+                    #post_transition_data["actions"].append([actions])
+                    post_transition_data["reward"].append([reward])
+                    post_transition_data["terminated"].append([done])
+                    
+                    batch.update(post_transition_data, bs=[0], ts=step_count, mark_filled=False)
+                    # 累积奖励
+                    total_reward += reward
+                    step_count += 1
+                episode += 1
+                return_list.append(total_reward)
+                #pbar.set_description(f"Episode {episode} return: {total_reward}")
+                #print(f"Episode {episode} return: {total_reward} ", self.teammate_list[teammate_model_idx])
+                pbar.update(1)
+        print("Average Return:", sum(return_list)/ len(return_list))
+        return sum(return_list)/ len(return_list), np.var(return_list)
+    
 if __name__ == "__main__":
     test = Test(env_type="overcooked", random=True)
     randomAgent = RandomAgent(n_actions=6)

@@ -15,7 +15,7 @@ class Encoder(nn.Module):
             num_layers=1,
             batch_first=True
         )
-        
+        self.hidden_dim = 256
         # Output projection
         self.output_layer = nn.Linear(256, z_dim)  # [batch_size, 256] -> [batch_size, z_dim]
         

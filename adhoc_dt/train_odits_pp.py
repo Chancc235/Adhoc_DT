@@ -138,7 +138,12 @@ if __name__ == "__main__":
     ).to(device)
     # trainer准备
     optimizer = torch.optim.AdamW(
-        teamwork_encoder.parameters(),
+        list(teamwork_encoder.parameters()) +
+        list(proxy_encoder.parameters()) + 
+        list(teamwork_decoder.parameters()) + 
+        list(proxy_decoder.parameters()) + 
+        list(integrating_net.parameters()) +
+        list(marginal_net.parameters()),
         lr=config['lr'],
         weight_decay=config['weight_decay']
     )
@@ -156,7 +161,8 @@ if __name__ == "__main__":
         gamma=config["gamma"],
         beta=config["beta"],
         batch_size=config["batch_size"],
-        device=config["device"]
+        device=config["device"],
+        update_freq=config["update_freq"]
     )
 
     # 保存配置到输出文件夹
