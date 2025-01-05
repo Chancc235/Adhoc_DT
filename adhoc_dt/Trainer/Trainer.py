@@ -493,26 +493,40 @@ class SequenceTrainer_lbf(BaseTrainer):
         sum_mse_loss_g /= K
         # 第二部分loss
         action_loss = 0.0
-        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+        states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
         states = states[..., [-3, -2]].to(torch.long)
         states = F.one_hot(states, 20)
-        states = states.view(states.shape[0], states.shape[1], states.shape[2]*states.shape[3]).to(torch.float32)
+        states = states.view(states.shape[0], states.shape[1], states.shape[2], states.shape[3]*states.shape[4]).to(torch.float32)
+
+        obs = obs[..., [-3, -2]].to(torch.long)
+        obs = F.one_hot(obs, 20)
+        obs = obs.view(obs.shape[0], obs.shape[1], obs.shape[2]*obs.shape[3]).to(torch.float32)
         # goal = goal[..., [-3, -2]]
 
-        # 计算goal
-        mu1, log_var1 = self.teammateencoder(states)
-        log_var1 = torch.clamp(log_var1, min=-10, max=10)
-        std1 = torch.exp(0.5 * log_var1) + 1e-6
-        q_z1 = torch.distributions.Normal(mu1, std1)
-        z = q_z1.sample()
-        r_pred = self.returnnet(z)
-        g_pred = self.goaldecoder(z, r_pred)
-        goal = g_pred.reshape(g_pred.shape[1], g_pred.shape[0] * g_pred.shape[2])
-        print(goal.shape)
+        batch_size, seq_len = states.shape[0], states.shape[1]
+        goals_list = []
+        
+        for t in range(seq_len):
+            state_t = states[:, t, ...]
+            mu1, log_var1 = self.teammateencoder(state_t.permute(1, 0, 2))
+            log_var1 = torch.clamp(log_var1, min=-10, max=10)
+            std1 = torch.exp(0.5 * log_var1) + 1e-6
+            q_z1 = torch.distributions.Normal(mu1, std1)
+            z = q_z1.sample()
+            r_pred = self.returnnet(z)
+            g_pred = self.goaldecoder(z, r_pred)
+
+            goals_list.append(g_pred.reshape(g_pred.shape[1], g_pred.shape[0]*g_pred.shape[2]).unsqueeze(1))
+            
+        
+        # 拼接所有时间步的goal
+        goal = torch.cat(goals_list, dim=1)
+
+
         actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
         action_target = torch.clone(actions)
         state_preds, action_preds, reward_preds = self.model.forward(
-            states, actions, goal, timesteps, attention_mask=attention_mask,
+            obs, actions, goal, timesteps, attention_mask=attention_mask,
         )
 
         act_dim = action_preds.shape[2]
@@ -612,26 +626,41 @@ class SequenceTrainer_lbf(BaseTrainer):
             mse_loss_r /= K
             mse_loss_g /= K
 
-        states, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+        states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
         states = states[..., [-3, -2]].to(torch.long)
         states = F.one_hot(states, 20)
-        states = states.view(states.shape[0], states.shape[1], states.shape[2]*states.shape[3]).to(torch.float32)
-        # 计算goal
-        mu1, log_var1 = self.teammateencoder(states)
-        log_var1 = torch.clamp(log_var1, min=-10, max=10)
-        std1 = torch.exp(0.5 * log_var1) + 1e-6
-        q_z1 = torch.distributions.Normal(mu1, std1)
-        z = q_z1.sample()
-        r_pred = self.returnnet(z)
-        g_pred = self.goaldecoder(z, r_pred)
-        goal = g_pred.reshape(g_pred.shape[1], g_pred.shape[0] * g_pred.shape[2])
+        states = states.view(states.shape[0], states.shape[1], states.shape[2], states.shape[3]*states.shape[4]).to(torch.float32)
+
+        obs = obs[..., [-3, -2]].to(torch.long)
+        obs = F.one_hot(obs, 20)
+        obs = obs.view(obs.shape[0], obs.shape[1], obs.shape[2]*obs.shape[3]).to(torch.float32)
+        # goal = goal[..., [-3, -2]]
+
+        batch_size, seq_len = states.shape[0], states.shape[1]
+        goals_list = []
+        
+        for t in range(seq_len):
+            state_t = states[:, t, ...]
+            mu1, log_var1 = self.teammateencoder(state_t.permute(1, 0, 2))
+            log_var1 = torch.clamp(log_var1, min=-10, max=10)
+            std1 = torch.exp(0.5 * log_var1) + 1e-6
+            q_z1 = torch.distributions.Normal(mu1, std1)
+            z = q_z1.sample()
+            r_pred = self.returnnet(z)
+            g_pred = self.goaldecoder(z, r_pred)
+
+            goals_list.append(g_pred.reshape(g_pred.shape[1], g_pred.shape[0]*g_pred.shape[2]).unsqueeze(1))
+            
+        
+        # 拼接所有时间步的goal
+        goal = torch.cat(goals_list, dim=1)
         
         actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
         action_target = torch.clone(actions)
         # 使用 no_grad() 禁用梯度计算
         with torch.no_grad():
             state_preds, action_preds, reward_preds = self.model.forward(
-                states, actions, goal, timesteps, attention_mask=attention_mask,
+                obs, actions, goal, timesteps, attention_mask=attention_mask,
             )
 
         act_dim = action_preds.shape[2]

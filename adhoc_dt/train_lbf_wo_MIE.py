@@ -11,14 +11,14 @@ import random
 import csv
 import time
 
-from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch_ok, preprocess_data
+from utils_dt import load_config, create_save_directory, setup_logger, save_config, get_batch, preprocess_data
 from Networks.ReturnNet import ReturnNet
 from Networks.TeammateEncoder import TeammateEncoder
 from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.GoalDecoder import GoalDecoder
 from Networks.dt_models.decision_transformer import DecisionTransformer_lbf
 from Data import CustomDataset
-from Trainer import SequenceTrainer_lbf, BaseTrainer, GoalTrainer_lbf
+from Trainer import SequenceTrainer_lbf_wo_mie, BaseTrainer, GoalTrainer_lbf
 from TestGame import Test
 from Agent.Adhoc_DT import Adhoc_DT
 
@@ -46,7 +46,6 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                 pbar.set_postfix({
                     "Dt Loss": f"{loss_dt['action_loss']:.4f}",
                     "Goal Loss": f"{loss_dt['total_goal_loss']:.4f}",
-                    "MIE Loss": f"{loss_dt['mie_loss']:.4f}",
                     "MSE Loss R": f"{loss_dt['mse_loss_r']:.4f}",
                     "MSE Loss G": f"{loss_dt['mse_loss_g']:.4f}"
                 })
@@ -55,7 +54,7 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                 if batch_idx % 10 == 0:
                     logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}]\n "
                                 f"Dt Loss: {loss_dt['action_loss']:.4f}\n "
-                                f"Goal Loss: {loss_dt['total_goal_loss']:.4f}, MIE Loss: {loss_dt['mie_loss']:.4f}\n "
+                                f"Goal Loss: {loss_dt['total_goal_loss']:.4f}\n "
                                 f"MSE Loss R: {loss_dt['mse_loss_r']:.4f}, BCE Loss G: {loss_dt['mse_loss_g']:.4f}")
             
         # 每个epoch结束后记录平均损失
@@ -69,7 +68,6 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
         logger.info(f"Epoch [{epoch+1}/{num_epochs}]\n"
         f"Action Validation Loss: {val_loss_dict['action_loss'] / len(val_loader):.4f} \n "
         f"Goal Validation Loss: {val_loss_dict['total_goal_loss'] / len(val_loader):.4f} \n "
-        f"MIE Validation Loss: {val_loss_dict['mie_loss'] / len(val_loader):.4f} \n "
         f"MSE R Validation Loss: {val_loss_dict['mse_loss_r'] / len(val_loader):.4f} \n "
         f"BCE G Validation Loss: {val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
         logger.info("===================================================================================")
@@ -144,7 +142,6 @@ if __name__ == "__main__":
     # device = torch.device("cpu")
     device = config["device"]
     # 移动模型到设备
-    teammateencoder = TeammateEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"], num_heads=config["TeammateEncoder_num_heads"]).to(device)
     adhocagentEncoder = AdhocAgentEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"]).to(device)
     returnnet = ReturnNet(input_dim=config["embed_dim"]).to(device)
     goaldecoder = GoalDecoder(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=512, output_dim=config["state_dim"], num=config["num_agents"], state_dim=config["state_dim"]).to(device)
@@ -167,7 +164,6 @@ if __name__ == "__main__":
     # DT 的 trainer准备
     warmup_steps = config['warmup_steps']
     optimizer = torch.optim.AdamW(
-        list(teammateencoder.parameters()) + 
         list(adhocagentEncoder.parameters()) + 
         list(returnnet.parameters()) + 
         list(goaldecoder.parameters()) +
@@ -181,15 +177,14 @@ if __name__ == "__main__":
     )
 
     # 初始化 Trainer
-    trainer = SequenceTrainer_lbf(
+    trainer = SequenceTrainer_lbf_wo_mie(
         model=dt,
-        teammateencoder=teammateencoder, 
         adhocencoder=adhocagentEncoder, 
         returnnet=returnnet, 
         goaldecoder=goaldecoder, 
         optimizer=optimizer,
         batch_size=config["batch_size"],
-        get_batch=get_batch_ok,
+        get_batch=get_batch,
         alpha=config["alpha"], 
         beta=config["beta"], 
         gama=config["gama"], 

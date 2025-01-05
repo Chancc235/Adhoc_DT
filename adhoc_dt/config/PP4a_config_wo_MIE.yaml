@@ -2,12 +2,13 @@ env: stag_hunt
 type: PP4a
 
 device: cuda
-batch_size: 9182
-lr: 0.001
+batch_size: 4096
+lr: 0.00001
 weight_decay: 0.00001
 alpha: 0.001   # 预测r的MSE的权重
 beta: 100   # MIE第一项的权重
 gama: 100   # MIE第二项的权重
+sigma: 0.001 # goal部分的总权重
 clip_value: 2
 num_agents: 4
 goal_steps: 6
