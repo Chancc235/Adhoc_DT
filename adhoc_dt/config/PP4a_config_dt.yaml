@@ -2,7 +2,7 @@ env: stag_hunt
 type: PP4a
 
 device: cuda
-batch_size: 16384
+batch_size: 4096
 weight_decay: 0.00001
 clip_value: 2
 num_agents: 4

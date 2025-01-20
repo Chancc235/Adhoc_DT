@@ -75,12 +75,12 @@ def train_model(logger, trainer_dt, train_loader, val_loader, num_epochs, device
             data_iter = iter(train_loader)
             random_batch = random.choice(list(data_iter))
             states_p, actions_p, rtg_p, dones_p, timesteps_p, attention_mask_p  = trainer_dt.get_batch(random_batch, device=device, max_ep_len=random_batch["state"].size(1), max_len=int(K / 5))
-            returns, low, high = test.test_game_prom(50, agent, K, states_p, actions_p, rtg_p, K)
+            returns, var = test.test_game_prom(50, agent, K, states_p, actions_p, rtg_p, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([epoch + 1, returns, low, high])
+                writer.writerow([epoch + 1, returns, var])
         
     end_time = time.time()
     total_duration = end_time - start_time
@@ -121,7 +121,7 @@ if __name__ == "__main__":
     warmup_steps = config['warmup_steps']
     optimizer = torch.optim.AdamW(
         dt.parameters(),
-        lr=config['dt_lr'],
+        lr=config['lr'],
         weight_decay=config['dt_weight_decay']
     )
     scheduler = torch.optim.lr_scheduler.LambdaLR(

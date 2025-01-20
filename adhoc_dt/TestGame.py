@@ -162,9 +162,9 @@ class Test:
                 total_reward = 0
                 # 随机选择一个个体作为ad hoc agent
                 teammate_idx = random.randint(0, self.env.n_agents - 1)
+                # print("Ego Agent idx is : ", teammate_idx)
                 # 开始游戏循环
                 while not done and step_count <= self.episode_limit:
-
                     pre_transition_data = {
                         "state": [],
                         "avail_actions": [],
@@ -199,6 +199,16 @@ class Test:
                         action_ad = agent.take_action()
                     else:
                         action_ad, S = agent.take_action(o_list, a_list, g_list, t_list, self.n_actions)
+                    # print("Step count: ", step_count)
+                    # print("0:", S[..., :75])
+                    # print("1:", S[..., 75:150])
+                    # print("2:", S[..., 150:225])
+                    # print("3:", S[..., 225:300])
+                    # print(S)
+
+                    # print("obs", obs)
+
+
                     # action_ad = agent.take_action()
                     # action_ad = np.random.randint(0, env.n_actions, size=(1,))
                     # 拼接
@@ -267,6 +277,7 @@ class Test:
             total_reward = 0
             # 随机选择一个个体作为ad hoc agent
             teammate_idx = random.randint(0, self.env.n_agents - 1)
+            # print(teammate_idx)
             # 开始游戏循环
             while not done and step_count < self.episode_limit:
 
@@ -277,7 +288,9 @@ class Test:
                 }
 
                 obs = env.get_obs()
+
                 state = env.get_state()
+                # print("states:", state)
                 avail_actions = env.get_avail_actions()
                 pre_transition_data["state"].append([state])
                 pre_transition_data["avail_actions"].append([avail_actions])
@@ -312,12 +325,12 @@ class Test:
                 # 拼接
                 actions[teammate_idx] = action_ad[0]
                 # actions = np.concatenate([actions[:-1], action_ad])
-                
+                # print("action:", actions)
                 a_list.append(actions[teammate_idx])
 
                 # 执行动作并获取下一步
                 reward, done, info = env.step(actions)
-
+                # print("reward:", reward)
                 R_list.append(R_list[-1] - reward)
 
                 post_transition_data = {
@@ -338,7 +351,7 @@ class Test:
             return_list.append(total_reward)
             #print(f"Episode {episode} return: {total_reward}")
         #print("Average Return:", sum(return_list)/ len(return_list))
-        return sum(return_list)/ len(return_list), min(return_list), max(return_list)
+        return sum(return_list)/ len(return_list), np.var(return_list)
 
 
     def test_game_prom_ok(self, test_episodes, agent, K, states_p, actions_p, rtg_p, prompt_len):
@@ -447,7 +460,7 @@ class Test:
             return_list.append(total_reward)
             #print(f"Episode {episode} return: {total_reward}")
         #print("Average Return:", sum(return_list)/ len(return_list))
-        return sum(return_list)/ len(return_list), min(return_list), max(return_list)
+        return sum(return_list)/ len(return_list), np.var(return_list)
         
     def test_game_prom(self, test_episodes, agent, K, states_p, actions_p, rtg_p, prompt_len):
         # 加载模型
@@ -555,7 +568,7 @@ class Test:
             return_list.append(total_reward)
             #print(f"Episode {episode} return: {total_reward}")
         #print("Average Return:", sum(return_list)/ len(return_list))
-        return sum(return_list)/ len(return_list), min(return_list), max(return_list)
+        return sum(return_list)/ len(return_list), np.var(return_list)
 
     def test_game_odits(self, test_episodes, agent):
         # 加载模型

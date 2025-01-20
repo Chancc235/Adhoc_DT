@@ -5,7 +5,7 @@ env_args:
   players: 2
   max_food: 4
   force_coop: True
-  partiteammate_observe: False
+  partiteammate_observe: True
   is_print: False
   seed: 1024
   need_render: False

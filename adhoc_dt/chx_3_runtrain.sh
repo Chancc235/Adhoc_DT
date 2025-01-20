@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=3 nohup python train_lbf_wo_MIE.py > output3.log 2>&1 &
+CUDA_VISIBLE_DEVICES=3 nohup python train_liam_ok.py > output3.log 2>&1 &

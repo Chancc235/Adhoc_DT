@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=1 nohup python train_pp4a_wo_MIE.py > output1.log 2>&1 &
+CUDA_VISIBLE_DEVICES=1 nohup python train_ok.py > output1.log 2>&1 &

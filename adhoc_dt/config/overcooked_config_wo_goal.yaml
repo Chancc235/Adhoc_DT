@@ -11,7 +11,7 @@ gama: 100   # MIE第二项的权重
 sigma: 0.001 # goal部分的总权重
 clip_value: 2
 num_agents: 2
-goal_steps: 2
+goal_steps: 6
 
 # train_model function
 num_epochs: 100
@@ -33,11 +33,11 @@ K: 5
 n_layer: 1
 n_head: 1
 dt_activation_function: relu
-dt_dropout: 0.5
+dt_dropout: 0.7
 warmup_steps: 10
 dt_weight_decay: 0.0001
 dt_train_steps: 1
 
 # train_data_path: data/PP4a_episodes_datas.pt
-# train_data_path: data/overcooked_wo_aug.pt
+# train_data_path: data/PP4a_test_rtg.pt
 train_data_path: data/overcooked_episodes_datas_rtg_new3.pt

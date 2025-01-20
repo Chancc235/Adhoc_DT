@@ -49,7 +49,7 @@ env_args:
     state_as_graph: False # whether the state is a list of entities (True) or the entire grid (False
     toroidal: False # whether the world is bounded (False) or toroidal (True)
     world_shape: [10, 10] # the shape of the grid-world [height, width]
-    need_render: False
+    need_render: True
     is_print: False
 
 test_greedy: True

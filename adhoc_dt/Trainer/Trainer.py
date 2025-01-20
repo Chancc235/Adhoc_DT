@@ -177,7 +177,7 @@ class SequenceTrainer(BaseTrainer):
         sum_mie_loss = 0.0
         sum_mse_loss_r = 0.0
         sum_mse_loss_g = 0.0
-        states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+        
         g_list = []
         for ts in range(rand_t, rand_t + K):
             i = ts - rand_t
@@ -193,22 +193,6 @@ class SequenceTrainer(BaseTrainer):
             sum_mie_loss += mie_loss
             sum_mse_loss_r += mse_loss_r
             sum_mse_loss_g += mse_loss_g
-
-            # 计算goal
-            s = states[:, i, ...].permute(1, 0, 2)
-
-            mu1, log_var1 = self.teammateencoder(s)
-            log_var1 = torch.clamp(log_var1, min=-10, max=10)
-            std1 = torch.exp(0.5 * log_var1) + 1e-6
-            q_z1 = torch.distributions.Normal(mu1, std1)
-            z = q_z1.sample()
-            r_pred = self.returnnet(z)
-            g_pred = self.goaldecoder(z, r_pred)
-
-            g_pred = g_pred.permute(1, 0, 2)
-            # g_pred = g_pred.view(g_pred.shape[0], g_pred.shape[1] * g_pred.shape[2])
-            g_list.append(g_pred) # (batch_size, 2 * state_dim)
-
         # 得到第一部分loss
         sum_total_goal_loss /= K
         sum_mie_loss /= K
@@ -216,8 +200,21 @@ class SequenceTrainer(BaseTrainer):
         sum_mse_loss_g /= K
         # 第二部分loss
         action_loss = 0.0
-        
-        
+        states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+        batch_size, seq_len = states.shape[0], states.shape[1]
+        g_list = []
+        for t in range(seq_len):
+            state_t = states[:, t, ...]
+            mu1, log_var1 = self.teammateencoder(state_t.permute(1, 0, 2))
+            log_var1 = torch.clamp(log_var1, min=-10, max=10)
+            std1 = torch.exp(0.5 * log_var1) + 1e-6
+            q_z1 = torch.distributions.Normal(mu1, std1)
+            z = q_z1.sample()
+            r_pred = self.returnnet(z)
+            g_pred = self.goaldecoder(z, r_pred)
+
+            g_list.append(g_pred.reshape(g_pred.shape[1], g_pred.shape[0]*g_pred.shape[2]).unsqueeze(1))
+
         goal = torch.stack(g_list, dim=1) # (batch_size, K, 2 * state_dim)
         actions = torch.clone(F.one_hot(actions.to(torch.int64), num_classes=self.model.act_dim))
         action_target = torch.clone(actions)
@@ -311,27 +308,26 @@ class SequenceTrainer(BaseTrainer):
                 sum_mse_loss_r += mse_loss_r
                 sum_mse_loss_g += mse_loss_g
 
-                # 计算goal
-                s = states[:, i, ...].permute(1, 0, 2)
-
-                mu1, log_var1 = self.teammateencoder(s)
-                log_var1 = torch.clamp(log_var1, min=-10, max=10)
-                std1 = torch.exp(0.5 * log_var1) + 1e-6
-                q_z1 = torch.distributions.Normal(mu1, std1)
-                z = q_z1.sample()
-                r_pred = self.returnnet(z)
-                g_pred = self.goaldecoder(z, r_pred)
-
-                g_pred = g_pred.permute(1, 0, 2)
-                # g_pred = g_pred.view(g_pred.shape[0], g_pred.shape[1] * g_pred.shape[2])
-                g_list.append(g_pred) # (batch_size, 2 * state_dim)
-
             # 得到第一部分loss
             sum_total_goal_loss /= K
             sum_mie_loss /= K
             sum_mse_loss_r /= K
             sum_mse_loss_g /= K
-            states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+
+        states, obs, actions, goal, dones, timesteps, attention_mask = self.get_batch(episodes_data, device=device, max_ep_len=max_ep_len, max_len=K, goal_steps=goal_steps)
+        batch_size, seq_len = states.shape[0], states.shape[1]
+        g_list = []
+        for t in range(seq_len):
+            state_t = states[:, t, ...]
+            mu1, log_var1 = self.teammateencoder(state_t.permute(1, 0, 2))
+            log_var1 = torch.clamp(log_var1, min=-10, max=10)
+            std1 = torch.exp(0.5 * log_var1) + 1e-6
+            q_z1 = torch.distributions.Normal(mu1, std1)
+            z = q_z1.sample()
+            r_pred = self.returnnet(z)
+            g_pred = self.goaldecoder(z, r_pred)
+
+            g_list.append(g_pred.reshape(g_pred.shape[1], g_pred.shape[0]*g_pred.shape[2]).unsqueeze(1))
 
         goal = torch.stack(g_list, dim=1) # (batch_size, K, 2 * state_dim)
         

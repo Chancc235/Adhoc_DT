@@ -18,17 +18,16 @@ from Networks.AdhocAgentEncoder import AdhocAgentEncoder
 from Networks.GoalDecoder import GoalDecoder
 from Networks.dt_models.decision_transformer import DecisionTransformer
 from Data import CustomDataset
-from Trainer import SequenceTrainer, BaseTrainer
+from Trainer import SequenceTrainer_pp_wo_rtg, BaseTrainer
 from TestGame import Test
-from Agent.Adhoc_DT import Adhoc_DT
+from Agent.Adhoc_DT import Adhoc_DT_wo_rtg
 from Agent.RandomAgent import RandomAgent
 
 # 定义训练函数
 def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, test_interval, save_interval, save_dir, K, act_dim, dt_train_steps, goal_steps, model_save_path="models"):
     start_time = time.time()
     # 测试类
-    # test = Test("overcooked")
-    test = Test("overcooked", random="True")
+    test = Test("PP4a")
     
     for epoch in range(num_epochs):
 
@@ -48,7 +47,6 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                     "Dt Loss": f"{loss_dt['action_loss']:.4f}",
                     "Goal Loss": f"{loss_dt['total_goal_loss']:.4f}",
                     "MIE Loss": f"{loss_dt['mie_loss']:.4f}",
-                    "MSE Loss R": f"{loss_dt['mse_loss_r']:.4f}",
                     "MSE Loss G": f"{loss_dt['mse_loss_g']:.4f}"
                 })
 
@@ -57,8 +55,8 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                     logger.info(f"Epoch [{epoch+1}/{num_epochs}], Batch [{batch_idx}/{len(train_loader)}]\n "
                                 f"Dt Loss: {loss_dt['action_loss']:.4f}\n "
                                 f"Goal Loss: {loss_dt['total_goal_loss']:.4f}, MIE Loss: {loss_dt['mie_loss']:.4f}\n "
-                                f"MSE Loss R: {loss_dt['mse_loss_r']:.4f}, BCE Loss G: {loss_dt['mse_loss_g']:.4f}")
-                
+                                f"BCE Loss G: {loss_dt['mse_loss_g']:.4f}")
+            
         # 每个epoch结束后记录平均损失
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Goal Loss: {epoch_goal_loss / len(train_loader) :.4f}")
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] completed. Average Action Loss: {epoch_action_loss / len(train_loader) :.4f}")
@@ -71,7 +69,6 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
         f"Action Validation Loss: {val_loss_dict['action_loss'] / len(val_loader):.4f} \n "
         f"Goal Validation Loss: {val_loss_dict['total_goal_loss'] / len(val_loader):.4f} \n "
         f"MIE Validation Loss: {val_loss_dict['mie_loss'] / len(val_loader):.4f} \n "
-        f"MSE R Validation Loss: {val_loss_dict['mse_loss_r'] / len(val_loader):.4f} \n "
         f"BCE G Validation Loss: {val_loss_dict['mse_loss_g'] / len(val_loader):.4f}")
         logger.info("===================================================================================")
 
@@ -90,15 +87,14 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
         
         # 每隔指定的间隔进行测试
         if (epoch + 1) % test_interval == 0 or epoch + 1 == 1:
-            # agent = Adhoc_DT(
-            #     dt_model=trainer.model, 
-            #     state_encoder=trainer.adhocencoder, 
-            #     return_net=trainer.returnnet, 
-            #     goal_decoder=trainer.goaldecoder,
-            #     env_type="overcooked"
-            # )
-            agent = RandomAgent(6)
-            returns, var = test.test_game(100, agent, K)
+            agent = Adhoc_DT_wo_rtg(
+                dt_model=trainer.model, 
+                state_encoder=trainer.adhocencoder, 
+                goal_decoder=trainer.goaldecoder,
+                env_type="PP4a"
+            )
+
+            returns, var = test.test_game(50, agent, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
@@ -112,18 +108,20 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
             if not os.path.exists(dir_path):
                 os.makedirs(dir_path)
             save_path = os.path.join(dir_path, f"epoch_{epoch+1}.pth") 
-            
+            '''
             torch.save({
                 'epoch': epoch + 1,
                 'model_state_dict': {
-                    'model': trainer.model.state_dict(),
-                    'teamworkencoder': trainer.teammateencoder.state_dict(),
-                    'adhocencoder': trainer.adhocencoder.state_dict(),
-                    'returnnet': trainer.returnnet.state_dict(),
-                    'goaldecoder': trainer.goaldecoder.state_dict(),
+                    'teamworkencoder': trainer_goal.teammateencoder.state_dict(),
+                    'adhocencoder': trainer_goal.adhocencoder.state_dict(),
+                    'goaldecoder': trainer_goal.goaldecoder.state_dict(),
                 },
+                'optimizer_state_dict': trainer_goal.optimizer.state_dict(),
+                'action_loss': epoch_action_loss / len(train_loader),
+                'goal_loss': epoch_goal_loss / len(train_loader),
             }, save_path)
-
+            '''
+            logger.info(f"Model checkpoint saved at {save_path}")
     end_time = time.time()
     total_duration = end_time - start_time
     total_hours, total_rem = divmod(total_duration, 3600)
@@ -132,8 +130,8 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
 
 if __name__ == "__main__":
 
-    env = "overcooked"
-    config = load_config(f"./config/{env}_config.yaml")
+    env = "PP4a"
+    config = load_config(f"./config/{env}_config_wo_rtg.yaml")
     save_dir = create_save_directory()
     config["save_dir"] = save_dir
     logger = setup_logger(save_dir)
@@ -145,7 +143,6 @@ if __name__ == "__main__":
     # 移动模型到设备
     teammateencoder = TeammateEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"], num_heads=config["TeammateEncoder_num_heads"]).to(device)
     adhocagentEncoder = AdhocAgentEncoder(state_dim=config["state_dim"], embed_dim=config["embed_dim"]).to(device)
-    returnnet = ReturnNet(input_dim=config["embed_dim"]).to(device)
     goaldecoder = GoalDecoder(input_dim=config["embed_dim"], scalar_dim=1, hidden_dim=512, output_dim=config["state_dim"], num=config["num_agents"], state_dim=config["state_dim"]).to(device)
     dt = DecisionTransformer(
         state_dim=config["state_dim"],
@@ -168,7 +165,6 @@ if __name__ == "__main__":
     optimizer = torch.optim.AdamW(
         list(teammateencoder.parameters()) + 
         list(adhocagentEncoder.parameters()) + 
-        list(returnnet.parameters()) + 
         list(goaldecoder.parameters()) +
         list(dt.parameters()),
         lr=config['lr'],
@@ -180,11 +176,10 @@ if __name__ == "__main__":
     )
 
     # 初始化 Trainer
-    trainer = SequenceTrainer(
+    trainer = SequenceTrainer_pp_wo_rtg(
         model=dt,
         teammateencoder=teammateencoder, 
         adhocencoder=adhocagentEncoder, 
-        returnnet=returnnet, 
         goaldecoder=goaldecoder, 
         optimizer=optimizer,
         batch_size=config["batch_size"],

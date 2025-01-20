@@ -405,7 +405,7 @@ class OvercookedMultiEnv(MultiAgentEnv):
             if done:
                 # transform imgs into video
                 video_path = os.path.join(self.video_save_dir, "video0.avi")
-                self.img2video(self.img_save_dir, video_path)
+                #self.img2video(self.img_save_dir, video_path)
 
     def img2video(self, img_dir, video_path):
         """

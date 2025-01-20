@@ -75,13 +75,29 @@ def train_model(logger, trainer_dt, train_loader, val_loader, num_epochs, device
             data_iter = iter(train_loader)
             random_batch = random.choice(list(data_iter))
             states_p, actions_p, rtg_p, dones_p, timesteps_p, attention_mask_p  = trainer_dt.get_batch(random_batch, device=device, max_ep_len=random_batch["state"].size(1), max_len=int(K / 5))
-            returns, low, high = test.test_game_prom_ok(50, agent, K, states_p, actions_p, rtg_p, K)
+            returns, var = test.test_game_prom_ok(50, agent, K, states_p, actions_p, rtg_p, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([epoch + 1, returns, low, high])
+                writer.writerow([epoch + 1, returns, var])
         
+        # 每隔指定的间隔保存模型
+        if (epoch + 1) % save_interval == 0 or epoch + 1 == 1:
+            dir_path = os.path.join(save_dir, model_save_path)
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
+            save_path = os.path.join(dir_path, f"epoch_{epoch+1}.pth") 
+            
+            torch.save({
+                'epoch': epoch + 1,
+                'model_state_dict': {
+                    'model': trainer_dt.model.state_dict()
+                },
+            }, save_path)
+            
+            logger.info(f"Model checkpoint saved at {save_path}")
+
     end_time = time.time()
     total_duration = end_time - start_time
     total_hours, total_rem = divmod(total_duration, 3600)

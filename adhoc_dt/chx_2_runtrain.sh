@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=2 nohup python train_ok_wo_MIE.py > output2.log 2>&1 &
+CUDA_VISIBLE_DEVICES=2 nohup python train_ok.py > output2.log 2>&1 &

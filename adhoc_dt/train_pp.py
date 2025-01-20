@@ -97,12 +97,12 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
                 env_type="PP4a"
             )
 
-            returns, low, high = test.test_game(50, agent, K)
+            returns, var = test.test_game(50, agent, K)
             logger.info(f"{epoch + 1} Test Returns: {returns}")
             returns_csv_file_path = os.path.join(save_dir, 'test_returns.csv')
             with open(returns_csv_file_path, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([epoch + 1, returns, low, high])
+                writer.writerow([epoch + 1, returns, var])
         
 
         # 每隔指定的间隔保存模型
@@ -111,20 +111,18 @@ def train_model(logger, trainer, train_loader, val_loader, num_epochs, device, t
             if not os.path.exists(dir_path):
                 os.makedirs(dir_path)
             save_path = os.path.join(dir_path, f"epoch_{epoch+1}.pth") 
-            '''
+            
             torch.save({
                 'epoch': epoch + 1,
                 'model_state_dict': {
-                    'teamworkencoder': trainer_goal.teammateencoder.state_dict(),
-                    'adhocencoder': trainer_goal.adhocencoder.state_dict(),
-                    'returnnet': trainer_goal.returnnet.state_dict(),
-                    'goaldecoder': trainer_goal.goaldecoder.state_dict(),
+                    'model': trainer.model.state_dict(),
+                    'teamworkencoder': trainer.teammateencoder.state_dict(),
+                    'adhocencoder': trainer.adhocencoder.state_dict(),
+                    'returnnet': trainer.returnnet.state_dict(),
+                    'goaldecoder': trainer.goaldecoder.state_dict(),
                 },
-                'optimizer_state_dict': trainer_goal.optimizer.state_dict(),
-                'action_loss': epoch_action_loss / len(train_loader),
-                'goal_loss': epoch_goal_loss / len(train_loader),
             }, save_path)
-            '''
+            
             logger.info(f"Model checkpoint saved at {save_path}")
     end_time = time.time()
     total_duration = end_time - start_time
